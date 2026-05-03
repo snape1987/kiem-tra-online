@@ -179,6 +179,21 @@ input[type=text]:focus, select:focus { border-color: var(--primary); outline: no
 .timer.warn { background: var(--red); color: white; animation: pulse 1s infinite; }
 @keyframes pulse { 50% { transform: scale(1.06); } }
 
+/* ===== PASSAGE CARD (đoạn văn đọc hiểu) ===== */
+.passage-card {
+  background: #f8f6ff;
+  border-left: 5px solid var(--primary);
+  margin-bottom: 4px;
+}
+.passage-label {
+  font-weight: 700; color: var(--primary);
+  font-size: .9em; margin-bottom: 8px;
+}
+.passage-body {
+  font-size: 1em; line-height: 1.75;
+  white-space: pre-line; color: #333;
+}
+
 /* ===== SECTION HEADER (English exam parts) ===== */
 .section-header {
   margin: 24px 0 4px;
@@ -231,38 +246,38 @@ input[type=text]:focus, select:focus { border-color: var(--primary); outline: no
 .q-nav {
   position: fixed;
   top: 72px; right: 0;
-  width: 170px;
+  width: 340px;
   background: white;
   border-radius: 16px 0 0 16px;
   box-shadow: -4px 0 20px var(--primary-glow);
-  padding: 12px 10px 14px;
+  padding: 16px 14px 18px;
   z-index: 50;
   max-height: calc(100vh - 150px);
   overflow-y: auto;
   border-top: 4px solid var(--primary);
 }
 .q-nav-title {
-  font-size: .85em; font-weight: 800;
+  font-size: 1.1em; font-weight: 800;
   color: var(--primary); text-align: center;
-  margin-bottom: 10px; letter-spacing: .04em;
+  margin-bottom: 12px; letter-spacing: .04em;
 }
 .q-nav-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 per row */
-  gap: 5px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 .q-nav-btn {
-  border: 2.5px solid var(--red);
+  border: 3px solid var(--red);
   background: #fff5f5;
   color: var(--red);
-  border-radius: 9px;
-  font-size: 1em;     /* to hơn */
+  border-radius: 12px;
+  font-size: 1.6em;
   font-weight: 800;
-  padding: 9px 4px;   /* bigger tap area */
+  padding: 16px 6px;
   cursor: pointer;
   transition: all .12s;
   text-align: center;
-  min-height: 38px;
+  min-height: 72px;
   line-height: 1;
 }
 .q-nav-btn:hover  { transform: scale(1.12); box-shadow: 0 2px 8px var(--primary-glow); }

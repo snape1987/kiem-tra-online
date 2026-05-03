@@ -62,6 +62,12 @@
   {% if q.section_instruction %}<div class="section-instr">{{ q.section_instruction }}</div>{% endif %}
 </div>
 {% endif %}
+{% if q.passage_text %}
+<div class="passage-card card">
+  <div class="passage-label">📄 Đọc đoạn văn sau:</div>
+  <div class="passage-body">{{ q.passage_text }}</div>
+</div>
+{% endif %}
 <div class="question card" id="q-{{ qi }}" data-idx="{{ qi }}">
   <div class="qnum">
     Câu {{ ns.qnum }}
