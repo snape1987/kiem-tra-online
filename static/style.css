@@ -179,6 +179,21 @@ input[type=text]:focus, select:focus { border-color: var(--primary); outline: no
 .timer.warn { background: var(--red); color: white; animation: pulse 1s infinite; }
 @keyframes pulse { 50% { transform: scale(1.06); } }
 
+/* ===== SECTION HEADER (English exam parts) ===== */
+.section-header {
+  margin: 24px 0 4px;
+  padding: 12px 18px;
+  background: var(--primary);
+  color: white;
+  border-radius: 12px;
+}
+.section-header .section-title {
+  font-size: 1.05em; font-weight: 700; letter-spacing: .03em;
+}
+.section-header .section-instr {
+  font-size: .88em; margin-top: 4px; opacity: .88; font-style: italic;
+}
+
 /* ===== QUESTION CARD ===== */
 .question .qnum { color: var(--primary); font-weight: bold; margin-bottom: 6px; font-size: 1.05em; }
 .question .qnum .topic { color: #aaa; font-weight: normal; font-size: .82em; }

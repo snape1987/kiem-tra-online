@@ -511,6 +511,18 @@ NHAT_KHOI_TIENG_ANH = [
     {"type": "choice", "q": "It's a cool opportunity to meet students (25) _____ similar interests.", "options": ["in", "with", "from", "to"], "answer": "with", "topic": "Grammar", "explanation": "'students with similar interests' = học sinh có sở thích tương đồng. 'with' chỉ đặc điểm/sở hữu. 'students from...' chỉ xuất xứ, 'in interests' không phải cụm từ chuẩn."},
     {"type": "choice", "q": "Limited (26) ______ available for this cultural journey!", "options": ["spots", "prices", "camps", "times"], "answer": "spots", "topic": "Vocabulary", "explanation": "'limited spots' = số chỗ có hạn — cách nói phổ biến trong thông báo sự kiện. 'spots' = suất/chỗ tham gia. 'limited prices' = giá hạn chế (vô nghĩa), 'limited times' = thời gian hạn chế (không tự nhiên trong ngữ cảnh này)."},
     {"type": "choice", "q": "A lot of teenagers take part in clubs in their schools. First, joining a school club is an easy way to make new friends. You will meet different students who share your hobbies or interests. What is the MAIN topic of the passage?", "options": ["Making new friends", "Benefits of joining school clubs", "Learning new skills", "Improving confidence"], "answer": "Benefits of joining school clubs", "topic": "Reading", "explanation": "Đoạn văn nói về lợi ích của việc tham gia câu lạc bộ trường học — kết bạn chỉ là một trong những lợi ích được đề cập. Chủ đề chính bao quát hơn là 'Benefits of joining school clubs'."},
+
+    # ── WORD FORM (Part IV - Writing) ──
+    {"type": "fill", "q": "The country is developing its ___ (INDUSTRY) zone rapidly.", "answer": "industrial", "topic": "Word Form", "explanation": "INDUSTRY → industrial (adjective: thuộc về công nghiệp)"},
+    {"type": "fill", "q": "The ___ (FLY) from Ha Noi to Ho Chi Minh City takes about 2 hours.", "answer": "flight", "topic": "Word Form", "explanation": "FLY (verb) → flight (noun: chuyến bay)"},
+    {"type": "fill", "q": "___ (SCIENCE) have discovered a new species in the Amazon.", "answer": "Scientists", "topic": "Word Form", "explanation": "SCIENCE → Scientists (noun plural: các nhà khoa học)"},
+    {"type": "fill", "q": "Many animals are ___ (DANGER) because of habitat loss.", "answer": "endangered", "topic": "Word Form", "explanation": "DANGER → endangered (adjective: đang có nguy cơ tuyệt chủng)"},
+    {"type": "fill", "q": "Air ___ (POLLUTE) is a serious problem in big cities.", "answer": "pollution", "topic": "Word Form", "explanation": "POLLUTE (verb) → pollution (noun: ô nhiễm)"},
+    {"type": "fill", "q": "The ___ (TRADITION) dress of the Kinh people is the áo dài.", "answer": "traditional", "topic": "Word Form", "explanation": "TRADITION → traditional (adjective: truyền thống)"},
+    {"type": "fill", "q": "She passed all her exams ___ (SUCCESS).", "answer": "successfully", "topic": "Word Form", "explanation": "SUCCESS → successfully (adverb: một cách thành công)"},
+    {"type": "fill", "q": "There is a big ___ (DIFFER) between the two cultures.", "answer": "difference", "topic": "Word Form", "explanation": "DIFFER (verb) → difference (noun: sự khác biệt)"},
+    {"type": "fill", "q": "Music and art are important parts of our ___ (CULTURE) heritage.", "answer": "cultural", "topic": "Word Form", "explanation": "CULTURE → cultural (adjective: thuộc về văn hóa)"},
+    {"type": "fill", "q": "The ___ (PEACE) of the countryside makes it a great place to relax.", "answer": "peacefulness", "topic": "Word Form", "explanation": "PEACE → peacefulness (noun: sự bình yên)"},
 ]
 
 
@@ -520,7 +532,7 @@ NHAT_KHOI_TIENG_ANH = [
 #   Lớp 6: De 04 - De 08 (HK2 Tiếng Anh 6 Global Success)
 #   Lớp 8: De 01 - De 05 (HK2 Tiếng Anh 8 Chương trình mới)
 # ============================================================
-
+MINH_KHANH_TIENG_ANH = []  # TODO: add lớp 6 English questions
 
 
 def _get_pool(student_key, subject):
@@ -530,6 +542,51 @@ def _get_pool(student_key, subject):
     if student_key == "nhat_khoi":
         return NHAT_KHOI_TOAN if subject == "Toán" else NHAT_KHOI_TIENG_ANH
     return []  # bao_meo dùng generators, không dùng pool tĩnh
+
+
+_ENGLISH_SECTIONS = [
+    ("Pronunciation",              "PART I – PHONETICS",  "Choose the word whose underlined part is pronounced differently from the others."),
+    (("Grammar", "Vocabulary", "Communication"), "PART II – LANGUAGE",  "Choose the best answer A, B, C, or D to complete each sentence."),
+    (("Reading", "Reading T/F"),   "PART III – READING",  "Read and choose the correct answer (T/F) or the best option."),
+    ("Word Form",                  "PART IV – WRITING",   "Write the correct form of the word given in brackets."),
+]
+
+_ENGLISH_TARGETS = [3, 10, 5, 4]  # phonetics, language, reading, writing
+
+
+def gen_english_structured(pool, n, seed):
+    """Return a structured English exam with Part headers (section_start field)."""
+    rng = random.Random(seed)
+
+    groups = []
+    for topics, *_ in _ENGLISH_SECTIONS:
+        if isinstance(topics, str):
+            bucket = [q for q in pool if q.get("topic") == topics]
+        else:
+            bucket = [q for q in pool if q.get("topic") in topics]
+        rng.shuffle(bucket)
+        groups.append(bucket)
+
+    # Scale targets to n
+    total_default = sum(_ENGLISH_TARGETS)
+    targets = [max(1, round(t * n / total_default)) for t in _ENGLISH_TARGETS]
+    # Trim overflow
+    while sum(targets) > n:
+        targets[targets.index(max(targets))] -= 1
+    while sum(targets) < n:
+        targets[targets.index(min(targets))] += 1
+
+    result = []
+    for bucket, (_, title, instruction), target in zip(groups, _ENGLISH_SECTIONS, targets):
+        picked = bucket[:target]
+        if not picked:
+            continue
+        first = dict(picked[0])
+        first["section_start"] = title
+        first["section_instruction"] = instruction
+        result.append(first)
+        result.extend(picked[1:])
+    return result
 
 
 def gen_hs_gioi(n=10, seed=None, student_key="bao_meo", subject="Toán"):
@@ -549,6 +606,8 @@ def gen_hs_gioi(n=10, seed=None, student_key="bao_meo", subject="Toán"):
     pool = _get_pool(student_key, subject)
     if not pool:
         return _placeholder(n, student_key, subject, "HS Giỏi")
+    if subject == "Tiếng Anh":
+        return gen_english_structured(pool, n, seed)
     result = list(pool)
     random.shuffle(result)
     return result[:n]
@@ -1042,6 +1101,8 @@ def gen_mixed(n=15, seed=None, student_key="bao_meo", subject="Toán"):
     pool = _get_pool(student_key, subject)
     if not pool:
         return _placeholder(n, student_key, subject, "HS Giỏi + Olympic")
+    if subject == "Tiếng Anh":
+        return gen_english_structured(pool, n, seed)
     result = list(pool)
     random.shuffle(result)
     return result[:n]
@@ -1056,6 +1117,8 @@ def gen_olympic(n=10, seed=None, student_key="bao_meo", subject="Toán"):
         return _placeholder(n, student_key, subject, "Olympic")
     if seed is not None:
         random.seed(seed)
+    if subject == "Tiếng Anh":
+        return gen_english_structured(pool, n, seed)
     result = list(pool)
     random.shuffle(result)
     return result[:n]

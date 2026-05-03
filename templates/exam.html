@@ -52,11 +52,19 @@
 
 {# === FORM CÂU HỎI === #}
 <form method="POST" action="{{ url_for('submit') }}" id="exam-form">
+{% set ns = namespace(qnum=0) %}
 {% for q in questions %}
 {% set qi = loop.index0 %}
+{% set ns.qnum = ns.qnum + 1 %}
+{% if q.section_start %}
+<div class="section-header">
+  <div class="section-title">{{ q.section_start }}</div>
+  {% if q.section_instruction %}<div class="section-instr">{{ q.section_instruction }}</div>{% endif %}
+</div>
+{% endif %}
 <div class="question card" id="q-{{ qi }}" data-idx="{{ qi }}">
   <div class="qnum">
-    Câu {{ loop.index }}
+    Câu {{ ns.qnum }}
     {% if q.topic %}<span class="topic">({{ q.topic }})</span>{% endif %}
   </div>
   <div class="qtext">{{ q.q }}</div>
