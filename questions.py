@@ -532,7 +532,7 @@ NHAT_KHOI_TIENG_ANH = [
 #   Lớp 6: De 04 - De 08 (HK2 Tiếng Anh 6 Global Success)
 #   Lớp 8: De 01 - De 05 (HK2 Tiếng Anh 8 Chương trình mới)
 # ============================================================
-MINH_KHANH_TIENG_ANH = []  # TODO: add lớp 6 English questions
+MINH_KHANH_TIENG_ANH = NHAT_KHOI_TIENG_ANH  # TODO: thay bằng câu lớp 6 riêng
 
 
 def _get_pool(student_key, subject):
