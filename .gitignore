@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.pyo
+kiemtra.db
+*.db-journal
+.env
+*.egg-info/
+dist/
+build/

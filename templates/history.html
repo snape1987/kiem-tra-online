@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Lịch sử điểm{% endblock %}
+{% block content %}
+<h1>📊 Lịch sử điểm</h1>
+
+{% if not attempts %}
+  <p>Chưa có bài nào. <a href="{{ url_for('index') }}">Làm bài đầu tiên!</a></p>
+{% else %}
+
+{% for day, items in by_day.items() %}
+  <h2 class="day">📅 {{ day }}</h2>
+  <table class="history">
+    <thead>
+      <tr><th>Giờ</th><th>Bé</th><th>Loại</th><th>Điểm</th><th>Thời gian</th></tr>
+    </thead>
+    <tbody>
+      {% for r in items %}
+      <tr class="score-{{ 'high' if r.score >= 8 else ('mid' if r.score >= 5 else 'low') }}">
+        <td>{{ r.created_at[11:16] }}</td>
+        <td>{{ r.student }}</td>
+        <td>{{ r.mode|modename }}</td>
+        <td><b>{{ r.score }}/10</b> <span class="mini-icons">{% set icon = '🎀' if (r.score % 2 == 0) else '🎵' %}{% for _ in range(r.score) %}{{ icon }}{% endfor %}</span></td>
+        <td>{{ (r.time_used // 60) }}'{{ '%02d'|format(r.time_used % 60) }}"</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endfor %}
+
+{% endif %}
+{% endblock %}
