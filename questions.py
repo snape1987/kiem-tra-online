@@ -623,10 +623,14 @@ def _gen_doc_so():
     for _ in range(3):
         d = random.randint(10, 99)
         distractors.append(str(d))
-    options = [correct] + [str(n + random.choice([-9, -1, 1, 9, 11])) for _ in range(3)]
-    options = list(dict.fromkeys(options))[:4]
+    options = [str(n)] + [str(abs(n + random.choice([-9, -1, 1, 9, 11]))) for _ in range(3)]
+    options = [o for o in options if o.isdigit() and 10 <= int(o) <= 99]
+    options = list(dict.fromkeys(options))
     while len(options) < 4:
-        options.append(str(random.randint(10, 99)))
+        cand = str(random.randint(10, 99))
+        if cand not in options:
+            options.append(cand)
+    options = options[:4]
     random.shuffle(options)
     return {
         "type": "choice",
@@ -693,7 +697,7 @@ def _gen_loi_van_cong():
     a = random.randint(10, 50)
     b = random.randint(5, 49 - (a % 10))
     while (a % 10 + b % 10) >= 10:
-        b = max(1, b - 1)
+        b = random.randint(1, 49 - (a % 10))
     ans = a + b
     objs = random.choice(["quả táo", "viên kẹo", "cái bút", "bông hoa", "con cá"])
     return {
@@ -708,7 +712,7 @@ def _gen_loi_van_tru():
     a = random.randint(20, 90)
     b = random.randint(5, a - 1)
     while (a % 10) < (b % 10):
-        b = max(1, b - 1)
+        b = random.randint(1, a - 1)
     ans = a - b
     objs = random.choice(["quả cam", "cái bánh", "viên bi", "tờ giấy"])
     return {
@@ -789,7 +793,7 @@ BAO_MEO_DE_1 = [
     {
         "type": "choice",
         "q": "Đẳng thức nào ĐÚNG?",
-        "options": ["77 − 7 − 0 = 77", "90 + 5 > 94", "65 − 33 < 33", "63 = 36"],
+        "options": ["77 − 7 − 0 = 77", "90 + 5 < 94", "65 − 33 < 33", "63 = 36"],
         "answer": "65 − 33 < 33",
         "topic": "So sánh biểu thức",
     },
@@ -914,9 +918,9 @@ BAO_MEO_VIOLYMPIC = [
     # ===== CỘNG TRỪ TRONG PHẠM VI 100 =====
     {"type": "fill", "q": "50 + 40 - 10 = ?", "answer": "80", "topic": "Cộng trừ"},
     {"type": "fill", "q": "70 - 40 + 30 = ?", "answer": "60", "topic": "Cộng trừ"},
-    {"type": "choice", "q": "30 + 60 - ? = 40 + 20 - 10", "options": ["30", "40", "10", "20"], "answer": "20", "topic": "Cộng trừ"},
+    {"type": "choice", "q": "30 + 60 - ? = 40 + 20 - 10", "options": ["30", "40", "10", "20"], "answer": "40", "topic": "Cộng trừ"},
     {"type": "choice", "q": "50 - ? + 10 = 30", "options": ["10", "20", "30", "40"], "answer": "30", "topic": "Cộng trừ"},
-    {"type": "choice", "q": "60 - 40 + ? = 30 + 40 - 20", "options": ["10", "30", "50", "80"], "answer": "50", "topic": "Cộng trừ"},
+    {"type": "choice", "q": "60 - 40 + ? = 30 + 40 - 20", "options": ["10", "30", "50", "80"], "answer": "30", "topic": "Cộng trừ"},
     {"type": "fill", "q": "60 + 30 - 40 = ?", "answer": "50", "topic": "Cộng trừ"},
     {"type": "choice", "q": "80 - 30 + 10 = ?", "options": ["60", "40", "50", "30"], "answer": "60", "topic": "Cộng trừ"},
     {"type": "choice", "q": "Tính: 12 + 7 - 4 = ?", "options": ["17", "15", "14", "16"], "answer": "15", "topic": "Cộng trừ"},
@@ -967,7 +971,7 @@ BAO_MEO_VIOLYMPIC = [
     # ===== TOÁN LỜI VĂN =====
     {"type": "fill", "q": "Năm nay bố 38 tuổi, con 12 tuổi. Hỏi bố hơn con bao nhiêu tuổi?", "answer": "26", "topic": "Toán lời văn"},
     {"type": "fill", "q": "Năm nay mẹ 59 tuổi, mẹ hơn con 25 tuổi. Hỏi năm nay con bao nhiêu tuổi?", "answer": "34", "topic": "Toán lời văn"},
-    {"type": "fill", "q": "Trong lớp 1A, tổ một có 13 bạn. Nếu tổ một thêm 2 bạn nữa thì số bạn ở tổ một bằng số bạn ở tổ hai. Hỏi cả hai tổ có bao nhiêu bạn?", "answer": "30", "topic": "Toán lời văn"},
+    {"type": "fill", "q": "Trong lớp 1A, tổ một có 13 bạn. Nếu tổ một thêm 2 bạn nữa thì số bạn ở tổ một bằng số bạn ở tổ hai. Hỏi cả hai tổ có bao nhiêu bạn?", "answer": "28", "topic": "Toán lời văn"},
     {"type": "fill", "q": "Linh có 17 quả bóng bay. Linh cho Hà và Ngọc mỗi bạn 3 quả. Vậy Linh còn lại bao nhiêu quả bóng bay?", "answer": "11", "topic": "Toán lời văn"},
     {"type": "fill", "q": "Mẹ Lan mua 3 chục quả trứng gà và 2 chục quả trứng vịt. Vậy mẹ Lan mua tất cả bao nhiêu quả trứng?", "answer": "50", "topic": "Toán lời văn"},
     {"type": "fill", "q": "Hoa có 19 con tem. Hoa cho bạn Mai 4 con tem, cho bạn Linh 3 con tem. Hỏi Hoa còn bao nhiêu con tem?", "answer": "12", "topic": "Toán lời văn"},
