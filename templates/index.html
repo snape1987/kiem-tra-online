@@ -1,238 +1,173 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Hôm nay làm bài nào? 🌸</h1>
 
-<form method="POST" action="{{ url_for('start') }}" id="start-form" class="card">
-  <input type="hidden" name="student_key"  id="skey"    value="">
-  <input type="hidden" name="subject"      id="subj"    value="">
-  <input type="hidden" name="mode"         id="mode"    value="">
-  <input type="hidden" name="duration"     id="dur"     value="">
-  <input type="hidden" name="n_questions"  id="nq"      value="">
-  <input type="hidden" name="audio_file"   id="aud"     value="">
-
-  <!-- BƯỚC 1: Chọn bé -->
-  <div class="section-label">👦 Bước 1 — Bé là ai?</div>
-
-  <!-- Tabs chọn bé (ẩn sau khi chọn) -->
-  <div class="tabs name-tabs" id="name-tabs-row">
+<!-- ══ MÀN HÌNH 1: Chọn bé ══ -->
+<div id="screen-1" class="student-screen">
+  <h1>Hôm nay ai làm bài? 🌸</h1>
+  <div class="student-cards">
     {% for key, t in themes.items() %}
-    <button type="button" class="tab name-tab student-{{ key }}"
+    <button type="button" class="student-card card-{{ key }}"
             data-key="{{ key }}" data-name="{{ t.name }}"
             data-icon="{{ t.icon }}" data-grades="{{ t.grades }}">
-      {{ t.icon }} {{ t.name }}<br><small>{{ t.grades }}</small>
+      <span class="sc-icon">{{ t.icon }}</span>
+      <span class="sc-name">{{ t.name }}</span>
+      <span class="sc-grades">{{ t.grades }}</span>
     </button>
     {% endfor %}
   </div>
+</div>
 
-  <!-- Hiển thị bé đã chọn (ẩn ban đầu) -->
-  <div id="selected-student" class="selected-student hidden">
-    <span id="sel-icon"></span>
-    <strong id="sel-name"></strong>
-    <small id="sel-grades"></small>
-    <button type="button" class="btn-change" onclick="resetStudent()">Đổi bé ✏️</button>
+<!-- ══ MÀN HÌNH 2: Chọn nội dung ══ -->
+<div id="screen-2" class="hidden">
+
+  <!-- Thanh bé đã chọn -->
+  <div class="student-bar" id="student-bar">
+    <span id="sb-icon"></span>
+    <strong id="sb-name"></strong>
+    <span id="sb-grades"></span>
+    <button type="button" class="btn-change" onclick="resetStudent()">✏️ Đổi bé</button>
   </div>
 
-  <!-- BƯỚC 2: Chọn môn -->
-  <div id="subj-row" class="hidden">
-    <div class="section-label">📚 Bước 2 — Chọn môn</div>
-    <div class="tabs subj-tabs" id="subj-tabs-inner">
-      <!-- Tạo động bằng JS -->
+  <form method="POST" action="{{ url_for('start') }}" id="start-form" class="card">
+    <input type="hidden" name="student_key" id="skey"   value="">
+    <input type="hidden" name="lop"         id="lopIn"  value="">
+    <input type="hidden" name="folder"      id="folderIn" value="">
+    <input type="hidden" name="duration"    id="durIn"  value="">
+    <input type="hidden" name="n_questions" id="nqIn"   value="">
+
+    <!-- Bước 1: Chọn lớp -->
+    <div class="section-label">📚 Chọn lớp</div>
+    <div class="tabs" id="lop-tabs"></div>
+
+    <!-- Bước 2: Chọn đề -->
+    <div id="folder-row" class="hidden">
+      <div class="section-label">📝 Chọn đề</div>
+      <div class="tabs" id="folder-tabs"></div>
     </div>
-  </div>
 
-  <!-- BƯỚC 3: Chọn đề -->
-  <div id="mode-row" class="hidden">
-    <div class="section-label">📝 Bước 3 — Chọn đề</div>
-    <div class="tabs mode-tabs" id="mode-tabs-inner">
-      <!-- Tạo động bằng JS -->
+    <!-- Bước 3: Thời gian -->
+    <div id="dur-row" class="hidden">
+      <div class="section-label">⏰ Thời gian làm bài</div>
+      <div class="tabs dur-tabs">
+        <button type="button" class="tab dur-tab" data-dur="45" data-nq="15">45 phút<br><small>15 câu</small></button>
+        <button type="button" class="tab dur-tab" data-dur="60" data-nq="20">60 phút<br><small>20 câu</small></button>
+        <button type="button" class="tab dur-tab" data-dur="90" data-nq="30">90 phút<br><small>30 câu</small></button>
+      </div>
     </div>
-  </div>
 
-  <!-- BƯỚC 4: Chọn thời gian -->
-  <div id="dur-row" class="hidden">
-    <div class="section-label">⏰ Bước 4 — Thời gian & Số câu</div>
-    <div class="tabs dur-tabs">
-      <button type="button" class="tab dur-tab" data-dur="45" data-nq="15">45 phút<br><small>15 câu</small></button>
-      <button type="button" class="tab dur-tab" data-dur="60" data-nq="20">60 phút<br><small>20 câu</small></button>
-      <button type="button" class="tab dur-tab" data-dur="90" data-nq="30">90 phút<br><small>30 câu</small></button>
-    </div>
-  </div>
-
-  <!-- Mô tả mode -->
-  <p class="mode-desc hidden" id="desc-bao_meo">🐱 Câu hỏi từ tài liệu Bảo Mèo lớp 1D — random mỗi lần!</p>
-  <p class="mode-desc hidden" id="desc-hs_gioi">🌟 Đề Học Sinh Giỏi — cộng/trừ 100, so sánh, đo lường, xem giờ...</p>
-  <p class="mode-desc hidden" id="desc-mixed">🏅 Kết hợp HS Giỏi + Olympic — luyện toàn diện!</p>
-  <p class="mode-desc hidden" id="desc-olympic">🏆 Đề Thi Olympic — thử thách cao!</p>
-
-  <!-- Nút bắt đầu -->
-  <button type="submit" class="btn-big" id="btn-start" disabled>
-    Chọn đủ thông tin để bắt đầu 🔒
-  </button>
-</form>
+    <button type="submit" class="btn-big" id="btn-start" disabled>
+      Chọn đủ thông tin để bắt đầu 🔒
+    </button>
+  </form>
+</div>
 
 <script>
-// Dữ liệu từ server
-const STUDENT_SUBJECTS = {{ student_subjects_json|safe }};
-const SUBJECT_ICONS    = {{ subject_icons|tojson }};
+const CONTENT_TREE = {{ content_tree_json|safe }};
+const THEME_CLASS  = { bao_meo: 'theme-pink', minh_khanh: 'theme-purple', nhat_khoi: 'theme-blue' };
 
-const skeyIn      = document.getElementById('skey');
-const subjIn      = document.getElementById('subj');
-const modeIn      = document.getElementById('mode');
-const durIn       = document.getElementById('dur');
-const nqIn        = document.getElementById('nq');
-const btnStart    = document.getElementById('btn-start');
-const subjRow     = document.getElementById('subj-row');
-const modeRow     = document.getElementById('mode-row');
-const durRow      = document.getElementById('dur-row');
-const nameTabsRow = document.getElementById('name-tabs-row');
-const selBox      = document.getElementById('selected-student');
-const descs       = document.querySelectorAll('.mode-desc');
-
-const MODE_TABS = {
-  bao_meo: [
-    { mode: 'hs_gioi', label: '🌟 Đề HS Giỏi' },
-    { mode: 'olympic', label: '🏆 Thi Olympic' },
-  ],
-  other: [
-    { mode: 'hs_gioi', label: '🌟 Đề HS Giỏi' },
-    { mode: 'mixed',   label: '🏅 HS Giỏi + Olympic' },
-  ],
-};
-
-const THEME_CLASS = {
-  bao_meo:    'theme-pink',
-  minh_khanh: 'theme-purple',
-  nhat_khoi:  'theme-blue',
-};
-
-function setDesc(m) {
-  descs.forEach(d => d.classList.add('hidden'));
-  const d = document.getElementById('desc-' + m);
-  if (d) d.classList.remove('hidden');
-}
+const screen1   = document.getElementById('screen-1');
+const screen2   = document.getElementById('screen-2');
+const skeyIn    = document.getElementById('skey');
+const lopIn     = document.getElementById('lopIn');
+const folderIn  = document.getElementById('folderIn');
+const durIn     = document.getElementById('durIn');
+const nqIn      = document.getElementById('nqIn');
+const btnStart  = document.getElementById('btn-start');
+const folderRow = document.getElementById('folder-row');
+const durRow    = document.getElementById('dur-row');
 
 function validate() {
-  const ok = skeyIn.value && subjIn.value && modeIn.value && durIn.value;
+  const ok = skeyIn.value && lopIn.value && folderIn.value && durIn.value;
   btnStart.disabled = !ok;
   btnStart.textContent = ok ? 'Bắt đầu làm bài 🚀' : 'Chọn đủ thông tin để bắt đầu 🔒';
 }
 
-// ── Bước 2: Build subject tabs ──────────────────────────────────────────────
-function buildSubjectTabs(key) {
-  const subjects = STUDENT_SUBJECTS[key] || ['Toán'];
-  const container = document.getElementById('subj-tabs-inner');
+function buildLopTabs() {
+  const container = document.getElementById('lop-tabs');
   container.innerHTML = '';
-  subjects.forEach(s => {
-    const icon = SUBJECT_ICONS[s] || '📚';
+  CONTENT_TREE.forEach(item => {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'tab subj-tab';
-    btn.dataset.subj = s;
-    btn.textContent = icon + ' ' + s;
+    btn.className = 'tab lop-tab';
+    btn.dataset.lop = item.key;
+    btn.textContent = item.display;
     btn.addEventListener('click', () => {
-      container.querySelectorAll('.subj-tab').forEach(x => x.classList.remove('active'));
+      container.querySelectorAll('.lop-tab').forEach(x => x.classList.remove('active'));
       btn.classList.add('active');
-      subjIn.value = s;
-      // Reset bước 3 & 4 trước khi build lại
-      modeIn.value = '';
-      durRow.classList.add('hidden');
+      lopIn.value = item.key;
+      folderIn.value = '';
       durIn.value = ''; nqIn.value = '';
-      document.querySelectorAll('.dur-tab').forEach(x => x.classList.remove('active'));
-      descs.forEach(d => d.classList.add('hidden'));
-      // Build bước 3
-      buildModeTabs(key);
-      modeRow.classList.remove('hidden');
+      document.querySelectorAll('.dur-tab, .folder-tab').forEach(x => x.classList.remove('active'));
+      durRow.classList.add('hidden');
+      buildFolderTabs(item.folders);
+      folderRow.classList.remove('hidden');
       validate();
     });
     container.appendChild(btn);
-    // Auto-chọn nếu chỉ có 1 môn
-    if (subjects.length === 1) btn.click();
   });
 }
 
-// ── Bước 3: Build mode tabs ──────────────────────────────────────────────────
-function buildModeTabs(key) {
-  const tabs = key === 'bao_meo' ? MODE_TABS.bao_meo : MODE_TABS.other;
-  const container = document.getElementById('mode-tabs-inner');
+function buildFolderTabs(folders) {
+  const container = document.getElementById('folder-tabs');
   container.innerHTML = '';
-  tabs.forEach(t => {
+  folders.forEach(f => {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'tab mode-tab';
-    btn.dataset.mode = t.mode;
-    btn.textContent = t.label;
+    btn.className = 'tab folder-tab';
+    btn.dataset.folder = f.key;
+    btn.textContent = f.display;
     btn.addEventListener('click', () => {
-      container.querySelectorAll('.mode-tab').forEach(x => x.classList.remove('active'));
+      container.querySelectorAll('.folder-tab').forEach(x => x.classList.remove('active'));
       btn.classList.add('active');
-      modeIn.value = t.mode;
-      setDesc(t.mode);
-      // Hiện bước 4
+      folderIn.value = f.key;
+      durIn.value = ''; nqIn.value = '';
+      document.querySelectorAll('.dur-tab').forEach(x => x.classList.remove('active'));
       durRow.classList.remove('hidden');
       validate();
     });
     container.appendChild(btn);
+    if (folders.length === 1) btn.click();
   });
-  // Auto-chọn nếu chỉ có 1 đề
-  if (tabs.length === 1) container.querySelector('.mode-tab').click();
 }
 
-// ── Chọn bé ──────────────────────────────────────────────────────────────────
-function selectStudent(key, name, icon, grades) {
-  skeyIn.value = key;
-  subjIn.value = '';
-  modeIn.value = '';
-  durIn.value  = '';
-  nqIn.value   = '';
+// Chọn bé
+document.querySelectorAll('.student-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const key = card.dataset.key;
+    skeyIn.value = key;
+    lopIn.value = ''; folderIn.value = '';
+    durIn.value = ''; nqIn.value = '';
 
-  // Thu gọn bước 1
-  nameTabsRow.classList.add('hidden');
-  document.getElementById('sel-icon').textContent   = icon + ' ';
-  document.getElementById('sel-name').textContent   = name;
-  document.getElementById('sel-grades').textContent = ' — ' + grades;
-  selBox.classList.remove('hidden');
+    document.getElementById('sb-icon').textContent   = card.dataset.icon + ' ';
+    document.getElementById('sb-name').textContent   = card.dataset.name;
+    document.getElementById('sb-grades').textContent = ' — ' + card.dataset.grades;
 
-  // Theme
-  Object.values(THEME_CLASS).forEach(c => document.body.classList.remove(c));
-  document.body.classList.add(THEME_CLASS[key] || 'theme-pink');
-  document.querySelector('.card').className = 'card student-bg-' + key;
+    Object.values(THEME_CLASS).forEach(c => document.body.classList.remove(c));
+    document.body.classList.add(THEME_CLASS[key] || 'theme-pink');
+    document.getElementById('start-form').className = 'card student-bg-' + key;
 
-  // Reset bước 3,4 trước — rồi mới build bước 2 (có thể auto-show bước 3)
-  modeRow.classList.add('hidden');
-  durRow.classList.add('hidden');
-  descs.forEach(d => d.classList.add('hidden'));
-  buildSubjectTabs(key);
-  subjRow.classList.remove('hidden');
+    folderRow.classList.add('hidden');
+    durRow.classList.add('hidden');
+    document.querySelectorAll('.lop-tab, .folder-tab, .dur-tab').forEach(x => x.classList.remove('active'));
 
-  validate();
-}
-
-function resetStudent() {
-  skeyIn.value = ''; subjIn.value = '';
-  modeIn.value = ''; durIn.value  = ''; nqIn.value = '';
-
-  selBox.classList.add('hidden');
-  nameTabsRow.classList.remove('hidden');
-  document.querySelectorAll('.name-tab').forEach(x => x.classList.remove('active'));
-
-  subjRow.classList.add('hidden');
-  modeRow.classList.add('hidden');
-  durRow.classList.add('hidden');
-  descs.forEach(d => d.classList.add('hidden'));
-
-  Object.values(THEME_CLASS).forEach(c => document.body.classList.remove(c));
-  document.querySelector('.card').className = 'card';
-  validate();
-}
-
-// ── Event listeners ───────────────────────────────────────────────────────────
-document.querySelectorAll('.name-tab').forEach(t => {
-  t.addEventListener('click', () => {
-    document.querySelectorAll('.name-tab').forEach(x => x.classList.remove('active'));
-    t.classList.add('active');
-    selectStudent(t.dataset.key, t.dataset.name, t.dataset.icon, t.dataset.grades);
+    buildLopTabs();
+    screen1.classList.add('hidden');
+    screen2.classList.remove('hidden');
+    validate();
   });
 });
 
+// Đổi bé
+function resetStudent() {
+  skeyIn.value = ''; lopIn.value = ''; folderIn.value = '';
+  durIn.value = ''; nqIn.value = '';
+  Object.values(THEME_CLASS).forEach(c => document.body.classList.remove(c));
+  screen2.classList.add('hidden');
+  screen1.classList.remove('hidden');
+  validate();
+}
+
+// Chọn thời gian
 document.querySelectorAll('.dur-tab').forEach(t => {
   t.addEventListener('click', () => {
     document.querySelectorAll('.dur-tab').forEach(x => x.classList.remove('active'));
@@ -243,5 +178,6 @@ document.querySelectorAll('.dur-tab').forEach(t => {
   });
 });
 
+validate();
 </script>
 {% endblock %}

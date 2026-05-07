@@ -540,7 +540,7 @@ NHAT_KHOI_TIENG_ANH = [
 #   Lớp 6: De 04 - De 08 (HK2 Tiếng Anh 6 Global Success)
 #   Lớp 8: De 01 - De 05 (HK2 Tiếng Anh 8 Chương trình mới)
 # ============================================================
-MINH_KHANH_TIENG_ANH = NHAT_KHOI_TIENG_ANH  # TODO: thay bằng câu lớp 6 riêng
+# MINH_KHANH_TIENG_ANH được định nghĩa ở trên (lớp 6 Global Success)
 
 
 def _get_pool(student_key, subject):
@@ -1145,6 +1145,76 @@ def gen_olympic(n=10, seed=None, student_key="bao_meo", subject="Toán"):
         random.seed(seed)
     if subject == "Tiếng Anh":
         return gen_english_structured(pool, n, seed)
+    result = list(pool)
+    random.shuffle(result)
+    return result[:n]
+
+
+# ─── Cấu trúc nội dung — mirrors Noi Dung Ho/ ────────────────────────────────
+CONTENT_TREE = [
+    ("lop_1", "Lớp 1", [
+        ("de_hk2_toan_1",    "Đề HK2 Toán 1"),
+        ("toan_violympic_1", "Toán Violympic 1"),
+    ]),
+    ("lop_6", "Lớp 6", [
+        ("de_toan_6_hk2",      "Đề Toán 6 Học Kỳ 2"),
+        ("de_olympic_toan_6",  "Đề Olympic Toán 6"),
+        ("de_tieng_anh_6_hk2", "Đề Tiếng Anh 6 Học Kỳ 2"),
+    ]),
+    ("lop_7", "Lớp 7", [
+        ("toan_7_hk1",      "Toán 7 Học Kỳ 1"),
+        ("tieng_anh_7_hk1", "Tiếng Anh 7 Học Kỳ 1"),
+    ]),
+    ("lop_8", "Lớp 8", [
+        ("toan_8_hk2", "Toán 8 HK2"),
+    ]),
+]
+
+_TIENG_ANH_FOLDERS = {"de_tieng_anh_6_hk2", "tieng_anh_7_hk1"}
+
+_FOLDER_POOLS = {
+    ("lop_1", "toan_violympic_1"):    BAO_MEO_VIOLYMPIC,
+    ("lop_6", "de_toan_6_hk2"):       MINH_KHANH_TOAN,
+    ("lop_6", "de_olympic_toan_6"):   MINH_KHANH_TOAN,
+    ("lop_6", "de_tieng_anh_6_hk2"):  MINH_KHANH_TIENG_ANH,
+    ("lop_8", "toan_8_hk2"):          NHAT_KHOI_TOAN,
+}
+
+
+def folder_display(lop_key, folder_key):
+    for lk, _, folders in CONTENT_TREE:
+        if lk == lop_key:
+            for fk, fname in folders:
+                if fk == folder_key:
+                    return fname
+    return folder_key
+
+
+def gen_exam(lop_key, folder_key, n=15, seed=None):
+    """Sinh n câu cho lop_key + folder_key."""
+    if seed is not None:
+        random.seed(seed)
+
+    # Lớp 1 — HK2: mix generators + static pool
+    if lop_key == "lop_1" and folder_key == "de_hk2_toan_1":
+        gen_n = max(1, n // 3)
+        static_n = n - gen_n
+        part1 = _gen_bao_meo_pool(gen_n, seed=seed)
+        part2 = list(BAO_MEO_POOL)
+        random.shuffle(part2)
+        result = part1 + part2[:static_n]
+        random.shuffle(result)
+        return result
+
+    pool = _FOLDER_POOLS.get((lop_key, folder_key), [])
+
+    if not pool:
+        name = folder_display(lop_key, folder_key)
+        return _placeholder(1, "", name, name)
+
+    if folder_key in _TIENG_ANH_FOLDERS:
+        return gen_english_structured(pool, n, seed)
+
     result = list(pool)
     random.shuffle(result)
     return result[:n]

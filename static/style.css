@@ -481,6 +481,69 @@ table.history th { background: var(--primary-soft); }
 .score-low  { background: #fff0f0; }
 .mini-icons { font-size: .8em; }
 
+/* ===== STUDENT CARDS — Màn hình 1 ===== */
+.student-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0 32px;
+}
+.student-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+.student-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 28px;
+  border-radius: 28px;
+  border: 3px solid #eee;
+  cursor: pointer;
+  background: white;
+  box-shadow: 0 4px 18px rgba(0,0,0,.07);
+  transition: all .18s;
+  min-width: 160px;
+  font-family: inherit;
+}
+.student-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 32px rgba(0,0,0,.13);
+}
+.student-card:active { transform: translateY(-2px); }
+
+.card-bao_meo    { border-color: #ffb6d9; }
+.card-bao_meo:hover    { background: #fff8fb; border-color: #ff7eb6; }
+.card-minh_khanh { border-color: #dbb6fc; }
+.card-minh_khanh:hover { background: #fdf4ff; border-color: #c084fc; }
+.card-nhat_khoi  { border-color: #93d9f8; }
+.card-nhat_khoi:hover  { background: #f0f9ff; border-color: #38bdf8; }
+
+.sc-icon   { font-size: 3.6em; margin-bottom: 14px; }
+.sc-name   { font-size: 1.3em; font-weight: 800; margin-bottom: 5px; }
+.sc-grades { font-size: .88em; color: #999; }
+
+.card-bao_meo    .sc-name { color: #ff7eb6; }
+.card-minh_khanh .sc-name { color: #c084fc; }
+.card-nhat_khoi  .sc-name { color: #38bdf8; }
+
+/* Thanh bé đã chọn (màn hình 2) */
+.student-bar {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--primary-soft);
+  border: 2px solid var(--primary);
+  border-radius: 16px;
+  padding: 12px 18px;
+  font-size: 1.05em;
+  margin-bottom: 14px;
+}
+.student-bar strong { color: var(--primary); font-size: 1.1em; }
+.student-bar span   { color: #888; }
+.student-bar .btn-change { margin-left: auto; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 720px) {
   main { padding-right: 16px; }

@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-{% block title %}{{ student }} — {{ mode|modename }}{% endblock %}
+{% block title %}{{ student }} — {{ folder_name }}{% endblock %}
 {% block content %}
 <div class="{{ theme.css }}">
 
 {# Kitty decoration #}
 {% if icons|length >= 2 %}
 <div class="kitty-deco kitty-topleft">
-  <img src="{{ url_for('static', filename='icons/' + theme.icon_dir + '/' + icons[0]) }}" alt="">
+  <img src="{{ url_for('static', filename='icons/' + icons[0]) }}" alt="">
 </div>
 <div class="kitty-deco kitty-topright">
-  <img src="{{ url_for('static', filename='icons/' + theme.icon_dir + '/' + icons[1]) }}" alt="">
+  <img src="{{ url_for('static', filename='icons/' + icons[1]) }}" alt="">
 </div>
 {% endif %}
 
@@ -31,7 +31,7 @@
 
 {# === HEADER === #}
 <div class="exam-header">
-  <h2>{{ theme.icon }} {{ mode|modename }} — {{ student }}</h2>
+  <h2>{{ theme.icon }} {{ folder_name }} — {{ student }}</h2>
   <div class="timer" id="timer-top">⏰ {{ duration }}:00</div>
 </div>
 
