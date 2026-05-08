@@ -145,12 +145,18 @@ def index():
         sk: {f: sorted(nums) for f, nums in folders.items()}
         for sk, folders in completed.items()
     })
+    # Capacity per folder: max questions achievable
+    capacities = {}
+    for lk, _, folders in questions.CONTENT_TREE:
+        for fk, _ in folders:
+            capacities[fk] = questions.folder_capacity(lk, fk)
     return render_template(
         "index.html",
         themes=STUDENT_THEMES,
         content_tree_json=content_tree_json,
         folder_exam_counts_json=json.dumps(FOLDER_EXAM_COUNTS),
         completed_json=completed_json,
+        folder_capacities_json=json.dumps(capacities),
     )
 
 
