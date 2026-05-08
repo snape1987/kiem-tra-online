@@ -206,6 +206,7 @@ def exam():
         theme=theme,
         icons=icons,
         audio_file="",
+        body_class=theme["css"],
     )
 
 
@@ -265,6 +266,7 @@ def submit():
         score=score_10, raw_score=score, total=total,
         time_used=time_used, results=results,
         icons_json=json.dumps(all_icons),
+        body_class=theme["css"],
     )
 
 
