@@ -29,11 +29,12 @@
   </div>
 
   <form method="POST" action="{{ url_for('start') }}" id="start-form" class="card">
-    <input type="hidden" name="student_key" id="skey"   value="">
-    <input type="hidden" name="lop"         id="lopIn"  value="">
+    <input type="hidden" name="student_key" id="skey"    value="">
+    <input type="hidden" name="lop"         id="lopIn"   value="">
     <input type="hidden" name="folder"      id="folderIn" value="">
-    <input type="hidden" name="duration"    id="durIn"  value="">
-    <input type="hidden" name="n_questions" id="nqIn"   value="">
+    <input type="hidden" name="exam_no"     id="examNoIn" value="">
+    <input type="hidden" name="duration"    id="durIn"   value="">
+    <input type="hidden" name="n_questions" id="nqIn"    value="">
 
     <!-- Bước 1: Chọn lớp -->
     <div class="section-label">📚 Chọn lớp</div>
@@ -45,11 +46,16 @@
       <div class="tabs" id="folder-tabs"></div>
     </div>
 
-    <!-- Bước 3: Thời gian -->
+    <!-- Bước 3: Chọn số đề -->
+    <div id="exam-row" class="hidden">
+      <div class="section-label">📄 Chọn số đề</div>
+      <div class="tabs exam-tabs" id="exam-tabs"></div>
+    </div>
+
+    <!-- Bước 4: Thời gian -->
     <div id="dur-row" class="hidden">
       <div class="section-label">⏰ Thời gian làm bài</div>
       <div class="tabs dur-tabs">
-        <button type="button" class="tab dur-tab" data-dur="45" data-nq="15">45 phút<br><small>15 câu</small></button>
         <button type="button" class="tab dur-tab" data-dur="60" data-nq="20">60 phút<br><small>20 câu</small></button>
         <button type="button" class="tab dur-tab" data-dur="90" data-nq="30">90 phút<br><small>30 câu</small></button>
       </div>
@@ -62,22 +68,26 @@
 </div>
 
 <script>
-const CONTENT_TREE = {{ content_tree_json|safe }};
-const THEME_CLASS  = { bao_meo: 'theme-pink', minh_khanh: 'theme-purple', nhat_khoi: 'theme-blue' };
+const CONTENT_TREE       = {{ content_tree_json|safe }};
+const FOLDER_EXAM_COUNTS = {{ folder_exam_counts_json|safe }};
+const COMPLETED          = {{ completed_json|safe }};
+const THEME_CLASS = { bao_meo: 'theme-pink', minh_khanh: 'theme-purple', nhat_khoi: 'theme-blue' };
 
 const screen1   = document.getElementById('screen-1');
 const screen2   = document.getElementById('screen-2');
 const skeyIn    = document.getElementById('skey');
 const lopIn     = document.getElementById('lopIn');
 const folderIn  = document.getElementById('folderIn');
+const examNoIn  = document.getElementById('examNoIn');
 const durIn     = document.getElementById('durIn');
 const nqIn      = document.getElementById('nqIn');
 const btnStart  = document.getElementById('btn-start');
 const folderRow = document.getElementById('folder-row');
+const examRow   = document.getElementById('exam-row');
 const durRow    = document.getElementById('dur-row');
 
 function validate() {
-  const ok = skeyIn.value && lopIn.value && folderIn.value && durIn.value;
+  const ok = skeyIn.value && lopIn.value && folderIn.value && examNoIn.value && durIn.value;
   btnStart.disabled = !ok;
   btnStart.textContent = ok ? 'Bắt đầu làm bài 🚀' : 'Chọn đủ thông tin để bắt đầu 🔒';
 }
@@ -95,9 +105,10 @@ function buildLopTabs() {
       container.querySelectorAll('.lop-tab').forEach(x => x.classList.remove('active'));
       btn.classList.add('active');
       lopIn.value = item.key;
-      folderIn.value = '';
+      folderIn.value = ''; examNoIn.value = '';
       durIn.value = ''; nqIn.value = '';
-      document.querySelectorAll('.dur-tab, .folder-tab').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.dur-tab, .folder-tab, .exam-tab').forEach(x => x.classList.remove('active'));
+      examRow.classList.add('hidden');
       durRow.classList.add('hidden');
       buildFolderTabs(item.folders);
       folderRow.classList.remove('hidden');
@@ -120,9 +131,12 @@ function buildFolderTabs(folders) {
       container.querySelectorAll('.folder-tab').forEach(x => x.classList.remove('active'));
       btn.classList.add('active');
       folderIn.value = f.key;
+      examNoIn.value = '';
       durIn.value = ''; nqIn.value = '';
-      document.querySelectorAll('.dur-tab').forEach(x => x.classList.remove('active'));
-      durRow.classList.remove('hidden');
+      document.querySelectorAll('.dur-tab, .exam-tab').forEach(x => x.classList.remove('active'));
+      durRow.classList.add('hidden');
+      buildExamTabs(f.key);
+      examRow.classList.remove('hidden');
       validate();
     });
     container.appendChild(btn);
@@ -130,12 +144,38 @@ function buildFolderTabs(folders) {
   });
 }
 
+function buildExamTabs(folderKey) {
+  const count = FOLDER_EXAM_COUNTS[folderKey] || 0;
+  const studentKey = skeyIn.value;
+  const done = (COMPLETED[studentKey] && COMPLETED[studentKey][folderKey]) || [];
+  const container = document.getElementById('exam-tabs');
+  container.innerHTML = '';
+  for (let i = 1; i <= count; i++) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    const isDone = done.includes(i);
+    btn.className = 'tab exam-tab ' + (isDone ? 'exam-done' : 'exam-todo');
+    btn.dataset.no = i;
+    btn.textContent = 'Đề ' + i;
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.exam-tab').forEach(x => x.classList.remove('active'));
+      btn.classList.add('active');
+      examNoIn.value = i;
+      durIn.value = ''; nqIn.value = '';
+      document.querySelectorAll('.dur-tab').forEach(x => x.classList.remove('active'));
+      durRow.classList.remove('hidden');
+      validate();
+    });
+    container.appendChild(btn);
+  }
+}
+
 // Chọn bé
 document.querySelectorAll('.student-card').forEach(card => {
   card.addEventListener('click', () => {
     const key = card.dataset.key;
     skeyIn.value = key;
-    lopIn.value = ''; folderIn.value = '';
+    lopIn.value = ''; folderIn.value = ''; examNoIn.value = '';
     durIn.value = ''; nqIn.value = '';
 
     document.getElementById('sb-icon').textContent   = card.dataset.icon + ' ';
@@ -147,8 +187,9 @@ document.querySelectorAll('.student-card').forEach(card => {
     document.getElementById('start-form').className = 'card student-bg-' + key;
 
     folderRow.classList.add('hidden');
+    examRow.classList.add('hidden');
     durRow.classList.add('hidden');
-    document.querySelectorAll('.lop-tab, .folder-tab, .dur-tab').forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.lop-tab, .folder-tab, .exam-tab, .dur-tab').forEach(x => x.classList.remove('active'));
 
     buildLopTabs();
     screen1.classList.add('hidden');
@@ -159,7 +200,7 @@ document.querySelectorAll('.student-card').forEach(card => {
 
 // Đổi bé
 function resetStudent() {
-  skeyIn.value = ''; lopIn.value = ''; folderIn.value = '';
+  skeyIn.value = ''; lopIn.value = ''; folderIn.value = ''; examNoIn.value = '';
   durIn.value = ''; nqIn.value = '';
   Object.values(THEME_CLASS).forEach(c => document.body.classList.remove(c));
   screen2.classList.add('hidden');

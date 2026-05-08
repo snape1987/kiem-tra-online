@@ -125,6 +125,21 @@ h2 { color: #555; margin-top: 28px; }
 .dur-tabs .tab { text-align: center; padding: 12px 18px; }
 .dur-tabs .tab small { font-size: .78em; opacity: .85; display: block; }
 
+/* Exam number tabs */
+.exam-tabs { flex-wrap: wrap; gap: 6px; }
+.exam-tab { min-width: 52px; text-align: center; font-weight: 600; }
+.exam-tab.exam-done {
+  background: #22c55e; color: white;
+  border-color: #16a34a;
+}
+.exam-tab.exam-todo {
+  background: #fef2f2; color: #ef4444;
+  border-color: #fca5a5;
+}
+.exam-tab.exam-done:hover:not(.active) { background: #16a34a; border-color: #15803d; }
+.exam-tab.exam-todo:hover:not(.active) { background: #fee2e2; border-color: #f87171; }
+.exam-tab.active { background: var(--primary) !important; border-color: var(--primary) !important; color: white !important; }
+
 /* Student background for form card */
 .student-bg-bao_meo   { border-top: 4px solid #ff7eb6 !important; }
 .student-bg-minh_khanh{ border-top: 4px solid #c084fc !important; }

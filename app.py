@@ -36,6 +36,16 @@ def init_db():
             created_at TEXT NOT NULL
         )
     """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS exam_progress (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            student_key TEXT NOT NULL,
+            folder TEXT NOT NULL,
+            exam_no INTEGER NOT NULL,
+            score INTEGER,
+            completed_at TEXT NOT NULL
+        )
+    """)
     conn.commit()
     conn.close()
 
@@ -95,6 +105,21 @@ STUDENT_THEMES = {
 
 DUR_TO_NQ = {45: 15, 60: 20, 90: 30}
 
+FOLDER_EXAM_COUNTS = {
+    # Lớp 1
+    "de_hk2_toan_1":       1,   # 1 PDF đề HK2
+    "toan_violympic_1":   19,   # 3 PDF cùng nội dung → 19 vòng
+    # Lớp 6
+    "de_toan_6_hk2":       9,   # 9 PDF đề đơn
+    "de_olympic_toan_6":  29,   # 10 đề đơn + VIOLYMPIC TOÁN 6 có 19 vòng
+    "de_tieng_anh_6_hk2": 10,   # 5 đề Lớp 6 + 5 đề Lớp 8
+    # Lớp 7
+    "toan_7_hk1":         14,   # 14 PDF đề đơn
+    "tieng_anh_7_hk1":    29,   # 29 PDF đề đơn
+    # Lớp 8
+    "toan_8_hk2":         16,   # 6 PDF + 10 docx đề đơn
+}
+
 
 def get_theme(student_key):
     return STUDENT_THEMES.get(student_key, STUDENT_THEMES["bao_meo"])
@@ -107,7 +132,26 @@ def index():
          "folders": [{"key": fk, "display": fd} for fk, fd in folders]}
         for lk, ld, folders in questions.CONTENT_TREE
     ])
-    return render_template("index.html", themes=STUDENT_THEMES, content_tree_json=content_tree_json)
+    conn = get_db()
+    rows = conn.execute(
+        "SELECT student_key, folder, exam_no FROM exam_progress"
+    ).fetchall()
+    conn.close()
+    completed: dict = {}
+    for row in rows:
+        sk, f, n = row["student_key"], row["folder"], row["exam_no"]
+        completed.setdefault(sk, {}).setdefault(f, set()).add(n)
+    completed_json = json.dumps({
+        sk: {f: sorted(nums) for f, nums in folders.items()}
+        for sk, folders in completed.items()
+    })
+    return render_template(
+        "index.html",
+        themes=STUDENT_THEMES,
+        content_tree_json=content_tree_json,
+        folder_exam_counts_json=json.dumps(FOLDER_EXAM_COUNTS),
+        completed_json=completed_json,
+    )
 
 
 @app.route("/start", methods=["POST"])
@@ -120,6 +164,7 @@ def start():
     duration = int(request.form.get("duration", 45))
     n_q = int(request.form.get("n_questions", DUR_TO_NQ.get(duration, 15)))
 
+    exam_no = int(request.form.get("exam_no", 1))
     seed = int(time.time() * 1000) % 1_000_000
     qs = questions.gen_exam(lop, folder, n=n_q, seed=seed)
 
@@ -128,6 +173,7 @@ def start():
     session["lop"] = lop
     session["folder"] = folder
     session["duration"] = duration
+    session["exam_no"] = exam_no
     session["questions"] = qs
     session["start_time"] = time.time()
     return redirect(url_for("exam"))
@@ -186,12 +232,19 @@ def submit():
 
     total = len(qs)
     score_10 = round(score * 10 / total) if total else 0
+    exam_no = session.get("exam_no", 1)
 
     conn = get_db()
     conn.execute(
         "INSERT INTO attempts (student, student_key, mode, duration, score, total, time_used, created_at)"
         " VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
         (student, student_key, folder, duration, score_10, total, time_used,
+         datetime.now().isoformat(timespec="seconds")),
+    )
+    conn.execute(
+        "INSERT INTO exam_progress (student_key, folder, exam_no, score, completed_at)"
+        " VALUES (?, ?, ?, ?, ?)",
+        (student_key, folder, exam_no, score_10,
          datetime.now().isoformat(timespec="seconds")),
     )
     conn.commit()
