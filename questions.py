@@ -593,17 +593,38 @@ def gen_english_structured(pool, n, seed):
         bucket = _keep_passages_together(bucket, rng)
         groups.append(bucket)
 
-    # Scale targets to n
+    available = [len(g) for g in groups]
+    total_available = sum(available)
+    actual_n = min(n, total_available)
+    if actual_n == 0:
+        return []
+
+    # Scale targets proportionally; sections with 0 available get 0
     total_default = sum(_ENGLISH_TARGETS)
-    targets = [max(1, round(t * n / total_default)) for t in _ENGLISH_TARGETS]
-    # Trim overflow
-    while sum(targets) > n:
-        targets[targets.index(max(targets))] -= 1
-    while sum(targets) < n:
-        targets[targets.index(min(targets))] += 1
+    targets = []
+    for avail, t in zip(available, _ENGLISH_TARGETS):
+        if avail == 0:
+            targets.append(0)
+        else:
+            targets.append(max(1, round(t * actual_n / total_default)))
+    targets = [min(t, avail) for t, avail in zip(targets, available)]
+
+    # Redistribute to hit actual_n exactly
+    while sum(targets) > actual_n:
+        i = max((i for i in range(len(targets)) if targets[i] > 0),
+                key=lambda i: targets[i])
+        targets[i] -= 1
+    while sum(targets) < actual_n:
+        headroom = [avail - t for avail, t in zip(available, targets)]
+        i = max(range(len(headroom)), key=lambda i: headroom[i])
+        if headroom[i] <= 0:
+            break
+        targets[i] += 1
 
     result = []
     for bucket, (_, title, instruction), target in zip(groups, _ENGLISH_SECTIONS, targets):
+        if target == 0:
+            continue
         picked = bucket[:target]
         if not picked:
             continue
@@ -613,6 +634,16 @@ def gen_english_structured(pool, n, seed):
         result.append(first)
         result.extend(picked[1:])
     return result
+
+
+def folder_capacity(lop_key, folder_key):
+    """Max questions achievable for this folder (used to filter duration options in UI)."""
+    if lop_key == "lop_1" and folder_key == "de_hk2_toan_1":
+        return 9999  # generator-based, unlimited
+    pool = _FOLDER_POOLS.get((lop_key, folder_key), [])
+    if not pool:
+        return 0
+    return len(pool)
 
 
 def gen_hs_gioi(n=10, seed=None, student_key="bao_meo", subject="Toán"):
