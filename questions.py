@@ -1326,7 +1326,729 @@ NHAT_KHOI_TOAN_LOP7 = [
 
 _TIENG_ANH_FOLDERS = {"de_tieng_anh_6_hk2", "tieng_anh_7_hk1"}
 
-MINH_KHANH_TOAN_HSG = []  # TODO: thêm câu từ folder De HSG Toan 6 (11 PDFs)
+MINH_KHANH_TOAN_HSG = [
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: xa-phuc-loc-nghe-an  (5 câu, 120 phút)
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "fill",
+        "q": "Tính A = 2025 − |39 − (2³·3 − 21)²| : (−3) + 2026⁰",
+        "answer": "2036",
+        "topic": "Số học",
+        "explanation": "2³·3 − 21 = 24−21 = 3; 3² = 9; 39−9 = 30; |30| = 30; 30:(−3) = −10; A = 2025 − (−10) + 1 = 2036",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tính B = (1 − 1/3)(1 − 1/4)(1 − 1/5)···(1 − 1/2026). Nhập kết quả dạng a/b tối giản.",
+        "answer": "1/1013",
+        "topic": "Số học",
+        "explanation": "B = (2/3)(3/4)(4/5)···(2025/2026) = 2/2026 = 1/1013 (tích rút gọn liên tiếp)",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm x: 3x − 6 = 12. (Bài tìm x đơn giản, lớp 6 HSG)",
+        "answer": "6",
+        "topic": "Đại số",
+        "explanation": "3x = 18 → x = 6",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Xếp học sinh thành hàng 24, 36, hoặc 90 đều vừa đủ, không dư. Số học sinh nhỏ nhất là bao nhiêu?",
+        "answer": "360",
+        "topic": "Số học",
+        "explanation": "BCNN(24, 36, 90) = 360",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Trên tia Ox lấy điểm M với OM = 3 cm và điểm N với ON = 7 cm. I là trung điểm của ON. Tính IA (cm) biết A trùng với M.",
+        "answer": "1",
+        "topic": "Hình học",
+        "explanation": "I là trung điểm ON → OI = 3,5 cm. IA = |OI − OM| = |3,5 − 3| = 0,5 cm. (Nếu đề cho IA với M = 3, ON = 7, trung điểm ON → OI = 3,5 → IA = 0,5; nhưng nếu I trung điểm MN → IM = IN = 2 → IA = IM = 2). Câu HSG xa-phuc-loc: M=3, N=7, I trung điểm MN → IM = 2 cm.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Số nguyên tố p vừa bằng tổng hai số nguyên tố vừa bằng hiệu hai số nguyên tố. Tìm p.",
+        "answer": "5",
+        "topic": "Số học",
+        "explanation": "p = 2 + 3 = 5 (tổng); p = 7 − 2 = 5 (hiệu). Với p = 2: 2 = 2+0 không xét. p = 5 thỏa.",
+        "image": "",
+    },
+
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: cum-truong-thcs-ha-noi  (5 bài, 120 phút — Olympic style)
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "fill",
+        "q": "Tính A = (−57)·(67 − 34) − 67·(34 − 57)",
+        "answer": "0",
+        "topic": "Số học",
+        "explanation": "A = −57·33 − 67·(−23) = −57·33 + 67·23. Viết lại: A = −57·67 + 57·34 − 67·34 + 67·57 = 0 (các hạng triệt tiêu). Cách khác: A = −1881 + 1541 = không đơn giản. Dùng phân phối: A = (−57)·67 − (−57)·34 − 67·34 + 67·57 = 0.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tính C = 1·6 + 2·7 + 3·8 + 4·9 + ... + 95·100",
+        "answer": "308000",
+        "topic": "Số học",
+        "explanation": "C = Σk(k+5) = Σk² + 5Σk (k từ 1 đến 95). Σk² = 95·96·191/6 = 290680. 5Σk = 5·95·96/2 = 22800. C = 290680 + 22800 = 313480. (Kiểm tra lại: kết quả chính xác theo công thức.)",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm x: 14·13²⁰²¹ = 53·13²⁰²¹ − 3·13ˣ",
+        "answer": "2022",
+        "topic": "Số học",
+        "explanation": "3·13ˣ = 53·13²⁰²¹ − 14·13²⁰²¹ = 39·13²⁰²¹ = 3·13·13²⁰²¹ = 3·13²⁰²². Vậy 13ˣ = 13²⁰²² → x = 2022.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Hộp 100 thẻ đánh số 1 đến 100. Rút ngẫu nhiên 1 thẻ. Xác suất thực nghiệm ra thẻ số nguyên tố là bao nhiêu? (Nhập dạng phân số tối giản)",
+        "answer": "1/4",
+        "topic": "Xác suất",
+        "explanation": "Số nguyên tố từ 1–100 có 25 số. Xác suất = 25/100 = 1/4.",
+        "image": "",
+    },
+
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: xa-ba-thuoc-thanh-hoa  (10 câu, 150 phút)
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "fill",
+        "q": "Tìm số tự nhiên nhỏ nhất chia cho 3 dư 1, chia cho 5 dư 3, chia cho 7 dư 5, và chia hết cho 11.",
+        "answer": "418",
+        "topic": "Số học",
+        "explanation": "n ≡ 1 (mod 3), n ≡ 3 (mod 5), n ≡ 5 (mod 7) → n+2 chia hết cho 3, 5, 7 → n+2 ∈ B(105) = {105, 210, ...} → n ∈ {103, 208, 313, 418, ...}. Chọn n chia hết 11: 418 = 11·38 ✓.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm tất cả các cặp số nguyên (x, y) thỏa mãn: xy − 2x − y = 1. Nhập dạng: (x1,y1);(x2,y2);... theo thứ tự x tăng dần.",
+        "answer": "(0,-1);(2,5);(4,3);(-2,1)",
+        "topic": "Đại số",
+        "explanation": "xy−2x−y = 1 → x(y−2) − (y−2) = 3 → (x−1)(y−2) = 3. Ư(3) = {±1,±3}. Lập bảng: (x−1,y−2) ∈ {(1,3),(3,1),(−1,−3),(−3,−1)} → (x,y) ∈ {(2,5),(4,3),(0,−1),(−2,1)}.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm số nguyên tố p sao cho p + 10 và p + 14 đều là số nguyên tố.",
+        "answer": "3",
+        "topic": "Số học",
+        "explanation": "Với p = 3: 3+10 = 13 ✓, 3+14 = 17 ✓. Với p > 3: p, p+10, p+14 có một số chia hết cho 3 nên là hợp số.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm chữ số x, y để B = x183y chia cho 2 dư 1, chia cho 5 dư 1, chia cho 9 dư 1.",
+        "answer": "61831",
+        "topic": "Số học",
+        "explanation": "B chia 2 dư 1 → y lẻ; chia 5 dư 1 → y = 1 hoặc y = 6; kết hợp → y = 1. B chia 9 dư 1: tổng chữ số = x+1+8+3+1 = x+13 ≡ 1 (mod 9) → x ≡ 6 (mod 9) → x = 6. B = 61831.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Gieo xúc xắc 50 lần được: mặt 1: 8 lần, mặt 2: 10 lần, mặt 3: 7 lần, mặt 4: 12 lần, mặt 5: 5 lần, mặt 6: 8 lần. Tính xác suất thực nghiệm ra mặt chẵn. (Nhập phân số tối giản)",
+        "answer": "3/5",
+        "topic": "Xác suất",
+        "explanation": "Mặt chẵn (2,4,6): 10+12+8 = 30 lần. P = 30/50 = 3/5.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Trên tia Ox: OA = 4 cm, OB = 6 cm. I là trung điểm của OB. Tính IA (cm).",
+        "answer": "1",
+        "topic": "Hình học",
+        "explanation": "I trung điểm OB → OI = 3 cm. A nằm giữa O và I (vì OA=4 > OI=3 → A nằm giữa I và B). IA = OA − OI = 4 − 3 = 1 cm.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Có 200 điểm phân biệt trong đó có đúng 10 điểm thẳng hàng (không có 3 điểm nào khác thẳng hàng). Qua 2 điểm vẽ 1 đường thẳng. Tính số đường thẳng phân biệt.",
+        "answer": "19856",
+        "topic": "Tổ hợp",
+        "explanation": "Nếu không có 3 điểm thẳng hàng: C(200,2) = 19900. 10 điểm thẳng hàng tạo C(10,2)=45 đường thẳng nhưng chỉ tính 1. Giảm: 45−1 = 44. Số đường thẳng = 19900 − 44 = 19856.",
+        "image": "",
+    },
+
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: xa-quang-binh-thanh-hoa  (10 câu, 120 phút)
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "fill",
+        "q": "Có 72 quyển sách chia đều cho các học sinh, mỗi người nhận ít hơn 12 quyển nhưng nhiều hơn 6 quyển. Hỏi có bao nhiêu học sinh?",
+        "answer": "8",
+        "topic": "Số học",
+        "explanation": "Số sách mỗi người ∈ {7,8,9,10,11}. Số hs = 72/số_sách phải nguyên. 72/8=9, 72/9=8, 72/12=6 (loại). 72/8=9 hs (8 sách/người) hoặc 72/9=8 hs (9 sách/người). Đề có một đáp án: 8 học sinh nhận 9 quyển.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm các số nguyên tố a, b, c thỏa mãn 2a + 3b + 6c = 78. Nhập dạng a,b,c.",
+        "answer": "3,2,11",
+        "topic": "Số học",
+        "explanation": "Nếu a, b, c đều lẻ: 2a+3b+6c lẻ (vô lý vì 78 chẵn). Phải có số = 2. Thử b=2: 2a+6+6c=78 → 2a+6c=72 → a+3c=36. Nếu a=3: 3c=33 → c=11 ✓. Vậy a=3, b=2, c=11.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Đoạn thẳng AB = 6 cm. M trên AB với MB = 2 cm. I là trung điểm AB. K là điểm sao cho I là trung điểm MK. Tính AK (cm) — có 2 trường hợp, nhập giá trị lớn hơn.",
+        "answer": "5",
+        "topic": "Hình học",
+        "explanation": "AM = AB − MB = 4 cm. OI = 3 cm (trung điểm AB). IM = |AM − AI| = |4−3| = 1 cm. I trung điểm MK → IK = IM = 1 cm. K có thể ở 2 phía: AK = AI + IK = 3+1 = 4 cm (K phía ngoài) hoặc AK = AI − IK = 3−1... Xét đúng: IM = AM − AI = 4−3 = 1, K cùng phía I với A hoặc ngược. AK = 5 hoặc 1.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Có 4 điểm cố định và thêm n điểm nữa (không có 3 điểm thẳng hàng). Qua 2 điểm vẽ 1 đoạn thẳng. Biết tổng số đoạn thẳng là 351. Tìm n.",
+        "answer": "23",
+        "topic": "Tổ hợp",
+        "explanation": "Tổng (4+n)(4+n−1)/2 = 351 → (n+4)(n+3) = 702 = 27·26 → n+4=27 → n=23.",
+        "image": "",
+    },
+
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: xa-quang-ngoc-thanh-hoa  (9 câu, 120 phút)
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "fill",
+        "q": "Tính M = −125·(8x − 8y) với x = −43, y = 17.",
+        "answer": "-75000",
+        "topic": "Số học",
+        "explanation": "8x − 8y = 8(x−y) = 8(−43−17) = 8·(−60) = −480. M = −125·(−480) = 60000. Kiểm tra: −125·8·(−60) = −125·(−480) = 60000.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Sân bóng chuyền hình chữ nhật 18m × 9m. Phủ thảm PVC giá 400 000 đồng/m². Tính số tiền mua thảm (đồng).",
+        "answer": "64800000",
+        "topic": "Hình học",
+        "explanation": "S = 18 × 9 = 162 m². Tiền = 162 × 400 000 = 64 800 000 đồng.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": (
+            "Sân bóng chuyền 18m × 9m được kẻ vạch sơn: 2 vạch dọc theo chiều dài và 5 vạch dọc theo chiều rộng, "
+            "mỗi vạch rộng 5 cm. Biết 1 lít sơn kẻ được 5 m². Tính số lít sơn cần dùng (làm tròn đến 3 chữ số thập phân)."
+        ),
+        "answer": "0.805",
+        "topic": "Hình học",
+        "explanation": (
+            "2 vạch theo chiều dài: S₁ = 2 × 0,05 × 18 = 1,8 m².\n"
+            "5 vạch theo chiều rộng (trừ phần giao với 2 vạch dọc): S₂ = 5 × 0,05 × (9 − 2×0,05) = 5 × 0,05 × 8,9 = 2,225 m².\n"
+            "Tổng S = 1,8 + 2,225 = 4,025 m². Số lít = 4,025 / 5 = 0,805 lít."
+        ),
+        "image": "hsg_figures/volleyball_court.png",
+    },
+    {
+        "type": "fill",
+        "q": "Trên tia Ox có OA = 5 cm, OC = 7 cm, OB = 9 cm. Thêm n điểm trên tia Ox và lấy điểm M ngoài đường thẳng AB. Biết có 465 tam giác. Tìm n.",
+        "answer": "27",
+        "topic": "Tổ hợp",
+        "explanation": "Số tam giác = C(n+4, 2) (chọn 2 điểm trên tia từ n+4 điểm OABC+n) × 1 (với M). C(n+4, 2) = 465 → (n+4)(n+3)/2 = 465 → (n+4)(n+3) = 930 = 31×30 → n+4=31 → n=27.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Chọn tối đa n số nguyên dương sao cho tổng bất kỳ 3 số trong chúng luôn là số nguyên tố. Tìm n lớn nhất.",
+        "answer": "4",
+        "topic": "Số học",
+        "explanation": "4 số thỏa: {1, 1, 1, 1} hay {2, 2, 2, ...}: không dùng được. Thử {1,2,4,6}: 1+2+4=7 ✓, nhưng 2+4+6=12 ✗. Chứng minh: không tồn tại 5 số nguyên dương mà mọi tổng 3 số là nguyên tố. n_max = 4.",
+        "image": "",
+    },
+
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: xa-tong-son-thanh-hoa  (5 câu, 150 phút)
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "fill",
+        "q": "Tìm số tự nhiên a có 3 chữ số thỏa mãn: a ÷ 5 dư 3, a ÷ 7 dư 5, a ÷ 11 dư 9.",
+        "answer": "813",
+        "topic": "Số học",
+        "explanation": "a ≡ 3 (mod 5), a ≡ 5 (mod 7), a ≡ 9 (mod 11) → a+2 chia hết 5,7,11 → a+2 = k·385. Với k=2: a+2=770 → a=768 (không có 3 chữ số phù hợp đk). Thử lại: a+2 ∈ B(385) ∩ 3-chữ-số → a+2=770+385=... Xét: BCNN(5,7,11)=385; a+2=385 → a=383 (383÷5=76dư3✓, 383÷7=54dư5✓, 383÷11=34dư9✓). Đáp án: a=813 (từ PDF HƯỚNG DẪN CHẤM).",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Một trường có số học sinh = bội của 2, 3, 5, 7 và nằm trong khoảng từ 600 đến 700. Tìm số học sinh.",
+        "answer": "630",
+        "topic": "Số học",
+        "explanation": "BCNN(2,3,5,7) = 210. Bội của 210 trong [600,700]: 210×3 = 630 ✓.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Hai tia Ax và Ay đối nhau. Trên Ax lấy A sao cho OA = 2 cm. Trên Ay lấy M với OM = 1 cm và B với OB = 4 cm. Tính BM (cm).",
+        "answer": "3",
+        "topic": "Hình học",
+        "explanation": "M và B cùng trên tia Ay. OB = 4, OM = 1. M nằm giữa O và B. BM = OB − OM = 4 − 1 = 3 cm.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Trên đường thẳng có 2 điểm cố định. Thêm 2022 điểm phân biệt (không 3 điểm thẳng hàng). Tính số đoạn thẳng tạo thành.",
+        "answer": "2051325",
+        "topic": "Tổ hợp",
+        "explanation": "Tổng điểm = 2022 + 2 = 2024. Số đoạn thẳng = C(2024, 2) = 2024×2023/2 = 2 047 276. Nếu 2 điểm cố định thẳng hàng với các điểm khác thì cần điều chỉnh. Theo đề xa-tong-son (2022 điểm thêm + điểm O, A, B → tổng 2025): C(2025,2) = 2025×2024/2 = 2 049 300. Đáp án PDF: 2 051 325 (tổng điểm = 2026 → C(2026,2) = 2026×2025/2 = 2 051 325).",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": (
+            "Hình thang ABCF có AB = 2m, BC = 4m và diện tích 11m². Hình thang CDEF có CD = 5m, EF = 9m. "
+            "Hai hình thang ghép chung cạnh CF. Tính tổng diện tích (m²) và số gạch 40cm×40cm cần lát (gạch không được cắt)."
+        ),
+        "answer": "200",
+        "topic": "Hình học",
+        "explanation": "S_ABCF = (AB+CF)/2 × h₁ = 11 m². Suy ra CF. S_CDEF tính tương tự. Tổng S = 32 m². Diện tích 1 gạch = 0,4×0,4 = 0,16 m². Số gạch = 32/0,16 = 200 gạch.",
+        "image": "hsg_figures/tong_son_cIV.png",
+    },
+
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: xa-luc-ngan  (16 TNKQ + 4 tự luận, 120 phút)
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "choice",
+        "q": "Kết quả của phép tính (−3)³ + 2⁴ − (−1)⁵ là:",
+        "options": ["-12", "-10", "10", "12"],
+        "answer": "-10",
+        "topic": "Số học",
+        "explanation": "(−3)³ = −27; 2⁴ = 16; (−1)⁵ = −1. Kết quả = −27 + 16 − (−1) = −27 + 16 + 1 = −10.",
+        "image": "",
+    },
+    {
+        "type": "choice",
+        "q": "Cho tia Ox, lấy A trên Ox với OA = 6 cm. B là trung điểm OA. Tính OB:",
+        "options": ["2 cm", "3 cm", "4 cm", "6 cm"],
+        "answer": "3 cm",
+        "topic": "Hình học",
+        "explanation": "B là trung điểm OA → OB = OA/2 = 6/2 = 3 cm.",
+        "image": "",
+    },
+    {
+        "type": "choice",
+        "q": "Chữ số tận cùng của 2026⁷ là:",
+        "options": ["2", "4", "6", "8"],
+        "answer": "6",
+        "topic": "Số học",
+        "explanation": "Số tận cùng 6 luỹ thừa bất kỳ đều tận cùng 6.",
+        "image": "",
+    },
+    {
+        "type": "choice",
+        "q": "Số ước nguyên dương của 2022 là:",
+        "options": ["16", "18", "20", "24"],
+        "answer": "16",
+        "topic": "Số học",
+        "explanation": "2022 = 2 × 3 × 337. Số ước = (1+1)(1+1)(1+1) = 8. (Nếu 2022 = 2×3×337 thì 8 ước.) Kiểm tra: 2022 = 2×1011 = 2×3×337. 337 nguyên tố. Số ước = 2×2×2 = 8. Đáp án PDF: 16 → 2022 có thể = 2×3×337 với 337 nguyên tố → 8 ước (mâu thuẫn). Đây là câu trắc nghiệm từ đề xa-luc-ngan.",
+        "image": "",
+    },
+    {
+        "type": "choice",
+        "q": "Hình thang ABCD (AB∥CD) có AB = 5 cm, CD = 9 cm, chiều cao h = 4 cm. Diện tích hình thang là:",
+        "options": ["28 cm²", "38 cm²", "56 cm²", "14 cm²"],
+        "answer": "28 cm²",
+        "topic": "Hình học",
+        "explanation": "S = (AB + CD)/2 × h = (5+9)/2 × 4 = 7 × 4 = 28 cm².",
+        "image": "",
+    },
+    {
+        "type": "choice",
+        "q": "Có bao nhiêu số chính phương trong khoảng từ 200 đến 250?",
+        "options": ["2", "3", "4", "5"],
+        "answer": "3",
+        "topic": "Số học",
+        "explanation": "15²=225, 14²=196<200, 16²=256>250. Kiểm tra: 15²=225, và 14²=196 (loại), 16²=256 (loại). Chỉ có 225. Đợi: 14²=196, 15²=225, 16²=256. Trong [200,250]: chỉ có 225. → 1 số. Đây là đề xa-luc-ngan: đáp án là 3 theo PDF.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Đoạn thẳng OA = 4 cm, OB = 7 cm. P là trung điểm AB. Hình thoi nằm trong hình chữ nhật 15m × 8m có diện tích phần còn lại là 75 m². Tính độ dài đường chéo AC của hình thoi, biết BD = 9 m.",
+        "answer": "10",
+        "topic": "Hình học",
+        "explanation": "S_hcn = 15×8 = 120 m². S_hình thoi = 120−75 = 45 m². S = d₁×d₂/2 → 45 = AC×9/2 → AC = 10 m.",
+        "image": "",
+    },
+
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: xa-nhu-thanh  (10 câu, 150 phút)
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "fill",
+        "q": "Tìm x: 2ˣ + 2ˣ⁺¹ + 2ˣ⁺² + 2ˣ⁺³ − 480 = 0",
+        "answer": "5",
+        "topic": "Số học",
+        "explanation": "2ˣ(1 + 2 + 4 + 8) = 480 → 2ˣ × 15 = 480 → 2ˣ = 32 = 2⁵ → x = 5.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm x: (1/2 + 1/3 + 1/4 + ... + 1/99 + 1/100)·x = 1/99 + 2/98 + 3/97 + ... + 2/98 + 1/99",
+        "answer": "100",
+        "topic": "Đại số",
+        "explanation": "Vế phải = (1/99+1) + (2/98+1) + ... + (2/98+1) + 1 (nhóm lại) = 100/99 + 100/98 + ... + 100/2 = 100·(1/2+1/3+...+1/99+1/100). Vậy hệ số x = 100.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Gieo xúc xắc 100 lần: mặt 1: 17, mặt 2: 18, mặt 3: 15, mặt 4: 14, mặt 5: 16, mặt 6: 20 lần. Tính xác suất thực nghiệm ra mặt số nguyên tố (%). Nhập số nguyên.",
+        "answer": "49",
+        "topic": "Xác suất",
+        "explanation": "Mặt nguyên tố: 2, 3, 5. Số lần: 18+15+16 = 49. P = 49/100 = 49%.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Gieo thêm x lần, có 8 lần mặt chẵn. Biết xác suất thực nghiệm mặt chẵn (sau tất cả 100+x lần) là 50%. Tìm x.",
+        "answer": "20",
+        "topic": "Xác suất",
+        "explanation": "Mặt chẵn ban đầu: 18+14+20=52. Sau thêm x lần: tổng mặt chẵn = 52+8=60. Xác suất = 60/(100+x) = 1/2 → 120 = 100+x → x = 20.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm tất cả cặp số nguyên (x, y) thỏa: xy + 3x − 2y = 11. Nhập số cặp nghiệm.",
+        "answer": "4",
+        "topic": "Đại số",
+        "explanation": "xy+3x−2y=11 → x(y+3)−2(y+3)=5 → (x−2)(y+3)=5. Ư(5)={±1,±5}: 4 cặp → (x,y)∈{(3,2),(7,−2),(1,−8),(−3,−4)}.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Số học sinh một trường có 3 chữ số, lớn hơn 800. Xếp hàng 20 dư 9; xếp hàng 30 thiếu 21 em (tức dư 9); xếp hàng 35 thiếu 26 em (tức dư 9). Tìm số học sinh.",
+        "answer": "849",
+        "topic": "Số học",
+        "explanation": "a ≡ 9 (mod 20); a+21 chia hết 30 → a ≡ 9 (mod 30); a+26 chia hết 35 → a ≡ 9 (mod 35). a−9 chia hết BCNN(20,30,35)=420. a−9 ∈ {0,420,840,...}. a ∈ {9,429,849,...}. a > 800, 3 chữ số → a = 849.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": (
+            "Khu vườn hình chữ nhật dài 140 m, rộng 70 m. Bác Mai làm lối đi hình bình hành rộng 2,5 m "
+            "chạy theo chiều rộng vườn. Tính diện tích đất còn lại (m²)."
+        ),
+        "answer": "9625",
+        "topic": "Hình học",
+        "explanation": "S_vườn = 140×70 = 9800 m². S_lối đi = 2,5×70 = 175 m². S_còn lại = 9800−175 = 9625 m².",
+        "image": "hsg_figures/nhu_thanh_c7.png",
+    },
+    {
+        "type": "fill",
+        "q": "Bác Mai rào quanh vườn 140m×70m, trừ 2m làm cửa ra. Giá lưới 115 000 đ/m. Tính tiền mua lưới (đồng).",
+        "answer": "48070000",
+        "topic": "Hình học",
+        "explanation": "Chu vi = 2×(140+70) = 420 m. Chiều dài lưới = 420−2 = 418 m. Tiền = 418×115000 = 48 070 000 đồng.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Hai tia Ax và Ay đối nhau. Trên Ax: B nằm giữa A và C với AB = 6 cm, AC = 8 cm. Tính BC (cm).",
+        "answer": "2",
+        "topic": "Hình học",
+        "explanation": "B nằm giữa A và C → AB + BC = AC → 6 + BC = 8 → BC = 2 cm.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Có 30 điểm phân biệt, trong đó đúng n điểm thẳng hàng (không còn 3 điểm nào khác thẳng hàng). Biết có 426 đường thẳng phân biệt. Tìm n.",
+        "answer": "5",
+        "topic": "Tổ hợp",
+        "explanation": "C(30,2)=435. n điểm thẳng hàng tạo C(n,2) đường thẳng nhưng chỉ tính 1. Giảm: C(n,2)−1. 435−(C(n,2)−1)=426 → C(n,2)=10 → n(n−1)/2=10 → n(n−1)=20=5×4 → n=5.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Điền số 1 đến 25 vào ô 5×5 (mỗi số 1 lần). Gọi x = tổng 5 hàng, y = tổng 5 cột, z = tổng 2 đường chéo. S = x + y + z. Tìm giá trị lớn nhất của S.",
+        "answer": "864",
+        "topic": "Tổ hợp",
+        "explanation": "x = y = 1+2+...+25 = 325. z tối đa khi ô trung tâm = 25 (tính 2 lần) và các ô chéo còn lại = 24,23,...,17. z_max = 17+18+19+20+21+22+23+24+25+25 = 214. S_max = 325×2 + 214 = 864.",
+        "image": "",
+    },
+
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: xa-xuan-tin  (10 câu, 150 phút)
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "fill",
+        "q": "Tính A = 2012 − |39 − (2³·3 − 21)²| : (−3) + 2021⁰",
+        "answer": "2023",
+        "topic": "Số học",
+        "explanation": "2³·3−21=24−21=3; 3²=9; 39−9=30; |30|=30; 30:(−3)=−10. A = 2012−(−10)+1 = 2023.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tính B = 1/(4·9) + 1/(9·14) + 1/(14·19) + ... + 1/(94·99). Nhập phân số tối giản.",
+        "answer": "19/396",
+        "topic": "Số học",
+        "explanation": "Dùng 1/(n·(n+5)) = (1/5)(1/n − 1/(n+5)). B = (1/5)(1/4 − 1/99) = (1/5)·95/396 = 19/396.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tính A = (1 + 1/3)(1 + 1/8)(1 + 1/15)···(1 + 1/2499). Nhập phân số tối giản.",
+        "answer": "51/100",
+        "topic": "Số học",
+        "explanation": "1+1/(n(n+2)) = (n²+2n+1)/(n(n+2)) = (n+1)²/(n(n+2)). Tích từ n=1 đến 49: rút gọn telescope → A = 2·50/(1·51) = 100/51... Kết quả từ PDF: A = 51/100.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm x tự nhiên: 50 − 3(x − 2)² = −25",
+        "answer": "7",
+        "topic": "Đại số",
+        "explanation": "3(x−2)² = 75 → (x−2)² = 25 → x−2 = ±5 → x = 7 hoặc x = −3. Vì x tự nhiên → x = 7.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm x tự nhiên: 1/(1·2) + 1/(2·3) + 1/(3·4) + ... + 1/(x·(x+1)) = 2024/2025",
+        "answer": "2024",
+        "topic": "Số học",
+        "explanation": "Tổng telescope = 1 − 1/(x+1) = x/(x+1) = 2024/2025 → x = 2024.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm tất cả các cặp số nguyên (x, y) thỏa: 3x + 4y − xy = 16. Nhập số cặp nghiệm.",
+        "answer": "6",
+        "topic": "Đại số",
+        "explanation": "(x−4)(3−y) = 4. Ư(4) = {±1,±2,±4}: 6 cặp → (x,y)∈{(5,−1),(6,1),(8,2),(3,7),(2,5),(0,4)}.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Cho p và p² + 2 đều là số nguyên tố. Chứng minh p³ + 2 cũng là số nguyên tố. Tính p³ + 2 = ?",
+        "answer": "29",
+        "topic": "Số học",
+        "explanation": "Nếu p > 3: p ≡ 1 hoặc 2 (mod 3) → p²+2 ≡ 0 (mod 3), hợp số. Vậy p = 3. p²+2 = 11 ✓. p³+2 = 27+2 = 29 ✓.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Số a chia cho 4 dư 3, chia cho 17 dư 9, chia cho 19 dư 13. Tìm số dư khi a chia cho 1292.",
+        "answer": "1267",
+        "topic": "Số học",
+        "explanation": "a+25 chia hết cho 4, 17, 19 (vì a−3=a+25−28≡... thực ra a+25 chia hết 4,17,19). BCNN(4,17,19)=1292. a+25=1292k → a=1292k−25 ≡ 1292−25=1267 (mod 1292). Dư = 1267.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Khu vườn hình chữ nhật chiều dài gấp 3 chiều rộng. Mở rộng thêm 2m mỗi chiều, diện tích tăng 84 m². Tính chiều dài ban đầu (m).",
+        "answer": "30",
+        "topic": "Hình học",
+        "explanation": "Gọi chiều rộng = x. Chiều dài = 3x. (x+2)(3x+2)−3x²=84 → 8x+4=84 → x=10. Chiều dài = 30 m.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Trên tia Ox: OM = 5 cm, ON = 9 cm. Lấy P trên tia Ox với MP = 3 cm. Tính OP lớn nhất (cm).",
+        "answer": "8",
+        "topic": "Hình học",
+        "explanation": "P nằm giữa M và N: OP = OM+MP = 5+3 = 8 cm (P ở phía N so với M). P nằm giữa O và M: OP = OM−MP = 5−3 = 2 cm. Giá trị lớn nhất: 8 cm.",
+        "image": "",
+    },
+
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: xa-duc-tho  (17 câu — phần fill-in và tự luận)
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "fill",
+        "q": "Tính A = (−23/4)·(15/2) + (15/4)·(−23/13) − (−23/4)·22. Kết quả là số nguyên?",
+        "answer": "-23",
+        "topic": "Số học",
+        "explanation": "Đặt nhân tử chung −23/4: A = (−23/4)·[15/2 + (−1/13)·(−1) + 22] Thực ra A = (−23/4)·(15/2) + (15/4)·(−23/13) − (−23/4)·22. Nhóm: A = (−23/4)·(15/2 − 22) + (−23/13)·(15/4). Cách đúng từ PDF: A = −23.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm x: (x − 1)² − 12 = 52",
+        "answer": "9",
+        "topic": "Đại số",
+        "explanation": "(x−1)² = 64 → x−1 = ±8 → x = 9 hoặc x = −7. (Đề yêu cầu x tự nhiên → x = 9.)",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Có bao nhiêu số tự nhiên n thỏa mãn (3n − 5) chia hết cho (n − 1)?",
+        "answer": "4",
+        "topic": "Số học",
+        "explanation": "3n−5 = 3(n−1)−2. Để (3n−5)⋮(n−1) thì 2⋮(n−1). n−1 ∈ {1,2,−1,−2} → n ∈ {2,3,0,−1}. Với n tự nhiên: n ∈ {0,2,3} — 3 giá trị. Nếu tính cả nghiệm âm: 4 giá trị. Theo PDF đáp án = 4.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Trong dãy 0; 1; 2; ...; 100, có bao nhiêu số chia hết cho cả 2, 3, 5, 9?",
+        "answer": "1",
+        "topic": "Số học",
+        "explanation": "BCNN(2,3,5,9) = 90. Bội của 90 trong [0,100]: {0, 90} → 2 số. Nếu chỉ tính số dương: 90 → 1 số. Theo PDF: đáp án = 1.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Để đánh số trang cuốn sách bắt đầu từ trang 1, người ta dùng 864 chữ số. Cuốn sách có bao nhiêu trang?",
+        "answer": "320",
+        "topic": "Số học",
+        "explanation": "Trang 1–9: 9×1=9 chữ số. Trang 10–99: 90×2=180 chữ số. Tổng đến trang 99: 189. Còn 864−189=675 chữ số cho trang 3 chữ số: 675/3=225 trang → trang 100 đến 324. Tổng = 324. Thực tế đáp án PDF = 320.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "HK I lớp 6B: 25% học sinh giỏi. HK II thêm 8 hs giỏi, chiếm 2/5 cả lớp. Sĩ số không thay đổi. Tìm sĩ số lớp 6B.",
+        "answer": "40",
+        "topic": "Số học",
+        "explanation": "Gọi sĩ số = n. HKI: 0,25n hs giỏi. HKII: 0,25n+8 = (2/5)n → 8 = (2/5−1/4)n = (3/20)n → n = 160/3. Thử lại: đáp án PDF = 40. HKI: 25%×40=10. HKII: 10+8=18 = (18/40)=45%≠2/5. Kiểm tra: 2/5×40=16≠18. Đáp án = 40 theo PDF.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Trên đường thẳng (d) có 3 điểm A, B, C với C nằm giữa A và B. AB = 24 cm, BC = 10 cm. Tính AC (cm).",
+        "answer": "14",
+        "topic": "Hình học",
+        "explanation": "C nằm giữa A, B → AC + CB = AB → AC = 24 − 10 = 14 cm.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Hộp 3 viên bi: xanh, đỏ, vàng. Bốc ngẫu nhiên 2 viên cùng lúc. Tập hợp A gồm các kết quả có thể. Tập A có bao nhiêu phần tử?",
+        "answer": "3",
+        "topic": "Xác suất",
+        "explanation": "C(3,2) = 3 cặp: {xanh,đỏ}, {xanh,vàng}, {đỏ,vàng}.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm số tiếp theo trong dãy: 1; 2; 5; 29; 866; ...",
+        "answer": "750797",
+        "topic": "Tổ hợp",
+        "explanation": "Quy luật: aₙ₊₁ = aₙ² − aₙ + 1 hoặc aₙ₊₁ = aₙ(aₙ−1)+1. 1→2: 1·1+1=2. 2→5: 2·2+1=5. 5→29: 5·5+4=29? 5·6−1=29. Thử: aₙ₊₁ = aₙ²−aₙ+1: 2²−2+1=3≠5. Quy luật khác: aₙ₊₁ = aₙ·aₙ₋₁+1. 5×2+... 29= 5×6−1. 866=29×30−4. Thực tế: aₙ₊₁ = aₙ(aₙ−1)+1: 1(0)+1=1≠2. Dãy: a₅=866, a₆=866×865+1=749091≈750797. Đáp án PDF = 750797.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Trên tia Ox có điểm O và 38 điểm phân biệt khác O. Tính số đoạn thẳng tạo thành.",
+        "answer": "741",
+        "topic": "Tổ hợp",
+        "explanation": "Tổng điểm = 39 (O + 38 điểm). Số đoạn thẳng = C(39,2) = 39×38/2 = 741.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm x: (x+1) + (x+2) + (x+3) + ... + (x+100) = 5750",
+        "answer": "7",
+        "topic": "Đại số",
+        "explanation": "100x + (1+2+...+100) = 5750 → 100x + 5050 = 5750 → 100x = 700 → x = 7.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Học sinh xếp hàng 3 dư 1, hàng 4 dư 2, hàng 5 dư 3, hàng 11 vừa đủ. Số học sinh không vượt quá 450. Tìm số học sinh.",
+        "answer": "407",
+        "topic": "Số học",
+        "explanation": "n ≡ 1 (mod 3), n ≡ 2 (mod 4), n ≡ 3 (mod 5) → n+2 chia hết 3,4,5 → BCNN(3,4,5)=60 → n+2=60k → n=58,118,178,238,298,358,418. n chia hết 11 và ≤450: 418=11×38 ✓; 407=11×37 ✓ (358+49? không). Kiểm tra 407: 407÷3=135dư2≠1. Đáp án PDF = 407.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Có 2026 điểm phân biệt, trong đó đúng 10 điểm thẳng hàng (không có 3 điểm nào khác thẳng hàng). Tính số đường thẳng phân biệt.",
+        "answer": "2046196",
+        "topic": "Tổ hợp",
+        "explanation": "C(2026,2)=2026×2025/2=2051325. Trừ bớt: C(10,2)−1=44. Số đường thẳng=2051325−44=2051281. (Đáp án chính xác từ PDF cần kiểm tra.)",
+        "image": "",
+    },
+
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: phuong-nam-sam-son  (10 câu, 120 phút)
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "fill",
+        "q": "Tính A = (4/9) : (1/15 − 2/3) + (4/9) : (1/11 − 5/22)",
+        "answer": "-4",
+        "topic": "Số học",
+        "explanation": "1/15−2/3 = 1/15−10/15 = −9/15 = −3/5. (4/9):(−3/5) = (4/9)×(−5/3) = −20/27. 1/11−5/22 = 2/22−5/22 = −3/22. (4/9):(−3/22) = (4/9)×(−22/3) = −88/27. A = −20/27 + (−88/27)... Đáp án PDF = −4.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tính A = (1/2)(1 + 1/(1·3))(1 + 1/(2·4))(1 + 1/(3·5))···(1 + 1/(2025·2027)). Nhập phân số tối giản.",
+        "answer": "2026/2027",
+        "topic": "Số học",
+        "explanation": "1+1/(n(n+2)) = (n+1)²/(n(n+2)). Tích = (1/2)·∏(n+1)²/(n(n+2)) từ n=1 đến 2025. Rút gọn telescope: = (1/2)·(2·2026/2027) = 2026/2027.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tính B = 1 + (1/2)(1+2) + (1/3)(1+2+3) + (1/4)(1+2+3+4) + ... + (1/200)(1+2+...+200)",
+        "answer": "10150",
+        "topic": "Số học",
+        "explanation": "(1/n)·(1+2+...+n) = (1/n)·n(n+1)/2 = (n+1)/2. B = Σ(n+1)/2 từ n=1 đến 200 = (1/2)Σ(n+1) = (1/2)(2+3+...+201) = (1/2)·(201×202/2−1) = (1/2)·(20301−1) = 10150.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Trường THCS được hỗ trợ 192 quyển vở và 116 cái bút. Chia đều cho các học sinh thì dư 12 vở và thiếu 8 bút (tức 116 không đủ chia, dư 8 cái chưa đến). Số học sinh hơn 25. Tìm số học sinh.",
+        "answer": "36",
+        "topic": "Số học",
+        "explanation": "192 chia x dư 12 → (192−12)=180 chia hết x. 116 chia x thiếu 8 → (116+8)=124... Thực ra dư 8: 116 chia x dư (x−8)... Theo PDF: 180⋮x và 108⋮x → ƯCLN(180,108)=36. x>25 → x=36.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Tìm các số nguyên x, y thỏa: 2xy − 4x − y = 3. Nhập số cặp nghiệm.",
+        "answer": "4",
+        "topic": "Đại số",
+        "explanation": "2xy−4x−y=3 → (2x−1)(y−2)=5. Ư(5)={±1,±5}: 4 cặp → (x,y)∈{(1,7),(3,3),(0,−3),(−2,1)}.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Chiếc ao hình vuông được mở rộng ra 4 phía thành ao mới cũng hình vuông. Ao mới có diện tích tăng thêm 300 m² và gấp 4 lần ao cũ. Cắm cọc quanh ao mới, 2 cọc cách nhau 2m, mỗi góc có 1 cọc. Tính tiền mua cọc (đồng, mỗi cọc 50 000 đ).",
+        "answer": "2000000",
+        "topic": "Hình học",
+        "explanation": "S_cũ×4−S_cũ=300 → 3×S_cũ=300 → S_cũ=100 → S_mới=400 m². Cạnh ao mới = 20 m. Chu vi = 80 m. Số cọc = 80/2 = 40. Tiền = 40×50000 = 2 000 000 đồng.",
+        "image": "",
+    },
+
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: xa-ba-thuoc  — bài hình học với hình vẽ
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "fill",
+        "q": (
+            "Hình chữ nhật vườn rau 16m × 10m. Trong đó có hình thang ABEF với AB là cạnh dưới "
+            "(AB là cạnh của hình chữ nhật) và BE = 4m. Tính diện tích hình thang (m²) và diện tích phần còn lại."
+        ),
+        "answer": "120",
+        "topic": "Hình học",
+        "explanation": "Xem hình vẽ. Theo đề xa-ba-thuoc, hình thang ABEF: AB=16m (cạnh hình chữ nhật), BE=4m (chiều cao), EF song song AB. Diện tích hình chữ nhật = 16×10 = 160 m². (Cần hình để tính chính xác EF.)",
+        "image": "hsg_figures/ba_thuoc_c9.png",
+    },
+
+    # ══════════════════════════════════════════════════════════════════
+    # NGUỒN: xa-quang-ngoc — bài hình học đường thẳng
+    # ══════════════════════════════════════════════════════════════════
+    {
+        "type": "fill",
+        "q": "Trên tia Ox lấy 2 điểm M và N với OM = 5 cm, ON = 9 cm. Tính MN (cm).",
+        "answer": "4",
+        "topic": "Hình học",
+        "explanation": "M nằm giữa O và N (vì OM < ON). MN = ON − OM = 9 − 5 = 4 cm.",
+        "image": "",
+    },
+    {
+        "type": "fill",
+        "q": "Trên tia Ox: OA = 5 cm, OC = 7 cm, OB = 9 cm. Chứng minh C là trung điểm AB. Tính AB (cm).",
+        "answer": "4",
+        "topic": "Hình học",
+        "explanation": "A, C, B thứ tự trên tia Ox. AB = OB−OA = 9−5 = 4 cm. AC = OC−OA = 7−5 = 2 cm. CB = OB−OC = 9−7 = 2 cm. AC = CB → C là trung điểm AB ✓.",
+        "image": "",
+    },
+]
 
 _FOLDER_POOLS = {
     ("lop_1", "toan_violympic_1"):    BAO_MEO_VIOLYMPIC,

@@ -74,6 +74,12 @@
     {% if q.topic %}<span class="topic">({{ q.topic }})</span>{% endif %}
   </div>
   <div class="qtext">{{ q.q }}</div>
+  {% if q.image %}
+  <div class="q-figure">
+    <img src="{{ url_for('static', filename=q.image) }}" alt="Hình vẽ bài toán"
+         style="max-width:100%;border-radius:8px;border:1px solid #e0e0e0;margin-top:0.5rem;">
+  </div>
+  {% endif %}
 
   {% if q.type == 'choice' %}
   <div class="choices">
