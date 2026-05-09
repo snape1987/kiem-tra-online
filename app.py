@@ -236,7 +236,8 @@ def submit():
             score += 1
         results.append({"q": q["q"], "your": user_ans or "(không trả lời)",
                          "correct": correct, "ok": ok, "topic": q.get("topic", ""),
-                         "explanation": q.get("explanation", "")})
+                         "explanation": q.get("explanation", ""),
+                         "image": q.get("image", "")})
 
     total = len(qs)
     score_10 = round(score * 10 / total) if total else 0
