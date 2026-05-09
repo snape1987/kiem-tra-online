@@ -1190,6 +1190,7 @@ CONTENT_TREE = [
     ("lop_6", "Lớp 6", [
         ("de_toan_6_hk2",      "Đề Toán 6 Học Kỳ 2"),
         ("de_olympic_toan_6",  "Đề Olympic Toán 6"),
+        ("de_hsg_toan_6",      "Đề HSG Toán 6"),
         ("de_tieng_anh_6_hk2", "Đề Tiếng Anh 6 Học Kỳ 2"),
     ]),
     ("lop_7", "Lớp 7", [
@@ -1325,10 +1326,13 @@ NHAT_KHOI_TOAN_LOP7 = [
 
 _TIENG_ANH_FOLDERS = {"de_tieng_anh_6_hk2", "tieng_anh_7_hk1"}
 
+MINH_KHANH_TOAN_HSG = []  # TODO: thêm câu từ folder De HSG Toan 6 (11 PDFs)
+
 _FOLDER_POOLS = {
     ("lop_1", "toan_violympic_1"):    BAO_MEO_VIOLYMPIC,
     ("lop_6", "de_toan_6_hk2"):       MINH_KHANH_TOAN,
     ("lop_6", "de_olympic_toan_6"):   MINH_KHANH_TOAN,
+    ("lop_6", "de_hsg_toan_6"):       MINH_KHANH_TOAN_HSG,
     ("lop_6", "de_tieng_anh_6_hk2"):  MINH_KHANH_TIENG_ANH,
     ("lop_7", "toan_7_hk1"):          NHAT_KHOI_TOAN_LOP7,
     ("lop_7", "tieng_anh_7_hk1"):     NHAT_KHOI_TIENG_ANH,

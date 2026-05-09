@@ -112,6 +112,7 @@ FOLDER_EXAM_COUNTS = {
     # Lớp 6
     "de_toan_6_hk2":       9,   # 9 PDF đề đơn
     "de_olympic_toan_6":  29,   # 10 đề đơn + VIOLYMPIC TOÁN 6 có 19 vòng
+    "de_hsg_toan_6":      11,   # 11 PDF đề HSG cấp trường/xã
     "de_tieng_anh_6_hk2": 10,   # 5 đề Lớp 6 + 5 đề Lớp 8
     # Lớp 7
     "toan_7_hk1":         14,   # 14 PDF đề đơn
