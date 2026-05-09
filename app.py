@@ -158,6 +158,8 @@ def index():
         folder_exam_counts_json=json.dumps(FOLDER_EXAM_COUNTS),
         completed_json=completed_json,
         folder_capacities_json=json.dumps(capacities),
+        hsg_exam_nq_json=json.dumps(questions.HSG_EXAM_NQ),
+        hsg_exam_dur_json=json.dumps(questions.HSG_EXAM_DURATIONS),
     )
 
 
@@ -168,10 +170,15 @@ def start():
     student = theme["name"]
     lop = request.form.get("lop", "lop_1")
     folder = request.form.get("folder", "de_hk2_toan_1")
-    duration = int(request.form.get("duration", 45))
-    n_q = int(request.form.get("n_questions", DUR_TO_NQ.get(duration, 15)))
-
     exam_no = int(request.form.get("exam_no", 1))
+
+    if folder == "de_hsg_toan_6":
+        duration = questions.HSG_EXAM_DURATIONS.get(exam_no, 120)
+        n_q = questions.HSG_EXAM_NQ.get(exam_no, 10)
+    else:
+        duration = int(request.form.get("duration", 45))
+        n_q = int(request.form.get("n_questions", DUR_TO_NQ.get(duration, 15)))
+
     seed = int(time.time() * 1000) % 1_000_000
 
     session["student"] = student
@@ -194,7 +201,8 @@ def exam():
     lop = session.get("lop", "lop_1")
     folder = session.get("folder", "de_hk2_toan_1")
     n_q = session.get("n_q", 15)
-    qs = questions.gen_exam(lop, folder, n=n_q, seed=seed)
+    exam_no = session.get("exam_no", 1)
+    qs = questions.gen_exam(lop, folder, n=n_q, seed=seed, exam_no=exam_no)
     student_key = session.get("student_key", "bao_meo")
     theme = get_theme(student_key)
     icons = load_icons_multi(theme["icon_dirs"])
@@ -221,7 +229,8 @@ def submit():
     lop = session.get("lop", "lop_1")
     folder = session.get("folder", "de_hk2_toan_1")
     n_q = session.get("n_q", 15)
-    qs = questions.gen_exam(lop, folder, n=n_q, seed=seed)
+    exam_no = session.get("exam_no", 1)
+    qs = questions.gen_exam(lop, folder, n=n_q, seed=seed, exam_no=exam_no)
     if not qs:
         return redirect(url_for("index"))
 

@@ -72,6 +72,8 @@ const CONTENT_TREE        = {{ content_tree_json|safe }};
 const FOLDER_EXAM_COUNTS  = {{ folder_exam_counts_json|safe }};
 const COMPLETED           = {{ completed_json|safe }};
 const FOLDER_CAPACITIES   = {{ folder_capacities_json|safe }};
+const HSG_EXAM_NQ         = {{ hsg_exam_nq_json|safe }};
+const HSG_EXAM_DURATIONS  = {{ hsg_exam_dur_json|safe }};
 const THEME_CLASS = { bao_meo: 'theme-pink', minh_khanh: 'theme-purple', nhat_khoi: 'theme-blue' };
 
 const screen1   = document.getElementById('screen-1');
@@ -147,6 +149,11 @@ function buildFolderTabs(folders) {
 }
 
 function updateDurTabs(folderKey) {
+  if (folderKey === 'de_hsg_toan_6') {
+    durRow.classList.add('hidden');
+    return;
+  }
+  durRow.classList.remove('hidden');
   const cap = FOLDER_CAPACITIES[folderKey] || 0;
   document.querySelectorAll('.dur-tab').forEach(t => {
     const nq = parseInt(t.dataset.nq);
@@ -179,9 +186,15 @@ function buildExamTabs(folderKey) {
       container.querySelectorAll('.exam-tab').forEach(x => x.classList.remove('active'));
       btn.classList.add('active');
       examNoIn.value = i;
-      durIn.value = ''; nqIn.value = '';
-      document.querySelectorAll('.dur-tab').forEach(x => x.classList.remove('active'));
-      durRow.classList.remove('hidden');
+      if (folderKey === 'de_hsg_toan_6') {
+        durIn.value = HSG_EXAM_DURATIONS[i] || 120;
+        nqIn.value  = HSG_EXAM_NQ[i] || 0;
+        durRow.classList.add('hidden');
+      } else {
+        durIn.value = ''; nqIn.value = '';
+        document.querySelectorAll('.dur-tab').forEach(x => x.classList.remove('active'));
+        durRow.classList.remove('hidden');
+      }
       validate();
     });
     container.appendChild(btn);
