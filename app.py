@@ -173,7 +173,6 @@ def start():
 
     exam_no = int(request.form.get("exam_no", 1))
     seed = int(time.time() * 1000) % 1_000_000
-    qs = questions.gen_exam(lop, folder, n=n_q, seed=seed)
 
     session["student"] = student
     session["student_key"] = student_key
@@ -181,22 +180,25 @@ def start():
     session["folder"] = folder
     session["duration"] = duration
     session["exam_no"] = exam_no
-    session["questions"] = qs
+    session["seed"] = seed
+    session["n_q"] = n_q
     session["start_time"] = time.time()
     return redirect(url_for("exam"))
 
 
 @app.route("/exam")
 def exam():
-    qs = session.get("questions")
-    if not qs:
+    seed = session.get("seed")
+    if seed is None:
         return redirect(url_for("index"))
+    lop = session.get("lop", "lop_1")
+    folder = session.get("folder", "de_hk2_toan_1")
+    n_q = session.get("n_q", 15)
+    qs = questions.gen_exam(lop, folder, n=n_q, seed=seed)
     student_key = session.get("student_key", "bao_meo")
     theme = get_theme(student_key)
     icons = load_icons_multi(theme["icon_dirs"])
     random.shuffle(icons)
-    lop = session.get("lop", "lop_1")
-    folder = session.get("folder", "de_hk2_toan_1")
     return render_template(
         "exam.html",
         questions=qs,
@@ -213,15 +215,19 @@ def exam():
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    qs = session.get("questions")
+    seed = session.get("seed")
+    if seed is None:
+        return redirect(url_for("index"))
+    lop = session.get("lop", "lop_1")
+    folder = session.get("folder", "de_hk2_toan_1")
+    n_q = session.get("n_q", 15)
+    qs = questions.gen_exam(lop, folder, n=n_q, seed=seed)
     if not qs:
         return redirect(url_for("index"))
 
     student = session.get("student", "Bé")
     student_key = session.get("student_key", "bao_meo")
     theme = get_theme(student_key)
-    lop = session.get("lop", "lop_1")
-    folder = session.get("folder", "de_hk2_toan_1")
     duration = session.get("duration", 45)
     start_time = session.get("start_time", time.time())
     time_used = int(time.time() - start_time)
@@ -260,7 +266,7 @@ def submit():
     conn.close()
 
     all_icons = load_icons_multi(theme["icon_dirs"])
-    session.pop("questions", None)
+    session.pop("seed", None)
     return render_template(
         "result.html",
         student=student, student_key=student_key,
