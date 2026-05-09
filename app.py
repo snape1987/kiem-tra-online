@@ -105,6 +105,45 @@ STUDENT_THEMES = {
 
 DUR_TO_NQ = {45: 15, 60: 20, 90: 30}
 
+HSG_ANH_DRIVE_IDS = {
+    1:  "1b8TlXE0jlLCOP0vqT9OcGj1jaVGs8A5q",
+    2:  "1QXEDqCsSWAhdzyyar24oUM4B76XvlkCH",
+    3:  "1OnyYuc5SgZrsndDJvJqisRbzE7eM-zTl",
+    4:  "1vZITTX1UWJHaVVc7wc5eQhWTf9enq9Qa",
+    5:  "1lgV0FQkx_LlGBXIhtJ8AIVAc0vXJa18w",
+    6:  "19fqtYLKQuSkS89Mf_IzHByNozFz9LDhd",
+    7:  "1C1iS-S5JIVBD_vlG_wrXMUzfT4Mu6a6g",
+    8:  "1xOZWcqpFwurVAqfm9zTif9QpQOcaZn_1",
+    9:  "1Nthxs3aVNLH0LqswTrSYhTtiFY5i439a",
+    10: "118GxVGd6ig-81wfFpBlmtPuR8RKOuURP",
+    11: "1oEi-WyQiRTqZLQZ8hXf2R3estky31NGK",
+    12: "1Gq_sdKbDJiTZW04BIEVIrBXaa3XZMavM",
+    13: "1XcPHpzRYO1FqblIZ_r732bDdaXOUrQQe",
+    14: "1YxXsGajF4b6tM-RT3TU0Upwq8SRuf-UF",
+    15: "1XJlC-IfTaCyy-A45-7CXiEbsw9EiNHmo",
+    16: "1mgwClxuQsFA9YmupbJcOi8vANSCnr667",
+    17: "1lCq9ZCY0BItYGUyoLlB47qlkutSvpR-3",
+    18: "1u7FG13oaJLhJhTp9m73YKlvfwKQnVURJ",
+    19: "1seEaRDL_RL1MqhM2iacDw9go7JrTnxG4",
+    20: "1Ytwa8PwJFwXnPjBrAhRPMCewgd-WZle1",
+    21: "1w7fr45HQxUqqnLKwCwgsndms9SJ18G5P",
+    22: "1ZAd_VM4XxYdwpoabCT-M5KuFASUnKmDO",
+    23: "19_L20qj_Dgn8qbYIVuUItr8kByCTcam9",
+    24: "1DA2VxjTPRCGzI2IVfnbXUvxS0SQ8EOl4",
+    25: "1GEB1BlAHOjjKCR07vRfTefl9R-pBT3-C",
+    26: "1-PhH-nfSw1WtNimqN4V8t5_nUnTbYH5d",
+    27: "1aQM-IZZdbf-x92T2wGwj_Zr45L8sdy8-",
+    28: "1FXoZRRlBHcwam3IcpL0XMAh7zvFTuD2V",
+    29: "1Kf4qGLVnd04k7aQ5fTILL5oX0GX8CL9k",
+    30: "1fl7k-s9802g29Cr051hZVjwVfcEX2-11",
+    31: "1-VVGM62Hw4ivPC8ujKNrAsmjvOFBF0xn",
+    32: "1WOzeflcxxyymE2sN1EnteQ_qTC4XjfVS",
+    33: "16HZueaSMiLckRImvbDIcMD5TXFBXtZm2",
+    34: "1UmW2LNEmsqDXwBmpaXZg7VQ5UN-xYS9z",
+    35: "1dUAkm_LWCNlNnGBL7u1LNOt5JYdEzGPX",
+    36: "1WhIt0VeNaPfI__j3mqvQAV_O43VjbjU6",
+}
+
 FOLDER_EXAM_COUNTS = {
     # Lớp 1
     "de_hk2_toan_1":       1,   # 1 PDF đề HK2
@@ -214,7 +253,8 @@ def exam():
     icons = load_icons_multi(theme["icon_dirs"])
     random.shuffle(icons)
     if folder == "de_hsg_anh_6":
-        audio_file = f"hsg_anh_6/de_{exam_no:02d}.mp3"
+        drive_id = HSG_ANH_DRIVE_IDS.get(exam_no, "")
+        audio_file = f"https://drive.google.com/uc?id={drive_id}&export=download" if drive_id else ""
         audio_label = "A. LISTENING — Nhấn ▶ để nghe. Được nghe lại 2 lần."
         subject = "Tiếng Anh"
     else:

@@ -39,7 +39,7 @@
 {% if audio_file %}
 <div class="audio-player card">
   <div class="audio-label">🎧 {{ audio_label if audio_label else 'File nghe: ' + audio_file }}</div>
-  <audio id="main-audio" src="{{ url_for('static', filename='audio/' + audio_file) }}"
+  <audio id="main-audio" src="{% if audio_file.startswith('http') %}{{ audio_file }}{% else %}{{ url_for('static', filename='audio/' + audio_file) }}{% endif %}"
          preload="auto"></audio>
   <div class="audio-controls">
     <button type="button" class="btn-audio" id="btn-play" onclick="playAudio()">▶ Nghe</button>
