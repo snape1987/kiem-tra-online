@@ -640,6 +640,8 @@ def folder_capacity(lop_key, folder_key):
     """Max questions achievable for this folder (used to filter duration options in UI)."""
     if lop_key == "lop_1" and folder_key == "de_hk2_toan_1":
         return 9999  # generator-based, unlimited
+    if folder_key == "de_hsg_toan_6":
+        return 9999  # UI hides dur-row for HSG; capacity unused
     pool = _FOLDER_POOLS.get((lop_key, folder_key), [])
     if not pool:
         return 0
@@ -2050,6 +2052,42 @@ MINH_KHANH_TOAN_HSG = [
     },
 ]
 
+# Per-exam pools for de_hsg_toan_6 (each key = exam_no = PDF number)
+# Exam 1–11 indices into MINH_KHANH_TOAN_HSG (flat list above):
+#   0-5   → Exam 1 xa-phuc-loc (6 câu, 120 phút)
+#   6-9   → Exam 2 cum-truong-thcs-ha-noi (4 câu, 120 phút)
+#   10-16 → Exam 3 xa-ba-thuoc main (7 câu); +[78] extra → 8 câu, 150 phút
+#   17-20 → Exam 4 xa-quang-binh (4 câu, 120 phút)
+#   21-25 → Exam 5 xa-quang-ngoc main (5 câu); +[79:81] extra → 7 câu, 120 phút
+#   26-30 → Exam 6 xa-tong-son (5 câu, 150 phút)
+#   31-37 → Exam 7 xa-luc-ngan (7 câu, 120 phút)
+#   38-48 → Exam 8 xa-nhu-thanh (11 câu, 150 phút)
+#   49-58 → Exam 9 xa-xuan-tin (10 câu, 150 phút)
+#   59-71 → Exam 10 xa-duc-tho (13 câu, 120 phút)
+#   72-77 → Exam 11 phuong-nam-sam-son (6 câu, 120 phút)
+#   78    → xa-ba-thuoc extra (hình vẽ) → belongs to Exam 3
+#   79-80 → xa-quang-ngoc extra → belongs to Exam 5
+_HSG_TOAN_6_EXAMS = {
+    1:  MINH_KHANH_TOAN_HSG[0:6],
+    2:  MINH_KHANH_TOAN_HSG[6:10],
+    3:  MINH_KHANH_TOAN_HSG[10:17] + [MINH_KHANH_TOAN_HSG[78]],
+    4:  MINH_KHANH_TOAN_HSG[17:21],
+    5:  MINH_KHANH_TOAN_HSG[21:26] + MINH_KHANH_TOAN_HSG[79:81],
+    6:  MINH_KHANH_TOAN_HSG[26:31],
+    7:  MINH_KHANH_TOAN_HSG[31:38],
+    8:  MINH_KHANH_TOAN_HSG[38:49],
+    9:  MINH_KHANH_TOAN_HSG[49:59],
+    10: MINH_KHANH_TOAN_HSG[59:72],
+    11: MINH_KHANH_TOAN_HSG[72:78],
+}
+
+HSG_EXAM_DURATIONS = {
+    1: 120, 2: 120, 3: 150, 4: 120, 5: 120,
+    6: 150, 7: 120, 8: 150, 9: 150, 10: 120, 11: 120,
+}
+
+HSG_EXAM_NQ = {k: len(v) for k, v in _HSG_TOAN_6_EXAMS.items()}
+
 _FOLDER_POOLS = {
     ("lop_1", "toan_violympic_1"):    BAO_MEO_VIOLYMPIC,
     ("lop_6", "de_toan_6_hk2"):       MINH_KHANH_TOAN,
@@ -2071,10 +2109,17 @@ def folder_display(lop_key, folder_key):
     return folder_key
 
 
-def gen_exam(lop_key, folder_key, n=15, seed=None):
+def gen_exam(lop_key, folder_key, n=15, seed=None, exam_no=1):
     """Sinh n câu cho lop_key + folder_key."""
     if seed is not None:
         random.seed(seed)
+
+    # HSG Toán 6: mỗi đề_no = toàn bộ câu của 1 PDF (không random subset)
+    if folder_key == "de_hsg_toan_6":
+        pool = _HSG_TOAN_6_EXAMS.get(exam_no or 1, [])
+        result = list(pool)
+        random.shuffle(result)
+        return result
 
     # Lớp 1 — HK2: mix generators + static pool
     if lop_key == "lop_1" and folder_key == "de_hk2_toan_1":
