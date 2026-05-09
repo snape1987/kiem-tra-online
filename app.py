@@ -113,6 +113,7 @@ FOLDER_EXAM_COUNTS = {
     "de_toan_6_hk2":       9,   # 9 PDF đề đơn
     "de_olympic_toan_6":  29,   # 10 đề đơn + VIOLYMPIC TOÁN 6 có 19 vòng
     "de_hsg_toan_6":      11,   # 11 PDF đề HSG cấp trường/xã
+    "de_hsg_anh_6":        36,   # 36 đề HSG Anh 6 (mỗi đề có file MP3)
     "de_tieng_anh_6_hk2": 10,   # 5 đề Lớp 6 + 5 đề Lớp 8
     # Lớp 7
     "toan_7_hk1":         14,   # 14 PDF đề đơn
@@ -160,6 +161,8 @@ def index():
         folder_capacities_json=json.dumps(capacities),
         hsg_exam_nq_json=json.dumps(questions.HSG_EXAM_NQ),
         hsg_exam_dur_json=json.dumps(questions.HSG_EXAM_DURATIONS),
+        hsg_anh_exam_nq_json=json.dumps(questions.HSG_ANH_EXAM_NQ),
+        hsg_anh_exam_dur_json=json.dumps(questions.HSG_ANH_EXAM_DURATIONS),
     )
 
 
@@ -175,6 +178,9 @@ def start():
     if folder == "de_hsg_toan_6":
         duration = questions.HSG_EXAM_DURATIONS.get(exam_no, 120)
         n_q = questions.HSG_EXAM_NQ.get(exam_no, 10)
+    elif folder == "de_hsg_anh_6":
+        duration = questions.HSG_ANH_EXAM_DURATIONS.get(exam_no, 120)
+        n_q = questions.HSG_ANH_EXAM_NQ.get(exam_no, 0)
     else:
         duration = int(request.form.get("duration", 45))
         n_q = int(request.form.get("n_questions", DUR_TO_NQ.get(duration, 15)))
@@ -207,6 +213,14 @@ def exam():
     theme = get_theme(student_key)
     icons = load_icons_multi(theme["icon_dirs"])
     random.shuffle(icons)
+    if folder == "de_hsg_anh_6":
+        audio_file = f"hsg_anh_6/de_{exam_no:02d}.mp3"
+        audio_label = "A. LISTENING — Nhấn ▶ để nghe. Được nghe lại 2 lần."
+        subject = "Tiếng Anh"
+    else:
+        audio_file = ""
+        audio_label = ""
+        subject = "Tiếng Anh" if "tieng_anh" in folder or "anh" in folder else "Toán"
     return render_template(
         "exam.html",
         questions=qs,
@@ -216,7 +230,9 @@ def exam():
         folder_name=questions.folder_display(lop, folder),
         theme=theme,
         icons=icons,
-        audio_file="",
+        audio_file=audio_file,
+        audio_label=audio_label,
+        subject=subject,
         body_class=theme["css"],
     )
 

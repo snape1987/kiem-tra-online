@@ -38,7 +38,7 @@
 {# === AUDIO PLAYER (nếu có file nghe) === #}
 {% if audio_file %}
 <div class="audio-player card">
-  <div class="audio-label">🎧 File nghe: <b>{{ audio_file }}</b></div>
+  <div class="audio-label">🎧 {{ audio_label if audio_label else 'File nghe: ' + audio_file }}</div>
   <audio id="main-audio" src="{{ url_for('static', filename='audio/' + audio_file) }}"
          preload="auto"></audio>
   <div class="audio-controls">
