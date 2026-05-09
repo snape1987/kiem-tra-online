@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+{% block title %}{{ student }} — {{ folder_name }}{% endblock %}
+{% block content %}
+<div class="{{ theme.css }}">
+
+{# Kitty decoration #}
+{% if icons|length >= 2 %}
+<div class="kitty-deco kitty-topleft">
+  <img src="{{ url_for('static', filename='icons/' + icons[0]) }}" alt="">
+</div>
+<div class="kitty-deco kitty-topright">
+  <img src="{{ url_for('static', filename='icons/' + icons[1]) }}" alt="">
+</div>
+{% endif %}
+
+{# === NAVIGATOR PANEL === #}
+<div id="q-nav" class="q-nav">
+  <div class="q-nav-title">📋 Bài</div>
+  <div class="q-nav-grid" id="q-nav-grid">
+    {% for q in questions %}
+    <button type="button" class="q-nav-btn unanswered"
+            id="nav-{{ loop.index0 }}"
+            onclick="goToQ({{ loop.index0 }})">{{ loop.index }}</button>
+    {% endfor %}
+  </div>
+  <div class="q-nav-legend">
+    <span class="leg-green">●</span>Đã làm&nbsp;
+    <span class="leg-red">●</span>Chưa
+  </div>
+</div>
+
+{# === HEADER === #}
+<div class="exam-header">
+  <h2>{{ theme.icon }} {{ folder_name }} — {{ student }}</h2>
+  <div class="timer" id="timer-top">⏰ {{ duration }}:00</div>
+</div>
+
+{# === AUDIO PLAYER (nếu có file nghe) === #}
+{% if audio_file %}
+<div class="audio-player card">
+  <div class="audio-label">🎧 File nghe: <b>{{ audio_file }}</b></div>
+  <audio id="main-audio" src="{{ url_for('static', filename='audio/' + audio_file) }}"
+         preload="auto"></audio>
+  <div class="audio-controls">
+    <button type="button" class="btn-audio" id="btn-play" onclick="playAudio()">▶ Nghe</button>
+    <button type="button" class="btn-audio" id="btn-replay" onclick="replayAudio()" disabled>🔁 Nghe lại (<span id="replay-count">2</span> lần)</button>
+    <div class="audio-prog-wrap"><div class="audio-prog" id="audio-prog"></div></div>
+    <span class="audio-time" id="audio-time">0:00</span>
+  </div>
+</div>
+{% endif %}
+
+{# === FORM CÂU HỎI === #}
+<form method="POST" action="{{ url_for('submit') }}" id="exam-form">
+{% set ns = namespace(qnum=0) %}
+{% for q in questions %}
+{% set qi = loop.index0 %}
+{% set ns.qnum = ns.qnum + 1 %}
+{% if q.section_start %}
+<div class="section-header">
+  <div class="section-title">{{ q.section_start }}</div>
+  {% if q.section_instruction %}<div class="section-instr">{{ q.section_instruction }}</div>{% endif %}
+</div>
+{% endif %}
+{% if q.passage_text %}
+<div class="passage-card card">
+  <div class="passage-label">📄 Đọc đoạn văn sau:</div>
+  <div class="passage-body">{{ q.passage_text }}</div>
+</div>
+{% endif %}
+<div class="question card" id="q-{{ qi }}" data-idx="{{ qi }}">
+  <div class="qnum">
+    Câu {{ ns.qnum }}
+    {% if q.topic %}<span class="topic">({{ q.topic }})</span>{% endif %}
+  </div>
+  <div class="qtext">{{ q.q }}</div>
+
+  {% if q.type == 'choice' %}
+  <div class="choices">
+    {% for opt in q.options %}
+    <label class="choice">
+      <input type="radio" name="q_{{ qi }}" value="{{ opt }}"
+             onchange="onRadioChange({{ qi }})">
+      <span>{{ opt }}</span>
+    </label>
+    {% endfor %}
+  </div>
+  {% else %}
+  {% if subject != 'Tiếng Anh' and student_key != 'bao_meo' %}
+  <div class="scratch-label">📝 Bài giải (không nộp):</div>
+  <textarea class="scratch-area" placeholder="Ghi bài giải tại đây..." tabindex="-1"></textarea>
+  {% endif %}
+  <input class="fill" type="text"
+         name="q_{{ qi }}"
+         data-idx="{{ qi }}"
+         placeholder="{% if subject == 'Tiếng Anh' %}Gõ đáp án...{% else %}Điền kết quả...{% endif %}"
+         autocomplete="off"
+         onkeydown="onFillKey(event, {{ qi }})"
+         oninput="onFillInput({{ qi }}, this)">
+  {% endif %}
+</div>
+{% endfor %}
+
+{# === BOTTOM BAR === #}
+<div class="bottom-bar">
+  <div class="bottom-timer">
+    <span class="bt-label">Còn lại</span>
+    <span class="bt-time" id="timer-bottom">{{ duration }}:00</span>
+  </div>
+  <button type="button" class="btn-review" onclick="reviewUnanswered()">📋 Kiểm tra lại</button>
+  <button type="submit" class="btn-big btn-submit">Nộp bài ✅</button>
+</div>
+<div style="height:88px"></div>
+</form>
+
+<div id="toast" class="toast hidden"></div>
+
+</div>{# end theme div #}
+
+<script>
+const TOTAL    = {{ questions|length }};
+const DURATION = {{ duration }};
+const answered = new Array(TOTAL).fill(false);
+let timeLeft   = DURATION * 60;
+let currentIdx = 0;  // câu đang focus
+
+// Fix radio names (Jinja nested loop issue)
+document.querySelectorAll('.question').forEach((el, i) => {
+  el.querySelectorAll('input[type=radio]').forEach(r => r.name = 'q_' + i);
+});
+
+// ─── Navigator ────────────────────────────────────────────────
+function goToQ(idx) {
+  currentIdx = idx;
+  const el = document.getElementById('q-' + idx);
+  if (!el) return;
+  el.scrollIntoView({behavior:'smooth', block:'center'});
+  el.classList.add('highlight-pulse');
+  setTimeout(() => el.classList.remove('highlight-pulse'), 800);
+  // Focus fill input nếu có
+  const fill = el.querySelector('.fill');
+  if (fill) setTimeout(() => fill.focus(), 420);
+}
+
+function markDone(idx, done) {
+  answered[idx] = done;
+  const btn = document.getElementById('nav-' + idx);
+  if (!btn) return;
+  btn.classList.toggle('done',       done);
+  btn.classList.toggle('unanswered', !done);
+}
+
+// Câu gần nhất chưa làm (scan forward từ idx+1, wrap)
+function nearestUnanswered(fromIdx) {
+  for (let i = fromIdx + 1; i < TOTAL; i++) if (!answered[i]) return i;
+  for (let i = 0; i < fromIdx;         i++) if (!answered[i]) return i;
+  return -1;
+}
+
+// ─── Radio change: chỉ mark, KHÔNG jump ───────────────────────
+function onRadioChange(idx) {
+  markDone(idx, true);
+  currentIdx = idx;
+  // Không tự jump — chờ user ấn Enter hoặc tự scroll
+}
+
+// ─── Fill: mark khi có nội dung, un-mark khi xóa hết ─────────
+function onFillInput(idx, inp) {
+  markDone(idx, inp.value.trim().length > 0);
+  currentIdx = idx;
+}
+
+// ─── Enter key: nhảy câu gần nhất chưa làm ───────────────────
+function onFillKey(e, idx) {
+  if (e.key !== 'Enter') return;
+  e.preventDefault();
+  jumpNext(idx);
+}
+
+// Cũng listen Enter trên toàn trang để jump từ radio
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Enter') return;
+  // Nếu đang focus trong fill input → handled by onFillKey
+  if (document.activeElement && document.activeElement.classList.contains('fill')) return;
+  // Nếu đang focus trong radio → jump
+  const active = document.activeElement;
+  if (active && active.type === 'radio') {
+    e.preventDefault();
+    const q = active.closest('.question');
+    if (q) jumpNext(parseInt(q.dataset.idx));
+  }
+});
+
+function jumpNext(fromIdx) {
+  const next = nearestUnanswered(fromIdx);
+  if (next < 0) {
+    showToast('🎉 Đã làm hết ' + TOTAL + ' câu! Kiểm tra lại rồi nộp bài nhé.');
+    return;
+  }
+  goToQ(next);
+}
+
+// ─── Kiểm tra lại ─────────────────────────────────────────────
+function reviewUnanswered() {
+  const missing = [];
+  for (let i = 0; i < TOTAL; i++) if (!answered[i]) missing.push(i + 1);
+  goToQ(0);
+  if (!missing.length) {
+    showToast('🎉 Làm hết rồi! Kiểm tra xong thì nộp bài nhé.');
+    return;
+  }
+  document.querySelectorAll('.q-nav-btn.unanswered').forEach(b => {
+    b.classList.add('blink');
+    setTimeout(() => b.classList.remove('blink'), 2200);
+  });
+  showToast('⚠️ Còn ' + missing.length + ' câu chưa làm: ' +
+    missing.slice(0, 8).join(', ') + (missing.length > 8 ? '...' : ''));
+}
+
+// ─── Toast ────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.remove('hidden');
+  clearTimeout(t._tid);
+  t._tid = setTimeout(() => t.classList.add('hidden'), 3500);
+}
+
+// ─── Timer ────────────────────────────────────────────────────
+const ttop = document.getElementById('timer-top');
+const tbot = document.getElementById('timer-bottom');
+const form = document.getElementById('exam-form');
+function fmt(s) {
+  return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
+}
+const tick = () => {
+  const f = fmt(timeLeft);
+  ttop.textContent = '⏰ ' + f;
+  tbot.textContent = f;
+  if (timeLeft <= 60) {
+    ttop.classList.add('warn');
+    document.querySelector('.bottom-timer').classList.add('warn-time');
+  }
+  if (timeLeft <= 0) { form.submit(); return; }
+  timeLeft--;
+};
+tick(); setInterval(tick, 1000);
+
+// ─── Audio player ─────────────────────────────────────────────
+{% if audio_file %}
+let replayLeft = 2;
+let played = false;
+const audio = document.getElementById('main-audio');
+const prog  = document.getElementById('audio-prog');
+const atime = document.getElementById('audio-time');
+const btnPlay   = document.getElementById('btn-play');
+const btnReplay = document.getElementById('btn-replay');
+
+function playAudio() {
+  if (!played) {
+    played = true;
+    btnPlay.disabled = true;
+    btnPlay.textContent = '▶ Đang nghe...';
+    btnReplay.disabled = false;
+  }
+  audio.play();
+}
+function replayAudio() {
+  if (replayLeft <= 0) return;
+  replayLeft--;
+  document.getElementById('replay-count').textContent = replayLeft;
+  if (replayLeft === 0) btnReplay.disabled = true;
+  audio.currentTime = 0;
+  audio.play();
+}
+audio.addEventListener('timeupdate', () => {
+  const pct = audio.duration ? (audio.currentTime / audio.duration * 100) : 0;
+  prog.style.width = pct + '%';
+  const s = Math.floor(audio.currentTime);
+  atime.textContent = Math.floor(s/60) + ':' + String(s%60).padStart(2,'0');
+});
+audio.addEventListener('ended', () => {
+  btnPlay.textContent = '▶ Đã nghe xong';
+});
+{% endif %}
+</script>
+{% endblock %}
