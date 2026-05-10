@@ -139,6 +139,10 @@ h2 { color: #555; margin-top: 28px; }
 .exam-tab.exam-done:hover:not(.active) { background: #16a34a; border-color: #15803d; }
 .exam-tab.exam-todo:hover:not(.active) { background: #fee2e2; border-color: #f87171; }
 .exam-tab.active { background: var(--primary) !important; border-color: var(--primary) !important; color: white !important; }
+.exam-legend { display: flex; gap: 14px; margin-top: 6px; font-size: 0.78rem; }
+.leg-item { display: flex; align-items: center; gap: 4px; font-weight: 500; }
+.leg-done { color: #16a34a; }
+.leg-todo { color: #ef4444; }
 
 /* Student background for form card */
 .student-bg-bao_meo   { border-top: 4px solid #ff7eb6 !important; }

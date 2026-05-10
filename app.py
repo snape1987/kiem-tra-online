@@ -136,7 +136,7 @@ def index():
     ])
     conn = get_db()
     rows = conn.execute(
-        "SELECT student_key, folder, exam_no FROM exam_progress"
+        "SELECT student_key, folder, exam_no FROM exam_progress WHERE score >= 7"
     ).fetchall()
     conn.close()
     completed: dict = {}
