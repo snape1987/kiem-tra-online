@@ -101,6 +101,14 @@ STUDENT_THEMES = {
         "grades": "Lớp 8A1",
         "has_audio": False,
     },
+    "tip_nicolas": {
+        "name": "Tip Nicolas", "icon": "🤖",
+        "primary": "#dc2626", "bg": "#f4f4f5",
+        "css": "theme-gundam", "icon_dir": "tip_nicolas",
+        "icon_dirs": ["tip_nicolas"],
+        "grades": "Lớp 6",
+        "has_audio": False,
+    },
 }
 
 DUR_TO_NQ = {45: 15, 60: 20, 90: 30}

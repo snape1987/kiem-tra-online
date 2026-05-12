@@ -25,7 +25,13 @@
   --primary-glow: rgba(56,189,248,.3);
   --bg-body:      #f0f9ff;
 }
-body.theme-purple, body.theme-blue, body.theme-pink {
+.theme-gundam, body.theme-gundam {
+  --primary:      #dc2626;
+  --primary-soft: #fde8e8;
+  --primary-glow: rgba(220,38,38,.28);
+  --bg-body:      #f4f4f5;
+}
+body.theme-purple, body.theme-blue, body.theme-pink, body.theme-gundam {
   background: var(--bg-body);
 }
 
@@ -145,9 +151,10 @@ h2 { color: #555; margin-top: 28px; }
 .leg-todo { color: #ef4444; }
 
 /* Student background for form card */
-.student-bg-bao_meo   { border-top: 4px solid #ff7eb6 !important; }
-.student-bg-minh_khanh{ border-top: 4px solid #c084fc !important; }
-.student-bg-nhat_khoi { border-top: 4px solid #38bdf8 !important; }
+.student-bg-bao_meo    { border-top: 4px solid #ff7eb6 !important; }
+.student-bg-minh_khanh { border-top: 4px solid #c084fc !important; }
+.student-bg-nhat_khoi  { border-top: 4px solid #38bdf8 !important; }
+.student-bg-tip_nicolas{ border-top: 4px solid #dc2626 !important; }
 
 /* Selected student compact display */
 .selected-student {
@@ -540,6 +547,8 @@ table.history th { background: var(--primary-soft); }
 .card-minh_khanh:hover { background: #fdf4ff; border-color: #c084fc; }
 .card-nhat_khoi  { border-color: #93d9f8; }
 .card-nhat_khoi:hover  { background: #f0f9ff; border-color: #38bdf8; }
+.card-tip_nicolas { border-color: #fca5a5; }
+.card-tip_nicolas:hover { background: #fef2f2; border-color: #dc2626; }
 
 .sc-icon   { font-size: 3.6em; margin-bottom: 14px; }
 .sc-name   { font-size: 1.3em; font-weight: 800; margin-bottom: 5px; }
@@ -548,6 +557,7 @@ table.history th { background: var(--primary-soft); }
 .card-bao_meo    .sc-name { color: #ff7eb6; }
 .card-minh_khanh .sc-name { color: #c084fc; }
 .card-nhat_khoi  .sc-name { color: #38bdf8; }
+.card-tip_nicolas .sc-name { color: #dc2626; }
 
 /* Thanh bé đã chọn (màn hình 2) */
 .student-bar {
