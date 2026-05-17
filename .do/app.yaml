@@ -19,12 +19,7 @@ services:
     envs:
       - key: PYTHONUNBUFFERED
         value: "1"
-      - key: DATABASE_URL
-        scope: RUN_TIME
-        value: ${db.DATABASE_URL}
-
-databases:
-  - name: db
-    engine: PG
-    version: "16"
-    production: false
+      # DATABASE_URL: đặt thủ công trong dashboard DO (Settings ->
+      # Environment Variables), trỏ tới Postgres ngoài (Neon free).
+      # KHÔNG khai báo databases: ở đây để tránh DO tự tạo dev DB tính phí.
+      # Không có biến này -> app tự fallback SQLite (chỉ hợp local dev).
