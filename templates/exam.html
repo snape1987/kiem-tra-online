@@ -35,17 +35,12 @@
   <div class="timer" id="timer-top">⏰ {{ duration }}:00</div>
 </div>
 
-{# === AUDIO PLAYER (nếu có file nghe) === #}
+{# === AUDIO LINK (nếu có file nghe) === #}
 {% if audio_file %}
 <div class="audio-player card">
-  <div class="audio-label">🎧 {{ audio_label if audio_label else 'File nghe: ' + audio_file }}</div>
-  <audio id="main-audio" src="{% if audio_file.startswith('http') %}{{ audio_file }}{% else %}{{ url_for('static', filename='audio/' + audio_file) }}{% endif %}"
-         preload="auto"></audio>
+  <div class="audio-label">🎧 {{ audio_label if audio_label else 'File nghe' }}</div>
   <div class="audio-controls">
-    <button type="button" class="btn-audio" id="btn-play" onclick="playAudio()">▶ Nghe</button>
-    <button type="button" class="btn-audio" id="btn-replay" onclick="replayAudio()" disabled>🔁 Nghe lại (<span id="replay-count">2</span> lần)</button>
-    <div class="audio-prog-wrap"><div class="audio-prog" id="audio-prog"></div></div>
-    <span class="audio-time" id="audio-time">0:00</span>
+    <a class="btn-audio" href="{{ audio_file }}" target="_blank" rel="noopener noreferrer">🔊 Mở file nghe (tab mới)</a>
   </div>
 </div>
 {% endif %}
@@ -252,42 +247,5 @@ const tick = () => {
 };
 tick(); setInterval(tick, 1000);
 
-// ─── Audio player ─────────────────────────────────────────────
-{% if audio_file %}
-let replayLeft = 2;
-let played = false;
-const audio = document.getElementById('main-audio');
-const prog  = document.getElementById('audio-prog');
-const atime = document.getElementById('audio-time');
-const btnPlay   = document.getElementById('btn-play');
-const btnReplay = document.getElementById('btn-replay');
-
-function playAudio() {
-  if (!played) {
-    played = true;
-    btnPlay.disabled = true;
-    btnPlay.textContent = '▶ Đang nghe...';
-    btnReplay.disabled = false;
-  }
-  audio.play();
-}
-function replayAudio() {
-  if (replayLeft <= 0) return;
-  replayLeft--;
-  document.getElementById('replay-count').textContent = replayLeft;
-  if (replayLeft === 0) btnReplay.disabled = true;
-  audio.currentTime = 0;
-  audio.play();
-}
-audio.addEventListener('timeupdate', () => {
-  const pct = audio.duration ? (audio.currentTime / audio.duration * 100) : 0;
-  prog.style.width = pct + '%';
-  const s = Math.floor(audio.currentTime);
-  atime.textContent = Math.floor(s/60) + ':' + String(s%60).padStart(2,'0');
-});
-audio.addEventListener('ended', () => {
-  btnPlay.textContent = '▶ Đã nghe xong';
-});
-{% endif %}
 </script>
 {% endblock %}

@@ -262,8 +262,8 @@ def exam():
     random.shuffle(icons)
     if folder == "de_hsg_anh_6":
         drive_id = HSG_ANH_DRIVE_IDS.get(exam_no, "")
-        audio_file = f"https://drive.google.com/uc?id={drive_id}&export=download" if drive_id else ""
-        audio_label = "A. LISTENING — Nhấn ▶ để nghe. Được nghe lại 2 lần."
+        audio_file = f"https://drive.google.com/file/d/{drive_id}/view" if drive_id else ""
+        audio_label = "A. LISTENING — Nhấn nút bên dưới để mở file nghe (mở tab mới)."
         subject = "Tiếng Anh"
     else:
         audio_file = ""

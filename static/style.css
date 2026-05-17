@@ -377,19 +377,13 @@ input[type=text]:focus, select:focus { border-color: var(--primary); outline: no
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
 }
 .btn-audio {
+  display: inline-block; text-decoration: none;
   background: var(--primary); color: white; border: none;
   padding: 9px 20px; border-radius: 22px;
   font-size: .95em; font-weight: 700; cursor: pointer;
   transition: all .15s;
 }
-.btn-audio:hover:not(:disabled) { filter: brightness(1.1); }
-.btn-audio:disabled { background: #ccc; cursor: not-allowed; }
-.audio-prog-wrap {
-  flex: 1; height: 8px; background: #ddd;
-  border-radius: 8px; overflow: hidden; min-width: 80px;
-}
-.audio-prog { height: 100%; background: var(--primary); width: 0%; transition: width .3s; }
-.audio-time { font-size: .88em; color: #777; min-width: 36px; }
+.btn-audio:hover { filter: brightness(1.1); }
 
 /* ===== RESULT PAGE ===== */
 .result-hero {
