@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Lịch sử điểm{% endblock %}
+{% block content %}
+
+<h1>📊 Lịch sử điểm</h1>
+
+{% if not by_day %}
+<div class="card">
+  <p>Chưa có lượt làm bài nào được lưu.</p>
+  <a href="{{ url_for('index') }}" class="btn-big">Làm bài ngay 🚀</a>
+</div>
+{% else %}
+{% for day, items in by_day.items() %}
+<h2 class="day">📅 {{ day }}</h2>
+<table class="history">
+  <thead>
+    <tr>
+      <th>Giờ</th>
+      <th>Học sinh</th>
+      <th>Bài</th>
+      <th>Điểm</th>
+      <th>Số câu</th>
+      <th>Thời lượng</th>
+      <th>Thời gian làm</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in items %}
+    {% set sc = a.score %}
+    <tr class="{% if sc >= 8 %}score-high{% elif sc >= 5 %}score-mid{% else %}score-low{% endif %}">
+      <td>{{ a.created_at[11:16] }}</td>
+      <td>{{ a.student }}</td>
+      <td>{{ a.mode | modename }}</td>
+      <td><b>{{ sc }}</b>/10</td>
+      <td>{{ a.total }} câu</td>
+      <td>{{ a.duration }} phút</td>
+      <td>{{ a.time_used // 60 }}p {{ '%02d'|format(a.time_used % 60) }}s</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endfor %}
+{% endif %}
+
+{% endblock %}
