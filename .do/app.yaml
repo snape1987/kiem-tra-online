@@ -19,3 +19,12 @@ services:
     envs:
       - key: PYTHONUNBUFFERED
         value: "1"
+      - key: DATABASE_URL
+        scope: RUN_TIME
+        value: ${db.DATABASE_URL}
+
+databases:
+  - name: db
+    engine: PG
+    version: "16"
+    production: false

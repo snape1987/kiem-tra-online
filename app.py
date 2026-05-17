@@ -1,7 +1,6 @@
 """Flask webapp — Kiểm Tra Online — Gia Đình SU KHÔI MÈO."""
 import os
 import random
-import sqlite3
 import time
 import json
 from datetime import datetime
@@ -11,21 +10,42 @@ import questions
 
 app = Flask(__name__)
 app.secret_key = "kiemtra-sukhoikem-2026"
-_DATA_DIR = os.environ.get("DATA_DIR", os.path.dirname(__file__))
-DB_PATH = os.path.join(_DATA_DIR, "kiemtra.db")
+
+# Prod (DigitalOcean): Postgres qua DATABASE_URL -> dữ liệu sống qua mỗi lần
+# deploy. Local: SQLite file. Đĩa của App Platform là ephemeral nên SQLite
+# trên prod sẽ mất sạch lịch sử mỗi lần deploy/restart.
+DATABASE_URL = os.environ.get("DATABASE_URL", "").strip()
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = "postgresql://" + DATABASE_URL[len("postgres://"):]
+USE_PG = DATABASE_URL.startswith("postgresql://")
+
+if USE_PG:
+    import psycopg
+    from psycopg.rows import dict_row
+else:
+    import sqlite3
+    _DATA_DIR = os.environ.get("DATA_DIR", os.path.dirname(__file__))
+    DB_PATH = os.path.join(_DATA_DIR, "kiemtra.db")
 
 
 def get_db():
+    if USE_PG:
+        return psycopg.connect(DATABASE_URL, row_factory=dict_row)
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
 
+def _ph(sql):
+    return sql.replace("?", "%s") if USE_PG else sql
+
+
 def init_db():
+    pk = "SERIAL PRIMARY KEY" if USE_PG else "INTEGER PRIMARY KEY AUTOINCREMENT"
     conn = get_db()
-    conn.execute("""
+    conn.execute(f"""
         CREATE TABLE IF NOT EXISTS attempts (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id {pk},
             student TEXT NOT NULL,
             student_key TEXT NOT NULL DEFAULT 'bao_meo',
             mode TEXT NOT NULL,
@@ -36,9 +56,9 @@ def init_db():
             created_at TEXT NOT NULL
         )
     """)
-    conn.execute("""
+    conn.execute(f"""
         CREATE TABLE IF NOT EXISTS exam_progress (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id {pk},
             student_key TEXT NOT NULL,
             folder TEXT NOT NULL,
             exam_no INTEGER NOT NULL,
@@ -324,14 +344,14 @@ def submit():
 
     conn = get_db()
     conn.execute(
-        "INSERT INTO attempts (student, student_key, mode, duration, score, total, time_used, created_at)"
-        " VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        _ph("INSERT INTO attempts (student, student_key, mode, duration, score, total, time_used, created_at)"
+            " VALUES (?, ?, ?, ?, ?, ?, ?, ?)"),
         (student, student_key, folder, duration, score_10, total, time_used,
          datetime.now().isoformat(timespec="seconds")),
     )
     conn.execute(
-        "INSERT INTO exam_progress (student_key, folder, exam_no, score, completed_at)"
-        " VALUES (?, ?, ?, ?, ?)",
+        _ph("INSERT INTO exam_progress (student_key, folder, exam_no, score, completed_at)"
+            " VALUES (?, ?, ?, ?, ?)"),
         (student_key, folder, exam_no, score_10,
          datetime.now().isoformat(timespec="seconds")),
     )
