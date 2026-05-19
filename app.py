@@ -6,11 +6,21 @@ import time
 import json
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for, session
+from markupsafe import Markup, escape
 
 import questions
 
 app = Flask(__name__)
 app.secret_key = "kiemtra-sukhoikem-2026"
+
+
+@app.template_filter("udl")
+def _udl(text):
+    """Escape text, then allow only <u>...</u> through (for phonetics underline)."""
+    if text is None:
+        return ""
+    s = str(escape(text)).replace("&lt;u&gt;", "<u>").replace("&lt;/u&gt;", "</u>")
+    return Markup(s)
 _DATA_DIR = os.environ.get("DATA_DIR", os.path.dirname(__file__))
 DB_PATH = os.path.join(_DATA_DIR, "kiemtra.db")
 

@@ -34,7 +34,7 @@
 <ol class="results">
 {% for r in results %}
 <li class="{{ 'ok' if r.ok else 'wrong' }}">
-  <div class="qtext">{{ r.q }}</div>
+  <div class="qtext">{{ r.q|udl }}</div>
   {% if r.image %}
   <div class="q-figure">
     <img src="{{ url_for('static', filename=r.image) }}" alt="Hình vẽ bài toán"

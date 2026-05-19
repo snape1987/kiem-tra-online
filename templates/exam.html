@@ -73,7 +73,7 @@
     Câu {{ ns.qnum }}
     {% if q.topic %}<span class="topic">({{ q.topic }})</span>{% endif %}
   </div>
-  <div class="qtext">{{ q.q }}</div>
+  <div class="qtext">{{ q.q|udl }}</div>
   {% if q.image %}
   <div class="q-figure">
     <img src="{{ url_for('static', filename=q.image) }}" alt="Hình vẽ bài toán"
