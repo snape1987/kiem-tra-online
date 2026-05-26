@@ -109,6 +109,7 @@ FOLDER_EXAM_COUNTS = {
     # Lớp 1
     "de_hk2_toan_1":       1,   # 1 PDF đề HK2
     "toan_violympic_1":   19,   # 3 PDF cùng nội dung → 19 vòng
+    "de_hsg_toan_1":      21,   # 20 đề HSG + 1 đề ôn tổng hợp
     # Lớp 6
     "de_toan_6_hk2":       9,   # 9 PDF đề đơn
     "de_olympic_toan_6":  29,   # 10 đề đơn + VIOLYMPIC TOÁN 6 có 19 vòng
@@ -163,6 +164,8 @@ def index():
         hsg_exam_dur_json=json.dumps(questions.HSG_EXAM_DURATIONS),
         hsg_anh_exam_nq_json=json.dumps(questions.HSG_ANH_EXAM_NQ),
         hsg_anh_exam_dur_json=json.dumps(questions.HSG_ANH_EXAM_DURATIONS),
+        hsg_toan_1_exam_nq_json=json.dumps(questions.HSG_TOAN_1_NQ),
+        hsg_toan_1_exam_dur_json=json.dumps(questions.HSG_TOAN_1_DURATIONS),
     )
 
 
@@ -181,6 +184,9 @@ def start():
     elif folder == "de_hsg_anh_6":
         duration = questions.HSG_ANH_EXAM_DURATIONS.get(exam_no, 120)
         n_q = questions.HSG_ANH_EXAM_NQ.get(exam_no, 0)
+    elif folder == "de_hsg_toan_1":
+        duration = questions.HSG_TOAN_1_DURATIONS.get(exam_no, 60)
+        n_q = questions.HSG_TOAN_1_NQ.get(exam_no, 10)
     else:
         duration = int(request.form.get("duration", 45))
         n_q = int(request.form.get("n_questions", DUR_TO_NQ.get(duration, 15)))

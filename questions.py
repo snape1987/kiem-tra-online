@@ -1188,6 +1188,7 @@ CONTENT_TREE = [
     ("lop_1", "Lớp 1", [
         ("de_hk2_toan_1",    "Đề HK2 Toán 1"),
         ("toan_violympic_1", "Toán Violympic 1"),
+        ("de_hsg_toan_1",    "Đề HSG Toán 1"),
     ]),
     ("lop_6", "Lớp 6", [
         ("de_toan_6_hk2",      "Đề Toán 6 Học Kỳ 2"),
@@ -2915,6 +2916,413 @@ _HSG_ANH_6_EXAMS[2] = _HSG_ANH_DE_2
 HSG_ANH_EXAM_DURATIONS = {i: 120 for i in range(1, 37)}
 HSG_ANH_EXAM_NQ = {k: len(v) for k, v in _HSG_ANH_6_EXAMS.items()}
 
+# ─── Bảo Mèo — Lớp 1 — Đề HSG Toán 1 (20 đề + 1 đề ôn tổng hợp) ──────────────
+# Nguồn: "20 ĐỀ THI HSG TOÁN LỚP 1" (PDF scan, 40 trang).
+# Chỉ giữ các câu chấm tự động được (1 đáp án/câu); câu vẽ hình / kể tên /
+# điền nhiều ô / "viết tất cả số" / đặt đề toán đã được lược bỏ.
+# Hình vẽ đếm hình được cắt vào static/hsg_toan1_figures/.
+# Đáp án có "key" in sẵn cho Đề 2, 15, 16, 20; các đề còn lại tự tính.
+_F = "hsg_toan1_figures/"
+
+_HSG_TOAN_1_DE_1 = [
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Hà nghĩ ra một số, nếu đem số đó cộng với 2 rồi trừ đi 5 thì được kết quả là 13. Số Hà nghĩ ra là?",
+     "answer": "16"},
+    {"type": "fill", "topic": "Số",
+     "q": "Số nào cộng với 26 thì được 36?", "answer": "10"},
+    {"type": "fill", "topic": "Hình học", "image": _F + "de01_b5.png",
+     "q": "Nhìn hình vẽ: đỉnh A nối với các điểm B, M, N, C nằm trên một đường thẳng. Hình bên có tất cả mấy hình tam giác?",
+     "answer": "6"},
+]
+
+_HSG_TOAN_1_DE_2 = [
+    {"type": "fill", "topic": "Số", "q": "Điền số thích hợp vào ô trống: 14 + … = 68", "answer": "54"},
+    {"type": "fill", "topic": "Số", "q": "Điền số thích hợp vào ô trống: … − 36 = 52", "answer": "88"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu thích hợp (+ hoặc −) vào chỗ chấm: 40 … 32 = 72", "answer": "+"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Hùng có một số viên bi. Sau khi được thêm 13 viên thì Hùng có 58 viên bi. Hỏi trước lúc thêm Hùng có bao nhiêu viên bi?",
+     "answer": "45"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Hai sợi dây dài tất cả 16 cm. Sợi dây thứ nhất dài 5 cm. Hỏi sợi dây thứ hai dài bao nhiêu xăng-ti-mét?",
+     "answer": "11"},
+    {"type": "choice", "topic": "Hình học", "image": _F + "de02_b6.png",
+     "q": "Hình vẽ bên có bao nhiêu hình tam giác?",
+     "options": ["A. 3 hình tam giác", "B. 4 hình tam giác", "C. 5 hình tam giác", "D. 6 hình tam giác"],
+     "answer": "D. 6 hình tam giác"},
+]
+
+_HSG_TOAN_1_DE_3 = [
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 8 − 2 + 3 =", "answer": "9"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 5 + 5 − 8 =", "answer": "2"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 9 − 5 + 3 =", "answer": "7"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 10 − 2 + 0 =", "answer": "8"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 7 + 2 − 5 =", "answer": "4"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 6 + 0 + 3 =", "answer": "9"},
+    {"type": "fill", "topic": "Số", "q": "Điền số thích hợp vào chỗ chấm: 5 + … = 2 + 5", "answer": "2"},
+    {"type": "fill", "topic": "Số", "q": "Điền số thích hợp vào chỗ chấm: 7 − … = 3 + 4", "answer": "0"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 5 + 4 … 3 + 5 + 0", "answer": ">"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 1 + 5 + 2 … 6 + 3", "answer": "<"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 7 − 5 … 6 − 4 + 3", "answer": "<"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 2 + 6 − 1 … 4 + 3", "answer": "="},
+    {"type": "fill", "topic": "Hình học", "image": _F + "de03_b5.png",
+     "q": "Hình bên có tất cả bao nhiêu hình vuông?", "answer": "5"},
+]
+
+_HSG_TOAN_1_DE_4 = [
+    {"type": "fill", "topic": "Số", "q": "Số lớn nhất có hai chữ số giống nhau là?", "answer": "99"},
+    {"type": "fill", "topic": "Cộng/Trừ",
+     "q": "Tính theo mẫu (3 + 6 + 7 + 4 = (3 + 7) + (6 + 4) = 10 + 10 = 20): 9 + 7 + 3 + 1 =",
+     "answer": "20"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Bình hỏi Minh: Năm nay chị bạn bao nhiêu tuổi? Minh đáp: Tuổi mình nhiều hơn 5 tuổi nhưng ít hơn 7 tuổi, và mình kém chị mình 4 tuổi. Hỏi chị của Minh năm nay bao nhiêu tuổi?",
+     "answer": "10"},
+]
+
+_HSG_TOAN_1_DE_5 = [
+    {"type": "fill", "topic": "Số",
+     "q": "Trong các số 28; 17; 9; 8; 10; 0; 90; 55; 72; 42, số nhỏ nhất có hai chữ số là số nào?",
+     "answer": "10"},
+    {"type": "fill", "topic": "Số",
+     "q": "Trong các số 28; 17; 9; 8; 10; 0; 90; 55; 72; 42, số lớn nhất có hai chữ số là số nào?",
+     "answer": "90"},
+    {"type": "fill", "topic": "Số",
+     "q": "Trong các số 28; 17; 9; 8; 10; 0; 90; 55; 72; 42, số có hai chữ số giống nhau là số nào?",
+     "answer": "55"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 40 + 14 − 3 =", "answer": "51"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 36 − 26 + 20 =", "answer": "30"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 64 + 5 − 20 =", "answer": "49"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 44 − 42 + 23 =", "answer": "25"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Bạn Hà giành được số điểm 10 đúng bằng số nhỏ nhất có hai chữ số giống nhau. Bạn Hằng giành được số điểm 10 đúng bằng số lớn nhất có một chữ số. Hỏi cả hai bạn giành được tất cả bao nhiêu điểm 10?",
+     "answer": "20"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Thứ ba của một tuần là ngày 11 trong tháng. Hỏi thứ năm của tuần liền sau là ngày bao nhiêu trong tháng?",
+     "answer": "20"},
+    {"type": "fill", "topic": "Hình học", "image": _F + "de05_b6.png",
+     "q": "Hình vẽ bên (hình thang có hai đường chéo) có bao nhiêu hình tam giác?",
+     "answer": "8"},
+]
+
+_HSG_TOAN_1_DE_6 = [
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 2 + 3 + 4 =", "answer": "9"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 4 + 6 − 9 =", "answer": "1"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 8 − 8 + 0 =", "answer": "0"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 9 − 5 − 4 =", "answer": "0"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 8 − 4 … 1 + 4", "answer": "<"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 7 − 5 … 10 − 7", "answer": "<"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 0 + 3 … 9 − 6", "answer": "="},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 8 − 0 … 0 + 8", "answer": "="},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Một xe ô tô chở 10 khách. Đến một bến có 3 người xuống và 2 người lên. Hỏi trên xe bây giờ có bao nhiêu khách?",
+     "answer": "9"},
+]
+
+_HSG_TOAN_1_DE_7 = [
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 16 + 0 + 14 … 25 + 20 − 10", "answer": "<"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 12 + 1 … 13 − 1 + 1", "answer": "="},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 19 − 16 − 3 … 18 − 16 − 2", "answer": "="},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 52 − 0 − 32 … 51 − 32", "answer": ">"},
+    {"type": "fill", "topic": "Số", "q": "Điền số thích hợp: 14 là số liền trước số …", "answer": "15"},
+    {"type": "fill", "topic": "Số", "q": "Điền số thích hợp: Số bé nhất có hai chữ số là …", "answer": "10"},
+    {"type": "fill", "topic": "Số", "q": "Điền số thích hợp: 81 là số liền sau của số …", "answer": "80"},
+    {"type": "fill", "topic": "Số", "q": "Điền số thích hợp: Ba chục que tính là … que tính", "answer": "30"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 20 + 50 =", "answer": "70"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 89 − 27 =", "answer": "62"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 5 + 33 =", "answer": "38"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 49 − 3 =", "answer": "46"},
+    {"type": "fill", "topic": "Số", "q": "Từ 15 đến 41 có tất cả bao nhiêu số có hai chữ số?", "answer": "27"},
+]
+
+_HSG_TOAN_1_DE_8 = [
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 5 + 1 =", "answer": "6"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 6 − 4 =", "answer": "2"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 7 − 5 =", "answer": "2"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 3 + 4 − 2 =", "answer": "5"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 6 − 5 − 0 =", "answer": "1"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 2 + 1 − 3 =", "answer": "0"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu + hoặc − vào ô trống: 1 … 6 = 7", "answer": "+"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu + hoặc − vào ô trống: 0 … 6 = 4 + 2", "answer": "+"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Trong hộp có 4 xe đạp, ngoài hộp có 1 xe đạp. Hỏi tất cả có bao nhiêu xe đạp?",
+     "answer": "5"},
+]
+
+_HSG_TOAN_1_DE_9 = [
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 8 − 2 + 3 =", "answer": "9"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 5 + 5 − 8 =", "answer": "2"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 9 − 5 + 3 =", "answer": "7"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 2 + 5 + 2 =", "answer": "9"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 10 − 2 + 0 =", "answer": "8"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 7 + 2 − 5 =", "answer": "4"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 6 + 0 + 3 =", "answer": "9"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 9 − 7 + 1 =", "answer": "3"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 5 + 4 … 3 + 5 + 0", "answer": ">"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 1 + 5 + 2 … 6 + 3", "answer": "<"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 7 − 5 … 6 − 4 + 3", "answer": "<"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 2 + 6 − 1 … 4 + 3", "answer": "="},
+    {"type": "fill", "topic": "Hình học", "image": _F + "de09_b5.png",
+     "q": "Hình bên có tất cả bao nhiêu hình vuông?", "answer": "5"},
+]
+
+_HSG_TOAN_1_DE_10 = [
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 5 − 0 + 1 − 6 =", "answer": "0"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 6 − 3 + 3 + 0 =", "answer": "6"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 4 − 4 + 4 − 2 =", "answer": "2"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 5 + 1 − 2 + 2 =", "answer": "6"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Hoà 6 tuổi, Bình ít hơn Hoà 2 tuổi, Nga nhiều hơn Bình 1 tuổi. Hỏi bạn Nga bao nhiêu tuổi?",
+     "answer": "5"},
+]
+
+_HSG_TOAN_1_DE_11 = [
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 15 + 34 − 37 =", "answer": "12"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 38 − 13 + 24 =", "answer": "49"},
+    {"type": "fill", "topic": "Số", "q": "Viết số lớn nhất có hai chữ số.", "answer": "99"},
+    {"type": "fill", "topic": "Số", "q": "Tìm số có hai chữ số mà tổng hai chữ số của nó bằng 1.", "answer": "10"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Nhà Lan có 36 con gà, trong đó có 21 con gà trống, đã bán đi 15 con. Hỏi nhà Lan còn lại mấy con gà?",
+     "answer": "21"},
+]
+
+_HSG_TOAN_1_DE_12 = [
+    {"type": "fill", "topic": "Số",
+     "q": "Số có hai chữ số nhỏ nhất mà chữ số hàng đơn vị lớn hơn chữ số hàng chục 4 đơn vị là số nào?",
+     "answer": "15"},
+    {"type": "fill", "topic": "Số",
+     "q": "Viết số có hai chữ số mà tổng hai chữ số bằng 8 và chữ số hàng đơn vị là 1. Số đó là?",
+     "answer": "71"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Nam có một số kẹo là số lớn nhất có một chữ số. Hải có số kẹo ít hơn Nam 2 chiếc. Hỏi Hải có bao nhiêu chiếc kẹo?",
+     "answer": "7"},
+]
+
+_HSG_TOAN_1_DE_13 = [
+    {"type": "fill", "topic": "Số", "q": "Viết số gồm 6 chục và 5 đơn vị.", "answer": "65"},
+    {"type": "fill", "topic": "Số", "q": "Viết số gồm 3 đơn vị và 4 chục.", "answer": "43"},
+    {"type": "fill", "topic": "Số", "q": "Viết số gồm 2 chục và 0 đơn vị.", "answer": "20"},
+    {"type": "fill", "topic": "Số", "q": "Viết số gồm 5 đơn vị và 1 chục.", "answer": "15"},
+    {"type": "fill", "topic": "Số", "q": "Số liền trước số 24 là số nào?", "answer": "23"},
+    {"type": "fill", "topic": "Số", "q": "Số liền sau số 88 là số nào?", "answer": "89"},
+    {"type": "fill", "topic": "Số", "q": "Số tròn chục liền sau số 18 là số nào?", "answer": "20"},
+    {"type": "fill", "topic": "Số", "q": "Số tròn chục liền trước số 33 là số nào?", "answer": "30"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Dũng có 30 nhãn vở. Sau khi cho bạn thì Dũng còn lại 20 nhãn vở. Hỏi Dũng đã cho bạn bao nhiêu cái nhãn vở?",
+     "answer": "10"},
+]
+
+_HSG_TOAN_1_DE_14 = [
+    {"type": "fill", "topic": "Số",
+     "q": "Trong các số 38; 27; 19; 8; 10; 0; 90; 55; 62; 2, số nhỏ nhất có hai chữ số là số nào?",
+     "answer": "10"},
+    {"type": "fill", "topic": "Số",
+     "q": "Trong các số 38; 27; 19; 8; 10; 0; 90; 55; 62; 2, số lớn nhất có hai chữ số là số nào?",
+     "answer": "90"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 50 + 24 − 13 =", "answer": "61"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 34 + 5 − 20 =", "answer": "19"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 56 − 26 + 20 =", "answer": "50"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 44 − 44 + 23 =", "answer": "23"},
+    {"type": "fill", "topic": "Số", "q": "Tìm số thích hợp: 18 + 42 < … < 22 + 40", "answer": "61"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Bạn Hà giành được số điểm 10 đúng bằng số nhỏ nhất có hai chữ số giống nhau. Bạn Hằng giành được số điểm 10 đúng bằng số lớn nhất có một chữ số. Hỏi cả hai bạn giành được tất cả bao nhiêu điểm 10?",
+     "answer": "20"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Thứ tư của một tuần là ngày 21 trong tháng. Hỏi thứ năm của tuần liền sau là ngày bao nhiêu trong tháng?",
+     "answer": "29"},
+]
+
+_HSG_TOAN_1_DE_15 = [
+    {"type": "fill", "topic": "Số", "q": "Số nhỏ nhất trong các số 3; 6; 8; 10; 2; 4 là số nào?", "answer": "2"},
+    {"type": "fill", "topic": "Số", "q": "Số tự nhiên nhỏ hơn 8 và lớn hơn 6 là số nào?", "answer": "7"},
+    {"type": "fill", "topic": "Số", "q": "Có tất cả bao nhiêu số có hai chữ số nhỏ hơn 32?", "answer": "22"},
+    {"type": "fill", "topic": "Số", "q": "Số nào trừ đi 41 thì bằng 78 trừ đi 36?", "answer": "83"},
+    {"type": "fill", "topic": "Số", "q": "Số gồm 3 chục và 2 đơn vị viết thành số là?", "answer": "32"},
+    {"type": "fill", "topic": "Số", "q": "Số gồm 8 chục và 0 đơn vị viết thành số là?", "answer": "80"},
+    {"type": "fill", "topic": "Số", "q": "Số gồm 9 chục và 9 đơn vị viết thành số là?", "answer": "99"},
+    {"type": "fill", "topic": "Số", "q": "Viết số thích hợp: 21 > … > 19", "answer": "20"},
+    {"type": "fill", "topic": "Số", "q": "Viết số thích hợp: 79 < … < 81", "answer": "80"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 64 + 35 − 19 =", "answer": "80"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 98 − 23 − 35 =", "answer": "40"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Việt có 19 con tem, Việt cho Mai và Lan mỗi bạn 4 con tem. Hỏi Việt còn lại bao nhiêu con tem?",
+     "answer": "11"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Mai có 18 cái kẹo, chị cho thêm Mai 4 cái nữa, Mai cho bạn 6 cái. Hỏi Mai còn lại bao nhiêu cái kẹo?",
+     "answer": "16"},
+    {"type": "fill", "topic": "Hình học", "image": _F + "de15_c8.png",
+     "q": "Hình bên có bao nhiêu hình tam giác?", "answer": "7"},
+    {"type": "fill", "topic": "Hình học", "image": _F + "de15_c8.png",
+     "q": "Hình bên có bao nhiêu hình tứ giác?", "answer": "3"},
+]
+
+_HSG_TOAN_1_DE_16 = [
+    {"type": "fill", "topic": "Số", "q": "Số bé nhất có hai chữ số là số nào?", "answer": "10"},
+    {"type": "fill", "topic": "Số", "q": "Số liền trước của số lớn nhất có một chữ số là số nào?", "answer": "8"},
+    {"type": "fill", "topic": "Số", "q": "Số liền sau của số nhỏ nhất có hai chữ số là số nào?", "answer": "11"},
+    {"type": "fill", "topic": "Số", "q": "Số tròn chục lớn nhất có hai chữ số là số nào?", "answer": "90"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 19 − 7 =", "answer": "12"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 12 + 3 =", "answer": "15"},
+    {"type": "fill", "topic": "Số", "q": "Điền số thích hợp vào ô trống: … − 7 = 10", "answer": "17"},
+    {"type": "fill", "topic": "Số", "q": "Điền số thích hợp vào ô trống: 47 + … = 77", "answer": "30"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 35 + 43 … 33 + 45", "answer": "="},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 79 − 7 … 20 + 50", "answer": ">"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Cửa hàng có 68 chiếc xe đạp, đã bán đi ba chục chiếc. Hỏi cửa hàng còn lại bao nhiêu chiếc xe đạp?",
+     "answer": "38"},
+    {"type": "fill", "topic": "Hình học", "image": _F + "de16_b6.png",
+     "q": "Hình bên có bao nhiêu đoạn thẳng?", "answer": "8"},
+    {"type": "fill", "topic": "Hình học", "image": _F + "de16_b6.png",
+     "q": "Hình bên có bao nhiêu hình tam giác?", "answer": "4"},
+]
+
+_HSG_TOAN_1_DE_17 = [
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 5 + 0 + 1 =", "answer": "6"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 1 + 4 + 9 =", "answer": "14"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 20 − 10 + 5 =", "answer": "15"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 40 − 20 + 10 =", "answer": "30"},
+    {"type": "fill", "topic": "Số",
+     "q": "Cho dãy số: 30; 35; 37; 41; 45; 49; 87; 75; 99; 12; 59. Số lớn nhất trong dãy là số nào?",
+     "answer": "99"},
+    {"type": "fill", "topic": "Số",
+     "q": "Cho dãy số: 30; 35; 37; 41; 45; 49; 87; 75; 99; 12; 59. Số bé nhất trong dãy là số nào?",
+     "answer": "12"},
+    {"type": "fill", "topic": "Số",
+     "q": "Cho dãy số: 76; 58; 1; 3; 79; 97; 100; 15; 56; 43; 22. Số lớn nhất trong dãy là số nào?",
+     "answer": "100"},
+    {"type": "fill", "topic": "Số",
+     "q": "Cho dãy số: 76; 58; 1; 3; 79; 97; 100; 15; 56; 43; 22. Số bé nhất trong dãy là số nào?",
+     "answer": "1"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Trên cành có 30 con chim đậu, sau đó có 20 con bay đi. Hỏi trên cành còn lại bao nhiêu con chim?",
+     "answer": "10"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 70 + 3 =", "answer": "73"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 70 + 8 =", "answer": "78"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 93 − 80 =", "answer": "13"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 99 − 90 =", "answer": "9"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 82 − 41 … 53 − 12", "answer": "="},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 68 − 21 … 59 − 12", "answer": "="},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 93 − 20 … 97 − 53", "answer": ">"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 98 − 27 … 96 − 6", "answer": "<"},
+]
+
+_HSG_TOAN_1_DE_18 = [
+    {"type": "choice", "topic": "Số",
+     "q": "Hai số tự nhiên liên tiếp mà tổng của chúng là số tự nhiên lớn nhất có một chữ số là:",
+     "options": ["A. 3 và 4", "B. 4 và 5", "C. 5 và 6"], "answer": "B. 4 và 5"},
+    {"type": "choice", "topic": "Cộng/Trừ", "q": "Kết quả của 32 + 45 − 22 là:",
+     "options": ["A. 55", "B. 77", "C. 99"], "answer": "A. 55"},
+    {"type": "choice", "topic": "Toán đố",
+     "q": "Nam đọc quyển truyện có 48 trang, Nam đã đọc 25 trang. Vậy số trang chưa đọc sẽ là:",
+     "options": ["A. Bằng số trang đã đọc", "B. Nhiều hơn số trang đã đọc", "C. Ít hơn số trang đã đọc"],
+     "answer": "C. Ít hơn số trang đã đọc"},
+    {"type": "choice", "topic": "Số",
+     "q": "Dãy số nào sau đây được viết theo thứ tự từ bé đến lớn?",
+     "options": ["A. 3; 4; 5; 7; 11; 9; 13; 15", "B. 21; 23; 24; 25; 26; 27; 28", "C. 9; 10; 11; 12; 21; 13; 31; 14"],
+     "answer": "B. 21; 23; 24; 25; 26; 27; 28"},
+    {"type": "choice", "topic": "Số", "q": "Từ 15 đến 65 có bao nhiêu số có hai chữ số?",
+     "options": ["A. 49 số", "B. 50 số", "C. 51 số"], "answer": "C. 51 số"},
+    {"type": "choice", "topic": "Toán đố",
+     "q": "Bình có 14 viên bi, bạn An có ít hơn Bình 3 viên bi. Cả hai bạn có số viên bi là:",
+     "options": ["A. 17 viên bi", "B. 25 viên bi", "C. 31 viên bi"], "answer": "B. 25 viên bi"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 61 + 36 … 98 − 1", "answer": "="},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 23 + 14 … 32 + 6", "answer": "<"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính nhanh: 1 + 3 + 8 + 0 + 6 + 10 + 2 =", "answer": "30"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính nhanh: 17 + 14 + 8 − 7 − 4 − 8 =", "answer": "20"},
+]
+
+_HSG_TOAN_1_DE_19 = [
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Đúng hay sai, hãy tính lại: 17 − 5 =", "answer": "12"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Đúng hay sai, hãy tính lại: 19 − 5 =", "answer": "14"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Đúng hay sai, hãy tính lại: 16 + 2 =", "answer": "18"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Đúng hay sai, hãy tính lại: 13 − 2 =", "answer": "11"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 10 − 6 + 2 =", "answer": "6"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 8 + 2 − 6 =", "answer": "4"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 6 − 4 + 5 =", "answer": "7"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Tính: 10 − 7 + 6 =", "answer": "9"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Đặt tính rồi tính: 14 + 3 =", "answer": "17"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Đặt tính rồi tính: 7 + 11 =", "answer": "18"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Đặt tính rồi tính: 19 − 6 =", "answer": "13"},
+    {"type": "fill", "topic": "Cộng/Trừ", "q": "Đặt tính rồi tính: 18 − 7 =", "answer": "11"},
+    {"type": "fill", "topic": "Số", "q": "Bảng số gồm các số từ 10 đến 39. Bảng đó có tất cả bao nhiêu số?", "answer": "30"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Cành trên có 10 con chim, cành dưới có 5 con chim. Có 1 con chim ở cành trên bay xuống đậu vào cành dưới. Hỏi cành trên còn mấy con chim?",
+     "answer": "9"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Cành trên có 10 con chim, cành dưới có 5 con chim. Có 1 con chim ở cành trên bay xuống đậu vào cành dưới. Hỏi cành dưới có mấy con chim?",
+     "answer": "6"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Hà và Lan hái được tất cả 18 bông hoa, riêng Hà hái được 7 bông hoa. Hỏi Lan hái được bao nhiêu bông hoa?",
+     "answer": "11"},
+    {"type": "fill", "topic": "Hình học", "image": _F + "de19_c7.png",
+     "q": "Hình bên (hình chữ nhật có hai đường chéo) có bao nhiêu hình tam giác?",
+     "answer": "8"},
+]
+
+_HSG_TOAN_1_DE_20 = [
+    {"type": "fill", "topic": "Cộng/Trừ",
+     "q": "Tính nhanh: 2 + 4 + 6 + 8 + 10 + 12 + 14 + 16 + 18 =", "answer": "90"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Mai có một số kẹo. Mai cho Hồng 6 cái và ăn đi 3 cái thì Mai còn 1 cái kẹo. Hỏi lúc đầu Mai có bao nhiêu cái kẹo?",
+     "answer": "10"},
+    {"type": "fill", "topic": "Số",
+     "q": "Dãy số 1; 3; 6; 10; …; …; …; … (mỗi số bằng số liền trước cộng thêm một đơn vị tăng dần: +2, +3, +4, …). Số đứng ngay sau 10 là số nào?",
+     "answer": "15"},
+    {"type": "fill", "topic": "Số",
+     "q": "Trong dãy 1; 3; 6; 10; 15; …; …; … (quy luật +2, +3, +4, +5, +6, …), số đứng ngay sau 15 là số nào?",
+     "answer": "21"},
+    {"type": "fill", "topic": "Số",
+     "q": "Trong dãy 1; 3; 6; 10; 15; 21; …; … (quy luật +2, +3, +4, +5, +6, +7, …), số đứng ngay sau 21 là số nào?",
+     "answer": "28"},
+    {"type": "fill", "topic": "Hình học", "image": _F + "de20_b5.png",
+     "q": "Hình vẽ bên (tam giác ABC có điểm M ở trong nối với ba đỉnh) có bao nhiêu hình tam giác?",
+     "answer": "4"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Hùng và Dũng mỗi bạn có 5 quyển vở. Cô giáo thưởng cho mỗi bạn thêm 2 quyển vở nữa. Hỏi bây giờ cả hai bạn có tất cả bao nhiêu quyển vở?",
+     "answer": "14"},
+]
+
+# Tab 21: "Đề ôn tổng hợp" — các bài chấm được trích từ "ĐỀ ÔN SỐ 15" (~50 bài).
+_HSG_TOAN_1_DE_ON = [
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Con gà mái cứ 3 ngày đẻ được 2 quả trứng. Hỏi sau 2 tuần 1 ngày (15 ngày), gà mái đẻ được tất cả bao nhiêu quả trứng?",
+     "answer": "10"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "An có ít hơn Bình 4 hòn bi, Bình có ít hơn Căn 3 hòn bi. Biết An có 5 hòn bi. Hỏi Căn có mấy hòn bi?",
+     "answer": "12"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Em nghĩ một số nào đó từ 1 đến 7. Em cộng số đó với 3, được bao nhiêu đem trừ đi 1, rồi lại trừ tiếp số đã nghĩ. Kết quả cuối cùng có bằng 2 không? (Trả lời: Đúng hoặc Sai)",
+     "answer": "Đúng"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Năm khoe với Bốn: \"Ba năm nữa thì mình có số tuổi bằng số lớn nhất có một chữ số\". Hỏi bạn Năm năm nay mấy tuổi?",
+     "answer": "6"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Mẹ đi chợ về lúc 8 giờ sáng, bố đi làm về lúc 11 giờ. Hỏi mẹ về sớm hơn bố mấy giờ?",
+     "answer": "3"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Hùng đi học lúc 6 giờ sáng, Dũng đi học lúc 7 giờ sáng. Hỏi Dũng đi học muộn hơn Hùng mấy giờ?",
+     "answer": "1"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Nếu mẹ cho Dũng thêm 3 viên kẹo thì Dũng có tất cả 10 viên kẹo. Hỏi hiện nay Dũng có bao nhiêu viên kẹo?",
+     "answer": "7"},
+    {"type": "fill", "topic": "Toán đố",
+     "q": "Lan cho Hồng 5 quyển sách thì Lan còn lại 12 quyển sách. Hỏi lúc đầu Lan có bao nhiêu quyển sách?",
+     "answer": "17"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 23 + 23 − 11 … 22 + 22 − 10", "answer": ">"},
+    {"type": "fill", "topic": "So sánh", "q": "Điền dấu >, < hoặc = : 56 + 21 − 15 … 21 + 60 − 15", "answer": "<"},
+]
+
+_HSG_TOAN_1_EXAMS = {
+    1: _HSG_TOAN_1_DE_1,   2: _HSG_TOAN_1_DE_2,   3: _HSG_TOAN_1_DE_3,
+    4: _HSG_TOAN_1_DE_4,   5: _HSG_TOAN_1_DE_5,   6: _HSG_TOAN_1_DE_6,
+    7: _HSG_TOAN_1_DE_7,   8: _HSG_TOAN_1_DE_8,   9: _HSG_TOAN_1_DE_9,
+    10: _HSG_TOAN_1_DE_10, 11: _HSG_TOAN_1_DE_11, 12: _HSG_TOAN_1_DE_12,
+    13: _HSG_TOAN_1_DE_13, 14: _HSG_TOAN_1_DE_14, 15: _HSG_TOAN_1_DE_15,
+    16: _HSG_TOAN_1_DE_16, 17: _HSG_TOAN_1_DE_17, 18: _HSG_TOAN_1_DE_18,
+    19: _HSG_TOAN_1_DE_19, 20: _HSG_TOAN_1_DE_20, 21: _HSG_TOAN_1_DE_ON,
+}
+
+HSG_TOAN_1_DURATIONS = {i: 60 for i in range(1, 22)}
+HSG_TOAN_1_NQ = {k: len(v) for k, v in _HSG_TOAN_1_EXAMS.items()}
+
 _FOLDER_POOLS = {
     ("lop_1", "toan_violympic_1"):    BAO_MEO_VIOLYMPIC,
     ("lop_6", "de_toan_6_hk2"):       MINH_KHANH_TOAN,
@@ -2944,6 +3352,15 @@ def gen_exam(lop_key, folder_key, n=15, seed=None, exam_no=1):
     # HSG Toán 6: mỗi đề_no = toàn bộ câu của 1 PDF (không random subset)
     if folder_key == "de_hsg_toan_6":
         pool = _HSG_TOAN_6_EXAMS.get(exam_no or 1, [])
+        result = list(pool)
+        random.shuffle(result)
+        return result
+
+    # HSG Toán 1: mỗi đề_no = toàn bộ câu của 1 đề, xáo trộn thứ tự
+    if folder_key == "de_hsg_toan_1":
+        pool = _HSG_TOAN_1_EXAMS.get(exam_no or 1, [])
+        if not pool:
+            return _placeholder(1, "", "Toán", f"Đề HSG Toán 1 — Đề {exam_no or 1}")
         result = list(pool)
         random.shuffle(result)
         return result
