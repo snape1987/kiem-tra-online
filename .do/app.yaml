@@ -1,0 +1,25 @@
+# DigitalOcean App Platform spec — Kiem Tra Online SuKhoiKem
+# Áp dụng: doctl apps update <APP_ID> --spec .do/app.yaml
+# Tạo mới:  doctl apps create --spec .do/app.yaml
+name: kiem-tra-online
+services:
+  - name: web
+    github:
+      repo: snape1987/kiem-tra-online
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    environment_slug: python
+    run_command: gunicorn --worker-tmp-dir /dev/shm --bind 0.0.0.0:8080 app:app
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    health_check:
+      http_path: /
+    envs:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      # DATABASE_URL: đặt thủ công trong dashboard DO (Settings ->
+      # Environment Variables), trỏ tới Postgres ngoài (Neon free).
+      # KHÔNG khai báo databases: ở đây để tránh DO tự tạo dev DB tính phí.
+      # Không có biến này -> app tự fallback SQLite (chỉ hợp local dev).

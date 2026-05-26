@@ -1,7 +1,6 @@
 """Flask webapp — Kiểm Tra Online — Gia Đình SU KHÔI MÈO."""
 import os
 import random
-import sqlite3
 import time
 import json
 from datetime import datetime
@@ -11,21 +10,42 @@ import questions
 
 app = Flask(__name__)
 app.secret_key = "kiemtra-sukhoikem-2026"
-_DATA_DIR = os.environ.get("DATA_DIR", os.path.dirname(__file__))
-DB_PATH = os.path.join(_DATA_DIR, "kiemtra.db")
+
+# Prod (DigitalOcean): Postgres qua DATABASE_URL -> dữ liệu sống qua mỗi lần
+# deploy. Local: SQLite file. Đĩa của App Platform là ephemeral nên SQLite
+# trên prod sẽ mất sạch lịch sử mỗi lần deploy/restart.
+DATABASE_URL = os.environ.get("DATABASE_URL", "").strip()
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = "postgresql://" + DATABASE_URL[len("postgres://"):]
+USE_PG = DATABASE_URL.startswith("postgresql://")
+
+if USE_PG:
+    import psycopg
+    from psycopg.rows import dict_row
+else:
+    import sqlite3
+    _DATA_DIR = os.environ.get("DATA_DIR", os.path.dirname(__file__))
+    DB_PATH = os.path.join(_DATA_DIR, "kiemtra.db")
 
 
 def get_db():
+    if USE_PG:
+        return psycopg.connect(DATABASE_URL, row_factory=dict_row)
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
 
+def _ph(sql):
+    return sql.replace("?", "%s") if USE_PG else sql
+
+
 def init_db():
+    pk = "SERIAL PRIMARY KEY" if USE_PG else "INTEGER PRIMARY KEY AUTOINCREMENT"
     conn = get_db()
-    conn.execute("""
+    conn.execute(f"""
         CREATE TABLE IF NOT EXISTS attempts (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id {pk},
             student TEXT NOT NULL,
             student_key TEXT NOT NULL DEFAULT 'bao_meo',
             mode TEXT NOT NULL,
@@ -36,9 +56,9 @@ def init_db():
             created_at TEXT NOT NULL
         )
     """)
-    conn.execute("""
+    conn.execute(f"""
         CREATE TABLE IF NOT EXISTS exam_progress (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id {pk},
             student_key TEXT NOT NULL,
             folder TEXT NOT NULL,
             exam_no INTEGER NOT NULL,
@@ -101,9 +121,56 @@ STUDENT_THEMES = {
         "grades": "Lớp 8A1",
         "has_audio": False,
     },
+    "tip_nicolas": {
+        "name": "Tip Nicolas", "icon": "🤖",
+        "primary": "#dc2626", "bg": "#f4f4f5",
+        "css": "theme-gundam", "icon_dir": "tip_nicolas",
+        "icon_dirs": ["tip_nicolas"],
+        "grades": "Lớp 6",
+        "has_audio": False,
+    },
 }
 
 DUR_TO_NQ = {45: 15, 60: 20, 90: 30}
+
+HSG_ANH_DRIVE_IDS = {
+    1:  "1b8TlXE0jlLCOP0vqT9OcGj1jaVGs8A5q",
+    2:  "1QXEDqCsSWAhdzyyar24oUM4B76XvlkCH",
+    3:  "1OnyYuc5SgZrsndDJvJqisRbzE7eM-zTl",
+    4:  "1vZITTX1UWJHaVVc7wc5eQhWTf9enq9Qa",
+    5:  "1lgV0FQkx_LlGBXIhtJ8AIVAc0vXJa18w",
+    6:  "19fqtYLKQuSkS89Mf_IzHByNozFz9LDhd",
+    7:  "1C1iS-S5JIVBD_vlG_wrXMUzfT4Mu6a6g",
+    8:  "1xOZWcqpFwurVAqfm9zTif9QpQOcaZn_1",
+    9:  "1Nthxs3aVNLH0LqswTrSYhTtiFY5i439a",
+    10: "118GxVGd6ig-81wfFpBlmtPuR8RKOuURP",
+    11: "1oEi-WyQiRTqZLQZ8hXf2R3estky31NGK",
+    12: "1Gq_sdKbDJiTZW04BIEVIrBXaa3XZMavM",
+    13: "1XcPHpzRYO1FqblIZ_r732bDdaXOUrQQe",
+    14: "1YxXsGajF4b6tM-RT3TU0Upwq8SRuf-UF",
+    15: "1XJlC-IfTaCyy-A45-7CXiEbsw9EiNHmo",
+    16: "1mgwClxuQsFA9YmupbJcOi8vANSCnr667",
+    17: "1lCq9ZCY0BItYGUyoLlB47qlkutSvpR-3",
+    18: "1u7FG13oaJLhJhTp9m73YKlvfwKQnVURJ",
+    19: "1seEaRDL_RL1MqhM2iacDw9go7JrTnxG4",
+    20: "1Ytwa8PwJFwXnPjBrAhRPMCewgd-WZle1",
+    21: "1w7fr45HQxUqqnLKwCwgsndms9SJ18G5P",
+    22: "1ZAd_VM4XxYdwpoabCT-M5KuFASUnKmDO",
+    23: "19_L20qj_Dgn8qbYIVuUItr8kByCTcam9",
+    24: "1DA2VxjTPRCGzI2IVfnbXUvxS0SQ8EOl4",
+    25: "1GEB1BlAHOjjKCR07vRfTefl9R-pBT3-C",
+    26: "1-PhH-nfSw1WtNimqN4V8t5_nUnTbYH5d",
+    27: "1aQM-IZZdbf-x92T2wGwj_Zr45L8sdy8-",
+    28: "1FXoZRRlBHcwam3IcpL0XMAh7zvFTuD2V",
+    29: "1Kf4qGLVnd04k7aQ5fTILL5oX0GX8CL9k",
+    30: "1fl7k-s9802g29Cr051hZVjwVfcEX2-11",
+    31: "1-VVGM62Hw4ivPC8ujKNrAsmjvOFBF0xn",
+    32: "1WOzeflcxxyymE2sN1EnteQ_qTC4XjfVS",
+    33: "16HZueaSMiLckRImvbDIcMD5TXFBXtZm2",
+    34: "1UmW2LNEmsqDXwBmpaXZg7VQ5UN-xYS9z",
+    35: "1dUAkm_LWCNlNnGBL7u1LNOt5JYdEzGPX",
+    36: "1WhIt0VeNaPfI__j3mqvQAV_O43VjbjU6",
+}
 
 FOLDER_EXAM_COUNTS = {
     # Lớp 1
@@ -220,8 +287,9 @@ def exam():
     icons = load_icons_multi(theme["icon_dirs"])
     random.shuffle(icons)
     if folder == "de_hsg_anh_6":
-        audio_file = f"hsg_anh_6/de_{exam_no:02d}.mp3"
-        audio_label = "A. LISTENING — Nhấn ▶ để nghe. Được nghe lại 2 lần."
+        drive_id = HSG_ANH_DRIVE_IDS.get(exam_no, "")
+        audio_file = f"https://drive.google.com/file/d/{drive_id}/view" if drive_id else ""
+        audio_label = "A. LISTENING — Nhấn nút bên dưới để mở file nghe (mở tab mới)."
         subject = "Tiếng Anh"
     else:
         audio_file = ""
@@ -282,14 +350,14 @@ def submit():
 
     conn = get_db()
     conn.execute(
-        "INSERT INTO attempts (student, student_key, mode, duration, score, total, time_used, created_at)"
-        " VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        _ph("INSERT INTO attempts (student, student_key, mode, duration, score, total, time_used, created_at)"
+            " VALUES (?, ?, ?, ?, ?, ?, ?, ?)"),
         (student, student_key, folder, duration, score_10, total, time_used,
          datetime.now().isoformat(timespec="seconds")),
     )
     conn.execute(
-        "INSERT INTO exam_progress (student_key, folder, exam_no, score, completed_at)"
-        " VALUES (?, ?, ?, ?, ?)",
+        _ph("INSERT INTO exam_progress (student_key, folder, exam_no, score, completed_at)"
+            " VALUES (?, ?, ?, ?, ?)"),
         (student_key, folder, exam_no, score_10,
          datetime.now().isoformat(timespec="seconds")),
     )
