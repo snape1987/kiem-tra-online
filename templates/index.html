@@ -80,6 +80,8 @@ const HSG_EXAM_NQ         = {{ hsg_exam_nq_json|safe }};
 const HSG_EXAM_DURATIONS  = {{ hsg_exam_dur_json|safe }};
 const HSG_ANH_EXAM_NQ     = {{ hsg_anh_exam_nq_json|safe }};
 const HSG_ANH_EXAM_DURATIONS = {{ hsg_anh_exam_dur_json|safe }};
+const HSG_TOAN_1_EXAM_NQ        = {{ hsg_toan_1_exam_nq_json|safe }};
+const HSG_TOAN_1_EXAM_DURATIONS = {{ hsg_toan_1_exam_dur_json|safe }};
 const THEME_CLASS = { bao_meo: 'theme-pink', minh_khanh: 'theme-purple', nhat_khoi: 'theme-blue', tip_nicolas: 'theme-gundam' };
 
 const screen1   = document.getElementById('screen-1');
@@ -155,7 +157,7 @@ function buildFolderTabs(folders) {
 }
 
 function updateDurTabs(folderKey) {
-  if (folderKey === 'de_hsg_toan_6' || folderKey === 'de_hsg_anh_6') {
+  if (folderKey === 'de_hsg_toan_6' || folderKey === 'de_hsg_anh_6' || folderKey === 'de_hsg_toan_1') {
     durRow.classList.add('hidden');
     return;
   }
@@ -199,6 +201,10 @@ function buildExamTabs(folderKey) {
       } else if (folderKey === 'de_hsg_anh_6') {
         durIn.value = HSG_ANH_EXAM_DURATIONS[i] || 120;
         nqIn.value  = HSG_ANH_EXAM_NQ[i] || 0;
+        durRow.classList.add('hidden');
+      } else if (folderKey === 'de_hsg_toan_1') {
+        durIn.value = HSG_TOAN_1_EXAM_DURATIONS[i] || 60;
+        nqIn.value  = HSG_TOAN_1_EXAM_NQ[i] || 0;
         durRow.classList.add('hidden');
       } else {
         durIn.value = ''; nqIn.value = '';
