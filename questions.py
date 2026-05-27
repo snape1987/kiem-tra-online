@@ -13168,6 +13168,458 @@ _HSG_ANH_6_EXAMS[34] = _HSG_ANH_DE_34
 _HSG_ANH_6_EXAMS[35] = _HSG_ANH_DE_35
 _HSG_ANH_6_EXAMS[36] = _HSG_ANH_DE_36
 
+# ─── Sửa đáp án HSG Anh: khoá đáp án chuẩn áp đồng loạt ───────────────────────
+# Bộ đề HSG Anh ban đầu gán đáp án ngẫu nhiên → cùng 1 câu hỏi lặp ở nhiều đề lại
+# có đáp án khác nhau (vd "She is ___ than her sister" bị gán tall/tallest/more tall,
+# trong khi đúng là "taller"). Lớp này chuẩn hoá: với mỗi câu choice có thân câu (đã bỏ
+# số thứ tự + gộp khoảng trắng) khớp khoá dưới đây, gán answer = đúng option chứa đáp án.
+# Match không phân biệt hoa/thường & khoảng trắng (giống cách chấm ở app.py).
+import re as _re_hsg
+
+
+def _hsg_stem(qt):
+    s = _re_hsg.sub(r"^\s*\(?\d+\)?[.)]?\s*", "", str(qt))
+    return _re_hsg.sub(r"\s+", " ", s).strip()
+
+
+def _hsg_norm(s):
+    return _re_hsg.sub(r"\s+", "", str(s)).lower()
+
+
+def _hsg_opt_text(o):
+    return _re_hsg.sub(r"^[A-D][.)]\s*", "", str(o)).strip()
+
+
+# Thân câu (1 khoảng trắng) -> nội dung đáp án ĐÚNG (text hoặc chữ cái cho câu options A-D).
+_HSG_ANH_CANON = {
+    # ── Grammar lặp nhiều ──
+    "There ___ a lot of trees in the park.": "are",
+    "There ___ no water in the bottle.": "is",
+    "There ___ some milk in the fridge.": "is",
+    "She has lived here ___ 2010.": "since",
+    "She ___ here since 2010.": "has lived",
+    "She has lived here ___ ten years.": "for",
+    "He is interested ___ playing the piano.": "in",
+    "He is interested ___ football.": "in",
+    "The children enjoyed ___ in the park.": "playing",
+    "The students enjoy ___ in the library.": "studying",
+    "She asked me ___ I liked sports.": "if",
+    "She asked if I ___ her book.": "read",
+    "She ___ her homework when I called.": "was doing",
+    "She ___ television when her father came home.": "was watching",
+    "My brother ___ swimming every weekend.": "goes",
+    "My father ___ to work by car.": "goes",
+    "He ___ to school by bike every day.": "goes",
+    "My sister ___ well every day.": "cooks",
+    "My mother often ___ cooking after work.": "does",
+    "He plays football ___ a professional.": "like",
+    "He speaks English ___ a native speaker.": "like",
+    "She is ___ than her sister.": "taller",
+    "Nam is ___ student in my class.": "the tallest",
+    "He is ___ student in the class.": "the best",
+    "They haven't met ___ last summer.": "since",
+    "They haven't seen each other ___ last year.": "since",
+    "The book ___ on the shelf is mine.": "lying",
+    "The book ___ on the table belongs to Lan.": "lying",
+    "Would you like ___ to the party?": "to come",
+    "Would you mind ___ the window?": "opening",
+    "He suggested ___ to the beach.": "going",
+    "I suggest ___ to the cinema.": "going",
+    "I suggest ___ to the cinema tonight.": "going",
+    "She ___ English for five years.": "has learned",
+    "She told me that she ___ happy.": "was",
+    "The weather ___ nice yesterday.": "was",
+    "The film ___ very interesting.": "was",
+    "It ___ raining when I left.": "was",
+    "It ___ raining when I left home.": "was",
+    "She is looking forward ___ you.": "to seeing",
+    "She is looking forward ___ the concert.": "to seeing",
+    "The students ___ English now.": "are studying",
+    "The students ___ English at the moment.": "are studying",
+    "I enjoy ___ in the morning.": "running",
+    "She doesn't like ___ vegetables.": "eating",
+    "___ is the nearest supermarket?": "Where",
+    "___ is the distance from here to the station?": "How far",
+    "___ does it take to get to school? — About 15 minutes.": "How long",
+    "___ does it take to get to school?": "How long",
+    "___ does he go to school? — By bus.": "How",
+    "___ does he go to school? — By bike.": "How",
+    "___ does he go to school?": "How often",
+    "___ do you go to the cinema? — Twice a month.": "How often",
+    "___ do you go to the cinema?": "How often",
+    "___ did you go last summer? — To Da Lat.": "Where",
+    "She ___ a new dress for the party.": "bought",
+    "They ___ football at 4pm yesterday.": "played",
+    "She has ___ to Paris twice.": "gone",
+    "___ you ever ___ Vietnamese food?": "Have / eaten",
+    "She ___ like vegetables when she was young.": "used to",
+    "We should ___ more trees to protect the environment.": "plant",
+    "We should ___ more trees.": "plant",
+    # ── Grammar (chủ đề TV/programme) ──
+    "She watches too ___ television.": "much",
+    "He ___ watch cartoons since he was young.": "has liked",
+    "The programme ___ very popular with children.": "is",
+    "Parents should limit the time their children ___ on screens.": "spend",
+    "She prefers ___ documentaries to action films.": "watching",
+    "Garfield is a cartoon cat ___ loves food.": "which",
+    # ── Error-ID (options A-D, đáp án là chữ cái phần SAI) ──
+    "The childrens(A) are(B) playing(C) in the garden(D).": "A",
+    "He has(A) lived here(B) since(C) five years(D).": "C",
+    "She enjoys(A) to listen(B) to music(C) every evening(D).": "B",
+    "She go(A) to school(B) every(C) day(D) by bus.": "A",
+    "She go(A) to school(B) every(C) day by bus(D).": "A",
+    "We are(A) going to(B) visit our grandparent(C) next Sunday(D).": "C",
+    "We are(A) going to visit(B) our grandparent(C) next Sunday(D).": "C",
+    # ── Phonetics options A-D (đáp án = chữ cái từ KHÁC âm) ──
+    "A. hand B. and C. sand D. any": "D",
+    "A. washed B. worked C. hoped D. called": "D",
+    "A. washed B. worked C. hoped D. naked": "D",
+    "A. moon B. food C. book D. school": "C",
+    "A. book B. food C. look D. cook": "B",
+    "A. these B. there C. three D. they": "C",
+    "A. family B. beautiful C. important D. carefully": "C",
+    "A. history B. geography C. biology D. technology": "A",
+    "A. banana B. tomato C. potato D. mango": "D",
+    "A. enjoy B. open C. study D. listen": "A",
+    "A. now B. know C. cow D. how": "B",
+    "A. nation B. station C. action D. question": "D",
+    # ── Phonetics/Vocab options là TỪ (đề 25–36) ──
+    "A. t_oo_th B. sch_oo_l C. f_oo_d D. g_oo_d": "good",
+    "A. c_hann_el B. c_hess_ C. c_hef_ D. c_hurch_": "chef",
+    "A. h_our_ B. f_lour_ C. s_our_ D. f_our_": "four",
+    "A. kn_ew_ B. n_ew_ C. s_ew_ D. f_ew_": "sew",
+    "A. comedy B. cartoon C. drama D. channel": "channel",
+    "A. television B. radio C. newspaper D. healthy": "healthy",
+    "A. boring B. dull C. exciting D. uninteresting": "exciting",
+    "A. funny B. humorous C. amusing D. serious": "serious",
+    # ── Phonetics 1x còn sai ──
+    "A. child B. blind C. find D. wind": "D",
+    # ── Listening/Reading có đáp án bất khả thi / lệch chữ cái (8 lỗi cơ học) ──
+    "What does Jason like about camping?": "sleeping under the stars",
+    "What does a healthy breakfast include?": "fruit, cereals and milk",
+    # ── Reading đọc-hiểu & cloze-có-câu: đáp án không khớp passage ──
+    "What can you do with English?": "make friends from all over the world",
+    "How many players are in each team?": "eleven",
+    "What did she study at university?": "theatre make-up",
+    "When did she create her make-up brand?": "1991",
+    "What else did she do besides make-up?": "wrote books about beauty",
+    "What do they do on weekends?": "go cycling in the park",
+    "Where do Petty and Phil live?": "in the country",
+    "What do they both enjoy?": "watching TV",
+    "What do sumo wrestlers try to do?": "push each other out of the ring",
+    "What is the ring called?": "dohyo",
+    "How many times a year are tournaments held?": "six",
+    "talk about ___ they see.": "what",
+    "It ___ news, entertainment and educational programmes.": "shows",
+    "families enjoy watching VTV1 ___ the evening.": "in",
+    "Factories also ___ harmful gases.": "release",
+    "Where did the exhibition take place?": "In the city centre",
+    "Some robots at the exhibition could ___.": "help disabled visitors",
+    "How long can a cricket match last?": "one to five days",
+    "Which country is cricket also popular in?": "India",
+    "Supermarkets are large ___.": "shops",
+    "They prefer shopping there because it is ___.": "convenient",
+    "Supermarkets ___ employ hundreds of workers.": "often",
+    "They employ hundreds of ___.": "workers",
+    "How does a wrestler lose in sumo?": "By stepping outside the ring or touching the ground",
+    "How many sumo tournaments are held in Japan each year?": "six",
+    "I am writing to ___ you about my visit.": "tell",
+    "I spent ___ whole day there.": "the",
+    "There ___ lots of shops and restaurants.": "were",
+    "How did they get home?": "by bus",
+    "The village ___ about three thousand people.": "has",
+    "The church is over five hundred years ___.": "old",
+    "Visitors ___ enjoy walking around the old streets.": "often",
+    "The local school ___ over one hundred students.": "has",
+    "What is Nha Trang known for?": "its beaches and blue water",
+    "What famous attraction does Nha Trang have besides its beach?": "a famous night market",
+    "How does Bill feel about his job?": "He loves it but finds it lonely",
+    "How are some ocean houses built?": "on stilts over the water",
+    "Who else plays an important role?": "parents",
+    "Why are children becoming overweight?": "They eat too much junk food and do not exercise",
+    "The word 'growing' in the text means ___.": "becoming worse",
+    "What should children spend less time on?": "screens",
+    "The passage says the problem is ___.": "getting worse",
+    "Who are affected by this problem?": "children",
+    "When did she found her company?": "1991",
+    "What else does Bobbi Brown do?": "writes books about beauty and health",
+    "How long should children exercise per day according to doctors?": "at least one hour",
+    "What do many schools now include every day?": "sports lessons",
+    "The word 'development' in the text means ___.": "improvement and growth",
+    "Why is breakfast important?": "It is the most important meal",
+    "Why do some people skip breakfast?": "because they are in a hurry",
+    "What do doctors say about skipping breakfast?": "It is bad for your health",
+    "The word 'skip' in the text means ___.": "miss or not eat",
+    "What does watching English films improve?": "listening skills",
+    "What can you do with English when travelling?": "travel anywhere easily",
+    # ── Grammar unique đề 21–36 (phát hiện khi rà lại độc lập) ──
+    "Vegetables ___ good for your health.": "are",
+    "I feel sick because I ___ too much candy.": "ate",
+    "The children enjoyed ___ pizza at the party.": "eating",
+    "The music ___ too loud for the children.": "is",
+    "He ___ a book about animals last week.": "read",
+}
+
+# Grammar/Vocab unique đề 21–36 — sửa theo (đề, chuỗi nhận diện trong q, đáp án đúng).
+# (đề chủ đề tự sinh cũng bị gán đáp án ẩu; mỗi câu unique nên không vào CANON theo stem.)
+_HSG_ANH_EXTRA = [
+    # đề 21
+    (21, "tasks that are", "very"),
+    (21, "my parents", "let"),
+    (21, "she spoke", "clearly"),
+    (21, "neither tom nor his friends", "are"),
+    (21, "finished his project", "earlier"),
+    # đề 22
+    (22, "to the market every morning", "goes"),
+    (22, "eat too much sugar", "shouldn't"),
+    (22, "like best", "Which"),
+    (22, "a balanced diet", "includes"),
+    (22, "smoking three years ago", "stopped"),
+    (22, "has eaten", "so much"),
+    (22, "vitamin c", "is found"),
+    (22, "rice for breakfast every day", "eats"),
+    (22, "the doctor told me", "to do"),
+    # đề 24
+    (24, "the weather, the hikers", "Despite"),
+    (24, "in the western part", "are located"),
+    (24, "cricket is played", "with"),
+    (24, "homework before dinner last night", "did"),
+    (24, "the most popular", "sport"),
+    (24, "very popular in england", "is"),
+    # đề 25
+    (25, "at nine o'clock every morning", "opens"),
+    (25, "must be twelve", "or"),
+    (25, "planning", "to go"),
+    (25, "open until midnight", "stays"),
+    (25, "i wish i", "had gone"),
+    (25, "many new games since they opened", "have added"),
+    (25, "for children to go to the", "unsafe"),
+    (25, "she spoke", "enthusiastically"),
+    (25, "every day after school", "visits"),
+    (25, "than the one in town", "much bigger"),
+    (25, "saw how busy it was", "left"),
+    (25, "a great place to spend the afternoon", "is"),
+    (25, "because she likes the music", "enjoys"),
+    (25, "the café was new, many people", "Although"),
+    # đề 26
+    (26, "a new t-shirt at the shopping centre yesterday", "bought"),
+    (26, "did you spend at the shopping centre", "much"),
+    (26, "the cinema next to the shop", "saw"),
+    (26, "tried", "on"),
+    (26, "than the one in the other shop", "cheaper"),
+    (26, "told her to", "go"),
+    (26, "because it fit perfectly", "bought"),
+    (26, "pay by card", "can"),
+    (26, "a big car park outside", "has"),
+    (26, "to the shopping centre by bus", "there"),
+    (26, "with his family", "shopped"),
+    (26, "enjoyed", "walking"),
+    (26, "because of a water leak", "closed"),
+    (26, "her friends at the entrance", "met"),
+    (26, "said the price", "is"),
+    (26, "ever been to davey", "Have"),
+    # đề 27
+    (27, "much more technology than today", "will have"),
+    # đề 28
+    (28, "long have you been interested", "How"),
+    (28, "did his homework", "then"),
+    (28, "have collected", "lots of"),
+    (28, "finished all her work", "so"),
+    # đề 30
+    (30, "the film was long", "Although"),
+    (30, "award for best actress last year", "won"),
+    (30, "was made", "with"),
+    (30, "the cameras", "were"),
+    (30, "actress in the film", "most talented"),
+    (30, "at the cinema from next friday", "is showing"),
+    (30, "told the actors", "to wear"),
+    (30, "spoke her lines", "loudly enough"),
+    (30, "the film crew", "worked"),
+    (30, "as the villain", "is cast"),
+    (30, "received", "extremely positive"),
+    (30, "the stunt", "was"),
+    (30, "standing at the end", "clapped"),
+    # đề 31
+    (31, "has been jogging", "for"),
+    (31, "arrived at the exhibition hall", "has just"),
+    (31, "runs", "faster"),
+    (31, "should not", "throw"),
+    # đề 32
+    (32, "his best time last year", "beat"),
+    (32, "open at six every morning", "opens"),
+    (32, "train every day", "Why"),
+    (32, "than all the other swimmers", "faster"),
+    # đề 33
+    (33, "have you had your library card", "How long"),
+    (33, "twenty books since the term started", "has read"),
+    (33, "quiet in the library", "be"),
+    (33, "swimming with his friends last tuesday", "went"),
+    (33, "and is now reading", "finished"),
+    (33, "books does the library have", "How many"),
+    (33, "horse riding since she was six", "has enjoyed"),
+    (33, "library card at home", "forgot"),
+    (33, "a librarian when she grows up", "to become"),
+    (33, "next monday for repairs", "is closing"),
+    (33, "five activities this week", "has done"),
+    (33, "she could borrow up to five books", "told"),
+    (33, "interesting than mine", "more"),
+    (33, "time to finish all five activities", "enough"),
+    (33, "loves", "going"),
+    # đề 34
+    (34, "ever met a famous person", "Have"),
+    (34, "girl in the class", "tallest"),
+    (34, "the park three times this year", "visited"),
+]
+
+
+# Cloze trống "(N) ___" (không có câu trong q) — key theo chữ ký passage + số ô.
+_HSG_ANH_CLOZE_FIX = {
+    "dearfred": {1: "went", 2: "is", 3: "five hundred", 4: "Maths",
+                 5: "kind", 7: "friends", 8: "eat", 9: "join", 10: "like"},
+    "mr.thanhisateacher": {3: "goes", 5: "many", 9: "goes"},
+    "shoppingintheunitedstates": {2: "shops", 3: "shop", 5: "theme", 7: "use"},
+    "savingenergyisveryimportant": {1: "turn off", 3: "produce"},
+    "childrenneedtospendtime": {1: "outside", 4: "play"},
+    "therockymountains,alsocalled": {7: "flow", 8: "parks", 10: "wonderful"},
+}
+
+# Câu điền từ (type 'fill') có đáp án sai/lệch — (đề, chuỗi nhận diện trong q, đáp án đúng).
+# answer là chuỗi tự do; gán thẳng. Sửa MỌI câu khớp trong đề (passage có thể lặp).
+_HSG_ANH_FILL_FIX = [
+    (4, "dogs and", "cats"),
+    (4, "buy them from a pet", "shop"),
+    (7, "mekong river flows in the", "south"),
+    (7, "red river is the", "longest"),
+    (7, "famous for its beaches", "more"),
+    (7, "through several countries", "flows"),
+    (7, "mountains are very", "high"),
+    (7, "flag is red with", "a"),
+    (7, "many national parks", "has"),
+    (8, "she plays", "with"),
+    (10, "for lunch every sunday", "invite"),
+    (13, "for lunch every sunday", "invite"),
+    (18, "football and basketball", "playing"),
+    (18, "football matches on tv", "watching"),
+    (22, "than the red river", "longer"),
+    (25, "on boats to catch", "out"),
+    (30, "hundreds of years", "old"),
+    (33, "they will travel", "by"),
+    (33, "many books", "to buy"),
+    (35, "mondays", "hating"),
+    (35, "owner is kind", "but"),
+]
+
+
+# Phonetics: hiển thị phần cần so bằng chữ HOA (thay cho gạch chân — KHÔNG đổi đáp án).
+# (1) Đề 22–36: đã đánh dấu sẵn dạng _grapheme_ → tự chuyển thành CHỮ HOA.
+# (2) Đề 3–15 (options A–D, chưa đánh dấu): map thân câu → thân câu đã IN HOA grapheme.
+_HSG_ANH_PHON_UPPER = {
+    "A. nation B. question C. action D. station":
+        "A. naTION  B. quesTION  C. acTION  D. staTION",
+    "A. nation B. station C. action D. question":
+        "A. naTION  B. staTION  C. acTION  D. quesTION",
+    "A. child B. blind C. find D. wind":
+        "A. chILd  B. blINd  C. fINd  D. wINd",
+    "A. called B. watched C. talked D. walked":
+        "A. callED  B. watchED  C. talkED  D. walkED",
+    "A. washed B. worked C. hoped D. naked":
+        "A. washED  B. workED  C. hopED  D. nakED",
+    "A. washed B. worked C. hoped D. called":
+        "A. washED  B. workED  C. hopED  D. callED",
+    "A. these B. there C. three D. they":
+        "A. THese  B. THere  C. THree  D. THey",
+    "A. book B. food C. look D. cook":
+        "A. bOOk  B. fOOd  C. lOOk  D. cOOk",
+    "A. moon B. food C. book D. school":
+        "A. mOOn  B. fOOd  C. bOOk  D. schOOl",
+    "A. now B. know C. cow D. how":
+        "A. nOW  B. knOW  C. cOW  D. hOW",
+    "A. hand B. and C. sand D. any":
+        "A. hAnd  B. And  C. sAnd  D. Any",
+}
+
+
+def _hsg_upper_underscores(text):
+    # "t_oo_th" -> "tOOth" ; "_th_ink" -> "THink"
+    return _re_hsg.sub(r"_([^_]+)_", lambda m: m.group(1).upper(), str(text))
+
+
+def _hsg_apply_phonetics_display():
+    for items in _HSG_ANH_6_EXAMS.values():
+        for it in items:
+            if it.get("topic") != "Phonetics":
+                continue
+            q = it.get("q", "")
+            m = _re_hsg.match(r"^(\s*\(?\d+\)?[.)]?\s*)(.*)$", q, _re_hsg.S)
+            prefix = m.group(1) if m else ""
+            rest = _re_hsg.sub(r"\s+", " ", m.group(2)).strip() if m else q
+            if "_" in q:
+                it["q"] = _hsg_upper_underscores(q)
+            elif rest in _HSG_ANH_PHON_UPPER:
+                it["q"] = prefix + _HSG_ANH_PHON_UPPER[rest]
+
+
+def _hsg_set_answer(it, target):
+    """Gán answer = option khớp target (ưu tiên khớp đúng, sau đó chứa)."""
+    nt = _hsg_norm(target)
+    opts = it.get("options", [])
+    chosen = next((o for o in opts if _hsg_norm(_hsg_opt_text(o)) == nt), None)
+    if chosen is None:
+        chosen = next((o for o in opts if nt in _hsg_norm(_hsg_opt_text(o))), None)
+    if chosen is not None:
+        it["answer"] = chosen
+
+
+def _hsg_apply_canon():
+    for items in _HSG_ANH_6_EXAMS.values():
+        cur_passage = None
+        for it in items:
+            if it.get("passage_text"):
+                cur_passage = it["passage_text"]
+            typ = it.get("type")
+            if typ not in ("choice", "fill"):
+                continue
+            target = _HSG_ANH_CANON.get(_hsg_stem(it.get("q", "")))
+            if target is not None:
+                if typ == "fill":
+                    it["answer"] = target       # fill: gán thẳng đáp án đúng
+                else:
+                    _hsg_set_answer(it, target)
+                continue
+            # Cloze trống "(N) ___": tra theo chữ ký passage + số ô
+            if typ == "choice" and cur_passage and it.get("topic") in ("Reading", "Listening"):
+                msig = _hsg_norm(cur_passage)
+                mnum = _re_hsg.match(r"^\s*\((\d+)\)", it.get("q", ""))
+                if mnum:
+                    num = int(mnum.group(1))
+                    for sig, nummap in _HSG_ANH_CLOZE_FIX.items():
+                        if msig.startswith(sig) and num in nummap:
+                            _hsg_set_answer(it, nummap[num])
+                            break
+
+
+def _hsg_apply_extra():
+    for de, substr, target in _HSG_ANH_EXTRA:
+        ns = _hsg_norm(substr)
+        for it in _HSG_ANH_6_EXAMS.get(de, []):
+            if it.get("type") == "choice" and ns in _hsg_norm(it.get("q", "")):
+                _hsg_set_answer(it, target)
+                break
+
+
+def _hsg_apply_fill():
+    for de, substr, answer in _HSG_ANH_FILL_FIX:
+        ns = _hsg_norm(substr)
+        for it in _HSG_ANH_6_EXAMS.get(de, []):
+            if it.get("type") == "fill" and ns in _hsg_norm(it.get("q", "")):
+                it["answer"] = answer   # sửa mọi câu khớp (không break)
+
+
+_hsg_apply_canon()
+_hsg_apply_extra()
+_hsg_apply_fill()
+_hsg_apply_phonetics_display()
+
 HSG_ANH_EXAM_DURATIONS = {i: 120 for i in range(1, 37)}
 HSG_ANH_EXAM_NQ = {k: len(v) for k, v in _HSG_ANH_6_EXAMS.items()}
 
