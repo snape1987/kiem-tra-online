@@ -13294,6 +13294,11 @@ _HSG_ANH_CANON = {
     "A. funny B. humorous C. amusing D. serious": "serious",
     # ── Phonetics 1x còn sai ──
     "A. child B. blind C. find D. wind": "D",
+    # ── Phonetics stress (uppercase stressed syllable) ──
+    "A. happy B. lucky C. pretty D. alone": "D",        # alone = stress 2nd
+    "A. morning B. doctor C. sister D. mistake": "D",   # mistake = stress 2nd
+    "A. cattle B. battle C. table D. little": "C",      # table = no 'tt' cluster
+    "A. stay B. play C. say D. day": "D",               # day = voiced initial /d/
     # ── Listening/Reading có đáp án bất khả thi / lệch chữ cái (8 lỗi cơ học) ──
     "What does Jason like about camping?": "sleeping under the stars",
     "What does a healthy breakfast include?": "fruit, cereals and milk",
@@ -13536,6 +13541,53 @@ _HSG_ANH_PHON_UPPER = {
         "A. nOW  B. knOW  C. cOW  D. hOW",
     "A. hand B. and C. sand D. any":
         "A. hAnd  B. And  C. sAnd  D. Any",
+    # ── Stress questions — uppercase stressed syllable ──
+    "A. happy B. lucky C. pretty D. alone":
+        "A. HAppy  B. LUcky  C. PRETty  D. aLONE",
+    "A. family B. beautiful C. important D. carefully":
+        "A. FAMily  B. BEAutiful  C. imPORtant  D. CAREfully",
+    "A. enjoy B. open C. study D. listen":
+        "A. enJOY  B. Open  C. STUdy  D. LISten",
+    "A. history B. geography C. biology D. technology":
+        "A. HIStory  B. geOGraphy  C. biOLogy  D. techNOLogy",
+    "A. banana B. tomato C. potato D. mango":
+        "A. baNAna  B. toMAto  C. poTAto  D. MANgo",
+    "A. morning B. doctor C. sister D. mistake":
+        "A. MORning  B. DOCtor  C. SISter  D. misTAKE",
+    "A. understand B. uncle C. umbrella D. under":
+        "A. underSTAND  B. UNcle  C. umBRELla  D. UNder",
+    # ── Consonant / vowel comparison ──
+    "A. cattle B. battle C. table D. little":
+        "A. caTTle  B. baTTle  C. table  D. liTTle",
+    "A. father B. that C. than D. the":
+        "A. faTHer  B. THat  C. THan  D. THe",
+    "A. stay B. play C. say D. day":
+        "A. STay  B. PLay  C. SAy  D. DAy",
+    "A. stay B. play C. say D. way":
+        "A. STay  B. PLay  C. SAy  D. WAy",
+    "A. talks B. parks C. banks D. cats":
+        "A. talkS  B. parkS  C. bankS  D. catS",
+    "A. book B. food C. look D. school":
+        "A. bOOk  B. fOOd  C. lOOk  D. schOOl",
+    # ── Word-option phonetics (đề 1, 2) ──
+    "A. depend B. excellent C. documentary D. weekend":
+        "A. dePEND  B. EXcellent  C. docuMENtary  D. WEEKend",
+    "A. kissed B. helped C. closed D. forced":
+        "A. kissED  B. helpED  C. closED  D. forcED",
+    "A. glass B. traffic C. hat D. plant":
+        "A. glAss  B. trAffic  C. hAt  D. plAnt",
+    "A. vegetarian B. photography C. automatic D. appropriate":
+        "A. vegeTARian  B. phoTOGraphy  C. autoMAtic  D. apPROpriate",
+    "A. healthy B. instead C. seaside D. breakfast":
+        "A. hEAlthy  B. instEAd  C. sEAside  D. brEAkfast",
+    "A. drops B. looks C. means D. meets":
+        "A. dropS  B. lookS  C. meanS  D. meetS",
+    "A. nice B. uncle C. office D. distance":
+        "A. niCe  B. unCle  C. offiCe  D. distanCe",
+    "A. geography B. literature C. hospital D. bakery":
+        "A. geOGraphy  B. LIterature  C. HOSpital  D. BAkery",
+    "A. finish B. address C. picture D. music":
+        "A. FInish  B. adDRESS  C. PICture  D. MUsic",
 }
 
 
