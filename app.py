@@ -176,7 +176,7 @@ FOLDER_EXAM_COUNTS = {
     # Lớp 1
     "de_hk2_toan_1":       1,   # 1 PDF đề HK2
     "toan_violympic_1":   19,   # 3 PDF cùng nội dung → 19 vòng
-    "de_hsg_toan_1":       1,   # 1 chế độ: 30 câu random từ hard pool
+    "de_hsg_toan_1":      20,   # 20 đề × 30 câu hard pool (DE_11–20 + DE_ON)
     # Lớp 6
     "de_toan_6_hk2":       9,   # 9 PDF đề đơn
     "de_olympic_toan_6":  29,   # 10 đề đơn + VIOLYMPIC TOÁN 6 có 19 vòng

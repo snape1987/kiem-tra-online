@@ -14180,9 +14180,17 @@ for _de_hsg1 in (_HSG_TOAN_1_DE_11, _HSG_TOAN_1_DE_12, _HSG_TOAN_1_DE_13,
             _HSG_TOAN_1_HARD_POOL.append(_q_hsg1)
 del _seen_hsg1, _de_hsg1, _q_hsg1
 
-_HSG_TOAN_1_EXAMS    = {1: _HSG_TOAN_1_HARD_POOL}
-HSG_TOAN_1_DURATIONS = {1: 60}
-HSG_TOAN_1_NQ        = {1: 30}
+# 20 đề cố định, mỗi đề 30 câu lấy từ hard pool với seed riêng
+import random as _rng_hsg1
+_HSG_TOAN_1_EXAMS = {}
+for _i_hsg1 in range(1, 21):
+    _rng_hsg1.seed(_i_hsg1 * 31 + 7)
+    _HSG_TOAN_1_EXAMS[_i_hsg1] = _rng_hsg1.sample(_HSG_TOAN_1_HARD_POOL, 30)
+_rng_hsg1.seed()   # reset random state
+del _i_hsg1, _rng_hsg1
+
+HSG_TOAN_1_DURATIONS = {i: 60 for i in range(1, 21)}
+HSG_TOAN_1_NQ        = {i: 30 for i in range(1, 21)}
 
 _FOLDER_POOLS = {
     ("lop_1", "toan_violympic_1"):    BAO_MEO_VIOLYMPIC,
@@ -14217,10 +14225,12 @@ def gen_exam(lop_key, folder_key, n=15, seed=None, exam_no=1):
         random.shuffle(result)
         return result
 
-    # HSG Toán 1: 30 câu random từ hard pool (DE_11–20 + DE_ON)
+    # HSG Toán 1: mỗi đề_no = 30 câu cố định từ hard pool, xáo trộn thứ tự
     if folder_key == "de_hsg_toan_1":
-        return random.sample(_HSG_TOAN_1_HARD_POOL,
-                             min(30, len(_HSG_TOAN_1_HARD_POOL)))
+        pool = _HSG_TOAN_1_EXAMS.get(exam_no or 1, _HSG_TOAN_1_EXAMS[1])
+        result = list(pool)
+        random.shuffle(result)
+        return result
 
     # HSG Anh 6: giữ nguyên thứ tự (Listening → Phonetics → Grammar → Reading)
     if folder_key == "de_hsg_anh_6":
