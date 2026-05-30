@@ -14167,18 +14167,22 @@ _HSG_TOAN_1_DE_ON = [
     {"type":"choice","topic":"Toán đố","q":"Một đàn kiến xếp hàng dài 3 con × 10 hàng, rồi thêm 5 con vào cuối hàng. Hỏi tất cả có bao nhiêu con kiến?","options":["A. 33","B. 34","C. 35","D. 36"],"answer":"C. 35"},
 ]
 
-_HSG_TOAN_1_EXAMS = {
-    1: _HSG_TOAN_1_DE_1,   2: _HSG_TOAN_1_DE_2,   3: _HSG_TOAN_1_DE_3,
-    4: _HSG_TOAN_1_DE_4,   5: _HSG_TOAN_1_DE_5,   6: _HSG_TOAN_1_DE_6,
-    7: _HSG_TOAN_1_DE_7,   8: _HSG_TOAN_1_DE_8,   9: _HSG_TOAN_1_DE_9,
-    10: _HSG_TOAN_1_DE_10, 11: _HSG_TOAN_1_DE_11, 12: _HSG_TOAN_1_DE_12,
-    13: _HSG_TOAN_1_DE_13, 14: _HSG_TOAN_1_DE_14, 15: _HSG_TOAN_1_DE_15,
-    16: _HSG_TOAN_1_DE_16, 17: _HSG_TOAN_1_DE_17, 18: _HSG_TOAN_1_DE_18,
-    19: _HSG_TOAN_1_DE_19, 20: _HSG_TOAN_1_DE_20, 21: _HSG_TOAN_1_DE_ON,
-}
+# Hard pool: DE_11–20 + DE_ON, deduped — dùng cho chế độ 30 câu random khó
+_HSG_TOAN_1_HARD_POOL = []
+_seen_hsg1 = set()
+for _de_hsg1 in (_HSG_TOAN_1_DE_11, _HSG_TOAN_1_DE_12, _HSG_TOAN_1_DE_13,
+                 _HSG_TOAN_1_DE_14, _HSG_TOAN_1_DE_15, _HSG_TOAN_1_DE_16,
+                 _HSG_TOAN_1_DE_17, _HSG_TOAN_1_DE_18, _HSG_TOAN_1_DE_19,
+                 _HSG_TOAN_1_DE_20, _HSG_TOAN_1_DE_ON):
+    for _q_hsg1 in _de_hsg1:
+        if _q_hsg1["q"] not in _seen_hsg1:
+            _seen_hsg1.add(_q_hsg1["q"])
+            _HSG_TOAN_1_HARD_POOL.append(_q_hsg1)
+del _seen_hsg1, _de_hsg1, _q_hsg1
 
-HSG_TOAN_1_DURATIONS = {i: 60 for i in range(1, 22)}
-HSG_TOAN_1_NQ = {k: len(v) for k, v in _HSG_TOAN_1_EXAMS.items()}
+_HSG_TOAN_1_EXAMS    = {1: _HSG_TOAN_1_HARD_POOL}
+HSG_TOAN_1_DURATIONS = {1: 60}
+HSG_TOAN_1_NQ        = {1: 30}
 
 _FOLDER_POOLS = {
     ("lop_1", "toan_violympic_1"):    BAO_MEO_VIOLYMPIC,
@@ -14213,14 +14217,10 @@ def gen_exam(lop_key, folder_key, n=15, seed=None, exam_no=1):
         random.shuffle(result)
         return result
 
-    # HSG Toán 1: mỗi đề_no = toàn bộ câu của 1 đề, xáo trộn thứ tự
+    # HSG Toán 1: 30 câu random từ hard pool (DE_11–20 + DE_ON)
     if folder_key == "de_hsg_toan_1":
-        pool = _HSG_TOAN_1_EXAMS.get(exam_no or 1, [])
-        if not pool:
-            return _placeholder(1, "", "Toán", f"Đề HSG Toán 1 — Đề {exam_no or 1}")
-        result = list(pool)
-        random.shuffle(result)
-        return result
+        return random.sample(_HSG_TOAN_1_HARD_POOL,
+                             min(30, len(_HSG_TOAN_1_HARD_POOL)))
 
     # HSG Anh 6: giữ nguyên thứ tự (Listening → Phonetics → Grammar → Reading)
     if folder_key == "de_hsg_anh_6":
