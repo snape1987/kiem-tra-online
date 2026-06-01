@@ -1,0 +1,8 @@
+# Dependencies cho agent crawl — cài trên hermes droplet
+# pip install -r requirements_agent.txt
+
+requests>=2.31
+beautifulsoup4>=4.12
+anthropic>=0.25
+psycopg[binary]>=3.1   # nếu dùng Postgres
+lxml>=5.0              # parser nhanh hơn cho BeautifulSoup

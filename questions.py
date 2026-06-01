@@ -14255,6 +14255,34 @@ def folder_display(lop_key, folder_key):
     return folder_key
 
 
+def _load_pool_from_db(lop_key: str, folder_key: str) -> list:
+    """Lấy câu hỏi từ questions_pool DB (do agent crawl về).
+    Trả [] nếu bảng chưa tồn tại hoặc không có câu nào.
+    """
+    # folder_key → (subject, folder_type) mapping
+    _FK_MAP = {
+        "de_hk1_toan":    ("toan",      "hk1"),
+        "de_hk2_toan_1":  ("toan",      "hk2"),
+        "de_toan_6_hk2":  ("toan",      "hk2"),
+        "de_toan_6_hk1":  ("toan",      "hk1"),
+        "toan_7_hk1":     ("toan",      "hk1"),
+        "toan_8_hk2":     ("toan",      "hk2"),
+        "de_olympic_toan_6":  ("toan",  "violympic"),
+        "toan_violympic_1":   ("toan",  "violympic"),
+        "de_tieng_anh_6_hk2": ("tieng_anh", "hk2"),
+        "tieng_anh_7_hk1":    ("tieng_anh", "hk1"),
+    }
+    mapping = _FK_MAP.get(folder_key)
+    if not mapping:
+        return []
+    subject, folder_type = mapping
+    try:
+        from agent.db import get_pool_questions
+        return get_pool_questions(lop_key, subject, folder_type)
+    except Exception:
+        return []
+
+
 def gen_exam(lop_key, folder_key, n=15, seed=None, exam_no=1):
     """Sinh n câu cho lop_key + folder_key."""
     if seed is not None:
@@ -14293,6 +14321,13 @@ def gen_exam(lop_key, folder_key, n=15, seed=None, exam_no=1):
         return result
 
     pool = _FOLDER_POOLS.get((lop_key, folder_key), [])
+
+    # Merge với câu hỏi từ agent pool (DB) — dedup theo q text
+    db_pool = _load_pool_from_db(lop_key, folder_key)
+    if db_pool:
+        existing_qs = {q["q"] for q in pool}
+        new_qs = [q for q in db_pool if q["q"] not in existing_qs]
+        pool = list(pool) + new_qs
 
     if not pool:
         name = folder_display(lop_key, folder_key)
