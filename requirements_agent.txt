@@ -6,3 +6,4 @@ beautifulsoup4>=4.12
 anthropic>=0.25
 psycopg[binary]>=3.1   # nếu dùng Postgres
 lxml>=5.0              # parser nhanh hơn cho BeautifulSoup
+markitdown[all]>=0.1   # Microsoft local PDF/DOC/PPTX → markdown converter

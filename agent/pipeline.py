@@ -28,27 +28,25 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 
-# ── MarkItDown helper (gọi trực tiếp, không import markitdown_client để
-#    agent có thể chạy độc lập với webapp) ─────────────────────────────────────
+# ── MarkItDown local (pip install markitdown) — không cần server/API key ──────
 
 def _convert_to_markdown(filename: str, data: bytes, content_type: str) -> str | None:
-    if not MARKITDOWN_URL:
-        log.warning("MARKITDOWN_URL chưa set — bỏ qua convert")
-        return None
-    headers = {"X-Api-Key": MARKITDOWN_API_KEY} if MARKITDOWN_API_KEY else {}
     try:
-        resp = requests.post(
-            f"{MARKITDOWN_URL}/convert/file",
-            files={"file": (filename, data, content_type)},
-            headers=headers,
-            timeout=120,
-        )
-        if not resp.ok:
-            log.warning("MarkItDown error %s: %s", resp.status_code, resp.text[:200])
-            return None
-        return resp.json().get("markdown", "")
+        import tempfile, os
+        from markitdown import MarkItDown
+        # Ghi tạm ra file vì markitdown cần đường dẫn
+        suffix = os.path.splitext(filename)[1] or ".pdf"
+        with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as tmp:
+            tmp.write(data)
+            tmp_path = tmp.name
+        try:
+            md = MarkItDown()
+            result = md.convert(tmp_path)
+            return result.text_content or ""
+        finally:
+            os.unlink(tmp_path)
     except Exception as exc:
-        log.warning("MarkItDown request failed: %s", exc)
+        log.warning("MarkItDown convert failed (%s): %s", filename, exc)
         return None
 
 
