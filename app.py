@@ -233,6 +233,8 @@ def index():
         hsg_anh_exam_dur_json=json.dumps(questions.HSG_ANH_EXAM_DURATIONS),
         hsg_toan_1_exam_nq_json=json.dumps(questions.HSG_TOAN_1_NQ),
         hsg_toan_1_exam_dur_json=json.dumps(questions.HSG_TOAN_1_DURATIONS),
+        violympic_toan_1_nq_json=json.dumps(questions.VIOLYMPIC_TOAN_1_NQ),
+        violympic_toan_1_dur_json=json.dumps(questions.VIOLYMPIC_TOAN_1_DURATIONS),
     )
 
 
@@ -254,6 +256,9 @@ def start():
     elif folder == "de_hsg_toan_1":
         duration = questions.HSG_TOAN_1_DURATIONS.get(exam_no, 60)
         n_q = questions.HSG_TOAN_1_NQ.get(exam_no, 10)
+    elif folder == "toan_violympic_1":
+        duration = questions.VIOLYMPIC_TOAN_1_DURATIONS.get(exam_no, 45)
+        n_q      = questions.VIOLYMPIC_TOAN_1_NQ.get(exam_no, 30)
     else:
         duration = int(request.form.get("duration", 45))
         n_q = int(request.form.get("n_questions", DUR_TO_NQ.get(duration, 15)))

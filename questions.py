@@ -14192,8 +14192,36 @@ del _i_hsg1, _rng_hsg1
 HSG_TOAN_1_DURATIONS = {i: 60 for i in range(1, 21)}
 HSG_TOAN_1_NQ        = {i: 30 for i in range(1, 21)}
 
+# ── Violympic Toán 1 — hard pool (filter dễ + vay mượn HSG) ──────────────────
+import re as _re_oly
+def _vio_is_hard(q_dict):
+    q, topic = q_dict["q"], q_dict.get("topic", "")
+    if topic in ("Toán lời văn", "Đo lường", "Dãy số"):
+        return True
+    if q_dict.get("type") == "choice":
+        return True
+    if any(int(n) >= 10 for n in _re_oly.findall(r'\d+', q)):
+        return True
+    if '?' in q and not q.strip().endswith('?'):
+        return True
+    return False
+
+_VIO_FILTERED = [q for q in BAO_MEO_VIOLYMPIC if _vio_is_hard(q)]
+del _re_oly, _vio_is_hard
+
+_OLYMPIC_TOAN_1_POOL = []
+_seen_oly1 = set()
+for _q_oly1 in _VIO_FILTERED + list(BAO_MEO_POOL) + _HSG_TOAN_1_HARD_POOL:
+    if _q_oly1["q"] not in _seen_oly1:
+        _seen_oly1.add(_q_oly1["q"])
+        _OLYMPIC_TOAN_1_POOL.append(_q_oly1)
+del _seen_oly1, _q_oly1
+
+VIOLYMPIC_TOAN_1_NQ        = {i: 30 for i in range(1, 20)}
+VIOLYMPIC_TOAN_1_DURATIONS = {i: 45 for i in range(1, 20)}
+
 _FOLDER_POOLS = {
-    ("lop_1", "toan_violympic_1"):    BAO_MEO_VIOLYMPIC,
+    ("lop_1", "toan_violympic_1"):    _OLYMPIC_TOAN_1_POOL,
     ("lop_6", "de_toan_6_hk2"):       MINH_KHANH_TOAN,
     ("lop_6", "de_olympic_toan_6"):   MINH_KHANH_TOAN,
     ("lop_6", "de_hsg_toan_6"):       MINH_KHANH_TOAN_HSG,
