@@ -13193,6 +13193,18 @@ def _hsg_opt_text(o):
 # Thân câu (1 khoảng trắng) -> nội dung đáp án ĐÚNG (text hoặc chữ cái cho câu options A-D).
 _HSG_ANH_CANON = {
     # ── Grammar lặp nhiều ──
+    "I enjoy ___ to music in the evening.": "listening",
+    "He ___ football every Saturday.": "plays",
+    "___ does she go to the library? — Twice a week.": "How often",
+    "My sister suggested ___ to the park.": "going",
+    "My parents ___ to work by car.": "go",
+    "Would you mind ___ the door?": "opening",
+    "The students ___ in the library now.": "are studying",
+    "My brother ___ swimming on weekends.": "goes",
+    "She hasn't seen him ___ Monday.": "since",
+    "He ___ to Paris last year.": "went",
+    "I need ___ a new phone.": "to buy",
+    "She is ___ student in her class.": "the best",
     "There ___ a lot of trees in the park.": "are",
     "There ___ no water in the bottle.": "is",
     "There ___ some milk in the fridge.": "is",
@@ -13266,8 +13278,10 @@ _HSG_ANH_CANON = {
     "The childrens(A) are(B) playing(C) in the garden(D).": "A",
     "He has(A) lived here(B) since(C) five years(D).": "C",
     "She enjoys(A) to listen(B) to music(C) every evening(D).": "B",
+    "She go(A) to school(B) every(C) day(D).": "A",
     "She go(A) to school(B) every(C) day(D) by bus.": "A",
     "She go(A) to school(B) every(C) day by bus(D).": "A",
+    "He has(A) lived here(B) since(C) ten years(D).": "C",
     "We are(A) going to(B) visit our grandparent(C) next Sunday(D).": "C",
     "We are(A) going to visit(B) our grandparent(C) next Sunday(D).": "C",
     # ── Phonetics options A-D (đáp án = chữ cái từ KHÁC âm) ──
