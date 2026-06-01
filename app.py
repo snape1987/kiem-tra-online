@@ -1,10 +1,16 @@
 """Flask webapp — Kiểm Tra Online — Gia Đình SU KHÔI MÈO."""
+import ipaddress
 import os
 import random
 import time
 import json
 from datetime import datetime
-from flask import Flask, render_template, request, redirect, url_for, session
+from urllib.parse import urlparse
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+
+import markdown as md_lib
+import markitdown_client as md_client
+from markitdown_client import MarkItDownError
 
 import questions
 
@@ -66,11 +72,74 @@ def init_db():
             completed_at TEXT NOT NULL
         )
     """)
+    conn.execute(f"""
+        CREATE TABLE IF NOT EXISTS documents (
+            id {pk},
+            title TEXT NOT NULL,
+            source TEXT,
+            markdown TEXT NOT NULL,
+            created_at TEXT NOT NULL
+        )
+    """)
     conn.commit()
     conn.close()
 
 
 init_db()
+
+# ── MarkItDown helpers ─────────────────────────────────────────────────────────
+
+_UPLOAD_MAX_BYTES = 25 * 1024 * 1024   # 25 MB
+_ALLOWED_EXTS = {".pdf", ".docx", ".pptx", ".xlsx", ".html", ".htm",
+                 ".txt", ".md", ".csv", ".xml"}
+
+_PRIVATE_NETS = [
+    ipaddress.ip_network("10.0.0.0/8"),
+    ipaddress.ip_network("172.16.0.0/12"),
+    ipaddress.ip_network("192.168.0.0/16"),
+    ipaddress.ip_network("127.0.0.0/8"),
+    ipaddress.ip_network("169.254.0.0/16"),
+    ipaddress.ip_network("::1/128"),
+    ipaddress.ip_network("fc00::/7"),
+]
+
+
+def _validate_crawl_url(url: str) -> str:
+    """Chỉ cho phép HTTPS và không cho địa chỉ nội bộ (chống SSRF)."""
+    parsed = urlparse(url.strip())
+    if parsed.scheme != "https":
+        raise ValueError("Chỉ chấp nhận URL dạng https://")
+    host = (parsed.hostname or "").lower()
+    if not host or host in ("localhost",):
+        raise ValueError("URL không hợp lệ.")
+    try:
+        addr = ipaddress.ip_address(host)
+        for net in _PRIVATE_NETS:
+            if addr in net:
+                raise ValueError("Không cho phép địa chỉ IP nội bộ.")
+    except ValueError as exc:
+        if "does not appear to be" not in str(exc):
+            raise
+    return url.strip()
+
+
+def _save_document(conn, title: str, source: str, markdown: str) -> int:
+    now = datetime.now().isoformat(timespec="seconds")
+    if USE_PG:
+        cur = conn.execute(
+            "INSERT INTO documents (title, source, markdown, created_at)"
+            " VALUES (%s,%s,%s,%s) RETURNING id",
+            (title, source, markdown, now),
+        )
+        row = cur.fetchone()
+        conn.commit()
+        return row["id"]
+    cur = conn.execute(
+        "INSERT INTO documents (title, source, markdown, created_at) VALUES (?,?,?,?)",
+        (title, source, markdown, now),
+    )
+    conn.commit()
+    return cur.lastrowid
 
 EXTS = (".png", ".jpg", ".jpeg", ".webp", ".jfif")
 ICON_BASE = os.path.join(os.path.dirname(__file__), "static", "icons")
@@ -404,6 +473,97 @@ def modename(m):
                 return fname
     return {"hs_gioi": "Đề HS Giỏi", "olympic": "Đề Thi Olympic",
             "mixed": "HS Giỏi + Thi Olympic", "bao_meo": "Bảo Mèo"}.get(m, m)
+
+
+# ── MarkItDown routes ──────────────────────────────────────────────────────────
+
+@app.route("/upload", methods=["GET", "POST"])
+def upload():
+    if request.method == "GET":
+        return render_template("upload.html")
+
+    f = request.files.get("file")
+    if not f or not f.filename:
+        flash("Vui lòng chọn file.")
+        return render_template("upload.html"), 400
+
+    ext = os.path.splitext(f.filename)[1].lower()
+    if ext not in _ALLOWED_EXTS:
+        flash(f"Định dạng '{ext}' không được hỗ trợ. Chấp nhận: {', '.join(sorted(_ALLOWED_EXTS))}")
+        return render_template("upload.html"), 400
+
+    data = f.read()
+    if len(data) > _UPLOAD_MAX_BYTES:
+        flash("File vượt quá giới hạn 25 MB.")
+        return render_template("upload.html"), 400
+
+    try:
+        result = md_client.from_file(f.filename, data, f.content_type)
+    except MarkItDownError as exc:
+        flash(f"Lỗi convert: {exc}")
+        return render_template("upload.html"), 502
+
+    title = result.get("title") or os.path.splitext(f.filename)[0]
+    conn = get_db()
+    doc_id = _save_document(conn, title, f"upload:{f.filename}", result["markdown"])
+    conn.close()
+    return redirect(url_for("doc_view", doc_id=doc_id))
+
+
+@app.route("/crawl", methods=["GET", "POST"])
+def crawl():
+    if request.method == "GET":
+        return render_template("crawl.html")
+
+    url = request.form.get("url", "").strip()
+    if not url:
+        flash("Vui lòng nhập URL.")
+        return render_template("crawl.html"), 400
+
+    try:
+        url = _validate_crawl_url(url)
+    except ValueError as exc:
+        flash(str(exc))
+        return render_template("crawl.html"), 400
+
+    try:
+        result = md_client.from_url(url)
+    except MarkItDownError as exc:
+        flash(f"Lỗi convert: {exc}")
+        return render_template("crawl.html"), 502
+
+    title = result.get("title") or url
+    conn = get_db()
+    doc_id = _save_document(conn, title, url, result["markdown"])
+    conn.close()
+    return redirect(url_for("doc_view", doc_id=doc_id))
+
+
+@app.route("/doc/<int:doc_id>")
+def doc_view(doc_id):
+    conn = get_db()
+    row = conn.execute(
+        _ph("SELECT * FROM documents WHERE id = ?"), (doc_id,)
+    ).fetchone()
+    conn.close()
+    if row is None:
+        return render_template("doc.html", doc=None, html_content=""), 404
+    doc = dict(row)
+    html_content = md_lib.markdown(
+        doc["markdown"],
+        extensions=["tables", "fenced_code", "nl2br", "sane_lists"],
+    )
+    return render_template("doc.html", doc=doc, html_content=html_content)
+
+
+@app.route("/docs")
+def docs_list():
+    conn = get_db()
+    rows = conn.execute(
+        "SELECT id, title, source, created_at FROM documents ORDER BY created_at DESC LIMIT 100"
+    ).fetchall()
+    conn.close()
+    return render_template("docs_list.html", docs=[dict(r) for r in rows])
 
 
 if __name__ == "__main__":

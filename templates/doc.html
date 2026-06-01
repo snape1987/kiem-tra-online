@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}{% if doc %}{{ doc.title }} — {% endif %}Tài liệu — Kiểm Tra Online{% endblock %}
+{% block content %}
+
+{% if doc is none %}
+  <div class="card" style="max-width:700px;margin:2rem auto;text-align:center;">
+    <p style="font-size:2rem;">🔍</p>
+    <h2>Không tìm thấy tài liệu</h2>
+    <a href="{{ url_for('docs_list') }}" class="btn-big" style="display:inline-block;margin-top:1rem;">
+      ← Xem danh sách
+    </a>
+  </div>
+{% else %}
+
+<div style="max-width:800px;margin:2rem auto;">
+  <!-- Header -->
+  <div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+    <div style="flex:1;min-width:0;">
+      <h1 style="margin:0 0 .35rem;font-size:1.6rem;line-height:1.3;">{{ doc.title }}</h1>
+      <div style="color:#6b7280;font-size:.85rem;">
+        {% if doc.source and doc.source.startswith('http') %}
+          Nguồn: <a href="{{ doc.source }}" target="_blank" rel="noopener noreferrer"
+                    style="color:#7c3aed;word-break:break-all;">{{ doc.source }}</a>
+        {% elif doc.source %}
+          Nguồn: <span style="color:#374151;">{{ doc.source }}</span>
+        {% endif %}
+        <span style="margin-left:.75rem;">📅 {{ doc.created_at[:10] }}</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:.5rem;flex-shrink:0;">
+      <a href="{{ url_for('docs_list') }}"
+         style="padding:.45rem .9rem;border:1px solid #d1d5db;border-radius:6px;text-decoration:none;color:#374151;font-size:.9rem;background:#f9fafb;">
+        ← Danh sách
+      </a>
+    </div>
+  </div>
+
+  <!-- Rendered markdown -->
+  <div class="doc-body card" style="padding:1.5rem 2rem;line-height:1.75;font-size:1rem;">
+    {{ html_content|safe }}
+  </div>
+
+  <!-- Raw markdown toggle -->
+  <details style="margin-top:1rem;">
+    <summary style="cursor:pointer;color:#6b7280;font-size:.85rem;padding:.35rem 0;">
+      Xem Markdown gốc
+    </summary>
+    <pre style="margin-top:.5rem;padding:1rem;background:#f1f5f9;border-radius:8px;
+                overflow-x:auto;font-size:.8rem;white-space:pre-wrap;word-break:break-word;
+                border:1px solid #e2e8f0;max-height:400px;overflow-y:auto;">{{ doc.markdown }}</pre>
+  </details>
+</div>
+
+<style>
+.doc-body h1,.doc-body h2,.doc-body h3{margin-top:1.5rem;margin-bottom:.5rem;line-height:1.3;}
+.doc-body h1{font-size:1.5rem;} .doc-body h2{font-size:1.25rem;} .doc-body h3{font-size:1.1rem;}
+.doc-body p{margin:.75rem 0;}
+.doc-body ul,.doc-body ol{padding-left:1.5rem;margin:.5rem 0;}
+.doc-body li{margin:.25rem 0;}
+.doc-body table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.9rem;}
+.doc-body th,.doc-body td{border:1px solid #d1d5db;padding:.4rem .75rem;text-align:left;}
+.doc-body th{background:#f3f4f6;font-weight:600;}
+.doc-body code{background:#f1f5f9;padding:.15rem .35rem;border-radius:4px;font-size:.85em;}
+.doc-body pre{background:#1e293b;color:#e2e8f0;padding:1rem;border-radius:8px;
+              overflow-x:auto;margin:1rem 0;}
+.doc-body pre code{background:none;padding:0;color:inherit;}
+.doc-body blockquote{border-left:4px solid #e2e8f0;padding:.5rem 1rem;
+                     margin:1rem 0;color:#6b7280;background:#f8fafc;border-radius:0 6px 6px 0;}
+.doc-body a{color:#7c3aed;}
+.doc-body img{max-width:100%;border-radius:8px;}
+</style>
+{% endif %}
+{% endblock %}

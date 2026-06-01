@@ -23,3 +23,5 @@ services:
       # Environment Variables), trỏ tới Postgres ngoài (Neon free).
       # KHÔNG khai báo databases: ở đây để tránh DO tự tạo dev DB tính phí.
       # Không có biến này -> app tự fallback SQLite (chỉ hợp local dev).
+      # MARKITDOWN_URL: base URL của MarkItDown service (vd. https://mark.suong.io).
+      # MARKITDOWN_API_KEY: API key — đánh dấu SECRET trong DO dashboard.

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Tài liệu ôn tập — Kiểm Tra Online{% endblock %}
+{% block content %}
+<div style="max-width:800px;margin:2rem auto;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.75rem;">
+    <h1 style="margin:0;">📚 Tài liệu ôn tập</h1>
+    <div style="display:flex;gap:.5rem;">
+      <a href="{{ url_for('upload') }}"
+         style="padding:.5rem 1rem;background:#7c3aed;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;">
+        📄 Upload
+      </a>
+      <a href="{{ url_for('crawl') }}"
+         style="padding:.5rem 1rem;background:#0ea5e9;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;">
+        🔗 Crawl URL
+      </a>
+    </div>
+  </div>
+
+  {% if docs %}
+  <div style="display:flex;flex-direction:column;gap:.75rem;">
+    {% for doc in docs %}
+    <a href="{{ url_for('doc_view', doc_id=doc.id) }}"
+       style="display:block;padding:1rem 1.25rem;background:#fff;border:1px solid #e5e7eb;
+              border-radius:10px;text-decoration:none;color:inherit;
+              transition:box-shadow .15s,border-color .15s;"
+       onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,.1)';this.style.borderColor='#a78bfa';"
+       onmouseout="this.style.boxShadow='';this.style.borderColor='#e5e7eb';">
+      <div style="font-weight:600;font-size:1rem;margin-bottom:.3rem;">{{ doc.title }}</div>
+      <div style="font-size:.8rem;color:#9ca3af;">
+        {% if doc.source and doc.source.startswith('http') %}
+          🔗 {{ doc.source[:80] }}{% if doc.source|length > 80 %}…{% endif %}
+        {% elif doc.source %}
+          📎 {{ doc.source }}
+        {% endif %}
+        <span style="margin-left:.75rem;">📅 {{ doc.created_at[:10] }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="card" style="text-align:center;padding:3rem;">
+    <p style="font-size:2rem;margin:0 0 .75rem;">📭</p>
+    <p style="color:#6b7280;">Chưa có tài liệu nào. Hãy upload hoặc crawl URL đầu tiên!</p>
+    <div style="margin-top:1.5rem;display:flex;gap:.75rem;justify-content:center;">
+      <a href="{{ url_for('upload') }}" class="btn-big">📄 Upload tài liệu</a>
+      <a href="{{ url_for('crawl') }}" class="btn-big" style="background:#0ea5e9;">🔗 Crawl từ URL</a>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

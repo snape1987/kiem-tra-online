@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Crawl từ URL — Kiểm Tra Online{% endblock %}
+{% block content %}
+<div class="card" style="max-width:600px;margin:2rem auto;">
+  <h1 style="margin-bottom:1rem;">🔗 Crawl đề từ URL</h1>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="flash-error" style="background:#fee2e2;border:1px solid #f87171;border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem;color:#b91c1c;">
+        {% for msg in messages %}<p style="margin:0;">{{ msg }}</p>{% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <form method="POST">
+    <div style="margin-bottom:1.25rem;">
+      <label style="display:block;font-weight:600;margin-bottom:.5rem;">
+        URL bài viết / đề thi
+      </label>
+      <input type="url" name="url" required placeholder="https://example.com/de-thi.html"
+             style="display:block;width:100%;padding:.65rem .75rem;border:2px solid #d1d5db;border-radius:8px;font-size:1rem;box-sizing:border-box;">
+      <small style="color:#6b7280;">Chỉ HTTPS. Không cho phép địa chỉ nội bộ.</small>
+    </div>
+
+    <button type="submit" class="btn-big" style="width:100%;">
+      🚀 Fetch và convert
+    </button>
+  </form>
+
+  <p style="margin-top:1.5rem;text-align:center;color:#6b7280;font-size:.9rem;">
+    Hoặc <a href="{{ url_for('upload') }}">upload file trực tiếp</a> →
+  </p>
+</div>
+{% endblock %}
