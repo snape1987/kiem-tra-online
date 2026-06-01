@@ -15,7 +15,8 @@ import requests
 from bs4 import BeautifulSoup
 
 from agent.config import (
-    CRAWL_DELAY, MAX_FILE_BYTES, MAX_URLS_PER_CAT, REQUEST_TIMEOUT,
+    CRAWL_DELAY, GOOGLE_CSE_CX, GOOGLE_CSE_KEY,
+    MAX_FILE_BYTES, MAX_URLS_PER_CAT, REQUEST_TIMEOUT,
 )
 
 _HEADERS = {
@@ -30,28 +31,40 @@ _HEADERS = {
 _FILE_EXTS = re.compile(r"\.(pdf|docx?|pptx?|xlsx?)(\?.*)?$", re.I)
 
 
-# ── DuckDuckGo lite search (không cần API key) ────────────────────────────────
+# ── Google Custom Search API (100 queries/ngày free) ─────────────────────────
 
-def _ddg_search(query: str, num: int = 10) -> list[str]:
-    """Tìm URL qua DuckDuckGo HTML — trả danh sách href."""
-    try:
-        resp = requests.get(
-            "https://html.duckduckgo.com/html/",
-            params={"q": query, "kl": "vn-vi"},
-            headers=_HEADERS,
-            timeout=REQUEST_TIMEOUT,
-        )
-        soup = BeautifulSoup(resp.text, "html.parser")
-        links = []
-        for a in soup.select("a.result__url"):
-            href = a.get("href", "")
-            if href.startswith("http"):
-                links.append(href)
-            if len(links) >= num:
-                break
-        return links
-    except Exception:
+def _google_search(query: str, num: int = 10) -> list[str]:
+    """Tìm URL qua Google Custom Search JSON API."""
+    if not GOOGLE_CSE_KEY or not GOOGLE_CSE_CX:
         return []
+    links: list[str] = []
+    try:
+        # Google CSE trả tối đa 10 kết quả/request; dùng start để phân trang
+        for start in range(1, num + 1, 10):
+            count = min(10, num - len(links))
+            resp = requests.get(
+                "https://www.googleapis.com/customsearch/v1",
+                params={
+                    "key": GOOGLE_CSE_KEY,
+                    "cx":  GOOGLE_CSE_CX,
+                    "q":   query,
+                    "num": count,
+                    "start": start,
+                    "lr": "lang_vi",
+                },
+                timeout=REQUEST_TIMEOUT,
+            )
+            if not resp.ok:
+                break
+            data = resp.json()
+            items = data.get("items", [])
+            for item in items:
+                links.append(item["link"])
+            if len(items) < count:
+                break   # hết kết quả
+    except Exception:
+        pass
+    return links
 
 
 # ── Tìm link tải file trong trang landing ────────────────────────────────────
@@ -117,11 +130,11 @@ def find_file_urls(keyword: str, already_crawled: set[str]) -> list[str]:
     """
     file_urls: list[str] = []
 
-    # Tìm trực tiếp file qua DuckDuckGo với filetype hint
+    # Tìm trực tiếp file qua Google CSE với filetype hint
     for ftype in ("pdf", "doc"):
         if len(file_urls) >= MAX_URLS_PER_CAT:
             break
-        results = _ddg_search(f"{keyword} filetype:{ftype}", num=15)
+        results = _google_search(f"{keyword} filetype:{ftype}", num=10)
         time.sleep(CRAWL_DELAY)
         for url in results:
             if url in already_crawled:
