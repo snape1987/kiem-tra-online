@@ -11,16 +11,20 @@ SQLITE_PATH = os.environ.get(
     os.path.join(os.path.dirname(__file__), "..", "kiemtra.db"),
 )
 
-# ── Claude API ────────────────────────────────────────────────────────────────
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-CLAUDE_MODEL      = "claude-3-5-haiku-20241022"   # haiku: rẻ, đủ nhanh cho extract
+# ── Claude API — tắt để miễn phí, chỉ dùng regex extractor ─────────────────
+ANTHROPIC_API_KEY = ""   # để trống = không gọi Claude API
+CLAUDE_MODEL      = "claude-3-5-haiku-20241022"
 
 # ── MarkItDown service ────────────────────────────────────────────────────────
 MARKITDOWN_URL     = os.environ.get("MARKITDOWN_URL", "").rstrip("/")
 MARKITDOWN_API_KEY = os.environ.get("MARKITDOWN_API_KEY", "")
 
-# ── Mục tiêu hàng ngày ───────────────────────────────────────────────────────
-DAILY_TARGET_PER_CATEGORY = 3   # số đề mới tối thiểu mỗi mục mỗi ngày
+# ── Mục tiêu ─────────────────────────────────────────────────────────────────
+# Phase 1 (đang dùng): 1 đề mới/ngày/mục cho đến khi đủ PHASE1_POOL_TARGET
+# Phase 2 (tự động chuyển): 3 đề/tuần/mục để duy trì
+DAILY_TARGET_PER_CATEGORY = 1
+PHASE1_POOL_TARGET        = 20   # đủ 20 đề/mục → chuyển sang chế độ tuần
+WEEKLY_TARGET_PER_CATEGORY = 3
 
 # ── Danh mục cần crawl ───────────────────────────────────────────────────────
 # (grade, subject, folder_type, search_keywords_vi)

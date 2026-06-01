@@ -11,11 +11,12 @@ import requests
 
 from agent.config import (
     CATEGORIES, DAILY_TARGET_PER_CATEGORY, MARKITDOWN_API_KEY, MARKITDOWN_URL,
-    REQUEST_TIMEOUT,
+    PHASE1_POOL_TARGET, REQUEST_TIMEOUT, WEEKLY_TARGET_PER_CATEGORY,
 )
 from agent.crawler import download_file, file_hash, find_file_urls
 from agent.db import (
-    count_today, init_agent_tables, is_url_crawled, log_crawl, save_questions,
+    count_today, count_total, init_agent_tables, is_url_crawled, log_crawl,
+    save_questions,
 )
 from agent.extractor import extract_questions
 
@@ -127,13 +128,34 @@ def run_category(grade: str, subject: str, folder_type: str, keyword: str,
 
 # ── Chạy toàn bộ mục ──────────────────────────────────────────────────────────
 
-def run_all(daily_target: int = DAILY_TARGET_PER_CATEGORY):
+def _effective_target(grade: str, subject: str, folder_type: str) -> int:
+    """Phase 1 (pool < PHASE1_POOL_TARGET): 1/ngày.
+    Phase 2 (pool đủ rồi): 3/tuần → chỉ chạy thứ 2/4/6, ngày khác target=0."""
+    from datetime import date
+    total = count_total(grade, subject, folder_type)
+    if total < PHASE1_POOL_TARGET:
+        return DAILY_TARGET_PER_CATEGORY   # phase 1: 1/ngày
+
+    # Phase 2: 3 đề/tuần — chạy vào thứ 2, 4, 6 (weekday 0, 2, 4)
+    weekday = date.today().weekday()
+    if weekday in (0, 2, 4):
+        return 1   # mỗi ngày chạy 1 đề, 3 lần/tuần = 3/tuần
+    return 0       # ngày còn lại bỏ qua
+
+
+def run_all():
     init_agent_tables()
-    log.info("=== Agent bắt đầu — target %d đề/mục/ngày ===", daily_target)
+    log.info("=== Agent bắt đầu (free mode — regex only) ===")
     total_added = 0
     for grade, subject, folder_type, keyword in CATEGORIES:
         try:
-            n = run_category(grade, subject, folder_type, keyword, daily_target)
+            target = _effective_target(grade, subject, folder_type)
+            if target == 0:
+                log.info("[%s/%s/%s] Phase 2 — hôm nay nghỉ", grade, subject, folder_type)
+                continue
+            phase = 1 if count_total(grade, subject, folder_type) < PHASE1_POOL_TARGET else 2
+            log.info("[%s/%s/%s] Phase %d — target %d", grade, subject, folder_type, phase, target)
+            n = run_category(grade, subject, folder_type, keyword, target)
             total_added += n
         except Exception as exc:
             log.error("[%s/%s/%s] Lỗi: %s", grade, subject, folder_type, exc)
