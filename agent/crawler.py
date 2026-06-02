@@ -7,12 +7,19 @@ Chiến lược:
 """
 import hashlib
 import io
+import logging
 import re
 import time
 from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
+
+log = logging.getLogger(__name__)
+
+_FILE_CT = ("application/pdf", "application/msword",
+            "application/vnd.openxmlformats",
+            "application/vnd.ms-", "application/octet-stream")
 
 from agent.config import (
     CRAWL_DELAY, MAX_FILE_BYTES, MAX_URLS_PER_CAT, REQUEST_TIMEOUT,
@@ -45,10 +52,26 @@ def _serper_search(query: str, num: int = 10) -> list[str]:
             timeout=REQUEST_TIMEOUT,
         )
         if not resp.ok:
+            log.warning("Serper %s: %s", resp.status_code, resp.text[:100])
             return []
-        return [item["link"] for item in resp.json().get("organic", [])]
-    except Exception:
+        links = [item["link"] for item in resp.json().get("organic", [])]
+        log.info("  Serper [%s…] → %d URL", query[:50], len(links))
+        for l in links:
+            log.info("    %s", l[:90])
+        return links
+    except Exception as exc:
+        log.warning("Serper error: %s", exc)
         return []
+
+
+def _head_is_file(url: str) -> bool:
+    """HEAD request để kiểm tra content-type có phải PDF/DOC không."""
+    try:
+        r = requests.head(url, headers=_HEADERS, timeout=10, allow_redirects=True)
+        ct = r.headers.get("content-type", "").lower()
+        return any(t in ct for t in _FILE_CT)
+    except Exception:
+        return False
 
 
 # ── Tìm link tải file trong trang landing ────────────────────────────────────
@@ -121,12 +144,17 @@ def find_file_urls(keyword: str, already_crawled: set[str]) -> list[str]:
         results = _serper_search(f"{keyword} filetype:{ftype}", num=10)
         time.sleep(CRAWL_DELAY)
         for url in results:
-            if url in already_crawled:
+            if url in already_crawled or url in file_urls:
                 continue
             if _FILE_EXTS.search(url):
+                # URL trực tiếp có đuôi file
+                file_urls.append(url)
+            elif _head_is_file(url):
+                # URL không có đuôi nhưng content-type là PDF/DOC
+                log.info("    HEAD match: %s", url[:80])
                 file_urls.append(url)
             else:
-                # Trang landing — trích link file trong đó
+                # Trang landing — trích link file bên trong
                 sub = _extract_file_links(url)
                 time.sleep(CRAWL_DELAY)
                 for su in sub:
