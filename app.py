@@ -242,6 +242,13 @@ HSG_ANH_DRIVE_IDS = {
 }
 
 FOLDER_EXAM_COUNTS = {
+    # Lớp 2 (agent-crawled — tăng tự động khi có thêm câu hỏi)
+    "toan_2_hk1":       5,
+    "toan_2_hk2":       5,
+    "de_hsg_toan_2":    5,
+    "toan_violympic_2": 5,
+    "tieng_anh_2_hk1":  5,
+    "tieng_anh_2_hk2":  5,
     # Lớp 1
     "de_hk2_toan_1":       1,   # 1 PDF đề HK2
     "toan_violympic_1":   19,   # 3 PDF cùng nội dung → 19 vòng

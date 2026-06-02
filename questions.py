@@ -1190,6 +1190,14 @@ CONTENT_TREE = [
         ("toan_violympic_1", "Toán Violympic 1"),
         ("de_hsg_toan_1",    "Đề HSG Toán 1"),
     ]),
+    ("lop_2", "Lớp 2", [
+        ("toan_2_hk1",       "Toán 2 Học Kỳ 1"),
+        ("toan_2_hk2",       "Toán 2 Học Kỳ 2"),
+        ("de_hsg_toan_2",    "Đề HSG Toán 2"),
+        ("toan_violympic_2", "Toán Violympic 2"),
+        ("tieng_anh_2_hk1",  "Tiếng Anh 2 Học Kỳ 1"),
+        ("tieng_anh_2_hk2",  "Tiếng Anh 2 Học Kỳ 2"),
+    ]),
     ("lop_6", "Lớp 6", [
         ("de_toan_6_hk2",      "Đề Toán 6 Học Kỳ 2"),
         ("de_olympic_toan_6",  "Đề Olympic Toán 6"),
@@ -14261,8 +14269,15 @@ def _load_pool_from_db(lop_key: str, folder_key: str) -> list:
     """
     # folder_key → (subject, folder_type) mapping
     _FK_MAP = {
-        "de_hk1_toan":    ("toan",      "hk1"),
-        "de_hk2_toan_1":  ("toan",      "hk2"),
+        "de_hk1_toan":       ("toan",      "hk1"),
+        "de_hk2_toan_1":     ("toan",      "hk2"),
+        # Lớp 2 (agent-crawled)
+        "toan_2_hk1":        ("toan",      "hk1"),
+        "toan_2_hk2":        ("toan",      "hk2"),
+        "de_hsg_toan_2":     ("toan",      "hsg"),
+        "toan_violympic_2":  ("toan",      "violympic"),
+        "tieng_anh_2_hk1":   ("tieng_anh", "hk1"),
+        "tieng_anh_2_hk2":   ("tieng_anh", "hk2"),
         "de_toan_6_hk2":  ("toan",      "hk2"),
         "de_toan_6_hk1":  ("toan",      "hk1"),
         "toan_7_hk1":     ("toan",      "hk1"),
