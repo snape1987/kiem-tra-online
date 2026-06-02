@@ -19,9 +19,8 @@ CLAUDE_MODEL      = "claude-3-5-haiku-20241022"
 MARKITDOWN_URL     = os.environ.get("MARKITDOWN_URL", "").rstrip("/")
 MARKITDOWN_API_KEY = os.environ.get("MARKITDOWN_API_KEY", "")
 
-# ── Google Custom Search API (100 queries/ngày free) ─────────────────────────
-GOOGLE_CSE_KEY = os.environ.get("GOOGLE_CSE_KEY", "")
-GOOGLE_CSE_CX  = os.environ.get("GOOGLE_CSE_CX", "")
+# ── Serper.dev Google Search API (2500 queries/tháng free, không cần billing) ─
+SERPER_API_KEY = os.environ.get("SERPER_API_KEY", "")
 
 # ── Mục tiêu ─────────────────────────────────────────────────────────────────
 # Phase 1 (đang dùng): 1 đề mới/ngày/mục cho đến khi đủ PHASE1_POOL_TARGET

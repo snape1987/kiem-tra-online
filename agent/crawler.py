@@ -15,8 +15,8 @@ import requests
 from bs4 import BeautifulSoup
 
 from agent.config import (
-    CRAWL_DELAY, GOOGLE_CSE_CX, GOOGLE_CSE_KEY,
-    MAX_FILE_BYTES, MAX_URLS_PER_CAT, REQUEST_TIMEOUT,
+    CRAWL_DELAY, MAX_FILE_BYTES, MAX_URLS_PER_CAT, REQUEST_TIMEOUT,
+    SERPER_API_KEY,
 )
 
 _HEADERS = {
@@ -31,40 +31,24 @@ _HEADERS = {
 _FILE_EXTS = re.compile(r"\.(pdf|docx?|pptx?|xlsx?)(\?.*)?$", re.I)
 
 
-# ── Google Custom Search API (100 queries/ngày free) ─────────────────────────
+# ── Serper.dev Google Search API (2500 queries/tháng free, không cần billing) ─
 
-def _google_search(query: str, num: int = 10) -> list[str]:
-    """Tìm URL qua Google Custom Search JSON API."""
-    if not GOOGLE_CSE_KEY or not GOOGLE_CSE_CX:
+def _serper_search(query: str, num: int = 10) -> list[str]:
+    """Tìm URL qua Serper.dev (Google Search API, hoạt động từ datacenter IP)."""
+    if not SERPER_API_KEY:
         return []
-    links: list[str] = []
     try:
-        # Google CSE trả tối đa 10 kết quả/request; dùng start để phân trang
-        for start in range(1, num + 1, 10):
-            count = min(10, num - len(links))
-            resp = requests.get(
-                "https://www.googleapis.com/customsearch/v1",
-                params={
-                    "key": GOOGLE_CSE_KEY,
-                    "cx":  GOOGLE_CSE_CX,
-                    "q":   query,
-                    "num": count,
-                    "start": start,
-                    "lr": "lang_vi",
-                },
-                timeout=REQUEST_TIMEOUT,
-            )
-            if not resp.ok:
-                break
-            data = resp.json()
-            items = data.get("items", [])
-            for item in items:
-                links.append(item["link"])
-            if len(items) < count:
-                break   # hết kết quả
+        resp = requests.post(
+            "https://google.serper.dev/search",
+            headers={"X-API-KEY": SERPER_API_KEY, "Content-Type": "application/json"},
+            json={"q": query, "num": min(num, 10), "gl": "vn", "hl": "vi"},
+            timeout=REQUEST_TIMEOUT,
+        )
+        if not resp.ok:
+            return []
+        return [item["link"] for item in resp.json().get("organic", [])]
     except Exception:
-        pass
-    return links
+        return []
 
 
 # ── Tìm link tải file trong trang landing ────────────────────────────────────
@@ -130,11 +114,11 @@ def find_file_urls(keyword: str, already_crawled: set[str]) -> list[str]:
     """
     file_urls: list[str] = []
 
-    # Tìm trực tiếp file qua Google CSE với filetype hint
+    # Tìm trực tiếp file qua Serper.dev với filetype hint
     for ftype in ("pdf", "doc"):
         if len(file_urls) >= MAX_URLS_PER_CAT:
             break
-        results = _google_search(f"{keyword} filetype:{ftype}", num=10)
+        results = _serper_search(f"{keyword} filetype:{ftype}", num=10)
         time.sleep(CRAWL_DELAY)
         for url in results:
             if url in already_crawled:
