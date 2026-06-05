@@ -250,7 +250,7 @@ FOLDER_EXAM_COUNTS = {
     "tieng_anh_2_hk1":  5,
     "tieng_anh_2_hk2":  5,
     # Lớp 1
-    "de_hk2_toan_1":       1,   # 1 PDF đề HK2
+    "de_hk2_toan_1":       5,   # pool random từ 2 đề PDF + 28 câu NC → 5 lần bốc khác nhau
     "toan_violympic_1":   19,   # 3 PDF cùng nội dung → 19 vòng
     "de_hsg_toan_1":      20,   # 20 đề × 30 câu hard pool (DE_11–20 + DE_ON)
     # Lớp 6
