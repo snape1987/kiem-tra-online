@@ -1717,6 +1717,1937 @@ _TIENG_ANH_2_HK2 = [
 ]
 
 
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Pool 1 — TIẾNG ANH LỚP 7 HK2  (50 câu)
+# Chương trình Global Success Units 7-12
+# ═══════════════════════════════════════════════════════════════════════════════
+_TIENG_ANH_7_HK2 = [
+
+    # ── Pronunciation (~8 câu) ──────────────────────────────────────────────
+    # Phân biệt âm tiết nhấn (word stress)
+    {
+        "type": "choice",
+        "q": "Choose the word that has a different stress pattern from the others.",
+        "options": [
+            "A. TRAffic",
+            "B. JOURney",
+            "C. FEStiVal",
+            "D. comMUnicate",
+        ],
+        "answer": "D. comMUnicate",
+        "topic": "Pronunciation",
+    },
+    {
+        "type": "choice",
+        "q": "Choose the word that has a different stress pattern from the others.",
+        "options": [
+            "A. RObot",
+            "B. recYCLE",
+            "C. ENergy",
+            "D. TRAvel",
+        ],
+        "answer": "B. recYCLE",
+        "topic": "Pronunciation",
+    },
+    # Phân biệt âm /ʌ/ vs /æ/
+    {
+        "type": "choice",
+        "q": "Choose the word whose underlined vowel sound is pronounced differently from the others.",
+        "options": [
+            "A. b__U__s",
+            "B. m__U__g",
+            "C. b__A__t",
+            "D. h__U__g",
+        ],
+        "answer": "C. b__A__t",
+        "topic": "Pronunciation",
+    },
+    # Phân biệt âm /iː/ vs /e/
+    {
+        "type": "choice",
+        "q": "Choose the word whose underlined part is pronounced differently from the others.",
+        "options": [
+            "A. b__EA__t",
+            "B. m__EA__t",
+            "C. h__EA__t",
+            "D. br__EA__d",
+        ],
+        "answer": "D. br__EA__d",
+        "topic": "Pronunciation",
+    },
+    # Phân biệt âm /s/ vs /z/ ở đuôi -s
+    {
+        "type": "choice",
+        "q": "Choose the word whose underlined -s ending is pronounced /s/, while the others are /z/.",
+        "options": [
+            "A. robot__s__",
+            "B. film__s__",
+            "C. island__s__",
+            "D. car__s__",
+        ],
+        "answer": "B. film__s__",
+        "topic": "Pronunciation",
+    },
+    # Phân biệt âm /ɪ/ vs /iː/
+    {
+        "type": "choice",
+        "q": "Choose the word whose underlined vowel is pronounced /ɪ/ (short), while the others are /iː/ (long).",
+        "options": [
+            "A. s__ee__",
+            "B. tr__ee__",
+            "C. f__i__sh",
+            "D. f__ee__l",
+        ],
+        "answer": "C. f__i__sh",
+        "topic": "Pronunciation",
+    },
+    # Stress: 3-syllable words
+    {
+        "type": "choice",
+        "q": "Choose the word that has a different stress pattern from the others.",
+        "options": [
+            "A. enVIronment",
+            "B. adVENture",
+            "C. FEstival",
+            "D. reCYcle",
+        ],
+        "answer": "C. FEstival",
+        "topic": "Pronunciation",
+    },
+    # Phân biệt âm /θ/ vs /ð/
+    {
+        "type": "choice",
+        "q": "Choose the word whose underlined 'th' is voiced /ð/, while the others are voiceless /θ/.",
+        "options": [
+            "A. __th__ink",
+            "B. __th__ree",
+            "C. __th__is",
+            "D. __th__anks",
+        ],
+        "answer": "C. __th__is",
+        "topic": "Pronunciation",
+    },
+
+    # ── Grammar (~20 câu) ───────────────────────────────────────────────────
+    # Present Perfect — have/has + V3
+    {
+        "type": "choice",
+        "q": "She ___ just finished her homework.",
+        "options": ["A. have", "B. has", "C. is", "D. was"],
+        "answer": "B. has",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "They ___ never been to Paris.",
+        "options": ["A. has", "B. was", "C. have", "D. are"],
+        "answer": "C. have",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "Have you ___ seen that film?",
+        "options": ["A. never", "B. ever", "C. just", "D. yet"],
+        "answer": "B. ever",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "I haven't finished my project ___.",
+        "options": ["A. already", "B. ever", "C. yet", "D. just"],
+        "answer": "C. yet",
+        "topic": "Grammar",
+    },
+    # Past Simple vs Present Perfect
+    {
+        "type": "choice",
+        "q": "She ___ London three times so far.",
+        "options": ["A. visited", "B. has visited", "C. visit", "D. is visiting"],
+        "answer": "B. has visited",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "I ___ this film last week.",
+        "options": ["A. have watched", "B. watch", "C. am watching", "D. watched"],
+        "answer": "D. watched",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "He ___ his keys yesterday and still can't find them.",
+        "options": ["A. has lost", "B. lost", "C. lose", "D. is losing"],
+        "answer": "B. lost",
+        "topic": "Grammar",
+    },
+    # Passive Voice — Simple
+    {
+        "type": "choice",
+        "q": "The book ___ written by Mark Twain.",
+        "options": ["A. is", "B. were", "C. was", "D. has"],
+        "answer": "C. was",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "English ___ spoken all over the world.",
+        "options": ["A. was", "B. were", "C. has", "D. is"],
+        "answer": "D. is",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "The new bridge ___ built last year.",
+        "options": ["A. is", "B. was", "C. were", "D. has been"],
+        "answer": "B. was",
+        "topic": "Grammar",
+    },
+    # Comparatives / Superlatives
+    {
+        "type": "choice",
+        "q": "This film is ___ interesting than that one.",
+        "options": ["A. most", "B. much", "C. more", "D. as"],
+        "answer": "C. more",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "She is the ___ student in the class.",
+        "options": [
+            "A. most intelligent",
+            "B. more intelligent",
+            "C. intelligenter",
+            "D. as intelligent",
+        ],
+        "answer": "A. most intelligent",
+        "topic": "Grammar",
+    },
+    # Modal verbs
+    {
+        "type": "choice",
+        "q": "You ___ wear a helmet when riding a motorbike.",
+        "options": ["A. might", "B. should", "C. would", "D. could"],
+        "answer": "B. should",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "It's 8 a.m. and school starts at 8. He ___ be at school now.",
+        "options": ["A. might", "B. could", "C. must", "D. should"],
+        "answer": "C. must",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "You ___ touch the exhibits in the museum.",
+        "options": ["A. mustn't", "B. don't have to", "C. couldn't", "D. shouldn't"],
+        "answer": "A. mustn't",
+        "topic": "Grammar",
+    },
+    # Present Perfect — since / for
+    {
+        "type": "choice",
+        "q": "She has lived in Hanoi ___ 2010.",
+        "options": ["A. for", "B. during", "C. since", "D. in"],
+        "answer": "C. since",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "We have studied English ___ five years.",
+        "options": ["A. since", "B. for", "C. in", "D. at"],
+        "answer": "B. for",
+        "topic": "Grammar",
+    },
+    # Question forms
+    {
+        "type": "choice",
+        "q": "How long ___ you been learning the piano?",
+        "options": ["A. are", "B. did", "C. do", "D. have"],
+        "answer": "D. have",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "The new robot can ___ tasks that are dangerous for humans.",
+        "options": ["A. doing", "B. done", "C. do", "D. does"],
+        "answer": "C. do",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "We should ___ plastic bags to protect the environment.",
+        "options": ["A. to reduce", "B. reducing", "C. reduce", "D. reduced"],
+        "answer": "C. reduce",
+        "topic": "Grammar",
+    },
+
+    # ── Vocabulary (~12 câu) ────────────────────────────────────────────────
+    {
+        "type": "choice",
+        "q": "The opposite of 'dangerous' is ___.",
+        "options": ["A. risky", "B. safe", "C. harmful", "D. careless"],
+        "answer": "B. safe",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "We recycle to ___ the environment.",
+        "options": ["A. damage", "B. pollute", "C. protect", "D. ignore"],
+        "answer": "C. protect",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "A machine that can do human tasks automatically is called a ___.",
+        "options": ["A. computer", "B. robot", "C. telephone", "D. vehicle"],
+        "answer": "B. robot",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "Petrol, coal and gas are examples of ___ fuels.",
+        "options": ["A. renewable", "B. solar", "C. fossil", "D. nuclear"],
+        "answer": "C. fossil",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The ___ of Tết in Vietnam is celebrated at the beginning of the lunar new year.",
+        "options": ["A. festival", "B. journey", "C. tradition", "D. culture"],
+        "answer": "A. festival",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "To make a trip from one place to another is to ___.",
+        "options": ["A. recycle", "B. communicate", "C. travel", "D. produce"],
+        "answer": "C. travel",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The word ___ means 'to use something again instead of throwing it away'.",
+        "options": ["A. reduce", "B. reuse", "C. recycle", "D. replace"],
+        "answer": "B. reuse",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "Energy from the sun is called ___ energy.",
+        "options": ["A. wind", "B. solar", "C. water", "D. fossil"],
+        "answer": "B. solar",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "A ___ is a document you need when travelling abroad.",
+        "options": ["A. ticket", "B. passport", "C. map", "D. luggage"],
+        "answer": "B. passport",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The traffic ___ on the road tell drivers what to do.",
+        "options": ["A. lights", "B. roads", "C. bridges", "D. lanes"],
+        "answer": "A. lights",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "To ___ means to exchange information with others.",
+        "options": [
+            "A. celebrate",
+            "B. communicate",
+            "C. decorate",
+            "D. participate",
+        ],
+        "answer": "B. communicate",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "Air ___ is caused by smoke and fumes from factories and vehicles.",
+        "options": ["A. pollution", "B. protection", "C. energy", "D. travel"],
+        "answer": "A. pollution",
+        "topic": "Vocabulary",
+    },
+
+    # ── Communication (~5 câu) ──────────────────────────────────────────────
+    {
+        "type": "choice",
+        "q": "A: 'Why don't we go to the cinema tonight?' B: '___'",
+        "options": [
+            "A. That sounds great.",
+            "B. I don't like the cinema.",
+            "C. No, I can't.",
+            "D. Sorry, I don't know.",
+        ],
+        "answer": "A. That sounds great.",
+        "topic": "Communication",
+    },
+    {
+        "type": "choice",
+        "q": "A: 'How do I get to the post office?' B: '___'",
+        "options": [
+            "A. It is very far.",
+            "B. Turn left at the traffic lights and it's on your right.",
+            "C. Yes, there is a post office.",
+            "D. The post office is open now.",
+        ],
+        "answer": "B. Turn left at the traffic lights and it's on your right.",
+        "topic": "Communication",
+    },
+    {
+        "type": "choice",
+        "q": "A: 'What do you think about using robots in the future?' B: '___'",
+        "options": [
+            "A. I have no idea at all.",
+            "B. In my opinion, robots will help us do difficult tasks.",
+            "C. Robots are machines.",
+            "D. I don't want to talk about it.",
+        ],
+        "answer": "B. In my opinion, robots will help us do difficult tasks.",
+        "topic": "Communication",
+    },
+    {
+        "type": "choice",
+        "q": "A: 'Shall we take the bus to school?' B: '___'",
+        "options": [
+            "A. The bus is yellow.",
+            "B. That's a good idea. It's better for the environment.",
+            "C. I usually walk.",
+            "D. No, the bus doesn't go there.",
+        ],
+        "answer": "B. That's a good idea. It's better for the environment.",
+        "topic": "Communication",
+    },
+    {
+        "type": "choice",
+        "q": "A: 'Could you tell me where the nearest supermarket is?' B: '___'",
+        "options": [
+            "A. Yes, I like supermarkets.",
+            "B. Of course. Go straight ahead and turn right.",
+            "C. No, I can't go there.",
+            "D. The supermarket sells food.",
+        ],
+        "answer": "B. Of course. Go straight ahead and turn right.",
+        "topic": "Communication",
+    },
+
+    # ── Reading (~5 câu) ────────────────────────────────────────────────────
+    {
+        "type": "choice",
+        "q": "Read the passage and answer the question.\n\nWhat is the main topic of the passage?",
+        "passage_text": (
+            "Robots are becoming more and more common in our daily lives. "
+            "In factories, robots do heavy and dangerous work that humans cannot do safely. "
+            "In hospitals, robots help doctors perform surgeries with great precision. "
+            "Some robots are designed to work in space or on the ocean floor, places too "
+            "dangerous for humans to explore.\n\n"
+            "However, many people worry that robots will take away human jobs. "
+            "Experts say that while robots will replace some jobs, they will also create "
+            "new ones. The most important thing is to learn skills that robots cannot "
+            "replicate, such as creativity, empathy, and critical thinking."
+        ),
+        "passage_id": "robots_grade7",
+        "options": [
+            "A. The dangers of robots in factories",
+            "B. The role of robots and their impact on jobs",
+            "C. How to build a robot",
+            "D. Why robots should be banned",
+        ],
+        "answer": "B. The role of robots and their impact on jobs",
+        "topic": "Reading",
+    },
+    {
+        "type": "choice",
+        "q": "According to the passage, where do robots work that is too dangerous for humans?",
+        "passage_id": "robots_grade7",
+        "options": [
+            "A. In offices and schools",
+            "B. In restaurants and hotels",
+            "C. In space and on the ocean floor",
+            "D. In supermarkets and banks",
+        ],
+        "answer": "C. In space and on the ocean floor",
+        "topic": "Reading",
+    },
+    {
+        "type": "choice",
+        "q": "What do experts say about robots and jobs?",
+        "passage_id": "robots_grade7",
+        "options": [
+            "A. Robots will destroy all human jobs.",
+            "B. Robots will replace some jobs but also create new ones.",
+            "C. Robots cannot replace any human jobs.",
+            "D. Only unskilled workers will lose their jobs.",
+        ],
+        "answer": "B. Robots will replace some jobs but also create new ones.",
+        "topic": "Reading",
+    },
+    {
+        "type": "choice",
+        "q": "The word 'precision' in the passage is closest in meaning to ___.",
+        "passage_id": "robots_grade7",
+        "options": ["A. speed", "B. strength", "C. accuracy", "D. care"],
+        "answer": "C. accuracy",
+        "topic": "Reading",
+    },
+    {
+        "type": "choice",
+        "q": "Which skill does the passage say robots CANNOT replicate?",
+        "passage_id": "robots_grade7",
+        "options": ["A. Heavy lifting", "B. Empathy", "C. Calculation", "D. Surgery"],
+        "answer": "B. Empathy",
+        "topic": "Reading",
+    },
+]
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Pool 2 — TOÁN LỚP 8 HK1  (55 câu)
+# Chương trình Toán lớp 8 HK1 Việt Nam
+# ═══════════════════════════════════════════════════════════════════════════════
+_TOAN_8_HK1 = [
+
+    # ── Tứ giác (~15 câu) ──────────────────────────────────────────────────
+    {
+        "type": "fill",
+        "q": "Tổng hai góc kề một cạnh bên của hình thang bằng bao nhiêu độ?",
+        "answer": "180°",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "fill",
+        "q": "Hình bình hành có tất cả bao nhiêu cặp cạnh song song?",
+        "answer": "2",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "fill",
+        "q": "Hình bình hành ABCD có AB = 8 cm, BC = 5 cm. Chu vi hình bình hành đó bằng bao nhiêu cm?",
+        "answer": "26",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "fill",
+        "q": "Hình thang có đáy lớn 10 cm, đáy nhỏ 6 cm, chiều cao 4 cm. Diện tích hình thang bằng bao nhiêu cm²?",
+        "answer": "32",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "fill",
+        "q": "Hình vuông có cạnh 7 cm. Diện tích hình vuông bằng bao nhiêu cm²?",
+        "answer": "49",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "fill",
+        "q": "Hình chữ nhật có chiều dài 12 cm, chiều rộng 5 cm. Chu vi hình chữ nhật bằng bao nhiêu cm?",
+        "answer": "34",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "fill",
+        "q": "Hình thoi có hai đường chéo lần lượt là 8 cm và 6 cm. Diện tích hình thoi bằng bao nhiêu cm²?",
+        "answer": "24",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "choice",
+        "q": "Trong hình bình hành, hai đường chéo ___.",
+        "options": [
+            "A. Bằng nhau và vuông góc với nhau",
+            "B. Cắt nhau tại trung điểm mỗi đường",
+            "C. Song song với nhau",
+            "D. Bằng nhau",
+        ],
+        "answer": "B. Cắt nhau tại trung điểm mỗi đường",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "choice",
+        "q": "Hình chữ nhật là hình bình hành có thêm tính chất nào?",
+        "options": [
+            "A. Bốn cạnh bằng nhau",
+            "B. Hai đường chéo vuông góc nhau",
+            "C. Bốn góc đều là góc vuông",
+            "D. Hai đường chéo bằng nhau và vuông góc nhau",
+        ],
+        "answer": "C. Bốn góc đều là góc vuông",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "choice",
+        "q": "Hình thoi khác hình bình hành ở chỗ nào?",
+        "options": [
+            "A. Các cạnh đối song song",
+            "B. Bốn cạnh bằng nhau",
+            "C. Hai đường chéo cắt nhau tại trung điểm",
+            "D. Các góc đối bằng nhau",
+        ],
+        "answer": "B. Bốn cạnh bằng nhau",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "choice",
+        "q": "Tổng bốn góc của một tứ giác bằng:",
+        "options": ["A. 90°", "B. 180°", "C. 270°", "D. 360°"],
+        "answer": "D. 360°",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "fill",
+        "q": "Hình chữ nhật có chiều dài 9 cm, chiều rộng 4 cm. Diện tích hình chữ nhật bằng bao nhiêu cm²?",
+        "answer": "36",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "fill",
+        "q": "Hình vuông có chu vi 28 cm. Cạnh hình vuông bằng bao nhiêu cm?",
+        "answer": "7",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "choice",
+        "q": "Hình thang cân có tính chất nào sau đây mà hình thang thường không có?",
+        "options": [
+            "A. Hai cạnh bên song song nhau",
+            "B. Hai đường chéo bằng nhau",
+            "C. Hai đáy song song nhau",
+            "D. Hai góc kề một cạnh bên bằng nhau",
+        ],
+        "answer": "B. Hai đường chéo bằng nhau",
+        "topic": "Tứ giác",
+    },
+    {
+        "type": "fill",
+        "q": "Hình bình hành có diện tích 40 cm² và chiều cao 5 cm. Độ dài đáy của hình bình hành đó bằng bao nhiêu cm?",
+        "answer": "8",
+        "topic": "Tứ giác",
+    },
+
+    # ── Đa thức (~15 câu) ───────────────────────────────────────────────────
+    {
+        "type": "fill",
+        "q": "(x + 3)(x + 5) = x² + 8x + ?",
+        "answer": "15",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "fill",
+        "q": "(x + 4)² = x² + ?x + 16",
+        "answer": "8",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "fill",
+        "q": "(x − 3)(x + 3) = x² − ?",
+        "answer": "9",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "fill",
+        "q": "(2x + 1)² = 4x² + ?x + 1",
+        "answer": "4",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "fill",
+        "q": "Rút gọn: (x + 2)² − (x − 2)² = ?",
+        "answer": "8x",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "fill",
+        "q": "(x − 5)² = x² − ?x + 25",
+        "answer": "10",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "fill",
+        "q": "(x + 1)(x − 1) = x² − ?",
+        "answer": "1",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "fill",
+        "q": "(3x − 2)² = 9x² − 12x + ?",
+        "answer": "4",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "choice",
+        "q": "Đẳng thức nào sau đây là hằng đẳng thức đúng?",
+        "options": [
+            "A. (a + b)² = a² + b²",
+            "B. (a − b)² = a² − b²",
+            "C. (a + b)² = a² + 2ab + b²",
+            "D. (a + b)(a − b) = a² + b²",
+        ],
+        "answer": "C. (a + b)² = a² + 2ab + b²",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "choice",
+        "q": "Hằng đẳng thức (a − b)² bằng:",
+        "options": [
+            "A. a² − b²",
+            "B. a² − 2ab + b²",
+            "C. a² + 2ab + b²",
+            "D. a² − 2ab − b²",
+        ],
+        "answer": "B. a² − 2ab + b²",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "choice",
+        "q": "Nhân tử hoá: x² − 9 = ?",
+        "options": [
+            "A. (x − 3)²",
+            "B. (x + 3)²",
+            "C. (x − 3)(x + 3)",
+            "D. (x − 9)(x + 1)",
+        ],
+        "answer": "C. (x − 3)(x + 3)",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "fill",
+        "q": "Tính: (x + 2)(x − 3) = x² − x + ?",
+        "answer": "-6",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "fill",
+        "q": "(2x − 3)(2x + 3) = 4x² − ?",
+        "answer": "9",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "choice",
+        "q": "Biểu thức x² − 4x + 4 có thể được viết lại là:",
+        "options": [
+            "A. (x − 4)²",
+            "B. (x − 2)²",
+            "C. (x + 2)²",
+            "D. (x − 2)(x + 2)",
+        ],
+        "answer": "B. (x − 2)²",
+        "topic": "Đa thức",
+    },
+    {
+        "type": "fill",
+        "q": "(x + 6)(x − 2) = x² + 4x + ?",
+        "answer": "-12",
+        "topic": "Đa thức",
+    },
+
+    # ── Phân thức đại số (~10 câu) ──────────────────────────────────────────
+    {
+        "type": "fill",
+        "q": "Điều kiện xác định của phân thức 1/(x − 3) là x ≠ ?",
+        "answer": "3",
+        "topic": "Phân thức đại số",
+    },
+    {
+        "type": "fill",
+        "q": "Điều kiện xác định của phân thức x/(x + 5) là x ≠ ?",
+        "answer": "-5",
+        "topic": "Phân thức đại số",
+    },
+    {
+        "type": "choice",
+        "q": "Rút gọn phân thức (2x + 4)/(x + 2) ta được:",
+        "options": ["A. 2", "B. x", "C. 4", "D. 2x"],
+        "answer": "A. 2",
+        "topic": "Phân thức đại số",
+    },
+    {
+        "type": "choice",
+        "q": "Rút gọn phân thức (x² − 4)/(x − 2) ta được:",
+        "options": ["A. x + 2", "B. x − 2", "C. x", "D. 2"],
+        "answer": "A. x + 2",
+        "topic": "Phân thức đại số",
+    },
+    {
+        "type": "fill",
+        "q": "Điều kiện xác định của phân thức 3/(2x − 6) là x ≠ ?",
+        "answer": "3",
+        "topic": "Phân thức đại số",
+    },
+    {
+        "type": "choice",
+        "q": "Cộng hai phân thức có cùng mẫu: 2/x + 3/x = ?",
+        "options": ["A. 6/x²", "B. 5/(2x)", "C. 5/x", "D. 6/x"],
+        "answer": "C. 5/x",
+        "topic": "Phân thức đại số",
+    },
+    {
+        "type": "choice",
+        "q": "Phân thức nào sau đây bằng phân thức (x − 1)/(x² − 1)?",
+        "options": [
+            "A. 1/(x + 1)",
+            "B. 1/(x − 1)",
+            "C. (x − 1)²",
+            "D. (x + 1)",
+        ],
+        "answer": "A. 1/(x + 1)",
+        "topic": "Phân thức đại số",
+    },
+    {
+        "type": "fill",
+        "q": "Điều kiện xác định của phân thức 5/(x² − 9): x ≠ 3 và x ≠ ?",
+        "answer": "-3",
+        "topic": "Phân thức đại số",
+    },
+    {
+        "type": "choice",
+        "q": "Rút gọn phân thức (3x)/(6x²) ta được:",
+        "options": ["A. 3x", "B. 1/(2x)", "C. 2x", "D. 1/x"],
+        "answer": "B. 1/(2x)",
+        "topic": "Phân thức đại số",
+    },
+    {
+        "type": "choice",
+        "q": "Phân thức 4/(2x + 2) rút gọn được:",
+        "options": ["A. 2/(x + 1)", "B. 2/x", "C. 4/(x + 1)", "D. 2"],
+        "answer": "A. 2/(x + 1)",
+        "topic": "Phân thức đại số",
+    },
+
+    # ── Phương trình bậc nhất (~10 câu fill) ───────────────────────────────
+    {
+        "type": "fill",
+        "q": "Giải phương trình: 2x + 6 = 0. Nghiệm x = ?",
+        "answer": "-3",
+        "topic": "Phương trình",
+    },
+    {
+        "type": "fill",
+        "q": "Giải phương trình: 3x − 9 = 0. Nghiệm x = ?",
+        "answer": "3",
+        "topic": "Phương trình",
+    },
+    {
+        "type": "fill",
+        "q": "Giải phương trình: x − 5 = 3. Nghiệm x = ?",
+        "answer": "8",
+        "topic": "Phương trình",
+    },
+    {
+        "type": "fill",
+        "q": "Giải phương trình: 4x + 8 = 0. Nghiệm x = ?",
+        "answer": "-2",
+        "topic": "Phương trình",
+    },
+    {
+        "type": "fill",
+        "q": "Giải phương trình: 5 − 2x = 1. Nghiệm x = ?",
+        "answer": "2",
+        "topic": "Phương trình",
+    },
+    {
+        "type": "fill",
+        "q": "Giải phương trình: 7x − 14 = 0. Nghiệm x = ?",
+        "answer": "2",
+        "topic": "Phương trình",
+    },
+    {
+        "type": "fill",
+        "q": "Giải phương trình: 3x + 12 = 0. Nghiệm x = ?",
+        "answer": "-4",
+        "topic": "Phương trình",
+    },
+    {
+        "type": "fill",
+        "q": "Giải phương trình: 10 − 5x = 0. Nghiệm x = ?",
+        "answer": "2",
+        "topic": "Phương trình",
+    },
+    {
+        "type": "fill",
+        "q": "Giải phương trình: 2x − 3 = 7. Nghiệm x = ?",
+        "answer": "5",
+        "topic": "Phương trình",
+    },
+    {
+        "type": "fill",
+        "q": "Giải phương trình: 6x + 18 = 0. Nghiệm x = ?",
+        "answer": "-3",
+        "topic": "Phương trình",
+    },
+
+    # ── Hàm số và đồ thị (~5 câu) ───────────────────────────────────────────
+    {
+        "type": "choice",
+        "q": "Hàm số y = 2x là hàm số bậc nhất. Hệ số góc a và hệ số b lần lượt là:",
+        "options": ["A. a = 0, b = 2", "B. a = 2, b = 0", "C. a = 1, b = 2", "D. a = 2, b = 2"],
+        "answer": "B. a = 2, b = 0",
+        "topic": "Hàm số",
+    },
+    {
+        "type": "choice",
+        "q": "Hàm số y = −3x + 1 là hàm số bậc nhất đồng biến hay nghịch biến?",
+        "options": [
+            "A. Đồng biến vì a > 0",
+            "B. Nghịch biến vì a < 0",
+            "C. Đồng biến vì b > 0",
+            "D. Không xác định được",
+        ],
+        "answer": "B. Nghịch biến vì a < 0",
+        "topic": "Hàm số",
+    },
+    {
+        "type": "fill",
+        "q": "Đồ thị hàm số y = 3x đi qua điểm (2, ?)",
+        "answer": "6",
+        "topic": "Hàm số",
+    },
+    {
+        "type": "choice",
+        "q": "Đồ thị hàm số y = ax (a ≠ 0) luôn đi qua điểm nào?",
+        "options": ["A. (1, 1)", "B. (0, 1)", "C. (0, 0)", "D. (1, 0)"],
+        "answer": "C. (0, 0)",
+        "topic": "Hàm số",
+    },
+    {
+        "type": "choice",
+        "q": "Hàm số y = 5x + 2 đồng biến hay nghịch biến?",
+        "options": [
+            "A. Đồng biến vì a = 5 > 0",
+            "B. Nghịch biến vì b = 2 > 0",
+            "C. Đồng biến vì b = 2 > 0",
+            "D. Nghịch biến vì a = 5 > 0",
+        ],
+        "answer": "A. Đồng biến vì a = 5 > 0",
+        "topic": "Hàm số",
+    },
+]
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Pool 3 — TIẾNG ANH LỚP 8 HK1  (55 câu)
+# Chương trình Global Success Units 1-6
+# ═══════════════════════════════════════════════════════════════════════════════
+_TIENG_ANH_8_HK1 = [
+
+    # ── Pronunciation (~8 câu) ──────────────────────────────────────────────
+    {
+        "type": "choice",
+        "q": "Choose the word that has a different stress pattern from the others.",
+        "options": [
+            "A. leISURE",
+            "B. acTIVity",
+            "C. traDItion",
+            "D. techNOlogy",
+        ],
+        "answer": "A. leISURE",
+        "topic": "Pronunciation",
+    },
+    {
+        "type": "choice",
+        "q": "Choose the word whose underlined part is pronounced differently from the others.",
+        "options": [
+            "A. l__ei__sure",
+            "B. pl__ea__sure",
+            "C. tr__ea__sure",
+            "D. m__ea__sure",
+        ],
+        "answer": "A. l__ei__sure",
+        "topic": "Pronunciation",
+    },
+    # /æ/ vs /ɑː/
+    {
+        "type": "choice",
+        "q": "Choose the word whose underlined vowel is pronounced /æ/, while the others are /ɑː/.",
+        "options": [
+            "A. f__a__rm",
+            "B. c__a__r",
+            "C. c__a__t",
+            "D. b__a__rn",
+        ],
+        "answer": "C. c__a__t",
+        "topic": "Pronunciation",
+    },
+    # /ɒ/ vs /ɔː/
+    {
+        "type": "choice",
+        "q": "Choose the word whose underlined vowel is /ɒ/ (short), while the others are /ɔː/ (long).",
+        "options": [
+            "A. f__o__ur",
+            "B. fl__oo__r",
+            "C. d__oo__r",
+            "D. d__o__g",
+        ],
+        "answer": "D. d__o__g",
+        "topic": "Pronunciation",
+    },
+    {
+        "type": "choice",
+        "q": "Choose the word that has a different stress pattern from the others.",
+        "options": [
+            "A. CULture",
+            "B. CUStom",
+            "C. TRADition",
+            "D. VILlage",
+        ],
+        "answer": "C. TRADition",
+        "topic": "Pronunciation",
+    },
+    # -ed endings
+    {
+        "type": "choice",
+        "q": "Choose the word whose -ed ending is pronounced /ɪd/, while the others are /d/ or /t/.",
+        "options": [
+            "A. cook__ed__",
+            "B. call__ed__",
+            "C. want__ed__",
+            "D. play__ed__",
+        ],
+        "answer": "C. want__ed__",
+        "topic": "Pronunciation",
+    },
+    {
+        "type": "choice",
+        "q": "Choose the word that has a different stress pattern from the others.",
+        "options": [
+            "A. harVEST",
+            "B. CEREmony",
+            "C. celeBRAtion",
+            "D. tradiTIONal",
+        ],
+        "answer": "B. CEREmony",
+        "topic": "Pronunciation",
+    },
+    # silent letters
+    {
+        "type": "choice",
+        "q": "Choose the word that contains a silent letter.",
+        "options": [
+            "A. cat",
+            "B. walk",
+            "C. run",
+            "D. jump",
+        ],
+        "answer": "B. walk",
+        "topic": "Pronunciation",
+    },
+
+    # ── Grammar (~22 câu) ───────────────────────────────────────────────────
+    # Gerunds and Infinitives
+    {
+        "type": "choice",
+        "q": "She enjoys ___ to music in her free time.",
+        "options": ["A. to listen", "B. listening", "C. listen", "D. listened"],
+        "answer": "B. listening",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "He wants ___ a doctor when he grows up.",
+        "options": ["A. become", "B. becoming", "C. to become", "D. became"],
+        "answer": "C. to become",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "They suggested ___ to the countryside for the holiday.",
+        "options": ["A. go", "B. to go", "C. went", "D. going"],
+        "answer": "D. going",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "My father stopped ___ cigarettes five years ago.",
+        "options": ["A. to smoke", "B. smoked", "C. smoking", "D. smoke"],
+        "answer": "C. smoking",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "Would you mind ___ the window? It's getting cold.",
+        "options": ["A. to close", "B. close", "C. closed", "D. closing"],
+        "answer": "D. closing",
+        "topic": "Grammar",
+    },
+    # Present Perfect vs Past Simple
+    {
+        "type": "choice",
+        "q": "She ___ Hoi An last year.",
+        "options": ["A. has visited", "B. visited", "C. visits", "D. is visiting"],
+        "answer": "B. visited",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "I ___ never tried pho before. I want to try it today.",
+        "options": ["A. did", "B. was", "C. have", "D. had"],
+        "answer": "C. have",
+        "topic": "Grammar",
+    },
+    # Passive Voice
+    {
+        "type": "choice",
+        "q": "This bridge ___ built in 1990.",
+        "options": ["A. is", "B. were", "C. has", "D. was"],
+        "answer": "D. was",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "Our lessons ___ taught by Mr. Nam every day.",
+        "options": ["A. was", "B. were", "C. are", "D. is being"],
+        "answer": "C. are",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "The new school ___ being built right now.",
+        "options": ["A. is", "B. was", "C. were", "D. has"],
+        "answer": "A. is",
+        "topic": "Grammar",
+    },
+    # Reported Speech
+    {
+        "type": "choice",
+        "q": "She said she ___ very happy about the result.",
+        "options": ["A. is", "B. has been", "C. was", "D. were"],
+        "answer": "C. was",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "He told me he ___ at home the whole day.",
+        "options": ["A. is", "B. stays", "C. was", "D. has been"],
+        "answer": "C. was",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "Nam said that he ___ finish his homework the next day.",
+        "options": ["A. will", "B. would", "C. can", "D. shall"],
+        "answer": "B. would",
+        "topic": "Grammar",
+    },
+    # Conditional type 1
+    {
+        "type": "choice",
+        "q": "If it ___ tomorrow, we will stay at home.",
+        "options": ["A. rain", "B. will rain", "C. rained", "D. rains"],
+        "answer": "D. rains",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "If she studies hard, she ___ pass the exam.",
+        "options": ["A. would", "B. will", "C. can", "D. should"],
+        "answer": "B. will",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "Unless you hurry, you ___ miss the bus.",
+        "options": ["A. won't", "B. will", "C. would", "D. don't"],
+        "answer": "B. will",
+        "topic": "Grammar",
+    },
+    # Comparative structures
+    {
+        "type": "choice",
+        "q": "Life in the countryside is ___ peaceful than in the city.",
+        "options": ["A. more", "B. most", "C. much", "D. very"],
+        "answer": "A. more",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "The internet is one of the ___ inventions of the modern age.",
+        "options": [
+            "A. most important",
+            "B. more important",
+            "C. importanter",
+            "D. as important",
+        ],
+        "answer": "A. most important",
+        "topic": "Grammar",
+    },
+    # Articles
+    {
+        "type": "choice",
+        "q": "He is ___ honest man. Everyone likes him.",
+        "options": ["A. a", "B. an", "C. the", "D. Ø (no article)"],
+        "answer": "B. an",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "She plays ___ piano very well.",
+        "options": ["A. a", "B. an", "C. the", "D. Ø (no article)"],
+        "answer": "C. the",
+        "topic": "Grammar",
+    },
+    # Prepositions
+    {
+        "type": "choice",
+        "q": "Farmers in Vietnam usually harvest rice ___ autumn.",
+        "options": ["A. at", "B. on", "C. in", "D. during"],
+        "answer": "C. in",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "She has been interested ___ traditional customs since childhood.",
+        "options": ["A. at", "B. about", "C. in", "D. on"],
+        "answer": "C. in",
+        "topic": "Grammar",
+    },
+
+    # ── Vocabulary (~15 câu) ────────────────────────────────────────────────
+    {
+        "type": "choice",
+        "q": "The opposite of 'urban' is ___.",
+        "options": ["A. modern", "B. rural", "C. crowded", "D. suburban"],
+        "answer": "B. rural",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "Farmers grow crops in the ___.",
+        "options": ["A. factory", "B. office", "C. field", "D. forest"],
+        "answer": "C. field",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "Traditional activities passed down through generations are called ___.",
+        "options": ["A. fashions", "B. customs", "C. habits", "D. hobbies"],
+        "answer": "B. customs",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The ___ is a traditional Vietnamese garment worn on special occasions.",
+        "options": ["A. sari", "B. kimono", "C. ao dai", "D. kilt"],
+        "answer": "C. ao dai",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "In the countryside, people often use ___ to carry water from the river.",
+        "options": ["A. vehicles", "B. containers", "C. machines", "D. devices"],
+        "answer": "B. containers",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "A ___ is a traditional story that explains natural events or cultural beliefs.",
+        "options": ["A. novel", "B. poem", "C. legend", "D. essay"],
+        "answer": "C. legend",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The word ___ means 'to make something more modern'.",
+        "options": [
+            "A. preserve",
+            "B. modernize",
+            "C. celebrate",
+            "D. traditional",
+        ],
+        "answer": "B. modernize",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "People who live far from the city and work on farms are called ___.",
+        "options": ["A. citizens", "B. villagers", "C. tourists", "D. workers"],
+        "answer": "B. villagers",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The ___ of Tet includes giving lucky money to children.",
+        "options": ["A. custom", "B. costume", "C. culture", "D. ceremony"],
+        "answer": "A. custom",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "Which word means 'the activities you do for fun in your free time'?",
+        "options": ["A. work", "B. chores", "C. leisure", "D. duties"],
+        "answer": "C. leisure",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "A ___ is used to connect two places over a river or valley.",
+        "options": ["A. tunnel", "B. bridge", "C. road", "D. path"],
+        "answer": "B. bridge",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The opposite of 'preserve' is ___.",
+        "options": ["A. protect", "B. maintain", "C. destroy", "D. keep"],
+        "answer": "C. destroy",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The word that means 'using machines to do work that humans used to do' is ___.",
+        "options": ["A. tradition", "B. automation", "C. renovation", "D. education"],
+        "answer": "B. automation",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "People ___ rice seedlings in flooded fields in Vietnam.",
+        "options": ["A. build", "B. grow", "C. plant", "D. make"],
+        "answer": "C. plant",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The word ___ means 'related to a country's culture, society, and way of life'.",
+        "options": ["A. economic", "B. political", "C. social", "D. physical"],
+        "answer": "C. social",
+        "topic": "Vocabulary",
+    },
+
+    # ── Reading (~5 câu) ────────────────────────────────────────────────────
+    {
+        "type": "choice",
+        "q": "Read the passage and answer the question.\n\nWhat is the passage mainly about?",
+        "passage_text": (
+            "Vietnam has many beautiful and unique traditions that have been passed down "
+            "for hundreds of years. One of the most important is Tet, the Vietnamese Lunar "
+            "New Year. During Tet, families gather to clean their homes, cook special foods, "
+            "and visit relatives. Children receive lucky money in red envelopes as a symbol "
+            "of good luck and prosperity for the new year.\n\n"
+            "Another important tradition is the Mid-Autumn Festival, or Tet Trung Thu. "
+            "On this night, children carry lanterns through the streets and eat mooncakes. "
+            "These traditions bring communities together and help keep Vietnamese culture "
+            "alive for future generations."
+        ),
+        "passage_id": "viet_customs_grade8",
+        "options": [
+            "A. How to prepare food for Tet",
+            "B. The history of the Vietnamese calendar",
+            "C. Vietnamese traditions and their importance",
+            "D. Why children love the Mid-Autumn Festival",
+        ],
+        "answer": "C. Vietnamese traditions and their importance",
+        "topic": "Reading",
+    },
+    {
+        "type": "choice",
+        "q": "What do children receive during Tet?",
+        "passage_id": "viet_customs_grade8",
+        "options": [
+            "A. Mooncakes and lanterns",
+            "B. Lucky money in red envelopes",
+            "C. New clothes and toys",
+            "D. Special food and drinks",
+        ],
+        "answer": "B. Lucky money in red envelopes",
+        "topic": "Reading",
+    },
+    {
+        "type": "choice",
+        "q": "According to the passage, what do children do during the Mid-Autumn Festival?",
+        "passage_id": "viet_customs_grade8",
+        "options": [
+            "A. Visit relatives and clean homes",
+            "B. Cook special foods with family",
+            "C. Carry lanterns and eat mooncakes",
+            "D. Give lucky money to adults",
+        ],
+        "answer": "C. Carry lanterns and eat mooncakes",
+        "topic": "Reading",
+    },
+    {
+        "type": "choice",
+        "q": "The word 'prosperity' in the passage is closest in meaning to ___.",
+        "passage_id": "viet_customs_grade8",
+        "options": ["A. poverty", "B. success and wealth", "C. tradition", "D. happiness"],
+        "answer": "B. success and wealth",
+        "topic": "Reading",
+    },
+    {
+        "type": "choice",
+        "q": "What is the purpose of these traditions according to the passage?",
+        "passage_id": "viet_customs_grade8",
+        "options": [
+            "A. To attract foreign tourists to Vietnam",
+            "B. To bring communities together and keep culture alive",
+            "C. To teach children about history",
+            "D. To celebrate the end of the school year",
+        ],
+        "answer": "B. To bring communities together and keep culture alive",
+        "topic": "Reading",
+    },
+
+    # ── Word Form (~5 câu fill) ─────────────────────────────────────────────
+    {
+        "type": "fill",
+        "q": "The (tradition) ___ costume is very beautiful and elegant.",
+        "answer": "traditional",
+        "topic": "Word Form",
+    },
+    {
+        "type": "fill",
+        "q": "She has a great (collect) ___ of stamps from around the world.",
+        "answer": "collection",
+        "topic": "Word Form",
+    },
+    {
+        "type": "fill",
+        "q": "We need to (modern) ___ our technology to stay competitive.",
+        "answer": "modernize",
+        "topic": "Word Form",
+    },
+    {
+        "type": "fill",
+        "q": "The (celebrate) ___ lasted three days and nights.",
+        "answer": "celebration",
+        "topic": "Word Form",
+    },
+    {
+        "type": "fill",
+        "q": "It is important to (preserve) the (culture) ___ heritage of our nation.",
+        "answer": "cultural",
+        "topic": "Word Form",
+    },
+]
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Pool 4 — TIẾNG ANH LỚP 8 HK2  (55 câu)
+# Chương trình Global Success Units 7-12
+# ═══════════════════════════════════════════════════════════════════════════════
+_TIENG_ANH_8_HK2 = [
+
+    # ── Pronunciation (~8 câu) ──────────────────────────────────────────────
+    # Silent letters
+    {
+        "type": "choice",
+        "q": "Choose the word in which the letter 'k' is NOT silent.",
+        "options": [
+            "A. __k__now",
+            "B. __k__nee",
+            "C. __k__nife",
+            "D. __k__ing",
+        ],
+        "answer": "D. __k__ing",
+        "topic": "Pronunciation",
+    },
+    {
+        "type": "choice",
+        "q": "Choose the word in which the letter 'b' IS silent.",
+        "options": [
+            "A. bi__b__le",
+            "B. com__b__",
+            "C. a__b__le",
+            "D. ta__b__le",
+        ],
+        "answer": "B. com__b__",
+        "topic": "Pronunciation",
+    },
+    {
+        "type": "choice",
+        "q": "Choose the word that has a different stress pattern from the others.",
+        "options": [
+            "A. comMUnicate",
+            "B. teCHnology",
+            "C. diSASter",
+            "D. recycLING",
+        ],
+        "answer": "D. recycLING",
+        "topic": "Pronunciation",
+    },
+    {
+        "type": "choice",
+        "q": "Choose the word that has a different stress pattern from the others.",
+        "options": [
+            "A. bioDEgradable",
+            "B. enVIronment",
+            "C. comMUnity",
+            "D. inforMAtion",
+        ],
+        "answer": "A. bioDEgradable",
+        "topic": "Pronunciation",
+    },
+    # /ɜː/ vs /ɪ/
+    {
+        "type": "choice",
+        "q": "Choose the word whose underlined vowel is /ɜː/ (long), while the others are /ɪ/ (short).",
+        "options": [
+            "A. g__i__ft",
+            "B. s__i__t",
+            "C. g__ir__l",
+            "D. b__i__t",
+        ],
+        "answer": "C. g__ir__l",
+        "topic": "Pronunciation",
+    },
+    # /aɪ/ vs /ɪ/
+    {
+        "type": "choice",
+        "q": "Choose the word whose underlined vowel is /aɪ/ (diphthong), while the others are /ɪ/ (short).",
+        "options": [
+            "A. b__i__g",
+            "B. l__i__ve (to live)",
+            "C. w__i__n",
+            "D. f__i__ne",
+        ],
+        "answer": "D. f__i__ne",
+        "topic": "Pronunciation",
+    },
+    {
+        "type": "choice",
+        "q": "Choose the word that has a different stress pattern.",
+        "options": [
+            "A. disASter",
+            "B. volCAno",
+            "C. earthQUAKE",
+            "D. reNEWable",
+        ],
+        "answer": "C. earthQUAKE",
+        "topic": "Pronunciation",
+    },
+    {
+        "type": "choice",
+        "q": "Choose the word in which the letters 'gh' are silent.",
+        "options": [
+            "A. ghost",
+            "B. night",
+            "C. ghee",
+            "D. ghost train",
+        ],
+        "answer": "B. night",
+        "topic": "Pronunciation",
+    },
+
+    # ── Grammar (~22 câu) ───────────────────────────────────────────────────
+    # Conditional type 2
+    {
+        "type": "choice",
+        "q": "If I ___ a million dollars, I would travel around the world.",
+        "options": ["A. have", "B. had", "C. would have", "D. will have"],
+        "answer": "B. had",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "She would buy a new phone if she ___ the money.",
+        "options": ["A. has", "B. will have", "C. had", "D. would have"],
+        "answer": "C. had",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "If he ___ harder, he would pass the test.",
+        "options": ["A. studies", "B. will study", "C. studied", "D. would study"],
+        "answer": "C. studied",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "If I were you, I ___ apologize to her.",
+        "options": ["A. will", "B. would", "C. should", "D. can"],
+        "answer": "B. would",
+        "topic": "Grammar",
+    },
+    # Relative clauses
+    {
+        "type": "choice",
+        "q": "The man ___ lives next door is a teacher.",
+        "options": ["A. which", "B. whom", "C. whose", "D. who"],
+        "answer": "D. who",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "The book ___ I borrowed from the library was very interesting.",
+        "options": ["A. who", "B. whose", "C. which", "D. whom"],
+        "answer": "C. which",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "The city ___ I was born is now very modern.",
+        "options": ["A. which", "B. who", "C. whose", "D. where"],
+        "answer": "D. where",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "The student ___ bag was stolen reported it to the police.",
+        "options": ["A. who", "B. which", "C. whose", "D. where"],
+        "answer": "C. whose",
+        "topic": "Grammar",
+    },
+    # Modal verbs
+    {
+        "type": "choice",
+        "q": "You ___ throw rubbish in the street. It is against the law.",
+        "options": ["A. should", "B. shouldn't", "C. mustn't", "D. don't have to"],
+        "answer": "C. mustn't",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "We ___ recycle more to protect the environment.",
+        "options": ["A. shouldn't", "B. mustn't", "C. should", "D. won't"],
+        "answer": "C. should",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "You ___ wear a seat belt — it's the law and it saves lives.",
+        "options": ["A. could", "B. might", "C. must", "D. would"],
+        "answer": "C. must",
+        "topic": "Grammar",
+    },
+    # Future Simple vs be going to
+    {
+        "type": "choice",
+        "q": "Scientists believe robots ___ do most jobs by 2050.",
+        "options": [
+            "A. are going to",
+            "B. will",
+            "C. would",
+            "D. are",
+        ],
+        "answer": "B. will",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "Look at those dark clouds! It ___ rain soon.",
+        "options": ["A. will", "B. is going to", "C. would", "D. shall"],
+        "answer": "B. is going to",
+        "topic": "Grammar",
+    },
+    # Question tags
+    {
+        "type": "choice",
+        "q": "She is smart, ___?",
+        "options": ["A. is she", "B. isn't it", "C. isn't she", "D. was she"],
+        "answer": "C. isn't she",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "They haven't called us yet, ___?",
+        "options": ["A. did they", "B. have they", "C. don't they", "D. haven't they"],
+        "answer": "B. have they",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "He can swim very fast, ___?",
+        "options": ["A. can he", "B. can't he", "C. doesn't he", "D. isn't he"],
+        "answer": "B. can't he",
+        "topic": "Grammar",
+    },
+    # Passive Voice with modals
+    {
+        "type": "choice",
+        "q": "Plastic bags ___ be banned to reduce pollution.",
+        "options": ["A. should", "B. must", "C. ought", "D. will"],
+        "answer": "A. should",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "More trees ___ planted every year to fight climate change.",
+        "options": [
+            "A. should be",
+            "B. should",
+            "C. are",
+            "D. have",
+        ],
+        "answer": "A. should be",
+        "topic": "Grammar",
+    },
+    # Connectors
+    {
+        "type": "choice",
+        "q": "We should recycle ___ we want to protect the environment.",
+        "options": ["A. but", "B. so", "C. if", "D. although"],
+        "answer": "C. if",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "She tried hard; ___, she failed the exam.",
+        "options": ["A. and", "B. so", "C. however", "D. because"],
+        "answer": "C. however",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "___ the weather was bad, we still went to the beach.",
+        "options": ["A. Because", "B. Although", "C. So", "D. If"],
+        "answer": "B. Although",
+        "topic": "Grammar",
+    },
+    {
+        "type": "choice",
+        "q": "She couldn't sleep ___ the noise from the street.",
+        "options": ["A. because of", "B. although", "C. despite", "D. so"],
+        "answer": "A. because of",
+        "topic": "Grammar",
+    },
+
+    # ── Vocabulary (~15 câu) ────────────────────────────────────────────────
+    {
+        "type": "choice",
+        "q": "The opposite of 'natural' is ___.",
+        "options": ["A. organic", "B. artificial", "C. renewable", "D. raw"],
+        "answer": "B. artificial",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "Reducing, reusing and recycling are called the ___.",
+        "options": ["A. 3Rs", "B. green plan", "C. eco-system", "D. carbon footprint"],
+        "answer": "A. 3Rs",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "A sudden violent event in nature that causes great damage is called a ___.",
+        "options": [
+            "A. climate change",
+            "B. natural disaster",
+            "C. pollution",
+            "D. greenhouse effect",
+        ],
+        "answer": "B. natural disaster",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "Materials that can be broken down naturally by bacteria are called ___.",
+        "options": [
+            "A. recyclable",
+            "B. reusable",
+            "C. biodegradable",
+            "D. renewable",
+        ],
+        "answer": "C. biodegradable",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The ___ of a volcano releases ash and lava.",
+        "options": ["A. flood", "B. eruption", "C. earthquake", "D. drought"],
+        "answer": "B. eruption",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "Energy from wind, sunlight, and water is called ___ energy.",
+        "options": ["A. fossil", "B. nuclear", "C. renewable", "D. chemical"],
+        "answer": "C. renewable",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The ___ is the layer of gases surrounding the Earth.",
+        "options": ["A. atmosphere", "B. ecosystem", "C. biosphere", "D. ozone"],
+        "answer": "A. atmosphere",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "To ___ means to send and receive messages using technology.",
+        "options": [
+            "A. navigate",
+            "B. communicate",
+            "C. manufacture",
+            "D. calculate",
+        ],
+        "answer": "B. communicate",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "A ___ occurs when rivers overflow and water covers the land.",
+        "options": ["A. drought", "B. volcano", "C. flood", "D. tornado"],
+        "answer": "C. flood",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The rise in the Earth's average temperature is called ___.",
+        "options": ["A. global cooling", "B. climate control", "C. global warming", "D. acid rain"],
+        "answer": "C. global warming",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "Things that produce no carbon dioxide when used are called ___ sources of energy.",
+        "options": ["A. cheap", "B. powerful", "C. clean", "D. expensive"],
+        "answer": "C. clean",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "A ___ is a device that converts sunlight into electricity.",
+        "options": [
+            "A. wind turbine",
+            "B. solar panel",
+            "C. generator",
+            "D. battery",
+        ],
+        "answer": "B. solar panel",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The word ___ means 'to make something last longer by careful use'.",
+        "options": ["A. waste", "B. conserve", "C. produce", "D. consume"],
+        "answer": "B. conserve",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "___ is the process of treating used materials so they can be used again.",
+        "options": ["A. Polluting", "B. Consuming", "C. Recycling", "D. Wasting"],
+        "answer": "C. Recycling",
+        "topic": "Vocabulary",
+    },
+    {
+        "type": "choice",
+        "q": "The word 'extinct' means a species has ___.",
+        "options": [
+            "A. become very common",
+            "B. completely died out",
+            "C. moved to another area",
+            "D. been protected by law",
+        ],
+        "answer": "B. completely died out",
+        "topic": "Vocabulary",
+    },
+
+    # ── Reading (~5 câu) ────────────────────────────────────────────────────
+    {
+        "type": "choice",
+        "q": "Read the passage and answer the question.\n\nWhat is the main idea of this passage?",
+        "passage_text": (
+            "Every year, millions of tonnes of plastic waste end up in the world's oceans. "
+            "This plastic is dangerous for marine life — fish, turtles, and seabirds often "
+            "mistake plastic for food, which can kill them. Tiny pieces of plastic, called "
+            "microplastics, are now found even in the fish we eat and the water we drink.\n\n"
+            "The good news is that people around the world are taking action. Many countries "
+            "have banned single-use plastic bags. Volunteers organise beach clean-ups regularly. "
+            "Scientists are also developing new materials that are fully biodegradable. If we "
+            "all make small changes — using reusable bags, refusing plastic straws, and recycling "
+            "properly — we can significantly reduce plastic pollution."
+        ),
+        "passage_id": "plastic_pollution_grade8",
+        "options": [
+            "A. How fish eat plastic waste",
+            "B. The problem of plastic pollution and how to solve it",
+            "C. Why scientists study microplastics",
+            "D. The history of plastic production",
+        ],
+        "answer": "B. The problem of plastic pollution and how to solve it",
+        "topic": "Reading",
+    },
+    {
+        "type": "choice",
+        "q": "According to the passage, what are microplastics?",
+        "passage_id": "plastic_pollution_grade8",
+        "options": [
+            "A. Large pieces of plastic from factories",
+            "B. Plastic that sinks to the ocean floor",
+            "C. Tiny pieces of plastic in the environment",
+            "D. Plastic bags used in supermarkets",
+        ],
+        "answer": "C. Tiny pieces of plastic in the environment",
+        "topic": "Reading",
+    },
+    {
+        "type": "choice",
+        "q": "Which action to fight plastic pollution is NOT mentioned in the passage?",
+        "passage_id": "plastic_pollution_grade8",
+        "options": [
+            "A. Banning single-use plastic bags",
+            "B. Organising beach clean-ups",
+            "C. Developing biodegradable materials",
+            "D. Fining companies that use plastic",
+        ],
+        "answer": "D. Fining companies that use plastic",
+        "topic": "Reading",
+    },
+    {
+        "type": "choice",
+        "q": "The word 'biodegradable' in the passage means ___.",
+        "passage_id": "plastic_pollution_grade8",
+        "options": [
+            "A. very expensive to produce",
+            "B. able to be broken down naturally",
+            "C. safe for animals to eat",
+            "D. made from recycled materials",
+        ],
+        "answer": "B. able to be broken down naturally",
+        "topic": "Reading",
+    },
+    {
+        "type": "choice",
+        "q": "What does the passage say will happen if everyone makes small changes?",
+        "passage_id": "plastic_pollution_grade8",
+        "options": [
+            "A. All plastic will disappear from the oceans immediately.",
+            "B. Plastic pollution can be significantly reduced.",
+            "C. Governments will ban all types of plastic.",
+            "D. Scientists will stop researching new materials.",
+        ],
+        "answer": "B. Plastic pollution can be significantly reduced.",
+        "topic": "Reading",
+    },
+
+    # ── Word Form (~5 câu fill) ─────────────────────────────────────────────
+    {
+        "type": "fill",
+        "q": "Global (warm) ___ is a serious problem that affects the whole planet.",
+        "answer": "warming",
+        "topic": "Word Form",
+    },
+    {
+        "type": "fill",
+        "q": "The (erupt) ___ of the volcano caused widespread destruction.",
+        "answer": "eruption",
+        "topic": "Word Form",
+    },
+    {
+        "type": "fill",
+        "q": "Technology has (revolution) ___ the way we communicate.",
+        "answer": "revolutionized",
+        "topic": "Word Form",
+    },
+    {
+        "type": "fill",
+        "q": "We should use (environment) ___ friendly products.",
+        "answer": "environmentally",
+        "topic": "Word Form",
+    },
+    {
+        "type": "fill",
+        "q": "The scientist made an important (discover) ___ about microplastics.",
+        "answer": "discovery",
+        "topic": "Word Form",
+    },
+]
+
+
 # ─── Cấu trúc nội dung — mirrors Noi Dung Ho/ ────────────────────────────────
 CONTENT_TREE = [
     ("lop_1", "Lớp 1", [
@@ -1741,10 +3672,15 @@ CONTENT_TREE = [
     ]),
     ("lop_7", "Lớp 7", [
         ("toan_7_hk1",      "Toán 7 Học Kỳ 1"),
+        ("toan_7_hk2",      "Toán 7 Học Kỳ 2"),
         ("tieng_anh_7_hk1", "Tiếng Anh 7 Học Kỳ 1"),
+        ("tieng_anh_7_hk2", "Tiếng Anh 7 Học Kỳ 2"),
     ]),
     ("lop_8", "Lớp 8", [
-        ("toan_8_hk2", "Toán 8 HK2"),
+        ("toan_8_hk1",      "Toán 8 Học Kỳ 1"),
+        ("toan_8_hk2",      "Toán 8 Học Kỳ 2"),
+        ("tieng_anh_8_hk1", "Tiếng Anh 8 Học Kỳ 1"),
+        ("tieng_anh_8_hk2", "Tiếng Anh 8 Học Kỳ 2"),
     ]),
 ]
 
@@ -1871,7 +3807,9 @@ NHAT_KHOI_TOAN_LOP7 = [
 ]
 
 _TIENG_ANH_FOLDERS = {
-    "de_tieng_anh_6_hk2", "tieng_anh_7_hk1",
+    "de_tieng_anh_6_hk2",
+    "tieng_anh_7_hk1", "tieng_anh_7_hk2",
+    "tieng_anh_8_hk1", "tieng_anh_8_hk2",
     # tieng_anh_2_hk1 / tieng_anh_2_hk2 dùng random shuffle đơn giản,
     # không có section headers (topic khác: Colors, Animals, etc.)
 }
@@ -15175,9 +17113,14 @@ _FOLDER_POOLS = {
     ("lop_6", "de_tieng_anh_6_hk2"):  MINH_KHANH_TIENG_ANH,
     # Lớp 7
     ("lop_7", "toan_7_hk1"):          NHAT_KHOI_TOAN_LOP7,
+    ("lop_7", "toan_7_hk2"):          NHAT_KHOI_TOAN_LOP7,  # reuse pool, random shuffle khác nhau
     ("lop_7", "tieng_anh_7_hk1"):     NHAT_KHOI_TIENG_ANH,
+    ("lop_7", "tieng_anh_7_hk2"):     _TIENG_ANH_7_HK2,
     # Lớp 8
+    ("lop_8", "toan_8_hk1"):          _TOAN_8_HK1,
     ("lop_8", "toan_8_hk2"):          NHAT_KHOI_TOAN,
+    ("lop_8", "tieng_anh_8_hk1"):     _TIENG_ANH_8_HK1,
+    ("lop_8", "tieng_anh_8_hk2"):     _TIENG_ANH_8_HK2,
 }
 
 

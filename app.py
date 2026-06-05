@@ -261,9 +261,14 @@ FOLDER_EXAM_COUNTS = {
     "de_tieng_anh_6_hk2": 10,   # 5 đề Lớp 6 + 5 đề Lớp 8
     # Lớp 7
     "toan_7_hk1":         14,   # 14 PDF đề đơn
+    "toan_7_hk2":          5,   # pool chung với HK1, random 5 vòng
     "tieng_anh_7_hk1":    29,   # 29 PDF đề đơn
+    "tieng_anh_7_hk2":     5,   # 50 câu mới
     # Lớp 8
+    "toan_8_hk1":          5,   # 55 câu mới
     "toan_8_hk2":         16,   # 6 PDF + 10 docx đề đơn
+    "tieng_anh_8_hk1":     5,   # 55 câu mới
+    "tieng_anh_8_hk2":     5,   # 55 câu mới
 }
 
 
