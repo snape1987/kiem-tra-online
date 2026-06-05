@@ -25,3 +25,25 @@ services:
       # Không có biến này -> app tự fallback SQLite (chỉ hợp local dev).
       # MARKITDOWN_URL: base URL của MarkItDown service (vd. https://mark.suong.io).
       # MARKITDOWN_API_KEY: API key — đánh dấu SECRET trong DO dashboard.
+      # SERPER_API_KEY: đặt thủ công trong dashboard DO (Settings -> Environment Variables).
+workers:
+  - name: crawler-agent
+    github:
+      repo: snape1987/kiem-tra-online
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    environment_slug: python
+    run_command: python -m agent.scheduler
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    envs:
+      - key: DATABASE_URL
+        scope: RUN_TIME
+        value: ${DATABASE_URL}
+      - key: SERPER_API_KEY
+        scope: RUN_TIME
+        value: ${SERPER_API_KEY}
+      - key: PYTHONUNBUFFERED
+        scope: RUN_TIME
+        value: "1"

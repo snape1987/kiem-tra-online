@@ -417,7 +417,10 @@ def submit():
     for i, q in enumerate(qs):
         user_ans = request.form.get(f"q_{i}", "").strip()
         correct = str(q["answer"]).strip()
-        ok = user_ans.lower().replace(" ", "") == correct.lower().replace(" ", "")
+        norm = lambda s: s.lower().replace(" ", "")
+        ok = norm(user_ans) == norm(correct) or any(
+            norm(user_ans) == norm(alt) for alt in q.get("alt_answers", [])
+        )
         if ok:
             score += 1
         results.append({"q": q["q"], "your": user_ans or "(không trả lời)",

@@ -27,8 +27,41 @@ _ANSWER_KEY_BLOCK = re.compile(
 
 
 def _parse_answer_key(text: str) -> dict[int, str]:
-    """Tách bảng đáp án cuối trang: '1. A  2. B  3. C ...' → {1:'A', 2:'B', ...}"""
+    """Tách bảng đáp án — hỗ trợ 2 format:
+    - Dạng list: '1. A  2. B  3. C' hoặc từng dòng
+    - Dạng bảng Markdown: '| Câu | 1 | 2 |' + '| Đáp án | A | B |'
+    """
     key_map: dict[int, str] = {}
+
+    # --- Format 1: Bảng Markdown (| Câu | 1 | 2 | ... | + | Đáp án | A | B |) ---
+    # Tìm dòng chứa "câu" hoặc số câu, tiếp theo là dòng chứa "đáp án"
+    lines = text.split("\n")
+    for idx in range(len(lines) - 2):
+        row_cau = lines[idx]
+        # Dòng header chứa số câu
+        if not re.search(r"[|│]", row_cau):
+            continue
+        nums = re.findall(r"[|│]\s*(\d+)\s*(?=[|│])", row_cau)
+        if not nums:
+            continue
+        # Dòng tiếp theo sau separator có thể là "---"
+        row_next = lines[idx + 1]
+        if re.match(r"\s*[|│][\s\-|│]+", row_next):
+            row_ans = lines[idx + 2] if idx + 2 < len(lines) else ""
+        else:
+            row_ans = row_next
+        if not re.search(r"đáp\s*án", row_ans, re.I):
+            continue
+        letters = re.findall(r"[|│]\s*([A-D])\s*(?=[|│])", row_ans)
+        if not letters:
+            continue
+        for num_s, letter in zip(nums, letters):
+            key_map[int(num_s)] = letter
+
+    if key_map:
+        return key_map
+
+    # --- Format 2: Dạng text list ---
     block_m = _ANSWER_KEY_BLOCK.search(text)
     block = block_m.group(1) if block_m else text
     for m in re.finditer(r"(\d+)[\.\)]\s*([A-D])", block):
@@ -52,30 +85,64 @@ def _regex_extract(markdown: str, folder_type: str) -> list[dict]:
             continue
 
         q_no   = int(qm.group(1))
-        q_text = qm.group(2).strip()
+        q_text_raw = qm.group(2).strip()
+
+        # Kiểm tra options inline: "Câu 1: ...  A. xxx  B. xxx  C. xxx  D. xxx"
+        inline_opts: dict[str, str] = {}
+        inline_m = re.search(
+            r"\bA[\.\)]\s*(.+?)\s+B[\.\)]\s*(.+?)\s+C[\.\)]\s*(.+?)\s+D[\.\)]\s*(.+?)$",
+            q_text_raw, re.I
+        )
+        if inline_m:
+            # Tách phần câu hỏi khỏi options
+            split_pos = q_text_raw.upper().find(" A.")
+            if split_pos == -1:
+                split_pos = q_text_raw.upper().find(" A)")
+            q_text = q_text_raw[:split_pos].strip() if split_pos > 0 else q_text_raw
+            for letter, val in zip("ABCD", inline_m.groups()):
+                inline_opts[letter] = val.strip()
+        else:
+            q_text = q_text_raw
+
         # Tiếp tục nếu câu hỏi kéo nhiều dòng (chưa gặp A.)
         i += 1
-        while i < len(lines):
-            peek = lines[i].strip()
-            if re.match(r"^[A-D][\.\)]", peek) or re.match(r"^(?:câu|bài|\d+[\.\)])", peek, re.I):
-                break
-            q_text += " " + peek
-            i += 1
+        if not inline_opts:
+            while i < len(lines):
+                peek = lines[i].strip()
+                if re.match(r"^[A-D][\.\)]", peek) or re.match(r"^(?:câu|bài|\d+[\.\)])", peek, re.I):
+                    break
+                # Cũng check inline options trong dòng tiếp
+                inline_cont = re.search(
+                    r"\bA[\.\)]\s*(.+?)\s+B[\.\)]\s*(.+?)\s+C[\.\)]\s*(.+?)\s+D[\.\)]\s*(.+?)$",
+                    peek, re.I
+                )
+                if inline_cont:
+                    split_pos2 = peek.upper().find(" A.")
+                    if split_pos2 == -1:
+                        split_pos2 = peek.upper().find("A.")
+                    q_text += " " + (peek[:split_pos2].strip() if split_pos2 > 0 else "")
+                    for letter, val in zip("ABCD", inline_cont.groups()):
+                        inline_opts[letter] = val.strip()
+                    i += 1
+                    break
+                q_text += " " + peek
+                i += 1
 
         q_text = q_text.strip()
         if len(q_text) < 5:
             continue
 
-        # Đọc options A B C D
-        options = {}
-        while i < len(lines):
-            peek = lines[i].strip()
-            om = re.match(r"^([A-D])[\.\)]\s*(.+)", peek)
-            if om:
-                options[om.group(1)] = om.group(2).strip()
-                i += 1
-            else:
-                break
+        # Đọc options A B C D (nếu chưa có inline)
+        options = inline_opts if inline_opts else {}
+        if not options:
+            while i < len(lines):
+                peek = lines[i].strip()
+                om = re.match(r"^([A-D])[\.\)]\s*(.+)", peek)
+                if om:
+                    options[om.group(1)] = om.group(2).strip()
+                    i += 1
+                else:
+                    break
 
         if len(options) < 2:
             continue   # không phải câu trắc nghiệm
@@ -207,6 +274,27 @@ def extract_questions(markdown: str, folder_type: str,
     # Layer 2: Claude fallback nếu regex ra quá ít
     if len(questions) < 5:
         questions = _claude_extract(markdown)
+
+    # Lọc câu bị hỏng (options chứa rác từ bảng Markdown hoặc quá ngắn)
+    def _is_clean(q: dict) -> bool:
+        opts = q.get("options", [])
+        if not opts:
+            return False
+        for opt in opts:
+            text = re.sub(r"^[A-D][\.\)]\s*", "", opt).strip()
+            # Option rỗng hoặc chỉ có ký tự rác
+            if len(text) < 1:
+                return False
+            # Option chứa table artifacts
+            if re.search(r"[|│]{2}|^\s*\|", text) or text.count("|") > 1:
+                return False
+        # Câu hỏi phải có nội dung thực
+        q_text = q.get("q", "")
+        if len(q_text) < 8:
+            return False
+        return True
+
+    questions = [q for q in questions if _is_clean(q)]
 
     # Deduplicate theo q text
     seen = set()

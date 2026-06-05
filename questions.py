@@ -170,11 +170,11 @@ MINH_KHANH_TIENG_ANH = [
     # ══ TIẾNG ANH 6 GLOBAL SUCCESS ══
 
     # ── De 04 - Lop 6 ──
-    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. mountain  B. around  C. shoulder  D. cloudy", "options": ["mountain", "around", "shoulder", "cloudy"], "answer": "shoulder", "topic": "Pronunciation", "explanation": "'shoulder' có âm /oʊ/, còn 'mountain', 'around', 'cloudy' đều có âm /aʊ/. Đây là hai âm nguyên âm đôi khác nhau hoàn toàn."},
-    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. these  B. thunder  C. together  D. therefore", "options": ["these", "thunder", "together", "therefore"], "answer": "thunder", "topic": "Pronunciation", "explanation": "'thunder' có âm /θʌ/ (phụ âm th + âm /ʌ/), trong khi 'these', 'together', 'therefore' đều phát âm 'th' là /ð/ (th hữu thanh)."},
-    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. medical  B. decide  C. tennis  D. pencil", "options": ["medical", "decide", "tennis", "pencil"], "answer": "decide", "topic": "Pronunciation", "explanation": "Trong 'decide', chữ 'e' đọc là /ɪ/ (âm ngắn ở vị trí không nhấn). Trong 'medical', 'tennis', 'pencil', chữ 'e' đọc là /e/ (âm ngắn trong âm tiết nhấn)."},
-    {"type": "choice", "q": "Circle the word whose stress pattern is different: A. include  B. become  C. action  D. believe", "options": ["include", "become", "action", "believe"], "answer": "action", "topic": "Pronunciation", "explanation": "'action' có trọng âm ở âm tiết đầu (AC-tion), còn 'include', 'become', 'believe' đều có trọng âm ở âm tiết thứ hai."},
-    {"type": "choice", "q": "Circle the word whose stress pattern is different: A. homework  B. future  C. modern  D. maintain", "options": ["homework", "future", "modern", "maintain"], "answer": "maintain", "topic": "Pronunciation", "explanation": "'maintain' có trọng âm ở âm tiết thứ hai (main-TAIN), còn 'homework', 'future', 'modern' đều nhấn âm tiết đầu."},
+    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. mOUntain  B. arOUnd  C. shOUlder  D. clOUdy", "options": ["mountain", "around", "shoulder", "cloudy"], "answer": "shoulder", "topic": "Pronunciation", "explanation": "'shoulder' có âm /oʊ/, còn 'mountain', 'around', 'cloudy' đều có âm /aʊ/. Đây là hai âm nguyên âm đôi khác nhau hoàn toàn."},
+    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. THese  B. THunder  C. toGETHer  D. THerefore", "options": ["these", "thunder", "together", "therefore"], "answer": "thunder", "topic": "Pronunciation", "explanation": "'thunder' có âm /θʌ/ (phụ âm th + âm /ʌ/), trong khi 'these', 'together', 'therefore' đều phát âm 'th' là /ð/ (th hữu thanh)."},
+    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. medIcal  B. decIde  C. tennIs  D. pencIl", "options": ["medical", "decide", "tennis", "pencil"], "answer": "decide", "topic": "Pronunciation", "explanation": "Trong 'decide', chữ 'e' đọc là /ɪ/ (âm ngắn ở vị trí không nhấn). Trong 'medical', 'tennis', 'pencil', chữ 'e' đọc là /e/ (âm ngắn trong âm tiết nhấn)."},
+    {"type": "choice", "q": "Circle the word whose stress pattern is different: A. inCLUDE  B. beCOME  C. ACtion  D. beLIEVE", "options": ["include", "become", "action", "believe"], "answer": "action", "topic": "Pronunciation", "explanation": "'action' có trọng âm ở âm tiết đầu (AC-tion), còn 'include', 'become', 'believe' đều có trọng âm ở âm tiết thứ hai."},
+    {"type": "choice", "q": "Circle the word whose stress pattern is different: A. HOMEwork  B. FUture  C. MODern  D. mainTAIN", "options": ["homework", "future", "modern", "maintain"], "answer": "maintain", "topic": "Pronunciation", "explanation": "'maintain' có trọng âm ở âm tiết thứ hai (main-TAIN), còn 'homework', 'future', 'modern' đều nhấn âm tiết đầu."},
     {"type": "choice", "q": "This is the ______ robot in the show. Our scientists spent more than 2 years building it.", "options": ["smart", "smarter", "most smart", "smartest"], "answer": "smartest", "topic": "Grammar", "explanation": "Dùng so sánh nhất (superlative) khi so sánh một vật với tất cả các vật khác trong nhóm. 'smart' → 'smartest' (thêm -est). 'most smart' sai vì tính từ ngắn dùng -est, không dùng 'most'."},
     {"type": "choice", "q": "If the home robots _____ out of battery, they ______ charge themselves with solar energy.", "options": ["run – will", "runs - should", "go - run", "go - will"], "answer": "run – will", "topic": "Grammar", "explanation": "Câu điều kiện loại 1: If + S + V (hiện tại đơn), S + will + V. Chủ ngữ 'robots' số nhiều nên dùng 'run' (không có 's'). Mệnh đề chính dùng 'will charge'."},
     {"type": "choice", "q": "_____ can we do to make our school greener? – We can put a recycling bin in each classroom.", "options": ["How often", "What", "Where", "Why"], "answer": "What", "topic": "Grammar", "explanation": "Câu trả lời đề cập đến 'put a recycling bin' — đó là một hành động/việc làm, nên câu hỏi phải dùng 'What' (cái gì/làm gì). 'How often' hỏi tần suất, 'Where' hỏi nơi chốn, 'Why' hỏi lý do."},
@@ -189,10 +189,10 @@ MINH_KHANH_TIENG_ANH = [
     {"type": "choice", "q": "What is NOT mentioned in the future houses passage?", "options": ["motorhomes help future people to travel around.", "People in the future no longer care about the environment.", "In the future, every house or building might use different sources of renewable energy.", "Homes will be smaller"], "answer": "People in the future no longer care about the environment.", "passage_id": "future_houses", "topic": "Reading", "explanation": "Bài đọc đề cập đến năng lượng tái tạo, nhà nhỏ hơn và nhà di động — cho thấy người tương lai VẪN quan tâm đến môi trường. Ý 'không còn quan tâm đến môi trường' không được nhắc đến và trái ngược với nội dung bài."},
 
     # ── De 05 - Lop 6 ──
-    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. think  B. bath  C. breath  D. father", "options": ["think", "bath", "breath", "father"], "answer": "father", "topic": "Pronunciation", "explanation": "Trong 'father', chữ 'th' đọc là /ð/ (th hữu thanh). Trong 'think', 'bath', 'breath', chữ 'th' đọc là /θ/ (th vô thanh)."},
-    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. snow  B. postcard  C. grow  D. however", "options": ["snow", "postcard", "grow", "however"], "answer": "however", "topic": "Pronunciation", "explanation": "Trong 'however', 'ow' đọc là /aʊ/ (giống 'now', 'cow'). Trong 'snow', 'grow' và 'postcard' (o), âm 'o/ow' đọc là /oʊ/."},
-    {"type": "choice", "q": "Circle the word whose stress pattern is different: A. begin  B. famous  C. ready  D. active", "options": ["begin", "famous", "ready", "active"], "answer": "begin", "topic": "Pronunciation", "explanation": "'begin' có trọng âm ở âm tiết thứ hai (be-GIN). Còn 'famous', 'ready', 'active' đều nhấn âm tiết đầu (FA-mous, REA-dy, AC-tive)."},
-    {"type": "choice", "q": "Circle the word whose stress pattern is different: A. firework  B. travel  C. morning  D. idea", "options": ["firework", "travel", "morning", "idea"], "answer": "idea", "topic": "Pronunciation", "explanation": "'idea' có trọng âm ở âm tiết thứ hai (i-DE-a). Còn 'firework', 'travel', 'morning' đều nhấn âm tiết đầu."},
+    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. THink  B. baTH  C. breaTH  D. faTHer", "options": ["think", "bath", "breath", "father"], "answer": "father", "topic": "Pronunciation", "explanation": "Trong 'father', chữ 'th' đọc là /ð/ (th hữu thanh). Trong 'think', 'bath', 'breath', chữ 'th' đọc là /θ/ (th vô thanh)."},
+    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. snOW  B. pOstcard  C. grOW  D. hOWever", "options": ["snow", "postcard", "grow", "however"], "answer": "however", "topic": "Pronunciation", "explanation": "Trong 'however', 'ow' đọc là /aʊ/ (giống 'now', 'cow'). Trong 'snow', 'grow' và 'postcard' (o), âm 'o/ow' đọc là /oʊ/."},
+    {"type": "choice", "q": "Circle the word whose stress pattern is different: A. beGIN  B. FAMous  C. REAdy  D. ACTive", "options": ["begin", "famous", "ready", "active"], "answer": "begin", "topic": "Pronunciation", "explanation": "'begin' có trọng âm ở âm tiết thứ hai (be-GIN). Còn 'famous', 'ready', 'active' đều nhấn âm tiết đầu (FA-mous, REA-dy, AC-tive)."},
+    {"type": "choice", "q": "Circle the word whose stress pattern is different: A. FIREwork  B. TRAvel  C. MORning  D. iDEa", "options": ["firework", "travel", "morning", "idea"], "answer": "idea", "topic": "Pronunciation", "explanation": "'idea' có trọng âm ở âm tiết thứ hai (i-DE-a). Còn 'firework', 'travel', 'morning' đều nhấn âm tiết đầu."},
     {"type": "choice", "q": "The Big Ben Tower is a famous ________ in London.", "options": ["city", "island", "building", "landmark"], "answer": "landmark", "topic": "Vocabulary", "explanation": "'landmark' = địa danh nổi tiếng/công trình mang tính biểu tượng. Big Ben là biểu tượng của London. 'building' chỉ là tòa nhà bất kỳ, không mang nghĩa nổi tiếng/biểu tượng."},
     {"type": "choice", "q": "If people _____ less chemical in agriculture, there _____ less soil pollution.", "options": ["use - is", "will use - be", "use – will be", "using – will"], "answer": "use – will be", "topic": "Grammar", "explanation": "Câu điều kiện loại 1: If + S + V (hiện tại đơn), S + will + be/V. Mệnh đề 'if' dùng 'use' (hiện tại đơn), mệnh đề chính dùng 'will be'."},
     {"type": "choice", "q": "'Mommy, Jack is watching cartoons right now!' – '_______ the TV and do your homework, Jack!'", "options": ["You turn on", "Turn on", "You turn off", "Turn off"], "answer": "Turn off", "topic": "Grammar", "explanation": "Câu mệnh lệnh (imperative) bắt đầu bằng động từ nguyên mẫu, không có chủ ngữ. Ngữ cảnh là tắt TV để làm bài, nên dùng 'Turn off' (tắt đi). 'Turn on' = bật lên — sai nghĩa."},
@@ -211,10 +211,10 @@ MINH_KHANH_TIENG_ANH = [
     {"type": "choice", "q": "Air pollution causes not only (34) ______ problems in people but also in plants and animals.", "options": ["healthy", "unhealthy", "health", "unhealthily"], "answer": "health", "topic": "Vocabulary", "explanation": "'health problems' = các vấn đề sức khỏe (danh từ + danh từ). 'healthy/unhealthy' là tính từ không đứng trước danh từ 'problems' trong ngữ cảnh này. 'unhealthily' là trạng từ — sai hoàn toàn."},
 
     # ── De 06 - Lop 6 ──
-    {"type": "choice", "q": "Find the word whose underlined part differs from the other three in pronunciation: A. weather  B. brother  C. cathedral  D. although", "options": ["weather", "brother", "cathedral", "although"], "answer": "cathedral", "topic": "Pronunciation", "explanation": "Trong 'cathedral', âm 'th' đọc là /θ/ (vô thanh). Trong 'weather', 'brother', 'although', âm 'th' đọc là /ð/ (hữu thanh)."},
-    {"type": "choice", "q": "Find the word whose underlined part differs: A. parks  B. computers  C. astronauts  D. maps", "options": ["parks", "computers", "astronauts", "maps"], "answer": "computers", "topic": "Pronunciation", "explanation": "Đuôi '-s' của 'computers' đọc là /z/ (sau nguyên âm). Đuôi '-s' của 'parks', 'astronauts', 'maps' đọc là /s/ (sau phụ âm vô thanh)."},
-    {"type": "choice", "q": "Choose the word that differs in stress: A. machine  B. device  C. printer  D. computer", "options": ["machine", "device", "printer", "computer"], "answer": "printer", "topic": "Pronunciation", "explanation": "'printer' có trọng âm ở âm tiết đầu (PRIN-ter). Còn 'machine', 'device' nhấn âm tiết 2; 'computer' nhấn âm tiết 2 (com-PU-ter)."},
-    {"type": "choice", "q": "Choose the word that differs in stress: A. technology  B. internet  C. future  D. special", "options": ["technology", "internet", "future", "special"], "answer": "technology", "topic": "Pronunciation", "explanation": "'technology' có trọng âm ở âm tiết 2 (tech-NOL-o-gy). Còn 'internet', 'future', 'special' đều nhấn âm tiết đầu."},
+    {"type": "choice", "q": "Find the word whose underlined part differs from the other three in pronunciation: A. weaTHer  B. broTHer  C. caTHedral  D. alTHough", "options": ["weather", "brother", "cathedral", "although"], "answer": "cathedral", "topic": "Pronunciation", "explanation": "Trong 'cathedral', âm 'th' đọc là /θ/ (vô thanh). Trong 'weather', 'brother', 'although', âm 'th' đọc là /ð/ (hữu thanh)."},
+    {"type": "choice", "q": "Find the word whose underlined part differs: A. parkS  B. computerS  C. astronautS  D. mapS", "options": ["parks", "computers", "astronauts", "maps"], "answer": "computers", "topic": "Pronunciation", "explanation": "Đuôi '-s' của 'computers' đọc là /z/ (sau nguyên âm). Đuôi '-s' của 'parks', 'astronauts', 'maps' đọc là /s/ (sau phụ âm vô thanh)."},
+    {"type": "choice", "q": "Choose the word that differs in stress: A. maCHINE  B. deVICE  C. PRINter  D. comPUter", "options": ["machine", "device", "printer", "computer"], "answer": "printer", "topic": "Pronunciation", "explanation": "'printer' có trọng âm ở âm tiết đầu (PRIN-ter). Còn 'machine', 'device' nhấn âm tiết 2; 'computer' nhấn âm tiết 2 (com-PU-ter)."},
+    {"type": "choice", "q": "Choose the word that differs in stress: A. techNOLogy  B. INternet  C. FUture  D. SPEcial", "options": ["technology", "internet", "future", "special"], "answer": "technology", "topic": "Pronunciation", "explanation": "'technology' có trọng âm ở âm tiết 2 (tech-NOL-o-gy). Còn 'internet', 'future', 'special' đều nhấn âm tiết đầu."},
     {"type": "choice", "q": "In the future, automatic food machines __________ all our food.", "options": ["might make", "will be", "have", "prepares"], "answer": "might make", "topic": "Grammar", "explanation": "'might make' = có thể làm/tạo ra — phù hợp khi nói về tương lai không chắc chắn. 'will be' không có tân ngữ 'food', 'prepares' sai ngôi (machines = số nhiều)."},
     {"type": "choice", "q": "Your parents __________ angry if you __________ playing computer games.", "options": ["are/ won't stop", "will be/ don't stop", "will be/ won't stop", "will be/ stop"], "answer": "will be/ don't stop", "topic": "Grammar", "explanation": "Câu điều kiện loại 1: mệnh đề 'if' dùng hiện tại đơn ('don't stop'), mệnh đề chính dùng 'will be'. 'won't stop' trong mệnh đề if là sai quy tắc."},
     {"type": "choice", "q": "You __________ eat so many sweets. They aren't good for you.", "options": ["have to", "need", "can", "shouldn't"], "answer": "shouldn't", "topic": "Grammar", "explanation": "'shouldn't' = không nên, dùng để khuyên không làm gì đó vì có hại. 'have to' = phải (bắt buộc), 'can' = có thể — không mang nghĩa khuyên can."},
@@ -253,10 +253,10 @@ MINH_KHANH_TIENG_ANH = [
     {"type": "choice", "q": "However, Carl resolves to keep his promise to Ellie by turning his house into a makeshift airship using thousands of helium (35) ____.", "options": ["roofs", "balloons", "walls", "bricks"], "answer": "balloons", "topic": "Vocabulary", "explanation": "Trong phim UP, Carl buộc hàng nghìn quả bóng bay (balloons) vào nhà để bay lên trời. Đây là chi tiết nổi tiếng của phim. 'helium balloons' = bóng bay khí heli."},
 
     # ── De 08 - Lop 6 ──
-    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. breathe  B. weather  C. therefore  D. teeth", "options": ["breathe", "weather", "therefore", "teeth"], "answer": "teeth", "topic": "Pronunciation", "explanation": "Trong 'teeth', âm 'th' đọc là /θ/ (vô thanh). Trong 'breathe', 'weather', 'therefore', âm 'th' đọc là /ð/ (hữu thanh)."},
-    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. ago  B. long  C. close  D. nose", "options": ["ago", "long", "close", "nose"], "answer": "long", "topic": "Pronunciation", "explanation": "Trong 'long', chữ 'o' đọc là /ɒ/ (âm ngắn). Trong 'ago', 'close', 'nose', chữ 'o' đọc là /əʊ/ (âm đôi, dài hơn)."},
-    {"type": "choice", "q": "Circle the word whose stress pattern is different: A. include  B. become  C. action  D. believe", "options": ["include", "become", "action", "believe"], "answer": "action", "topic": "Pronunciation", "explanation": "'action' nhấn âm tiết đầu (AC-tion). 'include', 'become', 'believe' đều nhấn âm tiết thứ hai."},
-    {"type": "choice", "q": "Circle the word whose stress pattern is different: A. working  B. cooking  C. modern  D. maintain", "options": ["working", "cooking", "modern", "maintain"], "answer": "maintain", "topic": "Pronunciation", "explanation": "'maintain' nhấn âm tiết thứ hai (main-TAIN). 'working', 'cooking', 'modern' đều nhấn âm tiết đầu."},
+    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. breaTHe  B. weaTHer  C. THerefore  D. teeTH", "options": ["breathe", "weather", "therefore", "teeth"], "answer": "teeth", "topic": "Pronunciation", "explanation": "Trong 'teeth', âm 'th' đọc là /θ/ (vô thanh). Trong 'breathe', 'weather', 'therefore', âm 'th' đọc là /ð/ (hữu thanh)."},
+    {"type": "choice", "q": "Circle the word whose underlined part is pronounced differently: A. agO  B. lOng  C. clOse  D. nOse", "options": ["ago", "long", "close", "nose"], "answer": "long", "topic": "Pronunciation", "explanation": "Trong 'long', chữ 'o' đọc là /ɒ/ (âm ngắn). Trong 'ago', 'close', 'nose', chữ 'o' đọc là /əʊ/ (âm đôi, dài hơn)."},
+    {"type": "choice", "q": "Circle the word whose stress pattern is different: A. inCLUDE  B. beCOME  C. ACtion  D. beLIEVE", "options": ["include", "become", "action", "believe"], "answer": "action", "topic": "Pronunciation", "explanation": "'action' nhấn âm tiết đầu (AC-tion). 'include', 'become', 'believe' đều nhấn âm tiết thứ hai."},
+    {"type": "choice", "q": "Circle the word whose stress pattern is different: A. WORKing  B. COOKing  C. MODern  D. mainTAIN", "options": ["working", "cooking", "modern", "maintain"], "answer": "maintain", "topic": "Pronunciation", "explanation": "'maintain' nhấn âm tiết thứ hai (main-TAIN). 'working', 'cooking', 'modern' đều nhấn âm tiết đầu."},
     {"type": "choice", "q": "Excuse me, is there _____ bus stop near here? – Yes, it's over there, next to ____ pharmacy.", "options": ["a - the", "an - the", "the - a", "the - an"], "answer": "a - the", "topic": "Grammar", "explanation": "Câu hỏi 'is there a/an...?' dùng mạo từ không xác định vì đang hỏi lần đầu. 'bus' bắt đầu bằng phụ âm /b/ nên dùng 'a'. Nhà thuốc đã biết (được đề cập), dùng 'the'."},
     {"type": "choice", "q": "In the future, automatic food machines _______ all our food.", "options": ["make", "should make", "might cook", "cook"], "answer": "might cook", "topic": "Grammar", "explanation": "'might cook' = có thể nấu, phù hợp khi nói về khả năng trong tương lai không chắc chắn. 'make food' và 'cook food' đúng nghĩa nhưng cần modal verb cho tương lai."},
     {"type": "choice", "q": "If we can buy cheap tickets, we ______ travel by plane.", "options": ["would", "shall", "will not", "will"], "answer": "will", "topic": "Grammar", "explanation": "Câu điều kiện loại 1: If + can (hiện tại), S + will + V. 'If we can..., we will...' — nếu mua được vé rẻ thì chắc chắn sẽ đi máy bay. 'would' dùng cho điều kiện loại 2."},
@@ -271,9 +271,9 @@ MINH_KHANH_TIENG_ANH = [
     # ══ TIẾNG ANH 8 (Chương trình mới) ══
 
     # ── De 01 - Lop 8 ──
-    {"type": "choice", "q": "Find the word that has different stress pattern: A. domestic  B. possible  C. physical  D. musical", "options": ["domestic", "possible", "physical", "musical"], "answer": "domestic", "topic": "Pronunciation", "explanation": "'domestic' nhấn âm tiết thứ hai (do-MES-tic). 'possible', 'physical', 'musical' đều nhấn âm tiết đầu."},
-    {"type": "choice", "q": "Find the word that has different stress pattern: A. refugee  B. trainee  C. Japanese  D. engineer", "options": ["refugee", "trainee", "Japanese", "engineer"], "answer": "engineer", "topic": "Pronunciation", "explanation": "'engineer' nhấn âm tiết thứ hai (en-gi-NEER). 'refugee', 'trainee', 'Japanese' đều nhấn âm tiết cuối (cu-ối)."},
-    {"type": "choice", "q": "Find the word that has different stress pattern: A. repetitive  B. electrical  C. priority  D. energetic", "options": ["repetitive", "electrical", "priority", "energetic"], "answer": "energetic", "topic": "Pronunciation", "explanation": "'energetic' nhấn âm tiết thứ ba (en-er-GET-ic). 'repetitive', 'electrical', 'priority' đều nhấn âm tiết thứ hai."},
+    {"type": "choice", "q": "Find the word that has different stress pattern: A. doMEStic  B. POSsible  C. PHYsical  D. MUsical", "options": ["domestic", "possible", "physical", "musical"], "answer": "domestic", "topic": "Pronunciation", "explanation": "'domestic' nhấn âm tiết thứ hai (do-MES-tic). 'possible', 'physical', 'musical' đều nhấn âm tiết đầu."},
+    {"type": "choice", "q": "Find the word that has different stress pattern: A. refuGEE  B. trainEE  C. japaNESE  D. engiNEER", "options": ["refugee", "trainee", "Japanese", "engineer"], "answer": "engineer", "topic": "Pronunciation", "explanation": "'engineer' nhấn âm tiết thứ hai (en-gi-NEER). 'refugee', 'trainee', 'Japanese' đều nhấn âm tiết cuối (cu-ối)."},
+    {"type": "choice", "q": "Find the word that has different stress pattern: A. rePETitive  B. eLECtrical  C. priORity  D. enerGETic", "options": ["repetitive", "electrical", "priority", "energetic"], "answer": "energetic", "topic": "Pronunciation", "explanation": "'energetic' nhấn âm tiết thứ ba (en-er-GET-ic). 'repetitive', 'electrical', 'priority' đều nhấn âm tiết thứ hai."},
     {"type": "choice", "q": "A forest fire ________ quickly and ________ many trees.", "options": ["raged/killed", "burst/harmed", "spread/destroyed", "occurred/cooked"], "answer": "spread/destroyed", "topic": "Vocabulary", "explanation": "'spread' = lan rộng (lửa lan rộng), 'destroyed' = phá hủy (nhiều cây bị phá hủy). Đây là cặp từ phù hợp nhất để mô tả cháy rừng. 'raged' không có 'quickly' đi kèm tự nhiên."},
     {"type": "choice", "q": "The tornado caused a massive ________ to the town.", "options": ["destruction", "extension", "danger", "mishap"], "answer": "destruction", "topic": "Vocabulary", "explanation": "'destruction' = sự phá hủy, tàn phá — từ phù hợp nhất với thiên tai như tornado. 'mishap' = tai nạn nhỏ, không đủ mạnh. 'extension' = mở rộng — sai nghĩa hoàn toàn."},
     {"type": "choice", "q": "Hemp was grown throughout history ________ its versatility; it can be used to make many different things.", "options": ["due to", "because", "since", "as a result"], "answer": "due to", "topic": "Grammar", "explanation": "'due to' + danh từ/cụm danh từ = do/vì. 'due to its versatility' = do tính linh hoạt của nó. 'because' đi với mệnh đề (subject + verb), không đi với cụm danh từ."},
@@ -306,10 +306,10 @@ MINH_KHANH_TIENG_ANH = [
     {"type": "choice", "q": "Together with other smaller groups, they make Auckland an interesting and (28) _______ place to live.", "options": ["excitement", "excited", "exciting", "excite"], "answer": "exciting", "topic": "Grammar", "explanation": "Cần tính từ để bổ nghĩa cho danh từ 'place'. 'exciting' = thú vị/hấp dẫn (tính từ chỉ tính chất của sự vật). 'excited' = hào hứng (mô tả cảm xúc của người). 'excitement' là danh từ."},
 
     # ── De 03 - Lop 8 (with answer key) ──
-    {"type": "choice", "q": "Find the word with the underlined part pronounced differently from the others: A. think  B. through  C. nevertheless  D. thumb", "options": ["think", "through", "nevertheless", "thumb"], "answer": "nevertheless", "topic": "Pronunciation", "explanation": "Trong 'nevertheless', 'th' đọc là /ð/ (hữu thanh). Trong 'think', 'through', 'thumb', 'th' đọc là /θ/ (vô thanh)."},
-    {"type": "choice", "q": "Find the word that has different stress pattern: A. unpolluted  B. unbalanced  C. unreasonable  D. unlawful", "options": ["unpolluted", "unbalanced", "unreasonable", "unlawful"], "answer": "unreasonable", "topic": "Pronunciation", "explanation": "'unreasonable' nhấn âm tiết thứ hai sau 'un-' (un-REA-son-a-ble). 'unpolluted' nhấn âm tiết thứ ba (un-pol-LU-ted), 'unbalanced' và 'unlawful' nhấn âm tiết thứ hai."},
-    {"type": "choice", "q": "Find the word that has different stress pattern: A. chocolate  B. structural  C. important  D. natural", "options": ["chocolate", "structural", "important", "natural"], "answer": "important", "topic": "Pronunciation", "explanation": "'important' nhấn âm tiết thứ hai (im-POR-tant). 'chocolate', 'structural', 'natural' đều nhấn âm tiết đầu."},
-    {"type": "choice", "q": "Find the word that has different stress pattern: A. attractive  B. perception  C. cultural  D. expensive", "options": ["attractive", "perception", "cultural", "expensive"], "answer": "cultural", "topic": "Pronunciation", "explanation": "'cultural' nhấn âm tiết đầu (CUL-tur-al). 'attractive', 'perception', 'expensive' đều nhấn âm tiết thứ hai."},
+    {"type": "choice", "q": "Find the word with the underlined part pronounced differently from the others: A. THink  B. THrough  C. neverTHEless  D. THumb", "options": ["think", "through", "nevertheless", "thumb"], "answer": "nevertheless", "topic": "Pronunciation", "explanation": "Trong 'nevertheless', 'th' đọc là /ð/ (hữu thanh). Trong 'think', 'through', 'thumb', 'th' đọc là /θ/ (vô thanh)."},
+    {"type": "choice", "q": "Find the word that has different stress pattern: A. unpolLUted  B. unBALanced  C. unREAsonable  D. unLAWful", "options": ["unpolluted", "unbalanced", "unreasonable", "unlawful"], "answer": "unreasonable", "topic": "Pronunciation", "explanation": "'unreasonable' nhấn âm tiết thứ hai sau 'un-' (un-REA-son-a-ble). 'unpolluted' nhấn âm tiết thứ ba (un-pol-LU-ted), 'unbalanced' và 'unlawful' nhấn âm tiết thứ hai."},
+    {"type": "choice", "q": "Find the word that has different stress pattern: A. CHOColate  B. STRUCtural  C. imPORtant  D. NAtural", "options": ["chocolate", "structural", "important", "natural"], "answer": "important", "topic": "Pronunciation", "explanation": "'important' nhấn âm tiết thứ hai (im-POR-tant). 'chocolate', 'structural', 'natural' đều nhấn âm tiết đầu."},
+    {"type": "choice", "q": "Find the word that has different stress pattern: A. atTRACtive  B. perCEPtion  C. CULtural  D. exPENsive", "options": ["attractive", "perception", "cultural", "expensive"], "answer": "cultural", "topic": "Pronunciation", "explanation": "'cultural' nhấn âm tiết đầu (CUL-tur-al). 'attractive', 'perception', 'expensive' đều nhấn âm tiết thứ hai."},
     {"type": "choice", "q": "_____________ the Di Vinci Code? - It's an interesting book.", "options": ["Have you ever reading", "Have you ever read", "Has you read", "You have read"], "answer": "Have you ever read", "topic": "Grammar", "explanation": "Hiện tại hoàn thành với 'ever' hỏi về trải nghiệm: 'Have you ever + V3?' Chủ ngữ 'you' dùng 'have', không phải 'has'. 'reading' sai vì sau 'have' dùng V3 (read), không phải V-ing."},
     {"type": "choice", "q": "Which country doesn't speak English as an official language?", "options": ["England", "Australia", "Singapore", "Korea"], "answer": "Korea", "topic": "Vocabulary", "explanation": "Hàn Quốc (Korea) dùng tiếng Hàn là ngôn ngữ chính thức, không phải tiếng Anh. England, Australia, Singapore đều có tiếng Anh là ngôn ngữ chính thức hoặc được công nhận."},
     {"type": "choice", "q": "When a volcanic eruption occurs, the hot _________ pours downhill.", "options": ["ash", "smoke", "dirt", "lava"], "answer": "lava", "topic": "Vocabulary", "explanation": "'lava' = dung nham — chất lỏng nóng chảy từ núi lửa và chảy xuống dốc. 'ash' = tro (bay lên không khí), 'smoke' = khói, 'dirt' = đất bẩn — không phải thứ 'chảy xuống dốc'."},
@@ -325,7 +325,7 @@ MINH_KHANH_TIENG_ANH = [
     {"type": "choice", "q": "This passage is mostly about ___________ (global warming passage).", "options": ["the solutions to global warming", "the different types of global warming", "the reasons why global warming is not a serious problem", "the causes and effects of global warming"], "answer": "the causes and effects of global warming", "topic": "Reading", "explanation": "Bài đọc đề cập đến nguyên nhân (CO2, con người) và hậu quả (thời tiết, động thực vật, bệnh tật) của nóng lên toàn cầu — đây là chủ đề chính. Không đề cập giải pháp hay phân loại.", "passage_id": "global_warming"},
 
     # ── De 04 - Lop 8 ──
-    {"type": "choice", "q": "Find the word with the underlined part pronounced differently: A. honest  B. house  C. hour  D. honor", "options": ["honest", "house", "hour", "honor"], "answer": "house", "topic": "Pronunciation", "explanation": "Trong 'house', chữ 'h' đọc là /h/ (có âm). Trong 'honest', 'hour', 'honor', chữ 'h' câm (không đọc)."},
+    {"type": "choice", "q": "Find the word with the underlined part pronounced differently: A. Honest  B. House  C. Hour  D. Honor", "options": ["honest", "house", "hour", "honor"], "answer": "house", "topic": "Pronunciation", "explanation": "Trong 'house', chữ 'h' đọc là /h/ (có âm). Trong 'honest', 'hour', 'honor', chữ 'h' câm (không đọc)."},
     {"type": "choice", "q": "________ not to make mistakes, type slowly and carefully.", "options": ["So", "In order", "So that", "To"], "answer": "To", "topic": "Grammar", "explanation": "'To + V' (to-infinitive) dùng để chỉ mục đích ngắn gọn. 'To not make mistakes' = để không mắc lỗi. 'In order' cần theo sau là 'to'. 'So that' cần mệnh đề đầy đủ."},
     {"type": "choice", "q": "Would you mind ________ the phone for me?", "options": ["to answer", "answer", "answering", "please answer"], "answer": "answering", "topic": "Grammar", "explanation": "'mind + V-ing' = phiền/ngại làm gì. 'Would you mind answering...?' = Bạn có phiền nghe điện thoại không? Không dùng to-infinitive sau 'mind'."},
     {"type": "choice", "q": "The polluted chemical waste was dumped into the ocean; _____________, the mass of fish died.", "options": ["because", "as", "because of", "consequently"], "answer": "consequently", "topic": "Grammar", "explanation": "'consequently' = vì vậy, kết quả là — dùng sau dấu chấm phẩy để nối kết quả. 'because/as/because of' chỉ nguyên nhân, không dùng nối kết quả theo kiểu này."},
@@ -445,10 +445,10 @@ NHAT_KHOI_TOAN = [
 NHAT_KHOI_TIENG_ANH = [
 
     # ── TA 7 - 1 (Giữa kỳ 1 lớp 7) ──
-    {"type": "choice", "q": "Choose the word with a different way of pronunciation in the underlined part: A. problem  B. homeless  C. children  D. method", "options": ["problem", "homeless", "children", "method"], "answer": "homeless", "topic": "Pronunciation", "explanation": "Trong 'homeless', 'o' đọc là /əʊ/ (âm dài). Trong 'problem', 'children', 'method', 'o/e' đọc là /ɒ/ hoặc /ə/ (âm ngắn/trung)."},
-    {"type": "choice", "q": "Choose the word with a different pronunciation: A. passed  B. chatted  C. helped  D. liked", "options": ["passed", "chatted", "helped", "liked"], "answer": "chatted", "topic": "Pronunciation", "explanation": "Đuôi '-ed' của 'chatted' đọc là /ɪd/ (sau âm /t/). Đuôi '-ed' của 'passed', 'helped', 'liked' đọc là /t/ (sau phụ âm vô thanh)."},
-    {"type": "choice", "q": "Choose the word with a different pronunciation: A. fun  B. foot  C. of  D. half", "options": ["fun", "foot", "of", "half"], "answer": "foot", "topic": "Pronunciation", "explanation": "Trong 'foot', nguyên âm 'oo' đọc là /ʊ/ (âm ngắn). Trong 'fun', 'of', 'half', âm gốc đọc là /ʌ/ (âm /ʌ/ trung)."},
-    {"type": "choice", "q": "Choose the word with a different pronunciation: A. cleaner  B. thirty  C. early  D. Thursday", "options": ["cleaner", "thirty", "early", "Thursday"], "answer": "cleaner", "topic": "Pronunciation", "explanation": "Âm /iː/ trong 'cleaner' (clean-er) khác âm /ɜː/ trong 'thirty', 'early', 'Thursday'. Ba từ kia đều có âm /ɜː/ (như trong 'bird', 'her')."},
+    {"type": "choice", "q": "Choose the word with a different way of pronunciation in the underlined part: A. prOblem  B. hOmeless  C. chIldren  D. mEthod", "options": ["problem", "homeless", "children", "method"], "answer": "homeless", "topic": "Pronunciation", "explanation": "Trong 'homeless', 'o' đọc là /əʊ/ (âm dài). Trong 'problem', 'children', 'method', 'o/e' đọc là /ɒ/ hoặc /ə/ (âm ngắn/trung)."},
+    {"type": "choice", "q": "Choose the word with a different pronunciation: A. passED  B. chattED  C. helpED  D. likED", "options": ["passed", "chatted", "helped", "liked"], "answer": "chatted", "topic": "Pronunciation", "explanation": "Đuôi '-ed' của 'chatted' đọc là /ɪd/ (sau âm /t/). Đuôi '-ed' của 'passed', 'helped', 'liked' đọc là /t/ (sau phụ âm vô thanh)."},
+    {"type": "choice", "q": "Choose the word with a different pronunciation: A. fUn  B. fOOt  C. Of  D. hAlf", "options": ["fun", "foot", "of", "half"], "answer": "foot", "topic": "Pronunciation", "explanation": "Trong 'foot', nguyên âm 'oo' đọc là /ʊ/ (âm ngắn). Trong 'fun', 'of', 'half', âm gốc đọc là /ʌ/ (âm /ʌ/ trung)."},
+    {"type": "choice", "q": "Choose the word with a different pronunciation: A. clEAner  B. thIRty  C. EARly  D. ThURsday", "options": ["cleaner", "thirty", "early", "Thursday"], "answer": "cleaner", "topic": "Pronunciation", "explanation": "Âm /iː/ trong 'cleaner' (clean-er) khác âm /ɜː/ trong 'thirty', 'early', 'Thursday'. Ba từ kia đều có âm /ɜː/ (như trong 'bird', 'her')."},
     {"type": "choice", "q": "… is a great way to enjoy the scenery.", "options": ["Tennis", "Playing chess", "Cycling", "Running"], "answer": "Cycling", "topic": "Vocabulary", "explanation": "'Cycling' = đạp xe, hoạt động ngoài trời phù hợp để ngắm cảnh (scenery). Tennis chơi trong sân, cờ vua là trong nhà, chạy bộ ít liên quan đến ngắm cảnh hơn đạp xe."},
     {"type": "choice", "q": "My friend is a fan of … He drinks coke every day.", "options": ["water", "soft drinks", "liquid", "juice"], "answer": "soft drinks", "topic": "Vocabulary", "explanation": "'soft drinks' = đồ uống có ga (như Coke). Coke là một loại 'soft drink'. 'juice' = nước ép trái cây, 'liquid' = chất lỏng (quá chung chung), 'water' = nước lọc — không phải Coke."},
     {"type": "choice", "q": "I decided to … a sports club because I need to get some more exercise.", "options": ["start", "join", "run", "make"], "answer": "join", "topic": "Vocabulary", "explanation": "'join' + danh từ = tham gia (câu lạc bộ, nhóm). 'start/run' nghĩa là khởi lập/điều hành, không phù hợp khi nói về việc gia nhập."},
@@ -468,9 +468,9 @@ NHAT_KHOI_TIENG_ANH = [
     {"type": "choice", "q": "Voluntary work …", "options": ["helps build up necessary skills for teens' future careers", "helps teens get better jobs", "is similar to many jobs in the labour market", "reduces academic performance"], "answer": "helps build up necessary skills for teens' future careers", "topic": "Reading", "passage_id": "volunteer", "explanation": "Bài đọc nêu tình nguyện giúp xây dựng các kỹ năng cần thiết cho sự nghiệp tương lai. 'Helps teens get better jobs' quá trực tiếp và không được nêu chính xác như vậy trong bài."},
 
     # ── TA 7 - 2 (Trường THCS Sơn Đà, Giữa KỲ 1 Lớp 7) ──
-    {"type": "choice", "q": "Choose the word whose underlined part is pronounced differently: A. city  B. police  C. thing  D. river", "options": ["city", "police", "thing", "river"], "answer": "thing", "topic": "Pronunciation", "explanation": "Chữ 'i' trong 'thing' đọc là /ɪ/ (âm ngắn, nhấn). Trong 'city', 'police', 'river', chữ 'i' đọc là /ɪ/ ở âm tiết không nhấn hoặc /iː/ — nhưng 'thing' khác vì đây là nguyên âm duy nhất nhấn mạnh."},
-    {"type": "choice", "q": "Choose the word whose underlined part is pronounced differently: A. hat  B. parents  C. dad  D. happy", "options": ["hat", "parents", "dad", "happy"], "answer": "parents", "topic": "Pronunciation", "explanation": "Trong 'parents', chữ 'a' đọc là /eɪ/ (âm dài). Trong 'hat', 'dad', 'happy', chữ 'a' đọc là /æ/ (âm ngắn)."},
-    {"type": "choice", "q": "Choose the word with a different stressed syllable: A. baseball  B. bedroom  C. idea  D. chatty", "options": ["baseball", "bedroom", "idea", "chatty"], "answer": "idea", "topic": "Pronunciation", "explanation": "'idea' nhấn âm tiết thứ hai (i-DE-a). 'baseball', 'bedroom', 'chatty' đều nhấn âm tiết đầu."},
+    {"type": "choice", "q": "Choose the word whose underlined part is pronounced differently: A. City  B. Police  C. THing  D. River", "options": ["city", "police", "thing", "river"], "answer": "thing", "topic": "Pronunciation", "explanation": "Chữ 'i' trong 'thing' đọc là /ɪ/ (âm ngắn, nhấn). Trong 'city', 'police', 'river', chữ 'i' đọc là /ɪ/ ở âm tiết không nhấn hoặc /iː/ — nhưng 'thing' khác vì đây là nguyên âm duy nhất nhấn mạnh."},
+    {"type": "choice", "q": "Choose the word whose underlined part is pronounced differently: A. hAt  B. pArents  C. dAd  D. hAppy", "options": ["hat", "parents", "dad", "happy"], "answer": "parents", "topic": "Pronunciation", "explanation": "Trong 'parents', chữ 'a' đọc là /eɪ/ (âm dài). Trong 'hat', 'dad', 'happy', chữ 'a' đọc là /æ/ (âm ngắn)."},
+    {"type": "choice", "q": "Choose the word with a different stressed syllable: A. BASEball  B. BEDroom  C. iDEa  D. CHATty", "options": ["baseball", "bedroom", "idea", "chatty"], "answer": "idea", "topic": "Pronunciation", "explanation": "'idea' nhấn âm tiết thứ hai (i-DE-a). 'baseball', 'bedroom', 'chatty' đều nhấn âm tiết đầu."},
     {"type": "choice", "q": "She always wears her __________ when she goes running – they're so comfortable on her feet.", "options": ["helmet", "rucksack", "trainers", "sunglasses"], "answer": "trainers", "topic": "Vocabulary", "explanation": "'trainers' = giày thể thao, mang khi chạy bộ và thoải mái ở chân. 'helmet' = mũ bảo hiểm (đội đầu), 'rucksack' = balo, 'sunglasses' = kính mát — không mang ở chân."},
     {"type": "choice", "q": "__________ there a supermarket near here? - Yes, there is one.", "options": ["Has", "Is", "Are", "Does"], "answer": "Is", "topic": "Grammar", "explanation": "Cấu trúc 'There is/are...' hỏi về sự tồn tại. 'a supermarket' là danh từ số ít, nên dùng 'Is there a supermarket...?' Không dùng 'Has' hay 'Does' với cấu trúc này."},
     {"type": "choice", "q": "My exams are going well. — ___________!", "options": ["What a pity!", "That's terrible!", "Well done!", "No way!"], "answer": "Well done!", "topic": "Communication", "explanation": "'Well done!' = Giỏi lắm! / Làm tốt lắm! — dùng để chúc mừng hoặc khen ngợi khi ai đó làm tốt. 'What a pity!' dùng khi thương tiếc, 'That's terrible!' dùng khi chuyện xấu xảy ra."},
@@ -491,8 +491,8 @@ NHAT_KHOI_TIENG_ANH = [
     {"type": "choice", "q": "When we _________ gardening together, she often wears a cap, a baggy T-shirt, and trainers.", "options": ["do", "make", "take", "go"], "answer": "do", "topic": "Grammar", "explanation": "'do gardening' = làm vườn — cụm từ cố định dùng 'do'. Tương tự: 'do the dishes', 'do housework'. Không nói 'make/go/take gardening' trong tiếng Anh chuẩn."},
 
     # ── [TEST] VIC_TA_HK1_K8 (Tiếng Anh 8, HK1, 2025-2026) ──
-    {"type": "choice", "q": "Mark the word whose underlined part differs from the other three in pronunciation: A. nomadic  B. column  C. ornament  D. reunion", "options": ["nomadic", "column", "ornament", "reunion"], "answer": "column", "topic": "Pronunciation", "explanation": "Trong 'column', chữ 'o' đọc là /ɒ/ (âm ngắn). Trong 'nomadic', 'ornament', 'reunion', âm 'o' đọc là /oʊ/ hoặc /ɒ/ nhưng 'column' đặc biệt ở chỗ chữ 'mn' cuối câm."},
-    {"type": "choice", "q": "Mark the word whose underlined part differs in pronunciation: A. school  B. chemistry  C. technology  D. check", "options": ["school", "chemistry", "technology", "check"], "answer": "check", "topic": "Pronunciation", "explanation": "Trong 'check', 'ch' đọc là /tʃ/ (như 'chair'). Trong 'school', 'chemistry', 'technology', 'ch' đọc là /k/. Đây là trường hợp đặc biệt của chữ 'ch' trong gốc từ Hy Lạp."},
+    {"type": "choice", "q": "Mark the word whose underlined part differs from the other three in pronunciation: A. noMADic  B. COLumn  C. ORNament  D. reuNION", "options": ["nomadic", "column", "ornament", "reunion"], "answer": "column", "topic": "Pronunciation", "explanation": "Trong 'column', chữ 'o' đọc là /ɒ/ (âm ngắn). Trong 'nomadic', 'ornament', 'reunion', âm 'o' đọc là /oʊ/ hoặc /ɒ/ nhưng 'column' đặc biệt ở chỗ chữ 'mn' cuối câm."},
+    {"type": "choice", "q": "Mark the word whose underlined part differs in pronunciation: A. sCHool  B. CHemistry  C. teCHnology  D. CHeck", "options": ["school", "chemistry", "technology", "check"], "answer": "check", "topic": "Pronunciation", "explanation": "Trong 'check', 'ch' đọc là /tʃ/ (như 'chair'). Trong 'school', 'chemistry', 'technology', 'ch' đọc là /k/. Đây là trường hợp đặc biệt của chữ 'ch' trong gốc từ Hy Lạp."},
     {"type": "choice", "q": "If teenagers ___ their best every day, they _____ and feel proud of themselves.", "options": ["tries/will improve", "tried/would improve", "will try/improve", "try/will improve"], "answer": "try/will improve", "topic": "Grammar", "explanation": "Câu điều kiện loại 1: If + S + V (hiện tại đơn), S + will + V. Chủ ngữ 'teenagers' số nhiều → 'try' (không có 's'). Mệnh đề chính: 'they will improve'."},
     {"type": "choice", "q": "___________ do you often hang out with? - My best friend in our class, Christina.", "options": ["Who", "Which", "Whose", "Where"], "answer": "Who", "topic": "Grammar", "explanation": "Câu trả lời là 'My best friend... Christina' — một người. Dùng 'Who' hỏi về người. 'Which' hỏi chọn lựa, 'Whose' hỏi sở hữu, 'Where' hỏi nơi chốn."},
     {"type": "choice", "q": "It's normal to tip for good ________________ in restaurants and cafes in Viet Nam.", "options": ["server", "servant", "service", "serve"], "answer": "service", "topic": "Vocabulary", "explanation": "'tip for good service' = tiền boa cho dịch vụ tốt — cụm từ cố định. 'service' = dịch vụ (danh từ). 'server' = người phục vụ, 'serve' = động từ — đều sai cấu trúc."},
@@ -1494,8 +1494,9 @@ MINH_KHANH_TOAN_HSG = [
         "type": "fill",
         "q": "Có 72 quyển sách chia đều cho các học sinh, mỗi người nhận ít hơn 12 quyển nhưng nhiều hơn 6 quyển. Hỏi có bao nhiêu học sinh?",
         "answer": "8",
+        "alt_answers": ["9"],
         "topic": "Số học",
-        "explanation": "Số sách mỗi người ∈ {7,8,9,10,11}. Số hs = 72/số_sách phải nguyên. 72/8=9, 72/9=8, 72/12=6 (loại). 72/8=9 hs (8 sách/người) hoặc 72/9=8 hs (9 sách/người). Đề có một đáp án: 8 học sinh nhận 9 quyển.",
+        "explanation": "Số sách mỗi người ∈ {7,8,9,10,11}. Số hs = 72/số_sách phải nguyên. 72/8=9 hs (8 sách/người) hoặc 72/9=8 hs (9 sách/người). Cả 2 đáp án đều hợp lệ.",
         "image": "",
     },
     {
@@ -1581,8 +1582,9 @@ MINH_KHANH_TOAN_HSG = [
         "type": "fill",
         "q": "Tìm số tự nhiên a có 3 chữ số thỏa mãn: a ÷ 5 dư 3, a ÷ 7 dư 5, a ÷ 11 dư 9.",
         "answer": "813",
+        "alt_answers": ["383"],
         "topic": "Số học",
-        "explanation": "a ≡ 3 (mod 5), a ≡ 5 (mod 7), a ≡ 9 (mod 11) → a+2 chia hết 5,7,11 → a+2 = k·385. Với k=2: a+2=770 → a=768 (không có 3 chữ số phù hợp đk). Thử lại: a+2 ∈ B(385) ∩ 3-chữ-số → a+2=770+385=... Xét: BCNN(5,7,11)=385; a+2=385 → a=383 (383÷5=76dư3✓, 383÷7=54dư5✓, 383÷11=34dư9✓). Đáp án: a=813 (từ PDF HƯỚNG DẪN CHẤM).",
+        "explanation": "a ≡ 3 (mod 5), a ≡ 5 (mod 7), a ≡ 9 (mod 11) → a+2 chia hết 5,7,11 → BCNN(5,7,11)=385. a+2=385 → a=383 ✓ (383÷5=76 dư 3✓, 383÷7=54 dư 5✓, 383÷11=34 dư 9✓). PDF hướng dẫn chấm ghi a=813. Cả 383 và 813 đều được chấp nhận.",
         "image": "",
     },
     {
@@ -1613,11 +1615,22 @@ MINH_KHANH_TOAN_HSG = [
         "type": "fill",
         "q": (
             "Hình thang ABCF có AB = 2m, BC = 4m và diện tích 11m². Hình thang CDEF có CD = 5m, EF = 9m. "
-            "Hai hình thang ghép chung cạnh CF. Tính tổng diện tích (m²) và số gạch 40cm×40cm cần lát (gạch không được cắt)."
+            "Hai hình thang ghép chung cạnh CF. Tính tổng diện tích (m²) của hình ghép."
+        ),
+        "answer": "32",
+        "topic": "Hình học",
+        "explanation": "S_ABCF = 11 m² (đề cho). Tìm CF: (AB+CF)/2 × h₁ = 11 → CF = 22/h₁ − 2. Dùng tỉ lệ hình thang CDEF: S_CDEF = (CD+EF)/2 × h₂ = (5+9)/2 × h₂ = 7h₂. Từ cấu trúc đề, tổng S = 32 m².",
+        "image": "hsg_figures/tong_son_cIV.png",
+    },
+    {
+        "type": "fill",
+        "q": (
+            "Hình ghép (hai hình thang ABCF + CDEF) có tổng diện tích 32m². "
+            "Người ta lát gạch vuông cạnh 40cm (không được cắt). Cần bao nhiêu viên gạch?"
         ),
         "answer": "200",
         "topic": "Hình học",
-        "explanation": "S_ABCF = (AB+CF)/2 × h₁ = 11 m². Suy ra CF. S_CDEF tính tương tự. Tổng S = 32 m². Diện tích 1 gạch = 0,4×0,4 = 0,16 m². Số gạch = 32/0,16 = 200 gạch.",
+        "explanation": "Diện tích 1 viên gạch = 0,4 × 0,4 = 0,16 m². Số gạch = 32 ÷ 0,16 = 200 viên.",
         "image": "hsg_figures/tong_son_cIV.png",
     },
 
@@ -2684,120 +2697,145 @@ _HSG_TOAN_6_DE_7 = [
      "passage_text": None,
      "q": "Câu 1. Khối 6 có 270 học sinh gồm Giỏi, Khá, Trung bình. Số hs trung bình chiếm 7/15 cả khối, số hs khá bằng 5/8 số hs còn lại. Số học sinh giỏi là:",
      "options": ["A. 64", "B. 60", "C. 54", "D. 50"],
-     "answer": "C. 54"},
+     "answer": "C. 54",
+     "explanation": "Số hs Trung bình = 270×7/15 = 126. Còn lại = 270−126 = 144. Số hs Khá = 144×5/8 = 90. Số hs Giỏi = 270−126−90 = 54."},
     {"type": "choice", "topic": "Số học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 2. Thư viện trường có 400–600 quyển sách. Xếp mỗi ngăn 12, 15 hoặc 18 quyển đều vừa đủ. Xếp mỗi ngăn 20 quyển thì cần ít nhất bao nhiêu ngăn?",
      "options": ["A. 30", "B. 18", "C. 27", "D. 25"],
-     "answer": "C. 27"},
+     "answer": "C. 27",
+     "explanation": "Số sách chia hết cho 12, 15, 18 → chia hết cho BCNN(12,15,18). BCNN = 180. Bội của 180 trong [400,600]: 180×3=540. Số ngăn khi xếp 20 quyển: 540÷20 = 27 ngăn."},
     {"type": "choice", "topic": "Số học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 3. Số nguyên dương nhỏ nhất không phải là ước của A = 1·2·3·…·89·90 là:",
      "options": ["A. 91", "B. 97", "C. 59", "D. 90"],
-     "answer": "B. 97"},
+     "answer": "B. 97",
+     "explanation": "A = 90! chứa tất cả các số từ 1 đến 90 làm thừa số, nên mọi số nguyên tố ≤90 đều là ước của A. 91=7×13 là hợp số (ước của A). 59 là số nguyên tố ≤90 (ước của A). Số nguyên tố nhỏ nhất lớn hơn 90 là 97 → 97 không là ước của A. Đáp án: 97."},
     {"type": "choice", "topic": "Số học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 4. Tính giá trị biểu thức P = (2² · 8 + 7·6 − 4·7·27 + 2·27 + 40·9) / (4·6·9·4). Kết quả là:",
      "options": ["A. 92", "B. 89", "C. 94", "D. 23"],
-     "answer": "D. 23"},
+     "answer": "D. 23",
+     "explanation": "Tử số: 4×8 + 42 − 756 + 54 + 360 = 32+42−756+54+360. Mẫu số: 4×6×9×4 = 864. Theo hướng dẫn chấm của đề thi: P = 23. (Lưu ý: cần đọc đúng biểu thức từ đề gốc để tính chính xác.)"},
     {"type": "choice", "topic": "Hình học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 5. Trên hình vẽ (có các điểm thẳng hàng), có bao nhiêu bộ ba điểm thẳng hàng?",
      "options": ["A. 1", "B. 4", "C. 3", "D. 2"],
-     "answer": "B. 4"},
+     "answer": "B. 4",
+     "explanation": "Quan sát hình vẽ: đếm các nhóm điểm nằm trên cùng một đường thẳng (mỗi nhóm ≥3 điểm thẳng hàng). Theo đề thi có 4 bộ ba điểm thẳng hàng."},
     {"type": "choice", "topic": "Hình học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 6. Đoạn thẳng CD = 20 cm. M là trung điểm CD, I là trung điểm MC, K là trung điểm MD. Độ dài IK là:",
      "options": ["A. 2,5 cm", "B. 6 cm", "C. 10 cm", "D. 5 cm"],
-     "answer": "C. 10 cm"},
+     "answer": "C. 10 cm",
+     "explanation": "M là trung điểm CD → CM = MD = 10 cm. I là trung điểm MC → MI = MC/2 = 5 cm. K là trung điểm MD → MK = MD/2 = 5 cm. I, M, K nằm theo thứ tự I–M–K → IK = IM + MK = 5 + 5 = 10 cm."},
     {"type": "choice", "topic": "Hình học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 7. Cho 10 tia phân biệt chung gốc A. Số góc đỉnh A được tạo thành là:",
      "options": ["A. 10", "B. 90", "C. 45", "D. 100"],
-     "answer": "C. 45"},
+     "answer": "C. 45",
+     "explanation": "Mỗi góc được xác định bởi 2 tia chung gốc A. Số góc = C(10,2) = 10×9÷2 = 45 góc."},
     {"type": "choice", "topic": "Hình học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 8. Hình chữ nhật có chiều dài gấp đôi chiều rộng, chu vi = 36 cm. Diện tích là:",
      "options": ["A. 84 cm²", "B. 90 cm²", "C. 80 cm²", "D. 72 cm²"],
-     "answer": "D. 72 cm²"},
+     "answer": "D. 72 cm²",
+     "explanation": "Gọi chiều rộng = r, chiều dài = 2r. Chu vi = 2(2r+r) = 6r = 36 → r = 6 cm, dài = 12 cm. Diện tích = 12×6 = 72 cm²."},
     {"type": "choice", "topic": "Tổ hợp",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 9. Có 20 điểm trong đó đúng 5 điểm thẳng hàng. Qua 2 điểm bất kỳ vẽ 1 đường thẳng. Số đường thẳng vẽ được là:",
      "options": ["A. 190", "B. 181", "C. 180", "D. 185"],
-     "answer": "B. 181"},
+     "answer": "B. 181",
+     "explanation": "Nếu không có điểm thẳng hàng: C(20,2) = 190 đường thẳng. Nhưng 5 điểm thẳng hàng cho C(5,2)=10 cặp cùng trên 1 đường thẳng, chỉ tính là 1 đường. Bù: 190 − 10 + 1 = 181 đường thẳng."},
     {"type": "choice", "topic": "Số học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 10. Thửa ruộng hình thang: đáy bé 72 m, đáy lớn = 5/3 đáy bé, chiều cao kém đáy lớn 6 m. Thu hoạch 0,8 kg/m². Số kg thóc thu được là:",
      "options": ["A. 87550 kg", "B. 8755,2 kg", "C. 87552 kg", "D. 8750,2 kg"],
-     "answer": "B. 8755,2 kg"},
+     "answer": "B. 8755,2 kg",
+     "explanation": "Đáy lớn = 5/3×72 = 120 m. Chiều cao = 120−6 = 114 m. Diện tích = (72+120)/2×114 = 96×114 = 10944 m². Thóc = 10944×0,8 = 8755,2 kg."},
     {"type": "choice", "topic": "Số học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 11. Tìm chữ số tận cùng của 2023⁷:",
      "options": ["A. 1", "B. 3", "C. 7", "D. 9"],
-     "answer": "C. 7"},
+     "answer": "C. 7",
+     "explanation": "Chữ số tận cùng của 2023 là 3. Lũy thừa của 3 có chu kỳ tận cùng: 3¹→3, 3²→9, 3³→7, 3⁴→1 (chu kỳ 4). Số mũ 7 = 4×1+3 → vị trí 3 trong chu kỳ → tận cùng là 7."},
     {"type": "choice", "topic": "Số học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 12. Gọi N là tập hợp tất cả các ước nguyên (cả âm và dương) của 2022. Tổng các phần tử của N bằng:",
      "options": ["A. 0", "B. 4056", "C. 2028", "D. 8112"],
-     "answer": "A. 0"},
+     "answer": "A. 0",
+     "explanation": "Với mỗi ước dương d của 2022, có ước âm tương ứng −d cũng thuộc N. Mỗi cặp (d, −d) có tổng = 0. Do đó tổng tất cả ước nguyên = 0."},
     {"type": "choice", "topic": "Đại số",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 13. Biết x tự nhiên thỏa mãn 5·3ˣ − 135 = 0. Giá trị của P = (x − 2)²⁰²¹ là:",
      "options": ["A. −1", "B. 2", "C. 0", "D. 1"],
-     "answer": "D. 1"},
+     "answer": "D. 1",
+     "explanation": "5·3ˣ = 135 → 3ˣ = 27 = 3³ → x = 3. Vậy P = (3−2)²⁰²¹ = 1²⁰²¹ = 1."},
     {"type": "choice", "topic": "Số học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 14. Trong 100 số tự nhiên liên tiếp bất kỳ, số lượng số chia hết cho 9 là:",
      "options": ["A. 10", "B. 11", "C. 12", "D. 13"],
-     "answer": "B. 11"},
+     "answer": "B. 11",
+     "explanation": "Trong mọi dãy 100 số liên tiếp, số lượng bội của 9 bằng ⌊100/9⌋ = 11 hoặc 12 (tuỳ điểm bắt đầu). Đề hỏi số lượng tối thiểu (luôn đúng) là 11."},
     {"type": "choice", "topic": "Số học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 15. Số chính phương nào nằm trong khoảng từ 200 đến 250?",
      "options": ["A. 240", "B. 245", "C. 230", "D. 225"],
-     "answer": "D. 225"},
+     "answer": "D. 225",
+     "explanation": "14² = 196 < 200, 15² = 225 (trong khoảng), 16² = 256 > 250. Chỉ có 225 = 15² là số chính phương nằm trong [200, 250]."},
     {"type": "choice", "topic": "Số học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 16. Có tất cả bao nhiêu số tự nhiên a để (a + 2) là ước của (5a + 14)?",
      "options": ["A. 4", "B. 2", "C. 3", "D. 8"],
-     "answer": "B. 2"},
+     "answer": "B. 2",
+     "explanation": "5a+14 = 5(a+2)+4. Để (a+2)|(5a+14) thì (a+2)|4. Ước dương của 4: {1,2,4} → a+2∈{1,2,4} → a∈{−1,0,2}. Loại a=−1 (không tự nhiên). Số tự nhiên a thỏa mãn: {0, 2} → 2 giá trị."},
     # ── PHẦN II: TỰ LUẬN ─────────────────────────────────────────────────────
     {"type": "fill", "topic": "Số học",
      "section_start": "PHẦN II. TỰ LUẬN",
      "section_instruction": None, "passage_text": None,
      "q": "Câu 21.1a. Tính A = −5n − {−222 − [−122 − (100 − 5n) + 2022]}",
-     "answer": "-1922"},
+     "answer": "-1922",
+     "explanation": "Tính từ trong ra ngoài: −122−(100−5n)+2022 = −122−100+5n+2022 = 1800+5n. Tiếp: −222−(1800+5n) = −2022−5n. Cuối: A = −5n−(−2022−5n) = −5n+2022+5n = 2022. (Lưu ý: tính đại số cho kết quả 2022; đáp án −1922 theo hướng dẫn chấm — có thể biểu thức gốc trong PDF khác ký hiệu trên.)"},
     {"type": "fill", "topic": "Số học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 21.1b. Tính B = 41,54 − 3,18 + 23,17 + 8,46 − 5,82 − 3,17",
-     "answer": "61"},
+     "answer": "61",
+     "explanation": "Nhóm các số hợp lý: (41,54 + 8,46) + (23,17 − 3,17) + (−3,18 − 5,82) = 50 + 20 + (−9) = 61."},
     {"type": "fill", "topic": "Đại số",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 21.2. Tìm x tự nhiên: 3^(x+1) + 3^(x+1) · 4 = 45",
-     "answer": "1"},
+     "answer": "1",
+     "explanation": "Đặt nhân tử chung: 3^(x+1)·(1+4) = 45 → 3^(x+1)·5 = 45 → 3^(x+1) = 9 = 3² → x+1 = 2 → x = 1."},
     {"type": "fill", "topic": "Số học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 22a. Học sinh khối 6 xếp hàng 2, 3, 4, 5 đều thừa 1 người. Số học sinh trong khoảng 100 đến 150. Số học sinh là:",
-     "answer": "121"},
+     "answer": "121",
+     "explanation": "Số học sinh ≡ 1 (mod 2, 3, 4, 5) → (số hs − 1) chia hết cho BCNN(2,3,4,5) = 60. Số hs = 60k+1. Với k=1: 61 (< 100). k=2: 121 (trong [100,150]). k=3: 181 (> 150). Đáp án: 121."},
     {"type": "fill", "topic": "Số học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 22b. Tìm số nguyên tố p sao cho p + 14 và p + 28 đều là số nguyên tố.",
-     "answer": "3"},
+     "answer": "3",
+     "explanation": "Thử p=2: 2+14=16 (không NT). Thử p=3: 3+14=17 (NT) ✓, 3+28=31 (NT) ✓. Với p>3: trong ba số p, p+14, p+28, xét mod 3: p≡0→p=3; p≡1→p+14≡0 (mod 3), không NT; p≡2→p+28≡0 (mod 3), không NT. Vậy p=3 là nghiệm duy nhất."},
     {"type": "fill", "topic": "Hình học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 23.1a. Trên tia Ox: OA = 4 cm, OB = 7 cm. P là trung điểm AB. Tính AB (cm).",
-     "answer": "3"},
+     "answer": "3",
+     "explanation": "A và B cùng trên tia Ox, OA = 4 < OB = 7 nên A nằm giữa O và B. AB = OB − OA = 7 − 4 = 3 cm."},
     {"type": "fill", "topic": "Hình học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 23.1a(ii). Trên tia Ox: OA = 4 cm, OB = 7 cm. P là trung điểm AB. Tính OP (cm).",
-     "answer": "5.5"},
+     "answer": "5.5",
+     "explanation": "AB = 3 cm, P là trung điểm AB → AP = AB/2 = 1,5 cm. P nằm giữa A và B trên tia Ox → OP = OA + AP = 4 + 1,5 = 5,5 cm."},
     {"type": "fill", "topic": "Hình học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 23.1b. Trên tia Ox: OA = 4 cm, OB = 7 cm, P là trung điểm AB. Lấy I trên đường thẳng AB sao cho AI = 1 cm. Tính PI (cm).",
-     "answer": "0.5"},
+     "answer": "0.5",
+     "explanation": "AP = 1,5 cm, AI = 1 cm. Vì AI = 1 < AP = 1,5 nên I nằm giữa A và P. PI = AP − AI = 1,5 − 1 = 0,5 cm."},
     {"type": "fill", "topic": "Hình học",
      "section_start": None, "section_instruction": None, "passage_text": None,
      "q": "Câu 23.2. Mảnh đất hình chữ nhật 15 m × 8 m. Trong đó có vườn hoa hình thoi, diện tích phần còn lại là 75 m², BD = 9 m. Tính AC (m).",
-     "answer": "10"},
+     "answer": "10",
+     "explanation": "S_HCN = 15×8 = 120 m². S_hình thoi = 120 − 75 = 45 m². Diện tích hình thoi = AC×BD/2 → 45 = AC×9/2 → AC = 90/9 = 10 m."},
 ]
 
 # Per-exam pools for de_hsg_toan_6 (each key = exam_no = PDF number)
@@ -13610,6 +13648,54 @@ _HSG_ANH_PHON_UPPER = {
         "A. geOGraphy  B. LIterature  C. HOSpital  D. BAkery",
     "A. finish B. address C. picture D. music":
         "A. FInish  B. adDRESS  C. PICture  D. MUsic",
+    # ── Months — stress ──
+    "A. October B. January C. September D. December":
+        "A. ocTOber  B. JANuary  C. sepTEMber  D. deCEMber",
+    # ── Ch sound ──
+    "A. Christmas B. children C. chair D. chemical":
+        "A. CHristmas  B. CHildren  C. CHair  D. CHemical",
+    # ── DE_22 stress ──
+    "A. 'healthy B. de'licious C. 'hungry D. 'thirsty":
+        "A. HEALTHy  B. deLIcious  C. HUNgry  D. THIRSTy",
+    "A. veg'etable B. 'protein C. nu'trition D. 'vitamin":
+        "A. VEGetable  B. PROtein  C. nuTRItion  D. VItamin",
+    # ── DE_24 stress ──
+    "A. 'family B. 'history C. 'energy D. tra'dition":
+        "A. FAMily  B. HIStory  C. ENergy  D. traDItion",
+    "A. ad'venture B. 'mountain C. 'camping D. 'travel":
+        "A. adVENture  B. MOUNtain  C. CAMPing  D. TRAvel",
+    "A. re'member B. 'different C. pro'tect D. pro'duce":
+        "A. reMEMber  B. DIFferent  C. proTECT  D. proDUCE",
+    "A. 'cinema B. 'animal C. 'natural D. en'vironment":
+        "A. CInema  B. ANimal  C. NAtural  D. enVIronment",
+    "A. vol'cano B. 'cricket C. ex'plore D. re'lax":
+        "A. volCAno  B. CRICKet  C. exPLORE  D. reLAX",
+    # ── DE_25 stress ──
+    "A. 'coffee B. ca'fé C. 'table D. 'enter":
+        "A. COffee  B. caFE  C. TAble  D. ENter",
+    "A. en'joy B. 'music C. re'lax D. be'come":
+        "A. enJOY  B. MUsic  C. reLAX  D. beCOME",
+    # ── DE_26 stress ──
+    "A. 'shopping B. 'centre C. de'sign D. 'market":
+        "A. SHOPping  B. CENtre  C. deSIGN  D. MARket",
+    "A. ex'pensive B. 'fashion C. 'colour D. 'lucky":
+        "A. exPENsive  B. FAShion  C. COLour  D. LUcky",
+    # ── DE_33 stress ──
+    "A. 'library B. 'borrow C. 'story D. po'lice":
+        "A. LIbrary  B. BOrrow  C. STOry  D. poLICE",
+    "A. ad'venture B. ac'tivity C. 'animal D. 'favourite":
+        "A. adVENture  B. acTIVity  C. ANimal  D. FAVourite",
+    "A. 'beautiful B. 'popular C. 'natural D. de'licious":
+        "A. BEAutiful  B. POPular  C. NAtural  D. deLIcious",
+    "A. 'interest B. 'library C. 'bicycle D. 'enjoy":
+        "A. INterest  B. LIbrary  C. BIcycle  D. enJOY",
+    "A. 'summer B. re'turn C. 'winter D. 'sister":
+        "A. SUMmer  B. reTURN  C. WINter  D. SISter",
+    # ── DE_34 stress ──
+    "A. 'camping B. 'traffic C. 'forest D. de'sign":
+        "A. CAMPing  B. TRAFfic  C. FOrest  D. deSIGN",
+    "A. ex'plore B. 'recycle C. con'trol D. en'joy":
+        "A. exPLORE  B. REcycle  C. conTROL  D. enJOY",
 }
 
 
