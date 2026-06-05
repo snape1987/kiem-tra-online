@@ -1320,6 +1320,403 @@ def gen_olympic(n=10, seed=None, student_key="bao_meo", subject="Toán"):
     return result[:n]
 
 
+
+_TOAN_2_HK1 = [
+    # --- Phép cộng có nhớ trong phạm vi 100 (dạng biểu thức) ---
+    {"type": "fill", "q": "47 + 26 = ?", "answer": "73", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "38 + 54 = ?", "answer": "92", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "65 + 29 = ?", "answer": "94", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "56 + 37 = ?", "answer": "93", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "48 + 45 = ?", "answer": "93", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "27 + 63 = ?", "answer": "90", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "34 + 58 = ?", "answer": "92", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "69 + 25 = ?", "answer": "94", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "46 + 38 = ?", "answer": "84", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "57 + 36 = ?", "answer": "93", "topic": "Phép cộng có nhớ"},
+    # Cộng có nhớ dạng lời văn
+    {"type": "fill", "q": "Buổi sáng bán được 35 cái bánh, buổi chiều bán được 47 cái bánh. Cả ngày bán được ? cái bánh.", "answer": "82", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "Vườn nhà An có 26 cây cam và 58 cây bưởi. Vườn nhà An có tất cả ? cây.", "answer": "84", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "Lớp 2A có 17 bạn nam và 15 bạn nữ. Lớp 2A có tất cả ? bạn.", "answer": "32", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "Hộp thứ nhất có 49 viên bi, hộp thứ hai có 36 viên bi. Hai hộp có tất cả ? viên bi.", "answer": "85", "topic": "Phép cộng có nhớ"},
+    {"type": "fill", "q": "Tuần trước đọc được 28 trang sách, tuần này đọc được 45 trang. Hai tuần đọc được ? trang sách.", "answer": "73", "topic": "Phép cộng có nhớ"},
+
+    # --- Phép trừ có nhớ trong phạm vi 100 ---
+    {"type": "fill", "q": "82 - 37 = ?", "answer": "45", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "74 - 28 = ?", "answer": "46", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "91 - 46 = ?", "answer": "45", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "63 - 35 = ?", "answer": "28", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "85 - 49 = ?", "answer": "36", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "72 - 38 = ?", "answer": "34", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "90 - 53 = ?", "answer": "37", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "61 - 27 = ?", "answer": "34", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "54 - 18 = ?", "answer": "36", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "83 - 56 = ?", "answer": "27", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "Có 76 quả táo, bán đi 39 quả. Còn lại ? quả táo.", "answer": "37", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "Sân trường có 95 học sinh, sau giờ tan học có 47 học sinh ra về. Còn lại ? học sinh.", "answer": "48", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "Mẹ có 80 nghìn đồng, mẹ mua rau hết 35 nghìn đồng. Mẹ còn lại ? nghìn đồng.", "answer": "45", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "Thùng đựng 62 lít nước, rót ra 27 lít. Thùng còn ? lít nước.", "answer": "35", "topic": "Phép trừ có nhớ"},
+    {"type": "fill", "q": "Bạn Nam có 51 nhãn vở, đã dùng hết 28 cái. Bạn Nam còn ? nhãn vở.", "answer": "23", "topic": "Phép trừ có nhớ"},
+
+    # --- Bảng nhân 2 ---
+    {"type": "fill", "q": "2 × 3 = ?", "answer": "6", "topic": "Bảng nhân 2"},
+    {"type": "fill", "q": "2 × 7 = ?", "answer": "14", "topic": "Bảng nhân 2"},
+    {"type": "fill", "q": "2 × 9 = ?", "answer": "18", "topic": "Bảng nhân 2"},
+    {"type": "fill", "q": "4 × 2 = ?", "answer": "8", "topic": "Bảng nhân 2"},
+    {"type": "fill", "q": "6 × 2 = ?", "answer": "12", "topic": "Bảng nhân 2"},
+    {"type": "fill", "q": "2 × 5 = ?", "answer": "10", "topic": "Bảng nhân 2"},
+    {"type": "fill", "q": "8 × 2 = ?", "answer": "16", "topic": "Bảng nhân 2"},
+    {"type": "fill", "q": "2 × 1 = ?", "answer": "2", "topic": "Bảng nhân 2"},
+
+    # --- Bảng nhân 5 ---
+    {"type": "fill", "q": "5 × 4 = ?", "answer": "20", "topic": "Bảng nhân 5"},
+    {"type": "fill", "q": "5 × 7 = ?", "answer": "35", "topic": "Bảng nhân 5"},
+    {"type": "fill", "q": "5 × 9 = ?", "answer": "45", "topic": "Bảng nhân 5"},
+    {"type": "fill", "q": "5 × 3 = ?", "answer": "15", "topic": "Bảng nhân 5"},
+    {"type": "fill", "q": "5 × 6 = ?", "answer": "30", "topic": "Bảng nhân 5"},
+    {"type": "fill", "q": "5 × 2 = ?", "answer": "10", "topic": "Bảng nhân 5"},
+    {"type": "fill", "q": "5 × 8 = ?", "answer": "40", "topic": "Bảng nhân 5"},
+    {"type": "fill", "q": "5 × 1 = ?", "answer": "5", "topic": "Bảng nhân 5"},
+
+    # --- Đo độ dài ---
+    {"type": "fill", "q": "1 m = ? cm", "answer": "100", "topic": "Đo độ dài"},
+    {"type": "fill", "q": "1 m = ? dm", "answer": "10", "topic": "Đo độ dài"},
+    {"type": "fill", "q": "1 dm = ? cm", "answer": "10", "topic": "Đo độ dài"},
+    {"type": "fill", "q": "3 dm = ? cm", "answer": "30", "topic": "Đo độ dài"},
+    {"type": "fill", "q": "50 cm + 30 cm = ? cm", "answer": "80", "topic": "Đo độ dài"},
+    {"type": "choice", "q": "Đoạn thẳng nào dài hơn?", "options": ["A. 45 cm", "B. 4 dm", "C. Bằng nhau", "D. Không so sánh được"], "answer": "A. 45 cm", "topic": "Đo độ dài"},
+    {"type": "choice", "q": "1 m so với 95 cm thì thế nào?", "options": ["A. 1 m < 95 cm", "B. 1 m = 95 cm", "C. 1 m > 95 cm", "D. Không so sánh được"], "answer": "C. 1 m > 95 cm", "topic": "Đo độ dài"},
+
+    # --- Hình học ---
+    {"type": "choice", "q": "Hình nào có 4 góc vuông?", "options": ["A. Hình tam giác", "B. Hình tròn", "C. Hình chữ nhật", "D. Hình thang"], "answer": "C. Hình chữ nhật", "topic": "Hình học"},
+    {"type": "choice", "q": "Hình nào không có góc nào?", "options": ["A. Hình vuông", "B. Hình tam giác", "C. Hình chữ nhật", "D. Hình tròn"], "answer": "D. Hình tròn", "topic": "Hình học"},
+    {"type": "choice", "q": "Hình tam giác có bao nhiêu cạnh?", "options": ["A. 2 cạnh", "B. 3 cạnh", "C. 4 cạnh", "D. 5 cạnh"], "answer": "B. 3 cạnh", "topic": "Hình học"},
+    {"type": "choice", "q": "Hình vuông có bao nhiêu góc?", "options": ["A. 2 góc", "B. 3 góc", "C. 4 góc", "D. 6 góc"], "answer": "C. 4 góc", "topic": "Hình học"},
+    {"type": "choice", "q": "Hình chữ nhật có bao nhiêu cạnh?", "options": ["A. 2 cạnh", "B. 3 cạnh", "C. 4 cạnh", "D. 5 cạnh"], "answer": "C. 4 cạnh", "topic": "Hình học"},
+    {"type": "choice", "q": "Hình nào có tất cả các cạnh bằng nhau và có 4 góc vuông?", "options": ["A. Hình tam giác", "B. Hình chữ nhật", "C. Hình vuông", "D. Hình thang"], "answer": "C. Hình vuông", "topic": "Hình học"},
+    {"type": "choice", "q": "Hình tam giác có bao nhiêu góc?", "options": ["A. 2 góc", "B. 3 góc", "C. 4 góc", "D. 5 góc"], "answer": "B. 3 góc", "topic": "Hình học"},
+]
+
+_TOAN_2_HK2 = [
+    # --- Bảng nhân 3 ---
+    {"type": "fill", "q": "3 × 4 = ?", "answer": "12", "topic": "Bảng nhân 3"},
+    {"type": "fill", "q": "3 × 7 = ?", "answer": "21", "topic": "Bảng nhân 3"},
+    {"type": "fill", "q": "3 × 9 = ?", "answer": "27", "topic": "Bảng nhân 3"},
+    {"type": "fill", "q": "3 × 2 = ?", "answer": "6", "topic": "Bảng nhân 3"},
+    {"type": "fill", "q": "3 × 5 = ?", "answer": "15", "topic": "Bảng nhân 3"},
+    {"type": "fill", "q": "3 × 6 = ?", "answer": "18", "topic": "Bảng nhân 3"},
+    {"type": "fill", "q": "3 × 8 = ?", "answer": "24", "topic": "Bảng nhân 3"},
+    {"type": "fill", "q": "3 × 1 = ?", "answer": "3", "topic": "Bảng nhân 3"},
+
+    # --- Bảng nhân 4 ---
+    {"type": "fill", "q": "4 × 5 = ?", "answer": "20", "topic": "Bảng nhân 4"},
+    {"type": "fill", "q": "4 × 7 = ?", "answer": "28", "topic": "Bảng nhân 4"},
+    {"type": "fill", "q": "4 × 9 = ?", "answer": "36", "topic": "Bảng nhân 4"},
+    {"type": "fill", "q": "4 × 3 = ?", "answer": "12", "topic": "Bảng nhân 4"},
+    {"type": "fill", "q": "4 × 6 = ?", "answer": "24", "topic": "Bảng nhân 4"},
+    {"type": "fill", "q": "4 × 2 = ?", "answer": "8", "topic": "Bảng nhân 4"},
+    {"type": "fill", "q": "4 × 8 = ?", "answer": "32", "topic": "Bảng nhân 4"},
+    {"type": "fill", "q": "4 × 1 = ?", "answer": "4", "topic": "Bảng nhân 4"},
+
+    # --- Bảng chia 2, 3, 4, 5 ---
+    {"type": "fill", "q": "10 : 2 = ?", "answer": "5", "topic": "Phép chia"},
+    {"type": "fill", "q": "16 : 2 = ?", "answer": "8", "topic": "Phép chia"},
+    {"type": "fill", "q": "18 : 2 = ?", "answer": "9", "topic": "Phép chia"},
+    {"type": "fill", "q": "18 : 3 = ?", "answer": "6", "topic": "Phép chia"},
+    {"type": "fill", "q": "27 : 3 = ?", "answer": "9", "topic": "Phép chia"},
+    {"type": "fill", "q": "24 : 3 = ?", "answer": "8", "topic": "Phép chia"},
+    {"type": "fill", "q": "20 : 4 = ?", "answer": "5", "topic": "Phép chia"},
+    {"type": "fill", "q": "36 : 4 = ?", "answer": "9", "topic": "Phép chia"},
+    {"type": "fill", "q": "28 : 4 = ?", "answer": "7", "topic": "Phép chia"},
+    {"type": "fill", "q": "35 : 5 = ?", "answer": "7", "topic": "Phép chia"},
+    {"type": "fill", "q": "45 : 5 = ?", "answer": "9", "topic": "Phép chia"},
+    {"type": "fill", "q": "40 : 5 = ?", "answer": "8", "topic": "Phép chia"},
+
+    # --- Số đến 1000 ---
+    {"type": "fill", "q": "Số liền sau của 999 là?", "answer": "1000", "topic": "Số đến 1000"},
+    {"type": "fill", "q": "Số gồm 3 trăm, 5 chục, 7 đơn vị là?", "answer": "357", "topic": "Số đến 1000"},
+    {"type": "fill", "q": "Số gồm 6 trăm, 0 chục, 4 đơn vị là?", "answer": "604", "topic": "Số đến 1000"},
+    {"type": "fill", "q": "Số liền trước của 500 là?", "answer": "499", "topic": "Số đến 1000"},
+    {"type": "choice", "q": "Số 537 gồm mấy trăm, mấy chục, mấy đơn vị?", "options": ["A. 5 trăm, 3 chục, 7 đơn vị", "B. 5 trăm, 7 chục, 3 đơn vị", "C. 3 trăm, 5 chục, 7 đơn vị", "D. 7 trăm, 3 chục, 5 đơn vị"], "answer": "A. 5 trăm, 3 chục, 7 đơn vị", "topic": "Số đến 1000"},
+    {"type": "choice", "q": "Số nào lớn nhất trong các số sau?", "options": ["A. 709", "B. 790", "C. 970", "D. 907"], "answer": "C. 970", "topic": "Số đến 1000"},
+    {"type": "choice", "q": "Số 800 đọc là gì?", "options": ["A. Tám trăm", "B. Tám mươi", "C. Tám nghìn", "D. Tám chục"], "answer": "A. Tám trăm", "topic": "Số đến 1000"},
+    {"type": "fill", "q": "Số bé hơn 1000 và lớn hơn 998 là?", "answer": "999", "topic": "Số đến 1000"},
+
+    # --- Cộng trừ trong phạm vi 1000 ---
+    {"type": "fill", "q": "324 + 153 = ?", "answer": "477", "topic": "Cộng trừ trong 1000"},
+    {"type": "fill", "q": "687 - 342 = ?", "answer": "345", "topic": "Cộng trừ trong 1000"},
+    {"type": "fill", "q": "415 + 263 = ?", "answer": "678", "topic": "Cộng trừ trong 1000"},
+    {"type": "fill", "q": "563 + 274 = ?", "answer": "837", "topic": "Cộng trừ trong 1000"},
+    {"type": "fill", "q": "900 - 456 = ?", "answer": "444", "topic": "Cộng trừ trong 1000"},
+    {"type": "fill", "q": "748 - 325 = ?", "answer": "423", "topic": "Cộng trừ trong 1000"},
+    {"type": "fill", "q": "236 + 548 = ?", "answer": "784", "topic": "Cộng trừ trong 1000"},
+    {"type": "fill", "q": "871 - 436 = ?", "answer": "435", "topic": "Cộng trừ trong 1000"},
+    {"type": "fill", "q": "105 + 394 = ?", "answer": "499", "topic": "Cộng trừ trong 1000"},
+    {"type": "fill", "q": "650 - 230 = ?", "answer": "420", "topic": "Cộng trừ trong 1000"},
+
+    # --- Toán lời văn ---
+    {"type": "fill", "q": "Thùng có 240 lít nước. Lấy ra 85 lít. Còn lại ? lít.", "answer": "155", "topic": "Toán lời văn"},
+    {"type": "fill", "q": "Mỗi hộp có 4 quả táo. 6 hộp có tất cả ? quả táo.", "answer": "24", "topic": "Toán lời văn"},
+    {"type": "fill", "q": "Nhà kho có 350 bao gạo, xuất kho 125 bao. Nhà kho còn ? bao gạo.", "answer": "225", "topic": "Toán lời văn"},
+    {"type": "fill", "q": "Một cuộn vải dài 500 cm, cắt đi 230 cm. Còn lại ? cm vải.", "answer": "270", "topic": "Toán lời văn"},
+    {"type": "fill", "q": "Có 5 rổ cam, mỗi rổ có 9 quả. Tất cả có ? quả cam.", "answer": "45", "topic": "Toán lời văn"},
+    {"type": "fill", "q": "Lớp học có 32 bạn ngồi đều vào 4 hàng. Mỗi hàng có ? bạn.", "answer": "8", "topic": "Toán lời văn"},
+    {"type": "fill", "q": "Bình nước đựng 600 ml. Đã uống hết 250 ml. Còn ? ml nước.", "answer": "350", "topic": "Toán lời văn"},
+    {"type": "fill", "q": "Mỗi ngày đọc 3 trang sách. Sau 7 ngày đọc được ? trang sách.", "answer": "21", "topic": "Toán lời văn"},
+
+    # --- Đơn vị đo ---
+    {"type": "fill", "q": "1 kg = ? g", "answer": "1000", "topic": "Đơn vị đo"},
+    {"type": "fill", "q": "2 kg = ? g", "answer": "2000", "topic": "Đơn vị đo"},
+    {"type": "choice", "q": "1 lít bằng bao nhiêu?", "options": ["A. 10 ml", "B. 100 ml", "C. 1000 ml", "D. 500 ml"], "answer": "C. 1000 ml", "topic": "Đơn vị đo"},
+    {"type": "choice", "q": "Túi gạo nào nặng hơn?", "options": ["A. Túi 2 kg", "B. Túi 1500 g", "C. Bằng nhau", "D. Không so sánh được"], "answer": "A. Túi 2 kg", "topic": "Đơn vị đo"},
+    {"type": "choice", "q": "1 kg so với 900 g thì thế nào?", "options": ["A. 1 kg < 900 g", "B. 1 kg = 900 g", "C. 1 kg > 900 g", "D. Không so sánh được"], "answer": "C. 1 kg > 900 g", "topic": "Đơn vị đo"},
+    {"type": "fill", "q": "500 g + 500 g = ? g", "answer": "1000", "topic": "Đơn vị đo"},
+]
+
+_HSG_TOAN_2 = [
+    # --- Tìm số chưa biết ---
+    {"type": "fill", "q": "? + 35 = 72", "answer": "37", "topic": "Tìm số chưa biết"},
+    {"type": "fill", "q": "84 - ? = 29", "answer": "55", "topic": "Tìm số chưa biết"},
+    {"type": "fill", "q": "? × 3 = 24", "answer": "8", "topic": "Tìm số chưa biết"},
+    {"type": "fill", "q": "36 : ? = 4", "answer": "9", "topic": "Tìm số chưa biết"},
+    {"type": "fill", "q": "? + 48 = 91", "answer": "43", "topic": "Tìm số chưa biết"},
+    {"type": "fill", "q": "73 - ? = 38", "answer": "35", "topic": "Tìm số chưa biết"},
+    {"type": "fill", "q": "? × 5 = 40", "answer": "8", "topic": "Tìm số chưa biết"},
+    {"type": "fill", "q": "42 : ? = 7", "answer": "6", "topic": "Tìm số chưa biết"},
+    {"type": "fill", "q": "? + 27 = 65", "answer": "38", "topic": "Tìm số chưa biết"},
+    {"type": "fill", "q": "? × 4 = 32", "answer": "8", "topic": "Tìm số chưa biết"},
+
+    # --- Toán đố nâng cao ---
+    {"type": "fill", "q": "Hiệu của hai số là 18. Số lớn là 47. Tìm số bé.", "answer": "29", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Tổng hai số là 85. Một số là 38. Số kia là?", "answer": "47", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Lớp A có 17 bạn nam, lớp B có 13 bạn nam. Hai lớp có tất cả bao nhiêu bạn nam?", "answer": "30", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Có 56 học sinh chia đều vào 8 nhóm. Mỗi nhóm có ? học sinh.", "answer": "7", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Mẹ mua 4 túi cam, mỗi túi có 5 quả. Mẹ mua tất cả ? quả cam.", "answer": "20", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Tuổi bố hiện nay là 38 tuổi, tuổi con là 9 tuổi. Hỏi bố hơn con bao nhiêu tuổi?", "answer": "29", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Có 48 quyển sách xếp đều vào 6 ngăn tủ. Mỗi ngăn có ? quyển sách.", "answer": "8", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "An có 35 viên bi, Bình có ít hơn An 18 viên. Bình có ? viên bi.", "answer": "17", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Bao gạo thứ nhất nặng 45 kg, bao gạo thứ hai nhẹ hơn 18 kg. Hai bao nặng tất cả ? kg.", "answer": "72", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Trên cây có 24 con chim, bay đi 9 con rồi lại đến thêm 7 con. Trên cây có ? con chim.", "answer": "22", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Mỗi hàng có 5 bạn, có 8 hàng. Sau đó thêm 4 bạn nữa. Tất cả có ? bạn.", "answer": "44", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Buổi sáng bán được 37 kg gạo, buổi chiều bán nhiều hơn buổi sáng 15 kg. Cả ngày bán được ? kg gạo.", "answer": "89", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Vườn có 4 luống rau, mỗi luống có 9 cây. Nhổ đi 12 cây. Còn lại ? cây rau.", "answer": "24", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Số bé là 25, tổng của hai số là 73. Số lớn là?", "answer": "48", "topic": "Toán đố nâng cao"},
+    {"type": "fill", "q": "Một cửa hàng bán được 136 kg gạo trong 2 ngày. Ngày đầu bán 78 kg. Ngày hai bán ? kg gạo.", "answer": "58", "topic": "Toán đố nâng cao"},
+
+    # --- Dãy số ---
+    {"type": "fill", "q": "2, 4, 6, 8, ?, 12", "answer": "10", "topic": "Dãy số"},
+    {"type": "fill", "q": "5, 10, 15, ?, 25", "answer": "20", "topic": "Dãy số"},
+    {"type": "fill", "q": "3, 6, 9, 12, ?", "answer": "15", "topic": "Dãy số"},
+    {"type": "fill", "q": "1, 3, 5, 7, ?", "answer": "9", "topic": "Dãy số"},
+    {"type": "fill", "q": "100, 90, 80, ?, 60", "answer": "70", "topic": "Dãy số"},
+    {"type": "fill", "q": "4, 8, 12, 16, ?", "answer": "20", "topic": "Dãy số"},
+    {"type": "fill", "q": "10, 20, 30, ?, 50", "answer": "40", "topic": "Dãy số"},
+    {"type": "fill", "q": "50, 45, 40, ?, 30", "answer": "35", "topic": "Dãy số"},
+
+    # --- So sánh và điền dấu ---
+    {"type": "choice", "q": "3 × 5 ___ 5 × 3 (Dấu nào điền vào?)", "options": ["A. >", "B. <", "C. =", "D. Không so sánh được"], "answer": "C. =", "topic": "So sánh"},
+    {"type": "choice", "q": "2 × 9 ___ 3 × 6 (Dấu nào điền vào?)", "options": ["A. >", "B. <", "C. =", "D. Không so sánh được"], "answer": "C. =", "topic": "So sánh"},
+    {"type": "choice", "q": "4 × 7 ___ 5 × 6 (Dấu nào điền vào?)", "options": ["A. >", "B. <", "C. =", "D. Không so sánh được"], "answer": "B. <", "topic": "So sánh"},
+    {"type": "choice", "q": "5 × 8 ___ 4 × 9 (Dấu nào điền vào?)", "options": ["A. >", "B. <", "C. =", "D. Không so sánh được"], "answer": "A. >", "topic": "So sánh"},
+    {"type": "choice", "q": "3 × 8 ___ 4 × 6 (Dấu nào điền vào?)", "options": ["A. >", "B. <", "C. =", "D. Không so sánh được"], "answer": "C. =", "topic": "So sánh"},
+    {"type": "choice", "q": "27 + 36 ___ 70 - 8 (Dấu nào điền vào?)", "options": ["A. >", "B. <", "C. =", "D. Không so sánh được"], "answer": "A. >", "topic": "So sánh"},
+    {"type": "choice", "q": "85 - 47 ___ 29 + 9 (Dấu nào điền vào?)", "options": ["A. >", "B. <", "C. =", "D. Không so sánh được"], "answer": "C. =", "topic": "So sánh"},
+
+    # --- Chu vi ---
+    {"type": "fill", "q": "Hình chữ nhật dài 8 cm, rộng 3 cm. Chu vi là ? cm.", "answer": "22", "topic": "Chu vi"},
+    {"type": "fill", "q": "Hình vuông có cạnh 5 cm. Chu vi là ? cm.", "answer": "20", "topic": "Chu vi"},
+    {"type": "fill", "q": "Hình chữ nhật dài 12 cm, rộng 6 cm. Chu vi là ? cm.", "answer": "36", "topic": "Chu vi"},
+    {"type": "fill", "q": "Hình vuông có cạnh 9 cm. Chu vi là ? cm.", "answer": "36", "topic": "Chu vi"},
+    {"type": "fill", "q": "Hình tam giác có 3 cạnh đều dài 7 cm. Chu vi là ? cm.", "answer": "21", "topic": "Chu vi"},
+]
+
+_VIOLYMPIC_TOAN_2 = [
+    # --- Tính nhanh ---
+    {"type": "fill", "q": "9 + 9 + 9 = ?", "answer": "27", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "5 × 5 + 5 = ?", "answer": "30", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "4 × 4 - 8 = ?", "answer": "8", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "2 × 8 + 4 = ?", "answer": "20", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "3 × 6 - 9 = ?", "answer": "9", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "5 × 6 + 8 = ?", "answer": "38", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "4 × 9 - 16 = ?", "answer": "20", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "3 × 7 + 12 = ?", "answer": "33", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "2 × 9 + 14 = ?", "answer": "32", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "5 × 8 - 15 = ?", "answer": "25", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "4 × 6 + 7 = ?", "answer": "31", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "3 × 9 - 7 = ?", "answer": "20", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "2 × 7 + 8 = ?", "answer": "22", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "5 × 4 + 13 = ?", "answer": "33", "topic": "Tính nhanh"},
+    {"type": "fill", "q": "4 × 8 - 12 = ?", "answer": "20", "topic": "Tính nhanh"},
+
+    # --- Điền số vào dãy ---
+    {"type": "fill", "q": "4, 8, 12, ?, 20, 24", "answer": "16", "topic": "Dãy số"},
+    {"type": "fill", "q": "3, 6, ?, 12, 15", "answer": "9", "topic": "Dãy số"},
+    {"type": "fill", "q": "10, ?, 30, 40, 50", "answer": "20", "topic": "Dãy số"},
+    {"type": "fill", "q": "100, 95, 90, ?, 80", "answer": "85", "topic": "Dãy số"},
+    {"type": "fill", "q": "2, 4, ?, 8, 10, 12", "answer": "6", "topic": "Dãy số"},
+    {"type": "fill", "q": "5, ?, 15, 20, 25", "answer": "10", "topic": "Dãy số"},
+    {"type": "fill", "q": "20, 18, 16, ?, 12", "answer": "14", "topic": "Dãy số"},
+    {"type": "fill", "q": "1, 4, 7, ?, 13", "answer": "10", "topic": "Dãy số"},
+    {"type": "fill", "q": "81, 72, 63, ?, 45", "answer": "54", "topic": "Dãy số"},
+    {"type": "fill", "q": "64, 56, 48, ?, 32", "answer": "40", "topic": "Dãy số"},
+
+    # --- Toán có lời đố Violympic ---
+    {"type": "fill", "q": "Một con nhện có 8 chân. 3 con nhện có ? chân.", "answer": "24", "topic": "Lời đố Violympic"},
+    {"type": "fill", "q": "Một bông hoa có 5 cánh. 4 bông hoa có ? cánh.", "answer": "20", "topic": "Lời đố Violympic"},
+    {"type": "fill", "q": "Một tuần có 7 ngày. 2 tuần có ? ngày.", "answer": "14", "topic": "Lời đố Violympic"},
+    {"type": "fill", "q": "Lớp có 4 hàng ghế. Mỗi hàng 8 bạn. Lớp có ? bạn.", "answer": "32", "topic": "Lời đố Violympic"},
+    {"type": "fill", "q": "Một con bò có 4 chân. 7 con bò có ? chân.", "answer": "28", "topic": "Lời đố Violympic"},
+    {"type": "fill", "q": "Mỗi hộp đựng 9 viên kẹo. 5 hộp đựng ? viên kẹo.", "answer": "45", "topic": "Lời đố Violympic"},
+    {"type": "fill", "q": "Có 36 học sinh xếp thành 4 hàng bằng nhau. Mỗi hàng có ? học sinh.", "answer": "9", "topic": "Lời đố Violympic"},
+    {"type": "fill", "q": "Một năm có 12 tháng. Nửa năm có ? tháng.", "answer": "6", "topic": "Lời đố Violympic"},
+    {"type": "fill", "q": "Một ngày có 24 giờ. Nửa ngày có ? giờ.", "answer": "12", "topic": "Lời đố Violympic"},
+    {"type": "fill", "q": "Xếp 40 quyển sách vào 5 hộp đều nhau. Mỗi hộp có ? quyển sách.", "answer": "8", "topic": "Lời đố Violympic"},
+
+    # --- Số lớn nhất, nhỏ nhất ---
+    {"type": "choice", "q": "Số lớn nhất có 2 chữ số là số nào?", "options": ["A. 89", "B. 98", "C. 99", "D. 100"], "answer": "C. 99", "topic": "Số lớn nhất - nhỏ nhất"},
+    {"type": "choice", "q": "Số bé nhất có 3 chữ số là số nào?", "options": ["A. 99", "B. 100", "C. 101", "D. 110"], "answer": "B. 100", "topic": "Số lớn nhất - nhỏ nhất"},
+    {"type": "choice", "q": "Số lớn nhất có 3 chữ số là số nào?", "options": ["A. 900", "B. 990", "C. 999", "D. 998"], "answer": "C. 999", "topic": "Số lớn nhất - nhỏ nhất"},
+    {"type": "choice", "q": "Số nào bé nhất trong các số: 205, 502, 250, 520?", "options": ["A. 502", "B. 250", "C. 520", "D. 205"], "answer": "D. 205", "topic": "Số lớn nhất - nhỏ nhất"},
+    {"type": "choice", "q": "Số nào lớn nhất trong các số: 314, 431, 413, 341?", "options": ["A. 314", "B. 413", "C. 431", "D. 341"], "answer": "C. 431", "topic": "Số lớn nhất - nhỏ nhất"},
+
+    # --- Bài toán logic ---
+    {"type": "choice", "q": "Trong 1 giờ kim phút quay được bao nhiêu vòng?", "options": ["A. 1 vòng", "B. 2 vòng", "C. 12 vòng", "D. 60 vòng"], "answer": "A. 1 vòng", "topic": "Tư duy logic"},
+    {"type": "choice", "q": "Nếu hôm nay là thứ Hai, thì ngày kia (2 ngày sau) là thứ mấy?", "options": ["A. Thứ Ba", "B. Thứ Tư", "C. Thứ Năm", "D. Thứ Sáu"], "answer": "B. Thứ Tư", "topic": "Tư duy logic"},
+    {"type": "choice", "q": "Trên cành có 5 con chim, bay đến thêm 3 con rồi lại bay đi 4 con. Trên cành còn bao nhiêu con?", "options": ["A. 2 con", "B. 3 con", "C. 4 con", "D. 8 con"], "answer": "C. 4 con", "topic": "Tư duy logic"},
+    {"type": "choice", "q": "Số nào vừa chia hết cho 2 vừa chia hết cho 5?", "options": ["A. 12", "B. 15", "C. 20", "D. 22"], "answer": "C. 20", "topic": "Tư duy logic"},
+    {"type": "choice", "q": "Bạn An đứng thứ 5 từ đầu hàng, thứ 4 từ cuối hàng. Hàng có bao nhiêu bạn?", "options": ["A. 7 bạn", "B. 8 bạn", "C. 9 bạn", "D. 10 bạn"], "answer": "B. 8 bạn", "topic": "Tư duy logic"},
+]
+
+_TIENG_ANH_2_HK1 = [
+    # --- Greetings & Basic phrases ---
+    {"type": "choice", "q": "How are you?", "options": ["A. Fine, thank you.", "B. I am eight years old.", "C. My name is Nam.", "D. Good morning."], "answer": "A. Fine, thank you.", "topic": "Greetings"},
+    {"type": "choice", "q": "What is your name? — ___ name is Lan.", "options": ["A. His", "B. Her", "C. My", "D. Your"], "answer": "C. My", "topic": "Greetings"},
+    {"type": "choice", "q": "Good morning! — ___", "options": ["A. Good night!", "B. Good morning!", "C. Goodbye!", "D. See you later!"], "answer": "B. Good morning!", "topic": "Greetings"},
+    {"type": "choice", "q": "How old are you? — I am ___ years old.", "options": ["A. seven", "B. fine", "C. happy", "D. red"], "answer": "A. seven", "topic": "Greetings"},
+    {"type": "choice", "q": "Goodbye! — ___", "options": ["A. Hello!", "B. Good morning!", "C. Goodbye!", "D. Fine, thank you!"], "answer": "C. Goodbye!", "topic": "Greetings"},
+    {"type": "choice", "q": "What do you say when you meet someone in the morning?", "options": ["A. Good night!", "B. Good afternoon!", "C. Good morning!", "D. See you!"], "answer": "C. Good morning!", "topic": "Greetings"},
+    {"type": "choice", "q": "Nice to meet you! — ___", "options": ["A. I am fine.", "B. Nice to meet you too!", "C. My name is Mai.", "D. I am eight."], "answer": "B. Nice to meet you too!", "topic": "Greetings"},
+    {"type": "choice", "q": "Where are you from? — I am ___ Viet Nam.", "options": ["A. at", "B. in", "C. from", "D. on"], "answer": "C. from", "topic": "Greetings"},
+
+    # --- Colors ---
+    {"type": "choice", "q": "What color is the sun?", "options": ["A. Blue", "B. Green", "C. Yellow", "D. Red"], "answer": "C. Yellow", "topic": "Colors"},
+    {"type": "choice", "q": "What color is the sky?", "options": ["A. Yellow", "B. Blue", "C. Green", "D. Brown"], "answer": "B. Blue", "topic": "Colors"},
+    {"type": "choice", "q": "What color is the grass?", "options": ["A. Red", "B. Blue", "C. Yellow", "D. Green"], "answer": "D. Green", "topic": "Colors"},
+    {"type": "choice", "q": "What color is a banana?", "options": ["A. Red", "B. Green", "C. Yellow", "D. Blue"], "answer": "C. Yellow", "topic": "Colors"},
+    {"type": "choice", "q": "What color is blood?", "options": ["A. Blue", "B. Red", "C. White", "D. Black"], "answer": "B. Red", "topic": "Colors"},
+    {"type": "choice", "q": "What color is snow?", "options": ["A. White", "B. Black", "C. Blue", "D. Grey"], "answer": "A. White", "topic": "Colors"},
+    {"type": "choice", "q": "What color is a panda? (two colors)", "options": ["A. Brown and white", "B. Black and white", "C. Black and yellow", "D. Grey and white"], "answer": "B. Black and white", "topic": "Colors"},
+    {"type": "choice", "q": "What color is an orange?", "options": ["A. Yellow", "B. Red", "C. Orange", "D. Green"], "answer": "C. Orange", "topic": "Colors"},
+
+    # --- Numbers 1-20 ---
+    {"type": "choice", "q": "How many fingers do you have?", "options": ["A. Eight", "B. Nine", "C. Ten", "D. Twenty"], "answer": "C. Ten", "topic": "Numbers"},
+    {"type": "choice", "q": "5 + 7 = ___", "options": ["A. Ten", "B. Eleven", "C. Twelve", "D. Thirteen"], "answer": "C. Twelve", "topic": "Numbers"},
+    {"type": "choice", "q": "Which word is the correct spelling for 15?", "options": ["A. fiveteen", "B. fifteen", "C. fiften", "D. fifthteen"], "answer": "B. fifteen", "topic": "Numbers"},
+    {"type": "choice", "q": "How do you say the number 18?", "options": ["A. eighty", "B. eight", "C. eighteen", "D. eigteen"], "answer": "C. eighteen", "topic": "Numbers"},
+    {"type": "fill", "q": "Write the number: twelve = ?", "answer": "12", "topic": "Numbers"},
+    {"type": "fill", "q": "Write the number: seventeen = ?", "answer": "17", "topic": "Numbers"},
+    {"type": "choice", "q": "How do you say the number 13?", "options": ["A. thirty", "B. threeten", "C. thirteen", "D. thirdteen"], "answer": "C. thirteen", "topic": "Numbers"},
+    {"type": "choice", "q": "8 + 9 = ___", "options": ["A. sixteen", "B. seventeen", "C. eighteen", "D. nineteen"], "answer": "B. seventeen", "topic": "Numbers"},
+
+    # --- Family members ---
+    {"type": "choice", "q": "Your mother's mother is your ___.", "options": ["A. aunt", "B. grandmother", "C. sister", "D. cousin"], "answer": "B. grandmother", "topic": "Family"},
+    {"type": "choice", "q": "Your father's brother is your ___.", "options": ["A. grandfather", "B. cousin", "C. uncle", "D. brother"], "answer": "C. uncle", "topic": "Family"},
+    {"type": "choice", "q": "Your parents' son is your ___.", "options": ["A. cousin", "B. uncle", "C. nephew", "D. brother"], "answer": "D. brother", "topic": "Family"},
+    {"type": "choice", "q": "Your father's father is your ___.", "options": ["A. uncle", "B. grandfather", "C. father", "D. brother"], "answer": "B. grandfather", "topic": "Family"},
+    {"type": "choice", "q": "Your mother's sister is your ___.", "options": ["A. mother", "B. cousin", "C. aunt", "D. sister"], "answer": "C. aunt", "topic": "Family"},
+    {"type": "choice", "q": "The children of your uncle or aunt are your ___.", "options": ["A. brothers", "B. cousins", "C. nephews", "D. friends"], "answer": "B. cousins", "topic": "Family"},
+    {"type": "choice", "q": "Your parents are your ___ and ___.", "options": ["A. brother and sister", "B. uncle and aunt", "C. father and mother", "D. grandfather and grandmother"], "answer": "C. father and mother", "topic": "Family"},
+    {"type": "choice", "q": "A baby's mother and father are the baby's ___.", "options": ["A. cousins", "B. friends", "C. parents", "D. siblings"], "answer": "C. parents", "topic": "Family"},
+
+    # --- School objects ---
+    {"type": "choice", "q": "You write with a ___.", "options": ["A. book", "B. ruler", "C. pencil", "D. bag"], "answer": "C. pencil", "topic": "School objects"},
+    {"type": "choice", "q": "You read a ___.", "options": ["A. pencil", "B. book", "C. ruler", "D. eraser"], "answer": "B. book", "topic": "School objects"},
+    {"type": "choice", "q": "You put books in your ___.", "options": ["A. pencil case", "B. ruler", "C. notebook", "D. schoolbag"], "answer": "D. schoolbag", "topic": "School objects"},
+    {"type": "choice", "q": "You use this to measure length — it is a ___.", "options": ["A. pencil", "B. ruler", "C. eraser", "D. book"], "answer": "B. ruler", "topic": "School objects"},
+    {"type": "choice", "q": "You use this to erase pencil marks — it is an ___.", "options": ["A. eraser", "B. pen", "C. marker", "D. crayon"], "answer": "A. eraser", "topic": "School objects"},
+    {"type": "choice", "q": "You write on this in class — it is a ___.", "options": ["A. ruler", "B. pencil case", "C. notebook", "D. schoolbag"], "answer": "C. notebook", "topic": "School objects"},
+    {"type": "choice", "q": "The teacher writes on the ___.", "options": ["A. desk", "B. chair", "C. board", "D. book"], "answer": "C. board", "topic": "School objects"},
+    {"type": "choice", "q": "Students sit at a ___.", "options": ["A. board", "B. desk", "C. shelf", "D. window"], "answer": "B. desk", "topic": "School objects"},
+
+    # --- Body parts ---
+    {"type": "choice", "q": "You see with your ___.", "options": ["A. ears", "B. nose", "C. mouth", "D. eyes"], "answer": "D. eyes", "topic": "Body parts"},
+    {"type": "choice", "q": "You hear with your ___.", "options": ["A. eyes", "B. ears", "C. hands", "D. feet"], "answer": "B. ears", "topic": "Body parts"},
+    {"type": "choice", "q": "You smell with your ___.", "options": ["A. mouth", "B. eyes", "C. nose", "D. ears"], "answer": "C. nose", "topic": "Body parts"},
+    {"type": "choice", "q": "You walk with your ___.", "options": ["A. arms", "B. hands", "C. feet", "D. head"], "answer": "C. feet", "topic": "Body parts"},
+    {"type": "choice", "q": "You hold things with your ___.", "options": ["A. feet", "B. hands", "C. knees", "D. shoulders"], "answer": "B. hands", "topic": "Body parts"},
+
+    # --- Simple sentences ---
+    {"type": "fill", "q": "This ___ a book.", "answer": "is", "topic": "Simple sentences"},
+    {"type": "fill", "q": "These ___ pencils.", "answer": "are", "topic": "Simple sentences"},
+    {"type": "fill", "q": "I ___ a student.", "answer": "am", "topic": "Simple sentences"},
+    {"type": "fill", "q": "She ___ my teacher.", "answer": "is", "topic": "Simple sentences"},
+    {"type": "fill", "q": "We ___ in class 2A.", "answer": "are", "topic": "Simple sentences"},
+]
+
+_TIENG_ANH_2_HK2 = [
+    # --- Animals ---
+    {"type": "choice", "q": "Which animal can fly?", "options": ["A. A fish", "B. A dog", "C. A bird", "D. A cat"], "answer": "C. A bird", "topic": "Animals"},
+    {"type": "choice", "q": "Which animal has a long neck?", "options": ["A. An elephant", "B. A giraffe", "C. A lion", "D. A hippo"], "answer": "B. A giraffe", "topic": "Animals"},
+    {"type": "choice", "q": "A cat says ___.", "options": ["A. woof", "B. moo", "C. oink", "D. meow"], "answer": "D. meow", "topic": "Animals"},
+    {"type": "choice", "q": "How many legs does a dog have?", "options": ["A. Two", "B. Four", "C. Six", "D. Eight"], "answer": "B. Four", "topic": "Animals"},
+    {"type": "choice", "q": "Which animal lives in the sea?", "options": ["A. A dog", "B. A bird", "C. A fish", "D. A cat"], "answer": "C. A fish", "topic": "Animals"},
+    {"type": "choice", "q": "A cow says ___.", "options": ["A. meow", "B. moo", "C. woof", "D. quack"], "answer": "B. moo", "topic": "Animals"},
+    {"type": "choice", "q": "Which animal is very big and has a trunk?", "options": ["A. A lion", "B. A tiger", "C. An elephant", "D. A hippo"], "answer": "C. An elephant", "topic": "Animals"},
+    {"type": "choice", "q": "A duck says ___.", "options": ["A. moo", "B. oink", "C. quack", "D. meow"], "answer": "C. quack", "topic": "Animals"},
+    {"type": "choice", "q": "Which animal has black and white stripes?", "options": ["A. A lion", "B. A tiger", "C. A zebra", "D. A giraffe"], "answer": "C. A zebra", "topic": "Animals"},
+    {"type": "choice", "q": "How many legs does an insect have?", "options": ["A. Four", "B. Six", "C. Eight", "D. Two"], "answer": "B. Six", "topic": "Animals"},
+
+    # --- Food & Drinks ---
+    {"type": "choice", "q": "Which food is a fruit?", "options": ["A. A carrot", "B. A potato", "C. An apple", "D. Rice"], "answer": "C. An apple", "topic": "Food & Drinks"},
+    {"type": "choice", "q": "Which food comes from a cow?", "options": ["A. Eggs", "B. Honey", "C. Milk", "D. Fish"], "answer": "C. Milk", "topic": "Food & Drinks"},
+    {"type": "choice", "q": "Do you like ___ cream? — Yes, I do.", "options": ["A. snow", "B. ice", "C. cold", "D. sweet"], "answer": "B. ice", "topic": "Food & Drinks"},
+    {"type": "choice", "q": "Which drink is healthy for your bones?", "options": ["A. Juice", "B. Water", "C. Milk", "D. Soda"], "answer": "C. Milk", "topic": "Food & Drinks"},
+    {"type": "choice", "q": "Eggs come from ___.", "options": ["A. cows", "B. pigs", "C. chickens", "D. fish"], "answer": "C. chickens", "topic": "Food & Drinks"},
+    {"type": "choice", "q": "Which is a vegetable?", "options": ["A. A mango", "B. A banana", "C. A carrot", "D. An orange"], "answer": "C. A carrot", "topic": "Food & Drinks"},
+    {"type": "choice", "q": "We drink water when we are ___.", "options": ["A. tired", "B. thirsty", "C. cold", "D. bored"], "answer": "B. thirsty", "topic": "Food & Drinks"},
+    {"type": "choice", "q": "Honey comes from ___.", "options": ["A. ants", "B. butterflies", "C. bees", "D. flowers"], "answer": "C. bees", "topic": "Food & Drinks"},
+    {"type": "choice", "q": "Which food gives us energy?", "options": ["A. Water", "B. Rice and bread", "C. Salt", "D. Pepper"], "answer": "B. Rice and bread", "topic": "Food & Drinks"},
+    {"type": "choice", "q": "We eat ___ for breakfast, lunch, and dinner.", "options": ["A. books", "B. toys", "C. food", "D. clothes"], "answer": "C. food", "topic": "Food & Drinks"},
+
+    # --- Weather ---
+    {"type": "choice", "q": "When it rains, we use an ___.", "options": ["A. hat", "B. umbrella", "C. coat", "D. glove"], "answer": "B. umbrella", "topic": "Weather"},
+    {"type": "choice", "q": "It is hot in ___.", "options": ["A. winter", "B. autumn", "C. spring", "D. summer"], "answer": "D. summer", "topic": "Weather"},
+    {"type": "choice", "q": "It snows in ___.", "options": ["A. summer", "B. spring", "C. winter", "D. autumn"], "answer": "C. winter", "topic": "Weather"},
+    {"type": "choice", "q": "The weather is ___. There are no clouds and the sun is shining.", "options": ["A. rainy", "B. cloudy", "C. sunny", "D. windy"], "answer": "C. sunny", "topic": "Weather"},
+    {"type": "choice", "q": "We see a rainbow after ___.", "options": ["A. sunshine", "B. rain", "C. snow", "D. wind"], "answer": "B. rain", "topic": "Weather"},
+    {"type": "choice", "q": "It is ___ today. We need to wear a warm coat.", "options": ["A. hot", "B. cool", "C. cold", "D. sunny"], "answer": "C. cold", "topic": "Weather"},
+    {"type": "choice", "q": "Lightning and thunder happen during a ___.", "options": ["A. sunny day", "B. snowstorm", "C. thunderstorm", "D. windy day"], "answer": "C. thunderstorm", "topic": "Weather"},
+    {"type": "choice", "q": "Flowers grow and it gets warmer in ___.", "options": ["A. winter", "B. autumn", "C. summer", "D. spring"], "answer": "D. spring", "topic": "Weather"},
+
+    # --- Clothes ---
+    {"type": "choice", "q": "We wear a ___ on our head.", "options": ["A. glove", "B. hat", "C. sock", "D. scarf"], "answer": "B. hat", "topic": "Clothes"},
+    {"type": "choice", "q": "We wear ___ on our feet.", "options": ["A. gloves", "B. hats", "C. shoes", "D. scarves"], "answer": "C. shoes", "topic": "Clothes"},
+    {"type": "choice", "q": "In winter, we wear a ___ to keep warm.", "options": ["A. t-shirt", "B. coat", "C. swimsuit", "D. sandals"], "answer": "B. coat", "topic": "Clothes"},
+    {"type": "choice", "q": "We wear ___ on our hands when it is cold.", "options": ["A. socks", "B. shoes", "C. gloves", "D. boots"], "answer": "C. gloves", "topic": "Clothes"},
+    {"type": "choice", "q": "We wear ___ under our shoes.", "options": ["A. gloves", "B. hats", "C. belts", "D. socks"], "answer": "D. socks", "topic": "Clothes"},
+    {"type": "choice", "q": "In summer, we wear a ___.", "options": ["A. heavy coat", "B. t-shirt", "C. thick sweater", "D. winter boots"], "answer": "B. t-shirt", "topic": "Clothes"},
+    {"type": "choice", "q": "We wear a ___ to keep our neck warm.", "options": ["A. hat", "B. glove", "C. scarf", "D. sock"], "answer": "C. scarf", "topic": "Clothes"},
+    {"type": "choice", "q": "We wear ___ to swim.", "options": ["A. jeans", "B. a coat", "C. a swimsuit", "D. boots"], "answer": "C. a swimsuit", "topic": "Clothes"},
+
+    # --- Can / Can't ---
+    {"type": "choice", "q": "A fish ___ swim.", "options": ["A. cannot", "B. can", "C. is", "D. does"], "answer": "B. can", "topic": "Can / Can't"},
+    {"type": "choice", "q": "A cat ___ fly.", "options": ["A. can", "B. is", "C. cannot", "D. does"], "answer": "C. cannot", "topic": "Can / Can't"},
+    {"type": "choice", "q": "Birds ___ fly.", "options": ["A. cannot", "B. does", "C. is", "D. can"], "answer": "D. can", "topic": "Can / Can't"},
+    {"type": "choice", "q": "___ a dog swim? — Yes, it can.", "options": ["A. Is", "B. Does", "C. Can", "D. Do"], "answer": "C. Can", "topic": "Can / Can't"},
+    {"type": "choice", "q": "A fish ___ walk on land.", "options": ["A. can", "B. cannot", "C. does", "D. is"], "answer": "B. cannot", "topic": "Can / Can't"},
+    {"type": "choice", "q": "I ___ ride a bicycle.", "options": ["A. am", "B. is", "C. can", "D. does"], "answer": "C. can", "topic": "Can / Can't"},
+    {"type": "choice", "q": "___ you sing? — Yes, I can.", "options": ["A. Are", "B. Do", "C. Is", "D. Can"], "answer": "D. Can", "topic": "Can / Can't"},
+
+    # --- Like / Don't like ---
+    {"type": "fill", "q": "I ___ football. (thích)", "answer": "like", "topic": "Like / Don't like"},
+    {"type": "fill", "q": "She does ___ like vegetables.", "answer": "not", "topic": "Like / Don't like"},
+    {"type": "fill", "q": "Do you like cats? — Yes, I ___.", "answer": "do", "topic": "Like / Don't like"},
+    {"type": "choice", "q": "He ___ like spiders.", "options": ["A. do", "B. does not", "C. is", "D. are"], "answer": "B. does not", "topic": "Like / Don't like"},
+    {"type": "choice", "q": "___ you like chocolate? — Yes, I do.", "options": ["A. Are", "B. Do", "C. Is", "D. Can"], "answer": "B. Do", "topic": "Like / Don't like"},
+    {"type": "choice", "q": "I don't like broccoli. It means I ___ broccoli.", "options": ["A. love", "B. like", "C. hate", "D. dislike"], "answer": "D. dislike", "topic": "Like / Don't like"},
+    {"type": "fill", "q": "Do you like swimming? — No, I ___.", "answer": "don't", "topic": "Like / Don't like"},
+]
+
+
 # ─── Cấu trúc nội dung — mirrors Noi Dung Ho/ ────────────────────────────────
 CONTENT_TREE = [
     ("lop_1", "Lớp 1", [
@@ -1473,7 +1870,11 @@ NHAT_KHOI_TOAN_LOP7 = [
     {"type": "choice", "q": "Cho ba điểm A, B, C thẳng hàng và B nằm giữa A, C. Điểm I trên đường thẳng vuông góc AC tại B. Khi đó:", "options": ["AI < BI", "AI < AB", "AI > BI", "AI = BI"], "answer": "AI > BI", "topic": "Tam giác"},
 ]
 
-_TIENG_ANH_FOLDERS = {"de_tieng_anh_6_hk2", "tieng_anh_7_hk1"}
+_TIENG_ANH_FOLDERS = {
+    "de_tieng_anh_6_hk2", "tieng_anh_7_hk1",
+    # tieng_anh_2_hk1 / tieng_anh_2_hk2 dùng random shuffle đơn giản,
+    # không có section headers (topic khác: Colors, Animals, etc.)
+}
 
 MINH_KHANH_TOAN_HSG = [
     # ══════════════════════════════════════════════════════════════════
@@ -14758,13 +15159,24 @@ VIOLYMPIC_TOAN_1_NQ        = {i: 30 for i in range(1, 20)}
 VIOLYMPIC_TOAN_1_DURATIONS = {i: 45 for i in range(1, 20)}
 
 _FOLDER_POOLS = {
+    # Lớp 2
+    ("lop_2", "toan_2_hk1"):        _TOAN_2_HK1,
+    ("lop_2", "toan_2_hk2"):        _TOAN_2_HK2,
+    ("lop_2", "de_hsg_toan_2"):     _HSG_TOAN_2,
+    ("lop_2", "toan_violympic_2"):  _VIOLYMPIC_TOAN_2,
+    ("lop_2", "tieng_anh_2_hk1"):   _TIENG_ANH_2_HK1,
+    ("lop_2", "tieng_anh_2_hk2"):   _TIENG_ANH_2_HK2,
+    # Lớp 1
     ("lop_1", "toan_violympic_1"):    _OLYMPIC_TOAN_1_POOL,
+    # Lớp 6
     ("lop_6", "de_toan_6_hk2"):       MINH_KHANH_TOAN,
     ("lop_6", "de_olympic_toan_6"):   MINH_KHANH_TOAN,
     ("lop_6", "de_hsg_toan_6"):       MINH_KHANH_TOAN_HSG,
     ("lop_6", "de_tieng_anh_6_hk2"):  MINH_KHANH_TIENG_ANH,
+    # Lớp 7
     ("lop_7", "toan_7_hk1"):          NHAT_KHOI_TOAN_LOP7,
     ("lop_7", "tieng_anh_7_hk1"):     NHAT_KHOI_TIENG_ANH,
+    # Lớp 8
     ("lop_8", "toan_8_hk2"):          NHAT_KHOI_TOAN,
 }
 
