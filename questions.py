@@ -636,12 +636,20 @@ def gen_english_structured(pool, n, seed):
     return result
 
 
+_AGENT_ONLY_FOLDERS = {
+    "toan_2_hk1", "toan_2_hk2", "de_hsg_toan_2", "toan_violympic_2",
+    "tieng_anh_2_hk1", "tieng_anh_2_hk2",
+}
+
+
 def folder_capacity(lop_key, folder_key):
     """Max questions achievable for this folder (used to filter duration options in UI)."""
     if lop_key == "lop_1" and folder_key == "de_hk2_toan_1":
         return 9999  # generator-based, unlimited
     if folder_key in ("de_hsg_toan_6", "de_hsg_anh_6"):
         return 9999  # UI hides dur-row for HSG; capacity unused
+    if folder_key in _AGENT_ONLY_FOLDERS:
+        return 9999  # agent-crawled from DB; no static pool but UI must show duration tabs
     pool = _FOLDER_POOLS.get((lop_key, folder_key), [])
     if not pool:
         return 0
