@@ -414,15 +414,36 @@ def submit():
 
     score = 0
     results = []
+    norm = lambda s: s.lower().replace(" ", "")
     for i, q in enumerate(qs):
-        user_ans = request.form.get(f"q_{i}", "").strip()
-        correct = str(q["answer"]).strip()
-        norm = lambda s: s.lower().replace(" ", "")
-        ok = norm(user_ans) == norm(correct) or any(
-            norm(user_ans) == norm(alt) for alt in q.get("alt_answers", [])
-        )
-        if ok:
-            score += 1
+        multi_answers = q.get("answers")
+        if isinstance(multi_answers, list):
+            # Multi-answer: tính điểm theo số ô đúng / tổng ô
+            labels = q.get("answer_labels", [])
+            parts_correct = 0
+            user_parts = []
+            for j, expected in enumerate(multi_answers):
+                user_part = request.form.get(f"q_{i}_{j}", "").strip()
+                part_ok = norm(user_part) == norm(str(expected))
+                if part_ok:
+                    parts_correct += 1
+                label = labels[j] if j < len(labels) else f"Phần {j+1}"
+                user_parts.append(f"{label}: {user_part or '(trống)'}")
+            score += parts_correct / len(multi_answers)
+            ok = (parts_correct == len(multi_answers))
+            user_ans = "; ".join(user_parts)
+            correct = "; ".join(
+                f"{(labels[j] if j < len(labels) else f'Phần {j+1}')}: {v}"
+                for j, v in enumerate(multi_answers)
+            )
+        else:
+            user_ans = request.form.get(f"q_{i}", "").strip()
+            correct = str(q.get("answer", "")).strip()
+            ok = norm(user_ans) == norm(correct) or any(
+                norm(user_ans) == norm(alt) for alt in q.get("alt_answers", [])
+            )
+            if ok:
+                score += 1
         results.append({"q": q["q"], "your": user_ans or "(không trả lời)",
                          "correct": correct, "ok": ok, "topic": q.get("topic", ""),
                          "explanation": q.get("explanation", ""),

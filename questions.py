@@ -1143,6 +1143,135 @@ BAO_MEO_POOL = BAO_MEO_DE_1 + BAO_MEO_DE_2  # đề thi HK
 # Toàn bộ pool bao gồm đề thi + Violympic
 BAO_MEO_FULL_POOL = BAO_MEO_POOL + BAO_MEO_VIOLYMPIC
 
+# ─── Toán Nâng Cao Lớp 1 — 2 đề mới (HK2 + HSG) ─────────────────────────────
+_F1 = "hk2_toan1_figures/"   # prefix ảnh
+
+_HK2_TOAN_1_NC = [
+    # ══════════════════════ ĐỀ 1 ══════════════════════
+    # --- MCQ ---
+    {"type":"choice","topic":"Số học",
+     "q":"Cho các số 2, 4, 6, 8, 1, 3. Tính tổng của số lẻ lớn nhất và số chẵn bé nhất có chữ số khác nhau viết được từ các số trên.",
+     "options":["A. 95","B. 96","C. 89","D. 98"],"answer":"A. 95",
+     "explanation":"Số lẻ lớn nhất 2 chữ số khác nhau: dùng 8 (chục) + 3 (đơn vị) = 83. Số chẵn bé nhất 2 chữ số khác nhau: dùng 1 (chục) + 2 (đơn vị) = 12. Tổng: 83 + 12 = 95."},
+    {"type":"choice","topic":"Toán đố",
+     "q":"Mẹ năm nay 40 tuổi. Hai anh em có tuổi lần lượt là 6 và 8. Hỏi sau bao nhiêu năm nữa thì tổng số tuổi của hai anh em bằng tuổi mẹ bây giờ?",
+     "options":["A. 26","B. 34","C. 13","D. 32"],"answer":"C. 13",
+     "explanation":"Tổng tuổi hai anh em hiện tại = 6 + 8 = 14. Mỗi năm tổng tăng 2. Cần: 14 + 2x = 40 → x = 13 năm."},
+    {"type":"choice","topic":"Số học",
+     "q":"Có 18 viên bi được chia cho 2 bạn. Có bao nhiêu cách chia sao cho mỗi bạn nhận số bi là số chẵn?",
+     "options":["A. 2 cách","B. 4 cách","C. 6 cách","D. 8 cách"],"answer":"D. 8 cách",
+     "explanation":"Hai số chẵn có tổng 18: (2,16),(4,14),(6,12),(8,10) và hoán vị → 8 cách."},
+    {"type":"choice","topic":"Hình học","image":_F1+"de1_cau4_ga.png",
+     "q":"Quan sát hình vẽ cân bằng và tìm số con gà cần đặt lên cân để cân bằng với 1 con ngỗng lớn.",
+     "options":["A. 6","B. 9","C. 7","D. 10"],"answer":"B. 9",
+     "explanation":"Từ cân 1: 3 gà = 1 vịt. Từ cân 2: 1 ngỗng = 3 vịt. Vậy 1 ngỗng = 3 × 3 = 9 con gà."},
+    {"type":"choice","topic":"Số học",
+     "q":"Có bao nhiêu số có 2 chữ số mà chữ số hàng đơn vị là số liền trước của chữ số hàng chục?",
+     "options":["A. 10","B. 9","C. 7","D. 8"],"answer":"B. 9",
+     "explanation":"Gọi hàng chục = d (1→9), hàng đơn vị = d−1. Các số: 10,21,32,43,54,65,76,87,98 — tổng cộng 9 số."},
+    {"type":"choice","topic":"Toán đố",
+     "q":"Ngày 5 tháng 5 là thứ Hai. Ngày tổng kết năm học ngày 23 tháng 5 là thứ mấy?",
+     "options":["A. Thứ Hai","B. Thứ Bảy","C. Thứ Sáu","D. Chủ Nhật"],"answer":"C. Thứ Sáu",
+     "explanation":"Từ 5/5 đến 23/5 có 18 ngày = 2 tuần + 4 ngày. Thứ Hai + 4 = Thứ Sáu."},
+    {"type":"choice","topic":"Hình học","image":_F1+"de1_cau7_tamgiac.png",
+     "q":"Đếm tất cả các hình tam giác trong hình vẽ (gồm cả tam giác to và nhỏ).",
+     "options":["A. 16","B. 17","C. 20","D. 23"],"answer":"A. 16",
+     "explanation":"Hình chữ nhật chia bởi đường chéo và đường trung bình tạo 8 tam giác nhỏ + 4 tam giác cỡ vừa + 4 tam giác lớn = 16 tam giác."},
+    {"type":"choice","topic":"Toán đố",
+     "q":"Trang trại có 5 chục con vật gồm ngựa, lợn và dê. Tổng số ngựa và dê là số chẵn liền trước của 32. Hỏi có bao nhiêu con lợn?",
+     "options":["A. 82 con","B. 18 con","C. 20 con","D. 10 con"],"answer":"C. 20 con",
+     "explanation":"5 chục = 50. Số chẵn liền trước 32 = 30 (ngựa+dê). Lợn = 50 − 30 = 20 con."},
+    # --- Tự luận Đề 1 ---
+    {"type":"fill","topic":"Toán đố",
+     "q":"Hiện nay Nam 9 tuổi. Tổng số tuổi của Nam và chị gái 5 năm nữa là 42 tuổi. Hỏi 2 năm trước chị gái Nam bao nhiêu tuổi?",
+     "answer":"21",
+     "explanation":"5 năm nữa tổng = 42 → hiện tổng = 42 − 10 = 32. Chị hiện nay = 32 − 9 = 23. Hai năm trước: 23 − 2 = 21 tuổi."},
+    {"type":"fill","topic":"Số học",
+     "q":"Tính nhanh: 15 + 1 − 3 + 5 − 7 + 9 − 11 + 13 − 15 = ?",
+     "answer":"7",
+     "explanation":"Nhóm cặp: (15−15) + (1−3) + (5−7) + (9−11) + 13 = 0 − 2 − 2 − 2 + 13 = 7."},
+    {"type":"fill","topic":"Số học",
+     "q":"Tính nhanh: 30 + 18 + 14 − 22 − 16 − 12 = ?",
+     "answer":"12",
+     "explanation":"Nhóm cặp: (30−22) + (18−16) + (14−12) = 8 + 2 + 2 = 12."},
+    {"type":"fill","topic":"Toán đố",
+     "q":"Cứ 15 sao đổi được 1 bút mực. Lan tính rằng nếu tặng bạn 1 bút thì chỉ cần thêm 10 sao nữa là đổi được đủ 9 bút. Ban đầu Lan có bao nhiêu sao?",
+     "answer":"140",
+     "explanation":"9 bút cần 135 sao. Tặng 1 bút đã đổi (dùng 15 sao), còn lại x−15, cần thêm 10: (x−15)+10=135 → x=140 sao."},
+    {"type":"fill","topic":"Hình học","image":_F1+"de1_bai4_luochinh.png",
+     "q":"Điền số 1,2,3,4 vào lưới sao cho mỗi số xuất hiện 1 lần ở mỗi hàng và cột. Ô đầu tiên (hàng 1, cột 1) của lưới số thứ nhất là số mấy?",
+     "answer":"3",
+     "explanation":"Hàng 1 cần {2,3} (đã có 4,1). Cột 1 cần {3,4} (đã có 1,2). Giao của {2,3} và {3,4} = 3. Ô (1,1) = 3."},
+    {"type":"fill","topic":"Toán đố",
+     "q":"Trung, Tí và Tèo có 72 quả bóng bay. Tổng số bóng của Trung và Tí là 45 quả. Tí nhiều hơn Tèo 1 chục quả. Hỏi mỗi bạn có bao nhiêu quả bóng?",
+     "answers":["8","37","27"],
+     "answer_labels":["Trung có (quả)","Tí có (quả)","Tèo có (quả)"],
+     "explanation":"Tèo = 72 − 45 = 27. Tí = Tèo + 10 = 37. Trung = 45 − 37 = 8 quả."},
+
+    # ══════════════════════ ĐỀ 2 ══════════════════════
+    # --- MCQ ---
+    {"type":"choice","topic":"Số học",
+     "q":"Tổng của dãy tính 1 + 2 + 3 + 4 + ... + 8 + 9 là số chẵn hay lẻ?",
+     "options":["A. Số chẵn","B. Số lẻ","C. Không có đáp án"],"answer":"B. Số lẻ",
+     "explanation":"1+2+...+9 = 45. Vì 45 không chia hết cho 2, đây là số lẻ."},
+    {"type":"choice","topic":"Toán đố",
+     "q":"Ngày 19 tháng 1 là thứ Ba. Hỏi ngày 27 tháng 1 là thứ mấy?",
+     "options":["A. Thứ Bảy","B. Thứ Ba","C. Thứ Hai","D. Thứ Tư"],"answer":"D. Thứ Tư",
+     "explanation":"Từ ngày 19 đến 27 có 8 ngày = 1 tuần + 1 ngày. Thứ Ba + 1 = Thứ Tư."},
+    {"type":"choice","topic":"Toán đố",
+     "q":"Quyển truyện có 86 trang. Buổi sáng đọc 26 trang. Buổi chiều đọc số trang là số tròn chục liền sau của 28. Hỏi còn lại bao nhiêu trang chưa đọc?",
+     "options":["A. 35","B. 56","C. 30","D. 32"],"answer":"C. 30",
+     "explanation":"Số tròn chục liền sau 28 = 30. Còn lại: 86 − 26 − 30 = 30 trang."},
+    {"type":"choice","topic":"Số học",
+     "q":"Cho các số 7, 2, 6, 1, 9, 0. Tính hiệu của số lớn nhất và số bé nhất có hai chữ số khác nhau viết được từ các số trên.",
+     "options":["A. 85","B. 69","C. 10","D. 87"],"answer":"D. 87",
+     "explanation":"Số lớn nhất 2 chữ số khác nhau = 97. Số bé nhất = 10 (không dùng 0 ở hàng chục). Hiệu = 97 − 10 = 87."},
+    {"type":"choice","topic":"Toán đố",
+     "q":"Ben đếm được 16 người đứng trước mình trong hàng. Hàng có tất cả 25 người. Nếu Ben đứng trước Chris thì có bao nhiêu người đứng sau Ben?",
+     "options":["A. 8 người","B. 7 người","C. 9 người","D. 24 người"],"answer":"A. 8 người",
+     "explanation":"Ben đứng ở vị trí 17 (16 người trước + Ben). Số người sau Ben = 25 − 17 = 8 người."},
+    {"type":"choice","topic":"Toán đố",
+     "q":"Hà 6 tuổi, em Nga 3 tuổi, bố 37 tuổi. Hỏi bao nhiêu năm nữa tổng số tuổi của Hà và Nga bằng tuổi bố hiện nay?",
+     "options":["A. 31","B. 28","C. 14","D. 34"],"answer":"C. 14",
+     "explanation":"Sau x năm: (6+x)+(3+x)=37 → 9+2x=37 → x=14 năm."},
+    {"type":"choice","topic":"Số học",
+     "q":"Có 24 viên bi được chia cho 2 bạn. Có bao nhiêu cách chia sao cho mỗi bạn nhận số bi là số lẻ?",
+     "options":["A. 12 cách","B. 14 cách","C. 16 cách","D. 18 cách"],"answer":"A. 12 cách",
+     "explanation":"Hai số lẻ có tổng 24: (1,23),(3,21),(5,19),(7,17),(9,15),(11,13) và hoán vị → 12 cách."},
+    {"type":"choice","topic":"Hình học","image":_F1+"de2_cau8_moqua.png",
+     "q":"Quan sát hình vẽ cân bằng và tìm số quả mơ cần đặt lên cân để cân bằng với dưa hấu.",
+     "options":["A. 6","B. 12","C. 17","D. 24"],"answer":"D. 24",
+     "explanation":"Từ cân 1: 1 dưa hấu = 12 quả táo. Từ cân 2: 1 táo = 2 quả mơ. Vậy 1 dưa hấu = 12 × 2 = 24 quả mơ."},
+    # --- Tự luận Đề 2 ---
+    {"type":"fill","topic":"Toán đố",
+     "q":"Chú Bằng nhiều hơn cô Ánh 5 tuổi. Năm năm nữa tổng số tuổi của chú và cô là 95 tuổi. Hỏi năm nay mỗi người bao nhiêu tuổi?",
+     "answers":["45","40"],
+     "answer_labels":["Chú Bằng (tuổi)","Cô Ánh (tuổi)"],
+     "explanation":"5 năm nữa tổng = 95 → hiện tổng = 85. Bằng − Ánh = 5. Bằng = (85+5)/2 = 45. Ánh = 40 tuổi."},
+    {"type":"fill","topic":"Số học",
+     "q":"Tính nhanh: 17 + 49 + 25 + 13 + 45 + 11 = ?",
+     "answer":"160",
+     "explanation":"Nhóm cặp: (17+13) + (49+11) + (25+45) = 30 + 60 + 70 = 160."},
+    {"type":"fill","topic":"Số học",
+     "q":"Tính nhanh: 10 − 9 + 8 − 7 + 6 − 5 + 4 − 3 = ?",
+     "answer":"4",
+     "explanation":"Nhóm từng cặp: (10−9)+(8−7)+(6−5)+(4−3) = 1+1+1+1 = 4."},
+    {"type":"fill","topic":"Toán đố",
+     "q":"An dùng 45 đồng mua 12 cái bánh gồm loại 5 đồng và loại 2 đồng. Hỏi An mua bao nhiêu cái bánh loại 5 đồng và bao nhiêu cái loại 2 đồng?",
+     "answers":["7","5"],
+     "answer_labels":["Bánh 5 đồng (cái)","Bánh 2 đồng (cái)"],
+     "explanation":"Gọi a=bánh 5đ, b=bánh 2đ. a+b=12 và 5a+2b=45. Trừ: 3a=21 → a=7, b=5."},
+    {"type":"fill","topic":"Số học",
+     "q":"Có bao nhiêu số có hai chữ số mà chữ số hàng chục lớn hơn chữ số hàng đơn vị đúng 2 đơn vị?",
+     "answer":"8",
+     "explanation":"Các số: 20, 31, 42, 53, 64, 75, 86, 97 — tổng cộng 8 số."},
+    {"type":"fill","topic":"Toán đố",
+     "q":"Bình nhiều hơn Toàn 14 quyển truyện, Toàn nhiều hơn Hải 1 chục quyển. Hải có 8 quyển. Hỏi: a) Bình nhiều hơn Hải bao nhiêu quyển? b) Cả ba bạn có bao nhiêu quyển tất cả?",
+     "answers":["24","58"],
+     "answer_labels":["a) Bình hơn Hải (quyển)","b) Tổng ba bạn (quyển)"],
+     "explanation":"Hải=8, Toàn=18, Bình=32. a) 32−8=24 quyển. b) 8+18+32=58 quyển."},
+]
+
 
 def gen_mixed(n=15, seed=None, student_key="bao_meo", subject="Toán"):
     """Kết hợp HS Giỏi + câu khó hơn theo từng bé."""
@@ -14288,6 +14417,12 @@ for _de_hsg1 in (_HSG_TOAN_1_DE_11, _HSG_TOAN_1_DE_12, _HSG_TOAN_1_DE_13,
             _HSG_TOAN_1_HARD_POOL.append(_q_hsg1)
 del _seen_hsg1, _de_hsg1, _q_hsg1
 
+# Bổ sung câu nâng cao từ _HK2_TOAN_1_NC vào hard pool (dedup)
+for _q_nc1 in _HK2_TOAN_1_NC:
+    if _q_nc1["q"] not in {q["q"] for q in _HSG_TOAN_1_HARD_POOL}:
+        _HSG_TOAN_1_HARD_POOL.append(_q_nc1)
+del _q_nc1
+
 # 20 đề cố định, mỗi đề 30 câu lấy từ hard pool với seed riêng
 import random as _rng_hsg1
 _HSG_TOAN_1_EXAMS = {}
@@ -14410,14 +14545,17 @@ def gen_exam(lop_key, folder_key, n=15, seed=None, exam_no=1):
             return _placeholder(1, "", "Tiếng Anh", f"Đề HSG Anh 6 — Đề {exam_no or 1}")
         return list(pool)
 
-    # Lớp 1 — HK2: mix generators + static pool
+    # Lớp 1 — HK2: mix generators + static pool + nâng cao
     if lop_key == "lop_1" and folder_key == "de_hk2_toan_1":
-        gen_n = max(1, n // 3)
-        static_n = n - gen_n
+        gen_n = max(1, n // 4)          # ~5 câu sinh tự động
+        nc_n  = min(5, len(_HK2_TOAN_1_NC))  # ~5 câu nâng cao
+        static_n = n - gen_n - nc_n
         part1 = _gen_bao_meo_pool(gen_n, seed=seed)
         part2 = list(BAO_MEO_POOL)
         random.shuffle(part2)
-        result = part1 + part2[:static_n]
+        part3 = list(_HK2_TOAN_1_NC)
+        random.shuffle(part3)
+        result = part1 + part2[:static_n] + part3[:nc_n]
         random.shuffle(result)
         return result
 

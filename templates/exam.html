@@ -91,6 +91,26 @@
   <div class="scratch-label">📝 Bài giải (không nộp):</div>
   <textarea class="scratch-area" placeholder="Ghi bài giải tại đây..." tabindex="-1"></textarea>
   {% endif %}
+  {% if q.answers is defined and q.answers is iterable and q.answers is not string %}
+  {# Multi-answer question: nhiều ô điền #}
+  <div class="multi-answer" data-idx="{{ qi }}" data-parts="{{ q.answers|length }}">
+    {% for j in range(q.answers|length) %}
+    <div class="multi-answer-row">
+      {% if q.answer_labels is defined and q.answer_labels[j] is defined %}
+      <label class="multi-label">{{ q.answer_labels[j] }}:</label>
+      {% endif %}
+      <input class="fill multi-fill" type="text"
+             name="q_{{ qi }}_{{ j }}"
+             data-idx="{{ qi }}"
+             data-part="{{ j }}"
+             placeholder="Điền số..."
+             autocomplete="off"
+             onkeydown="onFillKey(event, {{ qi }})"
+             oninput="onMultiFillInput({{ qi }})">
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
   <input class="fill" type="text"
          name="q_{{ qi }}"
          data-idx="{{ qi }}"
@@ -98,6 +118,7 @@
          autocomplete="off"
          onkeydown="onFillKey(event, {{ qi }})"
          oninput="onFillInput({{ qi }}, this)">
+  {% endif %}
   {% endif %}
 </div>
 {% endfor %}
@@ -168,6 +189,18 @@ function onRadioChange(idx) {
 // ─── Fill: mark khi có nội dung, un-mark khi xóa hết ─────────
 function onFillInput(idx, inp) {
   markDone(idx, inp.value.trim().length > 0);
+  currentIdx = idx;
+}
+
+// ─── Multi-fill: mark done chỉ khi TẤT CẢ ô đã điền ─────────
+function onMultiFillInput(idx) {
+  const container = document.querySelector(`.multi-answer[data-idx="${idx}"]`);
+  if (!container) return;
+  const parts = parseInt(container.dataset.parts) || 1;
+  const inputs = container.querySelectorAll('.multi-fill');
+  let filled = 0;
+  inputs.forEach(inp => { if (inp.value.trim().length > 0) filled++; });
+  markDone(idx, filled === parts);
   currentIdx = idx;
 }
 
