@@ -5514,7 +5514,7 @@ _HSG_ANH_DE_8 = [
     {"type": "choice", "topic": "Grammar",
      "q": "19. There ___ no water in the bottle.",
      "options": ["A. are", "B. were", "C. is", "D. was"],
-     "answer": "B. were"},
+     "answer": "C. is"},
     {"type": "choice", "topic": "Grammar",
      "q": "20. My brother ___ swimming every weekend.",
      "options": ["A. go", "B. goes", "C. is going", "D. went"],
@@ -5544,25 +5544,25 @@ _HSG_ANH_DE_8 = [
      "section_start": "SECTION 3. GRAMMAR — VIII. Find the error",
      "section_instruction": "Identify the underlined word or phrase that needs correction.",
      "passage_text": None,
-     "q": "1. She enjoy(A) to listen(B) to(C) music every evening(D).",
-     "options": ["A", "B", "C", "D"],
-     "answer": "A"},
-    {"type": "choice", "topic": "Grammar",
-     "q": "2. The childrens(A) are(B) playing(C) in the garden(D).",
+     "q": "1. There are(A) much(B) music(C) programmes(D) on TV nowadays.",
      "options": ["A", "B", "C", "D"],
      "answer": "B"},
     {"type": "choice", "topic": "Grammar",
-     "q": "3. He has(A) lived here(B) since(C) five years(D).",
+     "q": "2. Her father often listens to(A) radio(B) in(C) the morning(D).",
+     "options": ["A", "B", "C", "D"],
+     "answer": "B"},
+    {"type": "choice", "topic": "Grammar",
+     "q": "3. She is(A) the most(B) beautiful(C) of(D) the twin sisters.",
+     "options": ["A", "B", "C", "D"],
+     "answer": "B"},
+    {"type": "choice", "topic": "Grammar",
+     "q": "4. This is my book(A) and(B) that is(C) your(D).",
+     "options": ["A", "B", "C", "D"],
+     "answer": "D"},
+    {"type": "choice", "topic": "Grammar",
+     "q": "5. The Discovery Channel makes(A) education(B) funny(C) for(D) children all over the world.",
      "options": ["A", "B", "C", "D"],
      "answer": "C"},
-    {"type": "choice", "topic": "Grammar",
-     "q": "4. She go(A) to school(B) every(C) day(D) by bus.",
-     "options": ["A", "B", "C", "D"],
-     "answer": "D"},
-    {"type": "choice", "topic": "Grammar",
-     "q": "5. We are(A) going to(B) visit our grandparent(C) next Sunday(D).",
-     "options": ["A", "B", "C", "D"],
-     "answer": "D"},
     # ── Reading IX fill MC USA overweight passage (10 MC) ──
     {"type": "choice", "topic": "Reading",
      "section_start": "SECTION 4. READING — IX. Choose the best word for each blank",
@@ -5654,36 +5654,40 @@ _HSG_ANH_DE_8 = [
     {"type": "fill", "topic": "Reading",
      "q": "(10) She turns off ___ light before sleeping.",
      "answer": "the"},
-    # ── Reading XI MC Bobbi Brown (5 MC) ──
+    # ── Reading XI MC Bobbi Brown Gigha (5 MC) ──
     {"type": "choice", "topic": "Reading",
      "section_start": "SECTION 4. READING — XI. Read and answer",
      "section_instruction": "Read and choose the best answer.",
      "passage_text": (
-         "Bobbi Brown is a famous make-up artist. She grew up in the USA. She studied "
-         "theatre make-up at university. After graduating, she worked in New York. "
-         "In 1991, she created her own make-up brand. Her products became very popular. "
-         "She wrote several books about beauty. Bobbi Brown inspires many women around "
-         "the world."
+         "Bobbi Brown is a very busy man. He is 60 years old and he has thirteen jobs. "
+         "He is a postman, a policeman, a fireman, a taxi driver, a school bus driver, "
+         "a boatman, an ambulance man, an accountant, a petrol attendant, a barman and "
+         "an undertaker. Also, he and his wife, Margaret, have a shop and a small hotel.\n\n"
+         "Bobbi lives and works on the island of Gigha in the west of Scotland. Only one "
+         "hundred and twenty people live on Gigha but in summer this number will be doubled "
+         "because of tourists who come by boat every day.\n\n"
+         "Every day Bobbi gets up at 6.00 and makes breakfast for the hotel guests. At 8.00 "
+         "he drives the island's children to school by bus."
      ),
-     "q": "1. What is Bobbi Brown famous for?",
-     "options": ["A. acting", "B. make-up", "C. singing", "D. writing"],
-     "answer": "B. make-up"},
+     "q": "1. How many jobs does Bobbi Brown have?",
+     "options": ["A. 10", "B. 13", "C. 15", "D. 12"],
+     "answer": "B. 13"},
     {"type": "choice", "topic": "Reading",
-     "q": "2. Where did she grow up?",
-     "options": ["A. England", "B. France", "C. the USA", "D. Australia"],
-     "answer": "C. the USA"},
+     "q": "2. Where is the island of Gigha?",
+     "options": ["A. the east of Scotland", "B. the north of Scotland", "C. the west of Scotland", "D. the south of Scotland"],
+     "answer": "C. the west of Scotland"},
     {"type": "choice", "topic": "Reading",
-     "q": "3. What did she study at university?",
-     "options": ["A. fashion design", "B. theatre make-up", "C. business", "D. art"],
-     "answer": "A. fashion design"},
+     "q": "3. How many people normally live on Gigha?",
+     "options": ["A. 120", "B. 100", "C. 240", "D. 60"],
+     "answer": "A. 120"},
     {"type": "choice", "topic": "Reading",
-     "q": "4. When did she create her make-up brand?",
-     "options": ["A. 1981", "B. 1986", "C. 1991", "D. 2001"],
-     "answer": "D. 2001"},
+     "q": "4. What time does Bobbi get up every day?",
+     "options": ["A. 7.00", "B. 7.30", "C. 8.00", "D. 6.00"],
+     "answer": "D. 6.00"},
     {"type": "choice", "topic": "Reading",
-     "q": "5. What else did she do besides make-up?",
-     "options": ["A. designed clothes", "B. wrote books about beauty", "C. opened a school", "D. appeared in films"],
-     "answer": "C. opened a school"},
+     "q": "5. What does Bobbi do at 8.00?",
+     "options": ["A. makes breakfast for hotel guests", "B. goes to the post office", "C. drives children to school", "D. opens the shop"],
+     "answer": "C. drives children to school"},
 ]
 
 _HSG_ANH_DE_9 = [
