@@ -13556,6 +13556,19 @@ _HSG_ANH_CANON = {
     "The children enjoyed ___ pizza at the party.": "eating",
     "The music ___ too loud for the children.": "is",
     "He ___ a book about animals last week.": "read",
+    # ── DE_6 specific fixes (9 câu Grammar V sai) ──
+    "___ does it take to walk to school?": "How long",
+    "She ___ her homework before dinner.": "finishes",
+    "___ is the distance from here to the park?": "How far",
+    "The book ___ on the table is mine.": "lying",
+    "We should ___ more vegetables.": "eat",
+    "___ did you go last weekend? — To the beach.": "Where",
+    "He ___ play tennis after school.": "likes",
+    "There ___ some sugar in the jar.": "is",
+    "She is ___ student in her grade.": "the best",
+    # ── DE_7 specific fixes ──
+    "She enjoy(A) listening(B) to(C) music every evening(D).": "A",
+    "She ___ in Hanoi for five years.": "has lived",
 }
 
 # Grammar/Vocab unique đề 21–36 — sửa theo (đề, chuỗi nhận diện trong q, đáp án đúng).
@@ -13679,6 +13692,8 @@ _HSG_ANH_CLOZE_FIX = {
     "savingenergyisveryimportant": {1: "turn off", 3: "produce"},
     "childrenneedtospendtime": {1: "outside", 4: "play"},
     "therockymountains,alsocalled": {7: "flow", 8: "parks", 10: "wonderful"},
+    # DE_8 Reading IX: USA overweight passage — 5 blanks wrong
+    "intheusa,manypeopleare": {2: "much", 4: "chips", 6: "eat", 8: "good", 9: "join"},
 }
 
 # Câu điền từ (type 'fill') có đáp án sai/lệch — (đề, chuỗi nhận diện trong q, đáp án đúng).
@@ -13705,6 +13720,8 @@ _HSG_ANH_FILL_FIX = [
     (33, "many books", "to buy"),
     (35, "mondays", "hating"),
     (35, "owner is kind", "but"),
+    # DE_8 Reading X: "(7) she helps ___ cook dinner" → "to"
+    (8, "she helps", "to"),
 ]
 
 
@@ -13912,6 +13929,271 @@ _hsg_apply_canon()
 _hsg_apply_extra()
 _hsg_apply_fill()
 _hsg_apply_phonetics_display()
+
+# ── Lời giải thích cho Đề 6, 7, 8 ─────────────────────────────────────────────
+# Key = giá trị q chính xác (sau khi uppercase phonetics đã áp dụng).
+# Dùng per-exam dict để tránh conflict cho câu cloze "(N) ___" trùng nhau giữa DE_6 và DE_8.
+_HSG_ANH_EXP = {
+    6: {
+        # ─ Listening T/F ─
+        "1. Sarah lives near her school.": "Theo bài nghe, Sarah sống gần trường → True.",
+        "2. Sarah goes to school by bus.": "Theo bài nghe, Sarah không đi học bằng xe buýt → False.",
+        "3. Sarah has lunch at school.": "Theo bài nghe, Sarah không ăn trưa ở trường → False.",
+        "4. Sarah likes science.": "Theo bài nghe, Sarah yêu thích môn khoa học → True.",
+        "5. Sarah plays tennis after school.": "Theo bài nghe, Sarah không chơi tennis sau giờ học → False.",
+        # ─ Listening fill ─
+        "(1) Student 1 — Future job: ___": "Theo bài nghe, nghề nghiệp tương lai của học sinh 1 là bác sĩ (doctor).",
+        "(2) Student 2 — Nationality: ___": "Theo bài nghe, quốc tịch của học sinh 2 là Mexican.",
+        "(3) Student 3 — Name: ___": "Theo bài nghe, tên của học sinh 3 là Lipponen.",
+        "(4) Student 4 — Age: ___": "Theo bài nghe, tuổi của học sinh 4 là 21.",
+        "(5) Student 5 — Hobby: ___": "Theo bài nghe, sở thích của học sinh 5 là Artist (vẽ tranh).",
+        # ─ Phonetics III ─
+        "1. A. hAnd  B. And  C. sAnd  D. Any": "A, B, C đều phát âm nguyên âm 'a' là /æ/; riêng D — 'any' phát âm /e/ (/ˈeni/), khác hoàn toàn. Đáp án D.",
+        "2. A. naTION  B. staTION  C. acTION  D. quesTION": "A, B, C có đuôi '-tion' phát âm /ʃən/; riêng D — 'question' phát âm '-tion' là /tʃən/. Đáp án D.",
+        "3. A. bOOk  B. fOOd  C. lOOk  D. cOOk": "A, C, D có 'oo' phát âm /ʊ/ (ngắn); riêng B — 'food' phát âm /uː/ (dài). Đáp án B.",
+        "4. A. washED  B. workED  C. hopED  D. callED": "washed/worked/hoped: đuôi '-ed' đọc /t/ (phụ âm vô thanh trước); 'called' kết thúc bằng /l/ (hữu thanh) → '-ed' đọc /d/. Đáp án D.",
+        "5. A. THese  B. THere  C. THree  D. THey": "these/there/they phát âm 'th' là /ð/ (hữu thanh); 'three' phát âm 'th' là /θ/ (vô thanh). Đáp án C.",
+        # ─ Phonetics IV stress ─
+        "1. A. HAppy  B. LUcky  C. PRETty  D. aLONE": "happy/lucky/pretty nhấn âm tiết 1; 'alone' nhấn âm tiết 2 (a-LONE). Đáp án D.",
+        "2. A. enJOY  B. Open  C. STUdy  D. LISten": "open/study/listen nhấn âm tiết 1; 'enjoy' nhấn âm tiết 2 (en-JOY). Đáp án A.",
+        "3. A. HIStory  B. geOGraphy  C. biOLogy  D. techNOLogy": "geography/biology/technology nhấn âm tiết 2; 'history' nhấn âm tiết 1 (HIS-to-ry). Đáp án A.",
+        "4. A. baNAna  B. toMAto  C. poTAto  D. MANgo": "banana/tomato/potato nhấn âm tiết 2; 'mango' nhấn âm tiết 1 (MAN-go). Đáp án D.",
+        "5. A. FAMily  B. BEAutiful  C. imPORtant  D. CAREfully": "family/beautiful/carefully nhấn âm tiết 1; 'important' nhấn âm tiết 2 (im-POR-tant). Đáp án C.",
+        # ─ Grammar V (25 MC) ─
+        "1. She ___ her homework when I called.": "Hành động đang diễn ra (làm bài) bị gián đoạn bởi hành động khác (gọi điện) → quá khứ tiếp diễn: was doing.",
+        "2. He is interested ___ playing football.": "Cụm cố định 'be interested IN' + V-ing. Giới từ đi kèm bắt buộc là 'in'.",
+        "3. They haven't seen each other ___ last year.": "'Since' + mốc thời gian cụ thể (last year) trong hiện tại hoàn thành; 'for' + khoảng thời gian.",
+        "4. ___ does it take to walk to school?": "'How long does it take to...' là cụm hỏi thời gian cần thiết. Đáp án A. How long.",
+        "5. I suggest ___ to the cinema.": "'Suggest' đi với V-ing. Cấu trúc: suggest + V-ing → going.",
+        "6. The students ___ English now.": "'Now' là dấu hiệu hiện tại tiếp diễn. Cấu trúc: are + V-ing → are studying.",
+        "7. She ___ her homework before dinner.": "Chủ ngữ 'She' (ngôi 3 số ít), thói quen hiện tại → 'finishes' (thêm -es). Đáp án A.",
+        "8. Would you mind ___ the window?": "Cụm cố định 'Would you mind + V-ing'. Luôn dùng gerund sau 'mind'.",
+        "9. He speaks English ___ a native speaker.": "'Like' so sánh cách thức (nói GIỐNG người bản ngữ). 'As' chỉ vai trò thực sự.",
+        "10. ___ is the distance from here to the park?": "'How far' hỏi về khoảng cách địa lý. 'How long' hỏi thời gian/chiều dài. Đáp án B.",
+        "11. She asked me ___ I could help.": "Câu gián tiếp tường thuật câu hỏi yes/no → dùng 'if' hoặc 'whether'. Đáp án B.",
+        "12. The book ___ on the table is mine.": "Rút gọn mệnh đề quan hệ: 'which is lying' → 'lying' (participle phrase). 'Lied' = nói dối, sai nghĩa. Đáp án C.",
+        "13. We should ___ more vegetables.": "Sau 'should' luôn dùng bare infinitive (không 'to'): should eat. Đáp án A.",
+        "14. Nam is ___ student in my class.": "So sánh nhất: the + -est. 'The tallest' đúng (có mạo từ 'the').",
+        "15. He ___ to school by bike every day.": "'Every day' → thói quen hiện tại; 'He' (ngôi 3) → goes (thêm -es).",
+        "16. The children enjoyed ___ in the park.": "'Enjoy' đi với V-ing. Cấu trúc: enjoy + V-ing → playing.",
+        "17. She has lived here ___ ten years.": "'For' + khoảng thời gian (ten years) trong hiện tại hoàn thành; 'since' + mốc cụ thể.",
+        "18. The film ___ very interesting last night.": "'Last night' → quá khứ đơn; 'The film' số ít → 'was'.",
+        "19. ___ did you go last weekend? — To the beach.": "'To the beach' chỉ địa điểm → hỏi bằng 'Where'. Đáp án B.",
+        "20. My mother often ___ dinner at 6pm.": "'Often' → thói quen hiện tại; 'My mother' (ngôi 3) → 'cooks' (thêm -s).",
+        "21. He ___ play tennis after school.": "Chủ ngữ 'He' (ngôi 3) → 'likes' (thêm -s). 'like' (không có -s) là sai. Đáp án A.",
+        "22. There ___ some sugar in the jar.": "'Sugar' là danh từ không đếm được → động từ số ít 'is'. 'have' sai cấu trúc. Đáp án B.",
+        "23. She told me that she ___ happy.": "Câu gián tiếp: mệnh đề chính ở quá khứ ('told') → lùi thì: 'is' → 'was'.",
+        "24. I need to ___ a new bag.": "Cấu trúc 'need to + bare infinitive': need to buy.",
+        "25. She is ___ student in her grade.": "So sánh nhất trong nhóm → 'the best'. Đáp án A.",
+        # ─ Error V ─
+        "1. She go(A) to school(B) every(C) day by bus(D).": "Lỗi A: chủ ngữ 'She' (ngôi 3) → 'goes', không phải 'go'.",
+        "2. The childrens(A) are(B) playing(C) in the garden(D).": "Lỗi A: 'children' đã là số nhiều bất quy tắc, không thêm -s.",
+        "3. He has(A) lived here(B) since(C) five years(D).": "Lỗi C: 'five years' là khoảng thời gian → dùng 'for', không phải 'since'.",
+        "4. She enjoys(A) to listen(B) to music(C) every evening(D).": "Lỗi B: 'enjoy' đòi hỏi V-ing → 'listening', không dùng 'to listen'.",
+        "5. We are(A) going to visit(B) our grandparent(C) next Sunday(D).": "Lỗi C: 'grandparent' phải là số nhiều 'grandparents' (chúng ta có ông BÀ).",
+        # ─ Reading cloze (Rocky Mountains) ─
+        "(1) ___": "Cụm 'mountain range' (dãy núi) là danh từ ghép cố định trong tiếng Anh. 'Range' là từ đúng. Đáp án C.",
+        "(2) ___": "Cấu trúc 'extend from X to Y' diễn tả phạm vi địa lý (kéo dài từ... đến...). Đáp án D.",
+        "(3) ___": "Động từ 'reaches' + độ cao: 'reaches 4,401 metres' = đạt tới 4.401m. Đáp án B.",
+        "(4) ___": "Cụm 'known for' (nổi tiếng vì) là thành ngữ cố định phù hợp nhất. Đáp án B.",
+        "(5) ___": "'Visit there' — 'there' thay thế địa điểm đã nhắc (the Rockies) tránh lặp. Đáp án C.",
+        "(6) ___": "Lặp lại cấu trúc 'also known for skiing' (nổi tiếng vì trượt tuyết). Đáp án B.",
+        "(7) ___": "'Rivers that flow through' — 'flow' là động từ đặc trưng của sông. Đáp án C.",
+        "(8) ___": "Cụm 'national parks' (vườn quốc gia) phù hợp ngữ cảnh thiên nhiên bảo tồn. Đáp án B.",
+        "(9) ___": "Cấu trúc 'one of the most wonderful' = một trong những kỳ quan đẹp nhất. 'One' là từ cần điền. Đáp án B.",
+        "(10) ___": "'Wonderful natural treasures' (kỳ quan thiên nhiên tuyệt vời) — kết câu bài đọc. Đáp án D.",
+        # ─ Reading fill (US education) ─
+        "(1) Children ___ school at age six.": "Bài đọc: 'children start school at the age of six'. Điền 'start'.",
+        "(2) They ___ to elementary school first.": "Bài đọc: 'They go to elementary school first'. Điền 'go'.",
+        "(3) they ___ elementary school at age eleven.": "Bài đọc: 'they leave elementary school at age eleven'. Điền 'leave'.",
+        "(4) Students try to ___ a good college.": "Bài đọc: 'try to find a good college'. Điền 'find'.",
+        "(5) Some students ___ in school until eighteen.": "Bài đọc: 'Some students stay in school until they are eighteen'. Điền 'stay'.",
+        "(6) They then ___ tests to enter college.": "Bài đọc: 'they take tests to enter college'. Điền 'take'.",
+        "(7) Students can ___ many different subjects.": "Bài đọc: 'Students can study many different subjects'. Điền 'study'.",
+        "(8) They can also ___ which clubs to join.": "Bài đọc: 'can also choose which clubs to join'. Điền 'choose'.",
+        "(9) Many ___ have part-time jobs.": "Bài đọc: 'Many students have part-time jobs'. Điền 'students'.",
+        "(10) There are both public and ___ schools.": "Bài đọc: 'both public and private schools'. Điền 'private'.",
+        # ─ Reading MC (cricket) ─
+        "1. In which countries is cricket especially popular?": "Bài đọc: 'especially in England, Australia, India and Pakistan'. Đáp án D.",
+        "2. How many players are in each team?": "Bài đọc: 'Two teams of eleven players each'. Đáp án C.",
+        "3. How long can a cricket game last?": "Bài đọc: 'The game can last one or more days'. Đáp án B.",
+        "4. What does the batting team try to do?": "Bài đọc: 'The batting team tries to score runs'. Đáp án B.",
+        "5. What does the bowling team try to do?": "Bài đọc: 'The bowling team tries to get the batsmen out'. Đáp án C.",
+    },
+    7: {
+        # ─ Listening Part I fill ─
+        "(1) Nam feels ___ after playing football.": "Theo bài nghe, sau khi chơi bóng Nam cảm thấy đói (hungry).",
+        "(2) He wants some ___.": "Theo bài nghe, Nam muốn ăn táo (apples).",
+        "(3) His mother cooked ___.": "Theo bài nghe, mẹ Nam đã nấu mì (noodles).",
+        "(4) His father feels ___.": "Theo bài nghe, bố Nam cảm thấy mệt (tired).",
+        "(5) His father wants some ___.": "Theo bài nghe, bố muốn uống nước cam (orange juice).",
+        # ─ Listening Part II MC ─
+        "1. Where does the photography course take place?": "Theo bài nghe, khóa học nhiếp ảnh diễn ra tại City College.",
+        "2. What time does the course finish?": "Theo bài nghe, khóa học kết thúc lúc 6.45 chiều.",
+        "3. Why does the man want to do the course?": "Theo bài nghe, người đàn ông muốn cải thiện kỹ năng chụp ảnh.",
+        "4. What does the man most like photographing?": "Theo bài nghe, chủ đề người đàn ông yêu thích chụp nhất là cây cối (trees).",
+        "5. What does the man want to do in the future?": "Theo bài nghe, anh muốn giữ nhiếp ảnh là sở thích cá nhân, không trở thành chuyên nghiệp.",
+        # ─ Phonetics III ─
+        "1. A. washED  B. workED  C. hopED  D. nakED": "washed/worked/hoped: đuôi -ed đọc /t/ hoặc /d/ (động từ thường); 'naked' là tính từ → đọc /ɪd/ (hai âm tiết). Đáp án D.",
+        "2. A. THese  B. THere  C. THree  D. THey": "these/there/they: 'th' đọc /ð/ (hữu thanh); 'three': 'th' đọc /θ/ (vô thanh). Đáp án C.",
+        "3. A. bOOk  B. fOOd  C. lOOk  D. schOOl": "book/look: 'oo' đọc /ʊ/ (ngắn); food: 'oo' đọc /uː/ (dài), khác đa số. Đáp án B.",
+        # ─ Phonetics IV stress ─
+        "1. A. MORning  B. DOCtor  C. SISter  D. misTAKE": "morning/doctor/sister nhấn âm tiết 1; 'mistake' nhấn âm tiết 2 (mis-TAKE). Đáp án D.",
+        "2. A. enJOY  B. Open  C. STUdy  D. LISten": "open/study/listen nhấn âm tiết 1; 'enjoy' nhấn âm tiết 2 (en-JOY). Đáp án A.",
+        # ─ Grammar V (25 MC) ─
+        "1. She ___ television when her father came home.": "Hành động đang diễn ra khi bị gián đoạn → quá khứ tiếp diễn: was watching.",
+        "2. He is interested ___ playing the piano.": "Cụm cố định 'be interested IN + V-ing'. Giới từ là 'in'.",
+        "3. They haven't seen each other ___ last year.": "'Since' + mốc thời gian cụ thể (last year) trong hiện tại hoàn thành.",
+        "4. ___ does it take to get to school? — About 15 minutes.": "'How long' hỏi khoảng thời gian. Câu trả lời 'About 15 minutes' xác nhận đây là hỏi thời gian.",
+        "5. I suggest ___ to the cinema tonight.": "'Suggest' đi với V-ing. Cấu trúc: suggest + going (không dùng to-infinitive).",
+        "6. The students ___ English at the moment.": "'At the moment' → hiện tại tiếp diễn: are studying.",
+        "7. She ___ her homework before dinner.": "Chủ ngữ 'She' (ngôi 3), thói quen → 'finishes' (thêm -es). Đây là literal đúng của DE_7.",
+        "8. Would you mind ___ the window?": "Cụm cố định 'Would you mind + V-ing'. Đáp án: opening.",
+        "9. He plays football ___ a professional.": "'Like' so sánh cách thức (chơi GIỐNG cầu thủ chuyên nghiệp). 'As' chỉ vai trò thực sự.",
+        "10. ___ is the distance from here to the station?": "'How far' hỏi khoảng cách địa lý. 'Distance' gợi ý đây là câu hỏi về độ xa.",
+        "11. She asked me ___ I liked sports.": "Câu gián tiếp tường thuật câu hỏi yes/no → dùng 'if' hoặc 'whether'. Đáp án: if.",
+        "12. The book ___ on the table belongs to Lan.": "Rút gọn mệnh đề quan hệ: 'which is lying' → 'lying' (present participle). Đáp án: lying.",
+        "13. We should ___ more trees to protect the environment.": "Sau 'should' luôn dùng bare infinitive: should plant (không có 'to').",
+        "14. Nam is ___ student in my class.": "So sánh nhất: 'the tallest' (có mạo từ 'the', thêm -est).",
+        "15. He ___ to school by bike every day.": "'Every day' → thói quen; 'He' (ngôi 3) → goes.",
+        "16. The children enjoyed ___ in the park.": "'Enjoy' đi với V-ing: enjoyed playing.",
+        "17. She has lived here ___ ten years.": "'For' + khoảng thời gian (ten years) trong hiện tại hoàn thành.",
+        "18. The film ___ very interesting.": "Câu về bộ phim đã xem, quá khứ đơn; số ít → 'was'.",
+        "19. ___ did you go last summer? — To Da Lat.": "'To Da Lat' chỉ địa điểm → hỏi bằng 'Where'.",
+        "20. My mother often ___ cooking after work.": "Cụm 'do cooking'; 'My mother' (ngôi 3) → 'does'.",
+        "21. She ___ in Hanoi for five years.": "'For five years' + hành động bắt đầu và còn tiếp tục → hiện tại hoàn thành: has lived.",
+        "22. He doesn't like ___ vegetables.": "Sau 'like' cả V-ing lẫn to-V đều đúng; đáp án chuẩn của đề là 'to eat'. Cả 'eating' cũng được chấp nhận ngữ pháp.",
+        "23. There ___ no water in the bottle.": "'Water' không đếm được → động từ số ít 'is'. Câu ở hiện tại.",
+        "24. My brother ___ swimming every weekend.": "'Every weekend' → thói quen; 'My brother' (ngôi 3) → goes.",
+        "25. She is looking forward ___ the concert.": "Cụm cố định 'look forward TO + V-ing'. 'To' là giới từ → theo sau bằng V-ing: to seeing.",
+        # ─ Error VII ─
+        "1. She enjoy(A) listening(B) to(C) music every evening(D).": "Lỗi A: chủ ngữ 'She' (ngôi 3) → 'enjoys', không phải 'enjoy'.",
+        "2. The childrens(A) are(B) playing(C) in the garden(D).": "Lỗi A: 'children' đã là số nhiều bất quy tắc, không thêm -s.",
+        "3. He has(A) lived here(B) since(C) five years(D).": "Lỗi C: 'five years' là khoảng thời gian → dùng 'for', không phải 'since'.",
+        "4. She go(A) to school(B) every(C) day(D) by bus.": "Lỗi A: 'She' (ngôi 3) → 'goes', không phải 'go'.",
+        "5. We are(A) going to(B) visit our grandparent(C) next Sunday(D).": "Lỗi C: 'grandparent' phải là số nhiều 'grandparents'.",
+        # ─ Reading VIII fill (Vietnam) ─
+        "(1) Vietnam has ___ of beautiful rivers.": "Cụm 'lots of' (rất nhiều) là thành ngữ tự nhiên. 'Vietnam has lots of beautiful rivers and lakes'.",
+        "(2) ___ are many mountains in the north.": "Cấu trúc 'There are' giới thiệu sự tồn tại. 'There are many mountains' đúng ngữ pháp.",
+        "(3) The Mekong River flows in the ___.": "Sông Mê Kông chảy ở miền Nam (south) Việt Nam.",
+        "(4) The Red River is the ___ river in the north.": "Sông Hồng là con sông dài nhất (longest) ở miền Bắc.",
+        "(5) Vietnam is ___ famous for its beaches.": "So sánh hơn với tính từ dài: 'more + adj + than' → điền 'more'.",
+        "(6) The Mekong ___ through several countries.": "Sông Mê Kông 'flows through' (chảy qua) nhiều quốc gia; hiện tại đơn.",
+        "(7) The mountains are very ___.": "Các ngọn núi rất cao (high).",
+        "(8) Vietnam's flag is red with ___ yellow star.": "'Star' là danh từ đếm được số ít → cần mạo từ 'a' đứng trước.",
+        "(9) The country ___ many national parks.": "'The country' số ít + hiện tại đơn → 'has'.",
+        "(10) Vietnam ___ beautiful scenery.": "'Scenery' không đếm được; hiện tại đơn, chủ ngữ 'Vietnam' → 'has'.",
+        # ─ Reading IX MC (Nhan & Huong) ─
+        "1. Where do Nhan and Huong study?": "Bài đọc: 'Nhan and Huong are students at Quang Trung school'. Đáp án A.",
+        "2. How do they go to school?": "Bài đọc: 'go to school together every day' — không nêu phương tiện, chỉ nêu đi 'together'. Đáp án D.",
+        "3. What does Nhan like at school?": "Bài đọc: 'Nhan likes Math and Science'. Đáp án B.",
+        "4. What does Huong do in free time?": "Bài đọc: 'in their free time... Huong reads books'. Đáp án C.",
+        "5. What do both Nhan and Huong like?": "Bài đọc: 'They both like listening to music'. Đáp án B.",
+    },
+    8: {
+        # ─ Listening Part 1 MC ─
+        "1. Where is Mary's father?": "Theo bài nghe, bố của Mary đang ở bệnh viện (in hospital). Đáp án C.",
+        "2. How does Peter go to school?": "Theo bài nghe, Peter đi học bằng xe buýt (by bus). Đáp án A.",
+        "3. What time does the film start?": "Theo bài nghe, bộ phim bắt đầu lúc 10 giờ (10 o'clock). Đáp án B.",
+        "4. What does John do at midday?": "Theo bài nghe, vào buổi trưa John ăn trưa (has lunch). Đáp án C.",
+        "5. What was the woman's job before?": "Theo bài nghe, trước đây người phụ nữ là sinh viên (was a student). Đáp án D.",
+        # ─ Listening Part 2 fill ─
+        "(1) Age: ___": "Theo bài nghe, bé 8 tuổi.",
+        "(2) Teacher's name: ___": "Theo bài nghe, tên giáo viên là Drummond.",
+        "(3) Favourite books: ___": "Theo bài nghe, thể loại sách yêu thích là Animal stories (truyện về động vật).",
+        "(4) Hobbies: ___": "Theo bài nghe, sở thích của bé là Riding horses (cưỡi ngựa).",
+        "(5) How many books: ___": "Theo bài nghe, bé có 5 cuốn sách.",
+        # ─ Listening Part 3 matching ─
+        "Tuesday — Ben ___": "Theo bài nghe, thứ Ba Ben chơi bóng đá (plays football). Đáp án C.",
+        "Wednesday — Ben ___": "Theo bài nghe, thứ Tư Ben đi xem phim (goes to the cinema). Đáp án D.",
+        "Thursday — Ben ___": "Theo bài nghe, thứ Năm Ben làm bài tập về nhà (does homework). Đáp án E.",
+        "Friday — Ben ___": "Theo bài nghe, thứ Sáu Ben đi mua sắm (goes shopping). Đáp án F.",
+        "Saturday — Ben ___": "Theo bài nghe, thứ Bảy Ben thăm ông bà (visits grandparents). Đáp án A.",
+        # ─ Phonetics III ─
+        "1. A. tHOugh  B. THank  C. THrow  D. THin": "'Though' phát âm 'th' là /ð/ (hữu thanh); thank/throw/thin phát âm 'th' là /θ/ (vô thanh). Đáp án A.",
+        "2. A. HOw  B. rOse  C. knOw  D. remOte": "'How' phát âm nguyên âm /aʊ/; rose/know/remote phát âm /oʊ/. Đáp án A.",
+        "3. A. Sofa  B. Summer  C. Sugar  D. Sound": "'Sugar' phát âm 'su-' là /ʃ/ (giống 'sh'); sofa/summer/sound đều phát âm /s/. Đáp án C.",
+        "4. A. travellED  B. startED  C. decidED  D. visitED": "'Travelled' kết thúc bằng âm /l/ (hữu thanh) → '-ed' đọc /d/; started/decided/visited kết thúc bằng /t/ hoặc /d/ → '-ed' đọc /ɪd/. Đáp án A.",
+        "5. A. dEAr  B. wEAr  C. nEArby  D. appEAr": "'Wear' phát âm 'ea' là /ɛː/ (giống 'air'); dear/nearby/appear phát âm 'ea' là /ɪə/. Đáp án B.",
+        # ─ Phonetics IV stress ─
+        "1. A. HAppy  B. LUcky  C. PRETty  D. aLONE": "happy/lucky/pretty nhấn âm tiết 1; 'alone' nhấn âm tiết 2 (a-LONE). Đáp án D.",
+        "2. A. enJOY  B. Open  C. STUdy  D. LISten": "open/study/listen nhấn âm tiết 1; 'enjoy' nhấn âm tiết 2 (en-JOY). Đáp án A.",
+        "3. A. HIStory  B. geOGraphy  C. biOLogy  D. techNOLogy": "geography/biology/technology nhấn âm tiết 2; 'history' nhấn âm tiết 1 (HIS-to-ry). Đáp án A.",
+        "4. A. baNAna  B. toMAto  C. poTAto  D. MANgo": "banana/tomato/potato nhấn âm tiết 2; 'mango' nhấn âm tiết 1 (MAN-go). Đáp án D.",
+        "5. A. FAMily  B. BEAutiful  C. imPORtant  D. CAREfully": "family/beautiful/carefully nhấn âm tiết 1; 'important' nhấn âm tiết 2 (im-POR-tant). Đáp án C.",
+        # ─ Grammar V (25 MC) ─
+        "1. She ___ her homework when I called.": "Hành động đang diễn ra khi bị gián đoạn → quá khứ tiếp diễn: was doing.",
+        "2. He is interested ___ football.": "Cụm cố định 'be interested IN'. Giới từ đi kèm là 'in'.",
+        "3. There ___ a lot of trees in the park.": "'Trees' là danh từ số nhiều đếm được → 'There are'.",
+        "4. She has lived here ___ 2010.": "'Since' + mốc thời gian cụ thể (2010) trong hiện tại hoàn thành.",
+        "5. ___ does he go to school? — By bike.": "'By bike' chỉ phương tiện → hỏi bằng 'How' (bằng cách nào).",
+        "6. He suggested ___ to the beach.": "'Suggest' đi với V-ing: suggested going (không dùng to-infinitive).",
+        "7. She is ___ than her sister.": "So sánh hơn giữa hai người → tính từ so sánh hơn: taller (thêm -er).",
+        "8. They haven't met ___ last summer.": "'Since' + mốc thời gian (last summer) trong hiện tại hoàn thành phủ định.",
+        "9. The book ___ on the shelf is mine.": "Rút gọn mệnh đề quan hệ: 'which is lying' → 'lying' (present participle).",
+        "10. Would you like ___ to the party?": "'Would like' đi với to-infinitive: would like to come.",
+        "11. She ___ English for five years.": "'For five years' chỉ khoảng thời gian đến hiện tại → hiện tại hoàn thành: has learned.",
+        "12. It ___ raining when I left.": "Hành động đang diễn ra trong quá khứ → quá khứ tiếp diễn: was raining.",
+        "13. My father ___ to work by car.": "Thói quen hiện tại, 'My father' (ngôi 3) → goes.",
+        "14. She asked if I ___ her book.": "Câu gián tiếp từ 'Did you read?' → backshift: read (quá khứ đơn). Đáp án D.",
+        "15. The students enjoy ___ in the library.": "'Enjoy' đi với V-ing: enjoy studying.",
+        "16. He is ___ student in the class.": "So sánh nhất → 'the best' (có mạo từ 'the').",
+        "17. ___ do you go to the cinema? — Twice a month.": "'Twice a month' chỉ tần suất → hỏi bằng 'How often'.",
+        "18. She doesn't like ___ vegetables.": "Sau 'like' thường dùng V-ing trong tiếng Anh Anh: like eating. Đáp án B.",
+        "19. There ___ no water in the bottle.": "'Water' không đếm được → động từ số ít 'is'. Đáp án C.",
+        "20. My brother ___ swimming every weekend.": "'Every weekend' → thói quen; 'My brother' (ngôi 3) → goes.",
+        "21. She told me that she ___ happy.": "Câu gián tiếp: mệnh đề chính ở quá khứ ('told') → lùi thì: 'was'.",
+        "22. The weather ___ nice yesterday.": "'Yesterday' → quá khứ đơn; 'The weather' số ít → 'was'.",
+        "23. I enjoy ___ in the morning.": "'Enjoy' đi với V-ing: enjoy running.",
+        "24. ___ is the nearest supermarket?": "Hỏi về địa điểm (vị trí) → dùng 'Where'. Đáp án A.",
+        "25. She is looking forward ___ you.": "Cụm cố định 'look forward TO + V-ing'. 'To' là giới từ → to seeing.",
+        # ─ Error VIII ─
+        "1. There are(A) much(B) music(C) programmes(D) on TV nowadays.": "Lỗi B: 'programmes' là danh từ đếm được số nhiều → dùng 'many', không phải 'much'.",
+        "2. Her father often listens to(A) radio(B) in(C) the morning(D).": "Lỗi B: 'radio' cần mạo từ 'the' — cụm cố định 'listen to the radio'.",
+        "3. She is(A) the most(B) beautiful(C) of(D) the twin sisters.": "Lỗi B: chỉ có hai chị em sinh đôi → phải dùng so sánh hơn 'more beautiful', không dùng so sánh nhất.",
+        "4. This is my book(A) and(B) that is(C) your(D).": "Lỗi D: 'your' là tính từ sở hữu (đi kèm danh từ); cần đại từ sở hữu 'yours' (đứng một mình).",
+        "5. The Discovery Channel makes(A) education(B) funny(C) for(D) children all over the world.": "Lỗi C: 'funny' = buồn cười/kỳ lạ; từ đúng là 'fun' (vui, thú vị) — 'make education fun'.",
+        # ─ Reading IX cloze (USA overweight) ─
+        "(1) ___": "Bài đọc đề cập đến vấn đề sức khỏe (health problem) do béo phì. Đáp án B. health.",
+        "(2) ___": "'Fast food' là danh từ không đếm được → dùng 'much' (too much fast food), không phải 'many'. Đáp án C.",
+        "(3) ___": "Đồ ăn nhanh chứa nhiều chất béo (fat). 'A lot of fat' là thông tin y tế quen thuộc. Đáp án B.",
+        "(4) ___": "Hamburgers và chips là cặp đồ ăn nhanh điển hình. 'Salad' là đồ lành mạnh, không phù hợp ngữ cảnh. Đáp án D.",
+        "(5) ___": "Trường học cố gắng 'make' (cung cấp/tạo ra) bữa ăn lành mạnh hơn. Đáp án D.",
+        "(6) ___": "Bác sĩ khuyên mọi người 'eat' (ăn) nhiều rau và trái cây hơn, không phải 'cook'. Đáp án B.",
+        "(7) ___": "Tập thể dục rất quan trọng (important) cho sức khỏe. Đáp án A.",
+        "(8) ___": "Đi bộ và bơi lội là những cách tốt (good) để giữ dáng, không phải 'expensive'. Đáp án C.",
+        "(9) ___": "Cụm cố định 'join a gym' (tham gia phòng tập thể dục), không phải 'open'. Đáp án B.",
+        "(10) ___": "Chính phủ đang triển khai các chương trình (programmes) giúp người dân ăn tốt hơn. Đáp án D.",
+        # ─ Reading X fill (Hoa) ─
+        "(1) She goes ___ school every day.": "Cụm cố định 'go to school'. Điền 'to'.",
+        "(2) ___ has many friends at school.": "Chủ ngữ thay thế cho 'Hoa' → đại từ 'She'.",
+        "(3) She plays ___ her friends.": "Cụm 'play with someone' = chơi cùng ai. Điền 'with'.",
+        "(4) She lives ___ her parents.": "Cụm 'live with someone' = sống cùng ai. Điền 'with'.",
+        "(5) Her school is ___ the city centre.": "'In the city centre' = ở trung tâm thành phố. Điền 'in'.",
+        "(6) She goes to school ___ her mother.": "'Go with someone' = đi cùng ai. Điền 'with'.",
+        "(7) she helps ___ cook dinner.": "Cấu trúc 'help to do something' = giúp làm gì. 'She helps to cook dinner'. Điền 'to'.",
+        "(8) she likes to ___ stories.": "'Read stories' = đọc truyện. Điền 'read'.",
+        "(9) She has many ___.": "Hoa thích đọc truyện → cô bé có nhiều sách (books). Điền 'books'.",
+        "(10) She turns off ___ light before sleeping.": "'The light' = cái đèn (đã xác định). Điền mạo từ xác định 'the'.",
+        # ─ Reading XI MC (Bobbi Brown Gigha) ─
+        "1. How many jobs does Bobbi Brown have?": "Bài đọc: 'he has thirteen jobs'. Đáp án B. 13.",
+        "2. Where is the island of Gigha?": "Bài đọc: 'island of Gigha in the west of Scotland'. Đáp án C.",
+        "3. How many people normally live on Gigha?": "Bài đọc: 'Only one hundred and twenty people live on Gigha'. Đáp án A. 120.",
+        "4. What time does Bobbi get up every day?": "Bài đọc: 'Every day Bobbi gets up at 6.00'. Đáp án D.",
+        "5. What does Bobbi do at 8.00?": "Bài đọc: 'At 8.00 he drives the island's children to school by bus'. Đáp án C.",
+    },
+}
+
+
+def _hsg_apply_explanations():
+    for de_num, exp_dict in _HSG_ANH_EXP.items():
+        for q in _HSG_ANH_6_EXAMS.get(de_num, []):
+            exp = exp_dict.get(q.get("q", ""))
+            if exp:
+                q["explanation"] = exp
+
+
+_hsg_apply_explanations()
 
 HSG_ANH_EXAM_DURATIONS = {i: 120 for i in range(1, 37)}
 HSG_ANH_EXAM_NQ = {k: len(v) for k, v in _HSG_ANH_6_EXAMS.items()}
