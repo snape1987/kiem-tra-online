@@ -602,5 +602,32 @@ def docs_list():
     return render_template("docs_list.html", docs=[dict(r) for r in rows])
 
 
+@app.route("/admin/crawl-report")
+def crawl_report():
+    conn = get_db()
+    try:
+        rows = conn.execute("""
+            SELECT date(created_at) as day,
+                   grade, subject, folder_type,
+                   COUNT(*) as total_urls,
+                   COALESCE(SUM(questions_extracted), 0) as total_q,
+                   SUM(CASE WHEN status='success'  THEN 1 ELSE 0 END) as ok,
+                   SUM(CASE WHEN status='failed'   THEN 1 ELSE 0 END) as fail
+            FROM crawl_log
+            WHERE created_at >= date('now', '-14 days')
+            GROUP BY day, grade, subject, folder_type
+            ORDER BY day DESC, grade, subject
+        """).fetchall()
+    except Exception:
+        rows = []
+    conn.close()
+    # Nhóm theo ngày
+    by_day = {}
+    for r in rows:
+        d = r["day"]
+        by_day.setdefault(d, []).append(dict(r))
+    return render_template("crawl_report.html", by_day=by_day)
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=False)
