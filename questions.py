@@ -17748,8 +17748,8 @@ for _q_oly1 in _VIO_FILTERED + list(BAO_MEO_POOL) + _HSG_TOAN_1_HARD_POOL:
         _OLYMPIC_TOAN_1_POOL.append(_q_oly1)
 del _seen_oly1, _q_oly1
 
-VIOLYMPIC_TOAN_1_NQ        = {i: 30 for i in range(1, 20)}
-VIOLYMPIC_TOAN_1_DURATIONS = {i: 45 for i in range(1, 20)}
+VIOLYMPIC_TOAN_1_NQ        = {i: 30 for i in range(1, 30)}
+VIOLYMPIC_TOAN_1_DURATIONS = {i: 45 for i in range(1, 30)}
 
 _FOLDER_POOLS = {
     # Lớp 2
