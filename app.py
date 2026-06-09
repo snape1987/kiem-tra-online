@@ -81,6 +81,13 @@ def init_db():
             created_at TEXT NOT NULL
         )
     """)
+    # Migration: bổ sung cột exam_no + results_json cho bảng attempts cũ
+    for coldef in ("exam_no INTEGER DEFAULT 1", "results_json TEXT"):
+        try:
+            conn.execute(f"ALTER TABLE attempts ADD COLUMN {coldef}")
+            conn.commit()
+        except Exception:
+            conn.rollback()  # cột đã tồn tại → bỏ qua
     conn.commit()
     conn.close()
 
@@ -460,10 +467,11 @@ def submit():
 
     conn = get_db()
     conn.execute(
-        _ph("INSERT INTO attempts (student, student_key, mode, duration, score, total, time_used, created_at)"
-            " VALUES (?, ?, ?, ?, ?, ?, ?, ?)"),
+        _ph("INSERT INTO attempts (student, student_key, mode, duration, score, total, time_used, created_at, exam_no, results_json)"
+            " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"),
         (student, student_key, folder, duration, score_10, total, time_used,
-         datetime.now().isoformat(timespec="seconds")),
+         datetime.now().isoformat(timespec="seconds"), exam_no,
+         json.dumps(results, ensure_ascii=False)),
     )
     conn.execute(
         _ph("INSERT INTO exam_progress (student_key, folder, exam_no, score, completed_at)"
@@ -499,6 +507,28 @@ def history():
         day = r["created_at"][:10]
         by_day.setdefault(day, []).append(dict(r))
     return render_template("history.html", attempts=rows, by_day=by_day)
+
+
+@app.route("/history/<int:attempt_id>")
+def history_detail(attempt_id):
+    conn = get_db()
+    row = conn.execute(
+        _ph("SELECT * FROM attempts WHERE id = ?"), (attempt_id,)
+    ).fetchone()
+    conn.close()
+    if not row:
+        return redirect(url_for("history"))
+    a = dict(row)
+    results = []
+    raw_json = a.get("results_json")
+    if raw_json:
+        try:
+            results = json.loads(raw_json)
+        except (ValueError, TypeError):
+            results = []
+    n_correct = sum(1 for r in results if r.get("ok"))
+    return render_template("history_detail.html", a=a, results=results,
+                           n_correct=n_correct)
 
 
 @app.template_filter("modename")

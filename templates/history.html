@@ -18,23 +18,30 @@
       <th>Giờ</th>
       <th>Học sinh</th>
       <th>Bài</th>
+      <th>Số đề</th>
       <th>Điểm</th>
       <th>Số câu</th>
       <th>Thời lượng</th>
       <th>Thời gian làm</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     {% for a in items %}
     {% set sc = a.score %}
-    <tr class="{% if sc >= 8 %}score-high{% elif sc >= 5 %}score-mid{% else %}score-low{% endif %}">
+    <tr class="clickable {% if sc >= 8 %}score-high{% elif sc >= 5 %}score-mid{% else %}score-low{% endif %}"
+        onclick="location.href='{{ url_for('history_detail', attempt_id=a.id) }}'"
+        style="cursor:pointer">
       <td>{{ a.created_at[11:16] }}</td>
       <td>{{ a.student }}</td>
       <td>{{ a.mode | modename }}</td>
+      <td>Đề {{ a.exam_no or 1 }}</td>
       <td><b>{{ sc }}</b>/10</td>
       <td>{{ a.total }} câu</td>
       <td>{{ a.duration }} phút</td>
       <td>{{ a.time_used // 60 }}p {{ '%02d'|format(a.time_used % 60) }}s</td>
+      <td><a href="{{ url_for('history_detail', attempt_id=a.id) }}"
+             class="detail-link" onclick="event.stopPropagation()">Xem ➜</a></td>
     </tr>
     {% endfor %}
   </tbody>

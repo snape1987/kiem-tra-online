@@ -508,6 +508,10 @@ table.history th { background: var(--primary-soft); }
 .score-mid  { background: #fffef0; }
 .score-low  { background: #fff0f0; }
 .mini-icons { font-size: .8em; }
+table.history tr.clickable { transition: background .15s; }
+table.history tr.clickable:hover { background: var(--primary-soft); filter: brightness(.97); }
+.detail-link { color: var(--primary); font-weight: 600; text-decoration: none; white-space: nowrap; }
+.detail-link:hover { text-decoration: underline; }
 
 /* ===== STUDENT CARDS — Màn hình 1 ===== */
 .student-screen {

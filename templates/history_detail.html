@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Chi tiết bài làm — {{ a.score }}/10{% endblock %}
+{% block content %}
+
+<div class="result-hero" style="padding:1.2rem 1rem">
+  <h1>📄 {{ a.mode | modename }} — Đề {{ a.exam_no or 1 }}</h1>
+  <div class="big-score">{{ a.score }}<span>/10</span></div>
+  <div class="raw">
+    {{ a.student }} ·
+    {% if results %}{{ n_correct }}/{{ a.total }} câu đúng · {% endif %}
+    {{ a.time_used // 60 }} phút {{ '%02d'|format(a.time_used % 60) }} giây ·
+    {{ a.created_at[:10] }} lúc {{ a.created_at[11:16] }}
+  </div>
+</div>
+
+{% if results %}
+<h2>Chi tiết từng câu</h2>
+<ol class="results">
+{% for r in results %}
+<li class="{{ 'ok' if r.ok else 'wrong' }}">
+  <div class="qtext">{{ r.q }}</div>
+  {% if r.image %}
+  <div class="q-figure">
+    <img src="{{ url_for('static', filename=r.image) }}" alt="Hình vẽ bài toán"
+         style="max-width:100%;border-radius:8px;border:1px solid #e0e0e0;margin:0.4rem 0;">
+  </div>
+  {% endif %}
+  <div>{{ a.student }} trả lời: <b>{{ r.your }}</b>
+    {% if r.ok %}✅{% else %}❌ Đáp án đúng: <b>{{ r.correct }}</b>{% endif %}</div>
+  {% if r.topic %}<div class="topic">{{ r.topic }}</div>{% endif %}
+  {% if not r.ok and r.explanation %}
+  <button class="btn-explain" onclick="toggleExplain(this)" aria-expanded="false">
+    💡 Xem giải thích
+  </button>
+  <div class="explain-box hidden">{{ r.explanation }}</div>
+  {% endif %}
+</li>
+{% endfor %}
+</ol>
+{% else %}
+<div class="card">
+  <p>⚠️ Lượt làm bài này được lưu trước khi có tính năng xem chi tiết, nên không có dữ liệu từng câu.</p>
+  <p>Các bài làm <b>từ giờ trở đi</b> sẽ xem được chi tiết câu sai.</p>
+</div>
+{% endif %}
+
+<div class="actions">
+  <a href="{{ url_for('history') }}" class="btn-secondary">⬅ Quay lại lịch sử</a>
+  <a href="{{ url_for('index') }}" class="btn-big">Làm bài khác 🚀</a>
+</div>
+
+<script>
+function toggleExplain(btn) {
+  const box = btn.nextElementSibling;
+  const open = !box.classList.contains('hidden');
+  box.classList.toggle('hidden', open);
+  btn.setAttribute('aria-expanded', String(!open));
+  btn.textContent = open ? '💡 Xem giải thích' : '💡 Ẩn giải thích';
+}
+</script>
+{% endblock %}
