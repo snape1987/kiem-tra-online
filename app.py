@@ -4,7 +4,7 @@ import os
 import random
 import time
 import json
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from urllib.parse import urlparse
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 
@@ -16,6 +16,12 @@ import questions
 
 app = Flask(__name__)
 app.secret_key = "kiemtra-sukhoikem-2026"
+
+# Giờ Hà Nội (UTC+7, không có DST) — production DO chạy UTC nên phải ép múi giờ
+_HANOI_TZ = timezone(timedelta(hours=7))
+def _now_hanoi() -> str:
+    """Trả về ISO timestamp theo giờ Hà Nội, vd '2026-06-09T19:22:18+07:00'."""
+    return datetime.now(_HANOI_TZ).isoformat(timespec="seconds")
 
 # Prod (DigitalOcean): Postgres qua DATABASE_URL -> dữ liệu sống qua mỗi lần
 # deploy. Local: SQLite file. Đĩa của App Platform là ephemeral nên SQLite
@@ -131,7 +137,7 @@ def _validate_crawl_url(url: str) -> str:
 
 
 def _save_document(conn, title: str, source: str, markdown: str) -> int:
-    now = datetime.now().isoformat(timespec="seconds")
+    now = _now_hanoi()
     if USE_PG:
         cur = conn.execute(
             "INSERT INTO documents (title, source, markdown, created_at)"
@@ -470,14 +476,14 @@ def submit():
         _ph("INSERT INTO attempts (student, student_key, mode, duration, score, total, time_used, created_at, exam_no, results_json)"
             " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"),
         (student, student_key, folder, duration, score_10, total, time_used,
-         datetime.now().isoformat(timespec="seconds"), exam_no,
+         _now_hanoi(), exam_no,
          json.dumps(results, ensure_ascii=False)),
     )
     conn.execute(
         _ph("INSERT INTO exam_progress (student_key, folder, exam_no, score, completed_at)"
             " VALUES (?, ?, ?, ?, ?)"),
         (student_key, folder, exam_no, score_10,
-         datetime.now().isoformat(timespec="seconds")),
+         _now_hanoi()),
     )
     conn.commit()
     conn.close()
