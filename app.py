@@ -156,7 +156,7 @@ HSG_ANH_DRIVE_IDS = {
     20: "1Ytwa8PwJFwXnPjBrAhRPMCewgd-WZle1",
     21: "1w7fr45HQxUqqnLKwCwgsndms9SJ18G5P",
     22: "1ZAd_VM4XxYdwpoabCT-M5KuFASUnKmDO",
-    23: "19_L20qj_Dgn8qbYIVuUItr8kByCTcam9",
+    23: ["19_L20qj_Dgn8qbYIVuUItr8kByCTcam9", "1DhTMOCHNOtckiQqs0NRz3ACZX6B8rqj3", "1msbVLMCAKvHnGqPUvs70uaZlY9RehLIf"],
     24: "1DA2VxjTPRCGzI2IVfnbXUvxS0SQ8EOl4",
     25: "1GEB1BlAHOjjKCR07vRfTefl9R-pBT3-C",
     26: "1-PhH-nfSw1WtNimqN4V8t5_nUnTbYH5d",
@@ -164,7 +164,7 @@ HSG_ANH_DRIVE_IDS = {
     28: "1FXoZRRlBHcwam3IcpL0XMAh7zvFTuD2V",
     29: "1Kf4qGLVnd04k7aQ5fTILL5oX0GX8CL9k",
     30: "1fl7k-s9802g29Cr051hZVjwVfcEX2-11",
-    31: "1-VVGM62Hw4ivPC8ujKNrAsmjvOFBF0xn",
+    31: ["1-VVGM62Hw4ivPC8ujKNrAsmjvOFBF0xn", "1kn1LhSGutqk0VpINmdpo57KF0szazJeJ"],
     32: "1WOzeflcxxyymE2sN1EnteQ_qTC4XjfVS",
     33: "16HZueaSMiLckRImvbDIcMD5TXFBXtZm2",
     34: "1UmW2LNEmsqDXwBmpaXZg7VQ5UN-xYS9z",
@@ -281,12 +281,13 @@ def exam():
     icons = load_icons_multi(theme["icon_dirs"])
     random.shuffle(icons)
     if folder == "de_hsg_anh_6":
-        drive_id = HSG_ANH_DRIVE_IDS.get(exam_no, "")
-        audio_file = f"https://drive.google.com/file/d/{drive_id}/view" if drive_id else ""
+        raw = HSG_ANH_DRIVE_IDS.get(exam_no, "")
+        ids = raw if isinstance(raw, list) else ([raw] if raw else [])
+        audio_files = [f"https://drive.google.com/file/d/{d}/view" for d in ids]
         audio_label = "A. LISTENING — Nhấn nút bên dưới để mở file nghe (mở tab mới)."
         subject = "Tiếng Anh"
     else:
-        audio_file = ""
+        audio_files = []
         audio_label = ""
         subject = "Tiếng Anh" if "tieng_anh" in folder or "anh" in folder else "Toán"
     return render_template(
@@ -298,7 +299,7 @@ def exam():
         folder_name=questions.folder_display(lop, folder),
         theme=theme,
         icons=icons,
-        audio_file=audio_file,
+        audio_files=audio_files,
         audio_label=audio_label,
         subject=subject,
         body_class=theme["css"],

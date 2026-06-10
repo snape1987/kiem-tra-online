@@ -36,11 +36,15 @@
 </div>
 
 {# === AUDIO LINK (nếu có file nghe) === #}
-{% if audio_file %}
+{% if audio_files %}
 <div class="audio-player card">
   <div class="audio-label">🎧 {{ audio_label if audio_label else 'File nghe' }}</div>
   <div class="audio-controls">
-    <a class="btn-audio" href="{{ audio_file }}" target="_blank" rel="noopener noreferrer">🔊 Mở file nghe (tab mới)</a>
+    {% for url in audio_files %}
+    <a class="btn-audio" href="{{ url }}" target="_blank" rel="noopener noreferrer">
+      🔊 {% if audio_files|length > 1 %}File nghe {{ loop.index }} {% else %}Mở file nghe {% endif %}(tab mới)
+    </a>
+    {% endfor %}
   </div>
 </div>
 {% endif %}
