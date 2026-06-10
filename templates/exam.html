@@ -40,13 +40,29 @@
 <div class="audio-player card">
   <div class="audio-label">🎧 {{ audio_label if audio_label else 'File nghe' }}</div>
   <div class="audio-controls">
-    {% for url in audio_files %}
-    <a class="btn-audio" href="{{ url }}" target="_blank" rel="noopener noreferrer">
-      🔊 {% if audio_files|length > 1 %}File nghe {{ loop.index }} {% else %}Mở file nghe {% endif %}(tab mới)
-    </a>
-    {% endfor %}
+    {% if audio_files|length > 1 %}
+    <button type="button" class="btn-audio"
+            onclick='openAllAudio({{ audio_files|tojson }})'>
+      🔊 Mở {{ audio_files|length }} file nghe (bung tất cả tab)
+    </button>
+    <div class="audio-fallback">
+      Nếu trình duyệt chặn popup, mở thủ công:
+      {% for url in audio_files %}
+      <a href="{{ url }}" target="_blank" rel="noopener noreferrer">File {{ loop.index }}</a>{% if not loop.last %} · {% endif %}
+      {% endfor %}
+    </div>
+    {% else %}
+    <a class="btn-audio" href="{{ audio_files[0] }}" target="_blank" rel="noopener noreferrer">🔊 Mở file nghe (tab mới)</a>
+    {% endif %}
   </div>
 </div>
+{% if audio_files|length > 1 %}
+<script>
+function openAllAudio(urls){
+  urls.forEach(function(u){ window.open(u, '_blank', 'noopener,noreferrer'); });
+}
+</script>
+{% endif %}
 {% endif %}
 
 {# === FORM CÂU HỎI === #}
