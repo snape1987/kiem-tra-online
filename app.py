@@ -665,26 +665,5 @@ def crawl_report():
     return render_template("crawl_report.html", by_day=by_day)
 
 
-# ── TẠM THỜI: xóa lịch sử điểm thấp (gỡ sau khi dùng) ──────────────────────
-_CLEAR_TOKEN = "s6pdGG_H_fj6dq2iSkxf7w"
-
-@app.route("/admin/clear-low-scores")
-def clear_low_scores():
-    token = request.args.get("token", "")
-    conn = get_db()
-    n = conn.execute(
-        _ph("SELECT COUNT(*) AS c FROM attempts WHERE score < 7")
-    ).fetchone()
-    count = n["c"]
-    if token != _CLEAR_TOKEN:
-        conn.close()
-        return (f"DRY-RUN: sẽ xóa {count} dòng có score < 7. "
-                f"Thêm ?token=... để thực thi."), 200
-    conn.execute(_ph("DELETE FROM attempts WHERE score < 7"))
-    conn.commit()
-    conn.close()
-    return f"ĐÃ XÓA {count} dòng attempts có điểm < 7 (mọi học sinh, mọi môn).", 200
-
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=False)
