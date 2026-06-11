@@ -284,10 +284,12 @@ def exam():
         raw = HSG_ANH_DRIVE_IDS.get(exam_no, "")
         ids = raw if isinstance(raw, list) else ([raw] if raw else [])
         audio_files = [f"https://drive.google.com/file/d/{d}/view" for d in ids]
+        audio_dl_files = [f"https://drive.usercontent.google.com/download?id={d}&export=download&authuser=0&confirm=t" for d in ids]
         audio_label = "A. LISTENING — Nhấn nút bên dưới để mở file nghe (mở tab mới)."
         subject = "Tiếng Anh"
     else:
         audio_files = []
+        audio_dl_files = []
         audio_label = ""
         subject = "Tiếng Anh" if "tieng_anh" in folder or "anh" in folder else "Toán"
     return render_template(
@@ -300,6 +302,7 @@ def exam():
         theme=theme,
         icons=icons,
         audio_files=audio_files,
+        audio_dl_files=audio_dl_files,
         audio_label=audio_label,
         subject=subject,
         body_class=theme["css"],

@@ -43,16 +43,20 @@
     {% if audio_files|length > 1 %}
     <button type="button" class="btn-audio"
             onclick='openAllAudio({{ audio_files|tojson }})'>
-      🔊 Mở {{ audio_files|length }} file nghe (bung tất cả tab)
+      🔊 Mở {{ audio_files|length }} file nghe Drive (bung tất cả tab)
     </button>
     <div class="audio-fallback">
-      Nếu trình duyệt chặn popup, mở thủ công:
-      {% for url in audio_files %}
-      <a href="{{ url }}" target="_blank" rel="noopener noreferrer">File {{ loop.index }}</a>{% if not loop.last %} · {% endif %}
+      Mobile bị cụt thời lượng? Tải MP3 về máy nghe trên player gốc:
+      {% for url in audio_dl_files %}
+      <a href="{{ url }}" target="_blank" rel="noopener noreferrer">📥 Tải file {{ loop.index }}</a>{% if not loop.last %} · {% endif %}
       {% endfor %}
     </div>
     {% else %}
-    <a class="btn-audio" href="{{ audio_files[0] }}" target="_blank" rel="noopener noreferrer">🔊 Mở file nghe (tab mới)</a>
+    <a class="btn-audio" href="{{ audio_files[0] }}" target="_blank" rel="noopener noreferrer">🔊 Mở file nghe Drive (tab mới)</a>
+    <div class="audio-fallback">
+      Mobile bị cụt thời lượng?
+      <a href="{{ audio_dl_files[0] }}" target="_blank" rel="noopener noreferrer">📥 Tải MP3 về máy</a>
+    </div>
     {% endif %}
   </div>
 </div>
