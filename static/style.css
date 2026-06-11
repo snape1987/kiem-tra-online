@@ -450,6 +450,7 @@ input[type=text]:focus, select:focus { border-color: var(--primary); outline: no
   padding: 8px 12px;
   font-size: .88em; color: #6b4500;
   line-height: 1.55;
+  white-space: pre-wrap;
 }
 .explain-box.hidden { display: none; }
 
