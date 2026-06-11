@@ -4201,7 +4201,7 @@ MINH_KHANH_TOAN_HSG = [
     },
     {
         "type": "fill",
-        "q": "Gieo thêm x lần, có 8 lần mặt chẵn. Biết xác suất thực nghiệm mặt chẵn (sau tất cả 100+x lần) là 50%. Tìm x.",
+        "q": "Gieo xúc xắc 100 lần được 52 lần ra mặt chẵn. Gieo thêm x lần nữa, có thêm 8 lần ra mặt chẵn. Biết xác suất thực nghiệm ra mặt chẵn sau tất cả 100+x lần gieo là 50%. Tìm x.",
         "answer": "20",
         "topic": "Xác suất",
         "explanation": "Mặt chẵn ban đầu: 18+14+20=52. Sau thêm x lần: tổng mặt chẵn = 52+8=60. Xác suất = 60/(100+x) = 1/2 → 120 = 100+x → x = 20.",
