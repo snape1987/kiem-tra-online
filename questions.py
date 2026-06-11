@@ -4255,7 +4255,25 @@ MINH_KHANH_TOAN_HSG = [
         "q": "Có 30 điểm phân biệt, trong đó đúng n điểm thẳng hàng (không còn 3 điểm nào khác thẳng hàng). Biết có 426 đường thẳng phân biệt. Tìm n.",
         "answer": "5",
         "topic": "Tổ hợp",
-        "explanation": "C(30,2)=435. n điểm thẳng hàng tạo C(n,2) đường thẳng nhưng chỉ tính 1. Giảm: C(n,2)−1. 435−(C(n,2)−1)=426 → C(n,2)=10 → n(n−1)/2=10 → n(n−1)=20=5×4 → n=5.",
+        "explanation": (
+            "Bước 1 — Nếu KHÔNG có 3 điểm nào thẳng hàng:\n"
+            "  Cứ 2 điểm bất kỳ tạo đúng 1 đường thẳng.\n"
+            "  Số đường thẳng tối đa = 30 × 29 / 2 = 435.\n"
+            "\n"
+            "Bước 2 — Có n điểm thẳng hàng thì giảm bao nhiêu?\n"
+            "  Nếu n điểm này KHÔNG thẳng hàng, chúng tạo n(n−1)/2 đường thẳng.\n"
+            "  Nhưng vì cùng nằm trên 1 đường thẳng, n điểm chỉ đếm 1 đường.\n"
+            "  → Số đường thẳng GIẢM đi: n(n−1)/2 − 1.\n"
+            "\n"
+            "Bước 3 — Lập phương trình:\n"
+            "  435 − [n(n−1)/2 − 1] = 426\n"
+            "  436 − n(n−1)/2 = 426\n"
+            "  n(n−1)/2 = 10\n"
+            "  n(n−1) = 20\n"
+            "\n"
+            "Bước 4 — Tìm n: hai số tự nhiên liên tiếp có tích = 20 là 4 × 5.\n"
+            "  → n = 5."
+        ),
         "image": "",
     },
     {
