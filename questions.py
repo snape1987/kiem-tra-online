@@ -16603,30 +16603,6 @@ def _hsg_dedup_listening_across_exams():
 _hsg_dedup_listening_across_exams()
 
 
-HSG_ANH_CAP = 60  # Trần số câu mỗi đề HSG Anh 6 (sau dedup Listening + cap)
-
-
-def _hsg_cap_pool_length():
-    """Giới hạn mỗi đề ≤ HSG_ANH_CAP câu. Chỉ cắt từ CUỐI section Grammar/
-    Vocabulary (giữ nguyên Listening/Phonetics/Reading vì mỗi câu là 1 skill
-    riêng). Trim đầu tiên rơi vào Vocabulary + Grammar đuôi (vd 'Error
-    correction', second Grammar block). Section_start ở câu ĐẦU mỗi subsection
-    được giữ nguyên vì luôn drop từ index cao xuống.
-    """
-    for de_no in range(1, 37):
-        pool = _HSG_ANH_6_EXAMS.get(de_no, [])
-        if len(pool) <= HSG_ANH_CAP:
-            continue
-        excess = len(pool) - HSG_ANH_CAP
-        trimmable = [i for i, q in enumerate(pool)
-                     if q.get("topic") in ("Grammar", "Vocabulary")]
-        drop = set(trimmable[-excess:]) if excess <= len(trimmable) else set(trimmable)
-        _HSG_ANH_6_EXAMS[de_no] = [q for i, q in enumerate(pool) if i not in drop]
-
-
-_hsg_cap_pool_length()
-
-
 HSG_ANH_EXAM_DURATIONS = {i: 120 for i in range(1, 37)}
 HSG_ANH_EXAM_NQ = {k: len(v) for k, v in _HSG_ANH_6_EXAMS.items()}
 
