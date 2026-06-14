@@ -16556,6 +16556,53 @@ def _hsg_apply_explanations():
 
 _hsg_apply_explanations()
 
+
+def _hsg_dedup_listening_across_exams():
+    """Cắt câu Listening trùng giữa các đề HSG Anh 6.
+
+    Bộ đề sưu tập trên mạng có nhiều đề copy nguyên phần Listening của nhau
+    (vd Đề 10 ≡ Đề 14, Đề 34 ≡ 35 ≡ 36 …). Mỗi câu Listening chỉ giữ ở đề
+    có số thứ tự THẤP NHẤT đã chứa nó; xoá khỏi các đề khác để tránh học
+    sinh nghe audio thật của đề X nhưng câu hỏi lại là của đề Y. Tổng số
+    câu sau cắt giảm → điểm /10 tự co lại theo (raw/total * 10) ở app.py.
+
+    Section header (`section_start`, `section_instruction`) của câu đầu mỗi
+    sub-section được carry-over sang câu Listening tiếp theo còn lại để
+    không mất nhãn 'A. LISTENING — II. Fill in the table' khi câu đầu bị
+    cắt.
+    """
+    seen_listening = set()
+    for de_no in range(1, 37):
+        pool = _HSG_ANH_6_EXAMS.get(de_no, [])
+        new_pool = []
+        pending_section_start = None
+        pending_section_instr = None
+        for q in pool:
+            if q.get("topic") == "Listening":
+                qkey = (q.get("q") or "").strip()
+                if qkey in seen_listening:
+                    if q.get("section_start"):
+                        pending_section_start = q.get("section_start")
+                        pending_section_instr = q.get("section_instruction")
+                    continue
+                seen_listening.add(qkey)
+            if pending_section_start and q.get("topic") == "Listening" and not q.get("section_start"):
+                q = dict(q)
+                q["section_start"] = pending_section_start
+                if pending_section_instr:
+                    q["section_instruction"] = pending_section_instr
+                pending_section_start = None
+                pending_section_instr = None
+            elif q.get("topic") != "Listening":
+                pending_section_start = None
+                pending_section_instr = None
+            new_pool.append(q)
+        _HSG_ANH_6_EXAMS[de_no] = new_pool
+
+
+_hsg_dedup_listening_across_exams()
+
+
 HSG_ANH_EXAM_DURATIONS = {i: 120 for i in range(1, 37)}
 HSG_ANH_EXAM_NQ = {k: len(v) for k, v in _HSG_ANH_6_EXAMS.items()}
 

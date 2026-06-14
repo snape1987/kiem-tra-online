@@ -386,11 +386,17 @@ def exam():
     icons = load_icons_multi(theme["icon_dirs"])
     random.shuffle(icons)
     if folder == "de_hsg_anh_6":
-        raw = HSG_ANH_DRIVE_IDS.get(exam_no, "")
-        ids = raw if isinstance(raw, list) else ([raw] if raw else [])
-        audio_files = [f"https://drive.google.com/file/d/{d}/view" for d in ids]
-        audio_dl_files = [f"https://drive.usercontent.google.com/download?id={d}&export=download&authuser=0&confirm=t" for d in ids]
-        audio_label = "A. LISTENING — Nhấn nút bên dưới để mở file nghe (mở tab mới)."
+        has_listening = any(q.get("topic") == "Listening" for q in qs)
+        if has_listening:
+            raw = HSG_ANH_DRIVE_IDS.get(exam_no, "")
+            ids = raw if isinstance(raw, list) else ([raw] if raw else [])
+            audio_files = [f"https://drive.google.com/file/d/{d}/view" for d in ids]
+            audio_dl_files = [f"https://drive.usercontent.google.com/download?id={d}&export=download&authuser=0&confirm=t" for d in ids]
+            audio_label = "A. LISTENING — Nhấn nút bên dưới để mở file nghe (mở tab mới)."
+        else:
+            audio_files = []
+            audio_dl_files = []
+            audio_label = ""
         subject = "Tiếng Anh"
     else:
         audio_files = []
