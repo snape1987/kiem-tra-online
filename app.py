@@ -650,29 +650,59 @@ def docs_list():
 
 @app.route("/admin/crawl-report")
 def crawl_report():
+    from datetime import date, timedelta
+    cutoff = (date.today() - timedelta(days=14)).isoformat()
     conn = get_db()
+    crawl_rows = []
+    pool_rows = []
+    crawl_error = None
+    pool_error = None
     try:
-        rows = conn.execute("""
-            SELECT date(created_at) as day,
+        cur = conn.execute(_ph("""
+            SELECT substr(created_at, 1, 10) as day,
                    grade, subject, folder_type,
                    COUNT(*) as total_urls,
                    COALESCE(SUM(questions_extracted), 0) as total_q,
                    SUM(CASE WHEN status='success'  THEN 1 ELSE 0 END) as ok,
                    SUM(CASE WHEN status='failed'   THEN 1 ELSE 0 END) as fail
             FROM crawl_log
-            WHERE created_at >= date('now', '-14 days')
-            GROUP BY day, grade, subject, folder_type
+            WHERE created_at >= ?
+            GROUP BY substr(created_at, 1, 10), grade, subject, folder_type
             ORDER BY day DESC, grade, subject
-        """).fetchall()
-    except Exception:
-        rows = []
+        """), (cutoff,))
+        crawl_rows = cur.fetchall()
+    except Exception as exc:
+        crawl_error = str(exc)
+        if hasattr(conn, "rollback"):
+            try: conn.rollback()
+            except Exception: pass
+    try:
+        cur = conn.execute("""
+            SELECT grade, subject, folder_type, COUNT(*) as n
+            FROM questions_pool
+            GROUP BY grade, subject, folder_type
+            ORDER BY grade, subject, folder_type
+        """)
+        pool_rows = cur.fetchall()
+    except Exception as exc:
+        pool_error = str(exc)
+        if hasattr(conn, "rollback"):
+            try: conn.rollback()
+            except Exception: pass
     conn.close()
-    # Nhóm theo ngày
     by_day = {}
-    for r in rows:
+    for r in crawl_rows:
         d = r["day"]
         by_day.setdefault(d, []).append(dict(r))
-    return render_template("crawl_report.html", by_day=by_day)
+    pool_total = sum(r["n"] for r in pool_rows)
+    return render_template(
+        "crawl_report.html",
+        by_day=by_day,
+        pool_rows=[dict(r) for r in pool_rows],
+        pool_total=pool_total,
+        crawl_error=crawl_error,
+        pool_error=pool_error,
+    )
 
 
 if __name__ == "__main__":

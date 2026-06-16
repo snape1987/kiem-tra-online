@@ -4,8 +4,42 @@
 {% block content %}
 <h2>📊 Báo cáo Crawler — 14 ngày gần nhất</h2>
 
+<section style="background:#f5f9ff;border:1px solid #cfe0f5;padding:.8rem 1rem;border-radius:8px;margin-bottom:1.2rem">
+  <h3 style="margin:0 0 .5rem 0">🗄️ Tổng kho câu hỏi từ crawler</h3>
+  {% if pool_error %}
+    <p style="color:#b00">Bảng <code>questions_pool</code> chưa tồn tại / lỗi truy vấn:
+      <code>{{ pool_error }}</code><br>
+      → Worker chưa từng chạy <code>init_agent_tables()</code> trên DB này.
+    </p>
+  {% elif not pool_rows %}
+    <p style="color:#888">Bảng <code>questions_pool</code> tồn tại nhưng RỖNG. Worker
+      chưa lưu được câu nào — có thể đang chạy nhưng crawl/extract fail toàn bộ.</p>
+  {% else %}
+    <p style="margin:.2rem 0">Tổng: <b>{{ pool_total }}</b> câu trong DB</p>
+    <table style="font-size:.9em;border-collapse:collapse">
+      <thead><tr style="background:#e8efff;text-align:left">
+        <th style="padding:.3rem .6rem">Lớp</th>
+        <th style="padding:.3rem .6rem">Môn</th>
+        <th style="padding:.3rem .6rem">Loại</th>
+        <th style="padding:.3rem .6rem;text-align:right">Số câu</th>
+      </tr></thead>
+      <tbody>
+        {% for r in pool_rows %}
+        <tr><td style="padding:.25rem .6rem">{{ r.grade }}</td>
+            <td style="padding:.25rem .6rem">{{ r.subject }}</td>
+            <td style="padding:.25rem .6rem">{{ r.folder_type }}</td>
+            <td style="padding:.25rem .6rem;text-align:right">{{ r.n }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+</section>
+
+{% if crawl_error %}
+  <p style="color:#b00">Crawl log lỗi: <code>{{ crawl_error }}</code></p>
+{% endif %}
 {% if not by_day %}
-  <p style="color:#888">Chưa có dữ liệu crawl. Crawler chạy lúc 2:00 AM hằng ngày.</p>
+  <p style="color:#888">Chưa có log crawl trong 14 ngày gần nhất. Crawler nên chạy 2:00 AM hằng ngày.</p>
 {% else %}
 
 {% set label_map = {
