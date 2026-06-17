@@ -17870,6 +17870,82 @@ _FOLDER_POOLS = {
 }
 
 
+_OVERRIDE_POOL_NAMES = (
+    # Lớp 1 — toán
+    "BAO_MEO_DE_1", "BAO_MEO_DE_2", "BAO_MEO_POOL", "BAO_MEO_VIOLYMPIC",
+    "_TOAN_1_HK2", "_HK2_TOAN_1_NC",
+    "_HSG_TOAN_1_NEW", "_HSG_TOAN_1_HARD_POOL", "_OLYMPIC_TOAN_1_POOL",
+    # Lớp 2 — toán
+    "_TOAN_2_HK1", "_TOAN_2_HK2", "_HSG_TOAN_2", "_VIOLYMPIC_TOAN_2",
+    # Lớp 6 — toán
+    "MINH_KHANH_TOAN", "MINH_KHANH_TOAN_HSG",
+    # Lớp 7 — toán
+    "NHAT_KHOI_TOAN_LOP7",
+    # Lớp 8 — toán
+    "NHAT_KHOI_TOAN", "_TOAN_8_HK1",
+)
+
+
+def _iter_override_targets():
+    """Yield (pool_label, question_dict) trên TẤT CẢ pool toán + HSG Toán 6."""
+    g = globals()
+    for name in _OVERRIDE_POOL_NAMES:
+        pool = g.get(name)
+        if not isinstance(pool, list):
+            continue
+        for q in pool:
+            if isinstance(q, dict):
+                yield name, q
+    hsg6 = g.get("_HSG_TOAN_6_EXAMS")
+    if isinstance(hsg6, dict):
+        for exam_pool in hsg6.values():
+            for q in exam_pool:
+                if isinstance(q, dict):
+                    yield "_HSG_TOAN_6_EXAMS", q
+
+
+def _apply_answer_overrides():
+    """Đọc answer_overrides.json (q_text → đáp_án_đúng) rồi PATCH field 'answer'.
+    Đồng thời CLEAR field 'explanation' inline cũ — vì explanation cũ đang giải
+    về đáp án SAI từ PDF, để stale là sai bét. Explanation mới sẽ được fill
+    bởi explanations.json (hoặc gen lại bằng tools/gen_explanations.py).
+
+    Dùng cho audit Toán 6 (xem tools/audit_hsg_toan_6.py).
+    """
+    import json
+    import os as _os
+    path = _os.path.join(_os.path.dirname(__file__), "answer_overrides.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            override = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return 0
+    if not override:
+        return 0
+    n_applied = 0
+    seen_q: set[str] = set()
+    for _name, q in _iter_override_targets():
+        qt = q.get("q", "")
+        if qt and qt in override:
+            new_ans = override[qt]
+            if isinstance(new_ans, dict):
+                # Format mở rộng: {"answer": "...", "explanation": "..."}
+                if "answer" in new_ans:
+                    q["answer"] = new_ans["answer"]
+                if "explanation" in new_ans:
+                    q["explanation"] = new_ans["explanation"]
+                elif qt not in seen_q:
+                    q["explanation"] = ""  # clear stale inline exp
+            else:
+                # Format đơn giản: chỉ string đáp án mới
+                q["answer"] = new_ans
+                if qt not in seen_q:
+                    q["explanation"] = ""  # clear stale
+            seen_q.add(qt)
+            n_applied += 1
+    return n_applied
+
+
 def _apply_explanations_override():
     """Đọc explanations.json (q_text → exp_text) rồi gắn vào field 'explanation'
     của TẤT CẢ pool toán đã định nghĩa. Chỉ ghi đè khi pool chưa có exp
@@ -17887,48 +17963,19 @@ def _apply_explanations_override():
     except (FileNotFoundError, json.JSONDecodeError):
         return
     if not override:
-        return
-    pool_names = (
-        # Lớp 1 — toán
-        "BAO_MEO_DE_1", "BAO_MEO_DE_2", "BAO_MEO_POOL", "BAO_MEO_VIOLYMPIC",
-        "_TOAN_1_HK2", "_HK2_TOAN_1_NC",
-        "_HSG_TOAN_1_NEW", "_HSG_TOAN_1_HARD_POOL", "_OLYMPIC_TOAN_1_POOL",
-        # Lớp 2 — toán
-        "_TOAN_2_HK1", "_TOAN_2_HK2", "_HSG_TOAN_2", "_VIOLYMPIC_TOAN_2",
-        # Lớp 6 — toán
-        "MINH_KHANH_TOAN", "MINH_KHANH_TOAN_HSG",
-        # Lớp 7 — toán
-        "NHAT_KHOI_TOAN_LOP7",
-        # Lớp 8 — toán
-        "NHAT_KHOI_TOAN", "_TOAN_8_HK1",
-    )
-    g = globals()
+        return 0
     n_applied = 0
-    for name in pool_names:
-        pool = g.get(name)
-        if not isinstance(pool, list):
-            continue
-        for q in pool:
-            if not isinstance(q, dict):
-                continue
-            qt = q.get("q", "")
-            if qt and qt in override and not (q.get("explanation") or "").strip():
-                q["explanation"] = override[qt]
-                n_applied += 1
-    # Áp cho cả _HSG_TOAN_6_EXAMS (dict {exam_no: [câu...]})
-    hsg6 = g.get("_HSG_TOAN_6_EXAMS")
-    if isinstance(hsg6, dict):
-        for exam_pool in hsg6.values():
-            for q in exam_pool:
-                if not isinstance(q, dict):
-                    continue
-                qt = q.get("q", "")
-                if qt and qt in override and not (q.get("explanation") or "").strip():
-                    q["explanation"] = override[qt]
-                    n_applied += 1
+    for _name, q in _iter_override_targets():
+        qt = q.get("q", "")
+        if qt and qt in override and not (q.get("explanation") or "").strip():
+            q["explanation"] = override[qt]
+            n_applied += 1
     return n_applied
 
 
+# Thứ tự QUAN TRỌNG: answer override trước (clear stale exp),
+# rồi explanations override sau (fill exp mới).
+_apply_answer_overrides()
 _apply_explanations_override()
 
 
