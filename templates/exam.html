@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ student }} — {{ folder_name }}{% endblock %}
+{% block title %}{{ student }} — {{ folder_name }} — Đề {{ exam_no or 1 }}{% endblock %}
 {% block content %}
 <div class="{{ theme.css }}">
 
@@ -31,7 +31,7 @@
 
 {# === HEADER === #}
 <div class="exam-header">
-  <h2>{{ theme.icon }} {{ folder_name }} — {{ student }}</h2>
+  <h2>{{ theme.icon }} {{ folder_name }} — Đề {{ exam_no or 1 }} — {{ student }}</h2>
   <div class="timer" id="timer-top">⏰ {{ duration }}:00</div>
 </div>
 

@@ -410,6 +410,7 @@ def exam():
         student=session.get("student", "Bé"),
         student_key=student_key,
         folder_name=questions.folder_display(lop, folder),
+        exam_no=exam_no,
         theme=theme,
         icons=icons,
         audio_files=audio_files,
@@ -503,7 +504,8 @@ def submit():
     return render_template(
         "result.html",
         student=student, student_key=student_key,
-        folder_name=questions.folder_display(lop, folder), theme=theme,
+        folder_name=questions.folder_display(lop, folder),
+        exam_no=exam_no, theme=theme,
         score=score_10, raw_score=score, total=total,
         time_used=time_used, results=results,
         icons_json=json.dumps(all_icons),

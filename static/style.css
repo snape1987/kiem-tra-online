@@ -401,6 +401,7 @@ input[type=text]:focus, select:focus { border-color: var(--primary); outline: no
 }
 .big-score { font-size: 5.5em; color: var(--primary); font-weight: 900; line-height: 1; }
 .big-score span { font-size: .38em; color: #aaa; }
+.exam-info { color: #555; font-size: 1em; margin: 4px 0 10px; font-weight: 600; }
 .raw { color: #777; margin: 8px 0 14px; font-size: .95em; }
 
 .cheer-msg { margin: 14px 0 8px; }

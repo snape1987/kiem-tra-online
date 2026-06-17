@@ -8,6 +8,7 @@
 
 <div class="result-hero">
   <h1>🎉 Kết quả của {{ student }}!</h1>
+  <div class="exam-info">{{ folder_name }} — Đề {{ exam_no or 1 }}</div>
   <div class="big-score">{{ score }}<span>/10</span></div>
   <div class="raw">{{ raw_score }}/{{ total }} câu đúng — {{ time_used // 60 }} phút {{ '%02d'|format(time_used % 60) }} giây</div>
 
