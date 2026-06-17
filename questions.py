@@ -17870,6 +17870,68 @@ _FOLDER_POOLS = {
 }
 
 
+def _apply_explanations_override():
+    """Đọc explanations.json (q_text → exp_text) rồi gắn vào field 'explanation'
+    của TẤT CẢ pool toán đã định nghĩa. Chỉ ghi đè khi pool chưa có exp
+    sẵn (để giữ các explanation đã viết tay trong code, vd HSG_TOAN_6_DE_8).
+
+    Tăng tốc bằng JSON 1 file thay vì sửa từng dict trong questions.py — phù
+    hợp với generator script tools/gen_explanations.py (xem README).
+    """
+    import json
+    import os as _os
+    path = _os.path.join(_os.path.dirname(__file__), "explanations.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            override = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return
+    if not override:
+        return
+    pool_names = (
+        # Lớp 1 — toán
+        "BAO_MEO_DE_1", "BAO_MEO_DE_2", "BAO_MEO_POOL", "BAO_MEO_VIOLYMPIC",
+        "_TOAN_1_HK2", "_HK2_TOAN_1_NC",
+        "_HSG_TOAN_1_NEW", "_HSG_TOAN_1_HARD_POOL", "_OLYMPIC_TOAN_1_POOL",
+        # Lớp 2 — toán
+        "_TOAN_2_HK1", "_TOAN_2_HK2", "_HSG_TOAN_2", "_VIOLYMPIC_TOAN_2",
+        # Lớp 6 — toán
+        "MINH_KHANH_TOAN", "MINH_KHANH_TOAN_HSG",
+        # Lớp 7 — toán
+        "NHAT_KHOI_TOAN_LOP7",
+        # Lớp 8 — toán
+        "NHAT_KHOI_TOAN", "_TOAN_8_HK1",
+    )
+    g = globals()
+    n_applied = 0
+    for name in pool_names:
+        pool = g.get(name)
+        if not isinstance(pool, list):
+            continue
+        for q in pool:
+            if not isinstance(q, dict):
+                continue
+            qt = q.get("q", "")
+            if qt and qt in override and not (q.get("explanation") or "").strip():
+                q["explanation"] = override[qt]
+                n_applied += 1
+    # Áp cho cả _HSG_TOAN_6_EXAMS (dict {exam_no: [câu...]})
+    hsg6 = g.get("_HSG_TOAN_6_EXAMS")
+    if isinstance(hsg6, dict):
+        for exam_pool in hsg6.values():
+            for q in exam_pool:
+                if not isinstance(q, dict):
+                    continue
+                qt = q.get("q", "")
+                if qt and qt in override and not (q.get("explanation") or "").strip():
+                    q["explanation"] = override[qt]
+                    n_applied += 1
+    return n_applied
+
+
+_apply_explanations_override()
+
+
 def folder_display(lop_key, folder_key):
     for lk, _, folders in CONTENT_TREE:
         if lk == lop_key:
