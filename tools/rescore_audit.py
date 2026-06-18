@@ -13,6 +13,7 @@ Output:
 - audit_hsg_toan_6_clean.json: chỉ chứa câu mismatch THẬT (sau khi normalize lại)
 - In stat: trước/sau bao nhiêu mismatch
 """
+import argparse
 import json
 import os
 import sys
@@ -21,21 +22,29 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from tools.audit_hsg_toan_6 import normalize, extract_claude_answer  # noqa: E402
 
-REPORT_PATH = os.path.join(
-    os.path.dirname(__file__), "..", "audit_hsg_toan_6_report.json"
-)
-CLEAN_PATH = os.path.join(
-    os.path.dirname(__file__), "..", "audit_hsg_toan_6_clean.json"
-)
+DEFAULT_REPORT = "audit_hsg_toan_6_report.json"
 
 
 def main() -> int:
-    if not os.path.exists(REPORT_PATH):
-        print(f"ERROR: chưa có {REPORT_PATH}. Chạy audit trước.")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--report", default=DEFAULT_REPORT,
+                        help="Tên file report cần lọc (vd: audit_nhat_khoi_toan_lop7_report.json)")
+    args = parser.parse_args()
+
+    root = os.path.join(os.path.dirname(__file__), "..")
+    report_path = os.path.join(root, args.report)
+    # Tự suy ra clean path: <name>_report.json → <name>_clean.json
+    clean_name = args.report.replace("_report.json", "_clean.json")
+    if clean_name == args.report:  # fallback nếu không match
+        clean_name = args.report.replace(".json", "_clean.json")
+    clean_path = os.path.join(root, clean_name)
+
+    if not os.path.exists(report_path):
+        print(f"ERROR: chưa có {report_path}. Chạy audit trước.")
         return 1
-    with open(REPORT_PATH, encoding="utf-8") as f:
+    with open(report_path, encoding="utf-8") as f:
         report = json.load(f)
-    print(f"Đọc {len(report)} entry từ report cũ.")
+    print(f"Đọc {len(report)} entry từ {args.report}.")
 
     clean: list[dict] = []
     promoted_to_match = 0
@@ -57,12 +66,12 @@ def main() -> int:
             "topic":            entry.get("topic", ""),
         })
 
-    with open(CLEAN_PATH, "w", encoding="utf-8") as f:
+    with open(clean_path, "w", encoding="utf-8") as f:
         json.dump(clean, f, ensure_ascii=False, indent=2)
 
     print(f"Mismatch CŨ:    {len(report)}")
     print(f"Mismatch SẠCH:  {len(clean)}  (lọc bỏ {promoted_to_match} false positive cosmetic)")
-    print(f"Output: {CLEAN_PATH}")
+    print(f"Output: {clean_path}")
     return 0
 
 
