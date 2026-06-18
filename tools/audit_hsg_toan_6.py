@@ -108,6 +108,14 @@ def normalize(s: str) -> str:
             s = s[: -len(unit)].strip()
     # Số có dấu = → bỏ prefix '<tên biến> = ' (1-4 ký tự chữ)
     s = re.sub(r"^[a-zA-Z]{1,4}\s*=\s*", "", s)
+    # Đề trắc nghiệm: bỏ prefix 'A. ' 'B. ' 'C. ' 'D. '
+    s = re.sub(r"^[a-d]\.\s*", "", s)
+    # Bỏ space trong số: '2 000 000' → '2000000'
+    s = re.sub(r"(?<=\d)\s+(?=\d)", "", s)
+    # Bỏ dấu phẩy ngăn cách nghìn: '2,000,000' → '2000000' (chỉ khi
+    # toàn bộ chuỗi là số + phẩy + chữ số)
+    if re.fullmatch(r"-?\d{1,3}(?:[.,]\d{3})+", s):
+        s = s.replace(",", "").replace(".", "")
     return s.strip()
 
 
