@@ -89,11 +89,20 @@ def collect_questions() -> list[tuple[str, str, str]]:
 
 _NORM_RE = re.compile(r"\s+")
 _BOLD_RE = re.compile(r"\*+|__+")
+# Đơn vị strip chỉ khi đứng SAU một số (tránh trường hợp 'Tuổi' nguyên là đáp án)
+_UNIT_AFTER_NUM = re.compile(
+    r"(\d(?:[.,]\d+)?)\s*"
+    r"(?:cm³|cm²|cm|m³|m²|m|kg|g|phút|giờ|giây|"
+    r"học sinh|bạn|câu|đồng|tuổi|cây|hàng|ngăn|"
+    r"quyển sách|quyển|lít|km|km²|đứa|người)"
+    r"\s*$",
+    re.IGNORECASE,
+)
 
 
 def normalize(s: str) -> str:
     """Chuẩn hóa đáp án để so sánh: lowercase, strip, dấu trừ unicode → -,
-    dấu phẩy thập phân → ., bỏ space thừa, bỏ 'cm'/'m'/đơn vị cuối."""
+    dấu phẩy thập phân → ., bỏ space thừa, bỏ đơn vị (chỉ khi sau số)."""
     if not s:
         return ""
     s = _BOLD_RE.sub("", s)  # bỏ ** __ markdown bold
@@ -101,15 +110,12 @@ def normalize(s: str) -> str:
     s = s.replace("−", "-").replace("–", "-").replace("—", "-")
     s = s.replace(",", ".")  # 0,5 → 0.5
     s = _NORM_RE.sub(" ", s)
-    # Bỏ đơn vị thông dụng cuối câu
-    for unit in (" cm", " m", " kg", " g", " phút", " giờ", " giây",
-                 " (cm)", " học sinh", " bạn", " câu", " đồng", " tuổi"):
-        if s.endswith(unit):
-            s = s[: -len(unit)].strip()
-    # Số có dấu = → bỏ prefix '<tên biến> = ' (1-4 ký tự chữ)
-    s = re.sub(r"^[a-zA-Z]{1,4}\s*=\s*", "", s)
-    # Đề trắc nghiệm: bỏ prefix 'A. ' 'B. ' 'C. ' 'D. '
+    # Strip đơn vị CHỈ KHI đứng sau số (tránh strip 'tuổi' nguyên là đáp án MC)
+    s = _UNIT_AFTER_NUM.sub(r"\1", s).strip()
+    # Đề trắc nghiệm: bỏ prefix 'A. ' 'B. ' 'C. ' 'D. ' TRƯỚC
     s = re.sub(r"^[a-d]\.\s*", "", s)
+    # Số có dấu = → bỏ prefix '<tên biến> = ' (1-4 ký tự chữ) SAU
+    s = re.sub(r"^[a-zA-Z]{1,4}\s*=\s*", "", s)
     # Bỏ space trong số: '2 000 000' → '2000000'
     s = re.sub(r"(?<=\d)\s+(?=\d)", "", s)
     # Bỏ dấu phẩy ngăn cách nghìn: '2,000,000' → '2000000' (chỉ khi
