@@ -88,6 +88,7 @@ def collect_questions() -> list[tuple[str, str, str]]:
 
 
 _NORM_RE = re.compile(r"\s+")
+_BOLD_RE = re.compile(r"\*+|__+")
 
 
 def normalize(s: str) -> str:
@@ -95,31 +96,54 @@ def normalize(s: str) -> str:
     dấu phẩy thập phân → ., bỏ space thừa, bỏ 'cm'/'m'/đơn vị cuối."""
     if not s:
         return ""
+    s = _BOLD_RE.sub("", s)  # bỏ ** __ markdown bold
     s = s.strip().lower()
     s = s.replace("−", "-").replace("–", "-").replace("—", "-")
     s = s.replace(",", ".")  # 0,5 → 0.5
     s = _NORM_RE.sub(" ", s)
     # Bỏ đơn vị thông dụng cuối câu
     for unit in (" cm", " m", " kg", " g", " phút", " giờ", " giây",
-                 " (cm)", " học sinh", " bạn", " câu"):
+                 " (cm)", " học sinh", " bạn", " câu", " đồng", " tuổi"):
         if s.endswith(unit):
             s = s[: -len(unit)].strip()
-    # Số có dấu = → bỏ 'x =' / 'a =' prefix
-    s = re.sub(r"^[a-z]\s*=\s*", "", s)
+    # Số có dấu = → bỏ prefix '<tên biến> = ' (1-4 ký tự chữ)
+    s = re.sub(r"^[a-zA-Z]{1,4}\s*=\s*", "", s)
+    # Đề trắc nghiệm: bỏ prefix 'A. ' 'B. ' 'C. ' 'D. '
+    s = re.sub(r"^[a-d]\.\s*", "", s)
+    # Bỏ space trong số: '2 000 000' → '2000000'
+    s = re.sub(r"(?<=\d)\s+(?=\d)", "", s)
+    # Bỏ dấu phẩy ngăn cách nghìn: '2,000,000' → '2000000' (chỉ khi
+    # toàn bộ chuỗi là số + phẩy + chữ số)
+    if re.fullmatch(r"-?\d{1,3}(?:[.,]\d{3})+", s):
+        s = s.replace(",", "").replace(".", "")
     return s.strip()
 
 
 def extract_claude_answer(text: str) -> str:
-    """Tách dòng cuối 'ĐÁPÁN: ...' khỏi response Claude."""
+    """Tách dòng 'ĐÁPÁN: ...' khỏi response Claude.
+    Robust hơn: strip markdown bold, ưu tiên dòng có marker rõ ràng,
+    fallback chỉ khi response có 1-3 dòng (đơn giản)."""
     if not text:
         return ""
+    text = _BOLD_RE.sub("", text)  # strip ** __ trước khi parse
     lines = [ln.strip() for ln in text.strip().splitlines() if ln.strip()]
+    # Ưu tiên ngược từ cuối lên: tìm dòng có "ĐÁP ÁN" / "ĐÁPÁN" / "Đáp số"
+    patterns = (
+        r"^Đ[ÁA]P\s*[ÁA]N\s*:?\s*(.+)$",
+        r"^Đ[áa]p\s*s[ốo]\s*:?\s*(.+)$",
+        r"^V[ậa]y\s*:?\s*(.+)$",
+        r"^K[ếe]t\s*qu[ảa]\s*:?\s*(.+)$",
+    )
     for ln in reversed(lines):
-        m = re.match(r"^Đ[ÁA]P\s*[ÁA]N\s*:?\s*(.*)$", ln, re.IGNORECASE)
-        if m:
-            return m.group(1).strip()
-    # Fallback: dòng cuối
-    return lines[-1] if lines else ""
+        for pat in patterns:
+            m = re.match(pat, ln, re.IGNORECASE)
+            if m:
+                return m.group(1).strip().rstrip(".")
+    # Fallback: chỉ dùng dòng cuối khi response NGẮN (≤3 dòng) — tránh
+    # lấy nhầm phép tính trung gian khi Claude quên format.
+    if len(lines) <= 3:
+        return lines[-1].rstrip(".")
+    return "(không tìm thấy ĐÁPÁN:)"
 
 
 def main() -> int:
