@@ -36,13 +36,15 @@ from tools.audit_hsg_toan_6 import (  # noqa: E402
 MODEL = os.environ.get("AUDIT_MODEL", "claude-haiku-4-5")
 
 
-def collect_from_pool(pool_name: str) -> list[tuple[str, str, str]]:
-    """Trả list (q_text, pdf_answer, topic) duy nhất từ pool name."""
+def collect_from_pool(pool_name: str) -> list[tuple[str, str, str, list]]:
+    """Trả list (q_text, pdf_answer, topic, options) duy nhất từ pool name.
+
+    options: list các đáp án A/B/C/D (rỗng nếu câu fill)."""
     pool = getattr(Q, pool_name, None)
     if not isinstance(pool, list):
         print(f"WARNING: {pool_name} không phải list (type={type(pool).__name__}), skip.")
         return []
-    out: list[tuple[str, str, str]] = []
+    out: list[tuple[str, str, str, list]] = []
     seen: set[str] = set()
     for q in pool:
         if not isinstance(q, dict):
@@ -54,7 +56,10 @@ def collect_from_pool(pool_name: str) -> list[tuple[str, str, str]]:
         ans = q.get("answer", "")
         if isinstance(ans, list):
             ans = "; ".join(str(a) for a in ans)
-        out.append((qt, str(ans), q.get("topic", "")))
+        opts = q.get("options") or []
+        if not isinstance(opts, list):
+            opts = []
+        out.append((qt, str(ans), q.get("topic", ""), opts))
     return out
 
 
@@ -104,16 +109,16 @@ def main() -> int:
     print(f"Đã có {len(overrides)} câu trong answer_overrides.json — sẽ skip.")
 
     # Collect từ tất cả pool, dedup chéo
-    all_questions: list[tuple[str, str, str]] = []
+    all_questions: list[tuple[str, str, str, list]] = []
     seen: set[str] = set()
     for name in pool_names:
         items = collect_from_pool(name)
         new = 0
-        for qt, ans, topic in items:
+        for qt, ans, topic, opts in items:
             if qt in seen or qt in overrides:
                 continue
             seen.add(qt)
-            all_questions.append((qt, ans, topic))
+            all_questions.append((qt, ans, topic, opts))
             new += 1
         print(f"  {name}: +{new} câu (tổng {len(items)} trong pool)")
 
@@ -127,8 +132,16 @@ def main() -> int:
     report: list[dict] = []
     n_mismatch = 0
 
-    for i, (qt, pdf_ans, topic) in enumerate(all_questions, 1):
-        user_msg = f"Đề bài:\n{qt}\n\nGiải đi:"
+    for i, (qt, pdf_ans, topic, opts) in enumerate(all_questions, 1):
+        if opts:
+            opts_text = "\n".join(f"  {chr(65+j)}. {o}" for j, o in enumerate(opts))
+            user_msg = (
+                f"Đề bài (TRẮC NGHIỆM, chọn 1 phương án ĐÚNG NHẤT):\n{qt}\n\n"
+                f"Các phương án:\n{opts_text}\n\n"
+                "Giải đi. Dòng ĐÁPÁN: phải khớp NGUYÊN VĂN 1 trong các phương án trên."
+            )
+        else:
+            user_msg = f"Đề bài:\n{qt}\n\nGiải đi:"
         try:
             resp = client.messages.create(
                 model=args.model,
