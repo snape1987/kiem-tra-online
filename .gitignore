@@ -1,3 +1,4 @@
 __pycache__/
 *.pyc
 kiemtra.db
+tools/anh6_audit_de_*.json
