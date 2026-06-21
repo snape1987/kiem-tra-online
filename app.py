@@ -328,9 +328,18 @@ def submit():
 
     score = 0
     results = []
+    n_essay = 0
     for i, q in enumerate(qs):
         user_ans = request.form.get(f"q_{i}", "").strip()
         correct = str(q["answer"]).strip()
+        if q.get("type") == "essay":
+            n_essay += 1
+            results.append({"q": q["q"], "your": user_ans or "(không trả lời)",
+                             "correct": "(bài viết tự chấm tay)", "ok": None,
+                             "topic": q.get("topic", "Writing"),
+                             "explanation": q.get("explanation", ""),
+                             "image": q.get("image", "")})
+            continue
         ok = user_ans.lower().replace(" ", "") == correct.lower().replace(" ", "")
         if ok:
             score += 1
@@ -339,7 +348,7 @@ def submit():
                          "explanation": q.get("explanation", ""),
                          "image": q.get("image", "")})
 
-    total = len(qs)
+    total = len(qs) - n_essay
     score_10 = round(score * 10 / total) if total else 0
     exam_no = session.get("exam_no", 1)
 

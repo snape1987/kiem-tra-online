@@ -106,6 +106,15 @@ function openAllAudio(urls){
     </label>
     {% endfor %}
   </div>
+  {% elif q.type == 'essay' %}
+  <div class="essay-hint" style="font-size:0.92em;color:#666;margin:0.4rem 0;">
+    📝 Viết bài luận{% if q.essay_word_min and q.essay_word_max %} khoảng {{ q.essay_word_min }}–{{ q.essay_word_max }} từ{% elif q.essay_word_max %} tối đa {{ q.essay_word_max }} từ{% elif q.essay_word_min %} ít nhất {{ q.essay_word_min }} từ{% endif %} — bài viết không tự động chấm điểm.
+  </div>
+  <textarea class="essay-area" name="q_{{ qi }}" data-idx="{{ qi }}"
+            rows="{{ q.essay_lines or 16 }}"
+            placeholder="Gõ bài viết tại đây..."
+            style="width:100%;font-family:inherit;font-size:1em;padding:0.6rem;border:1px solid #ccc;border-radius:8px;resize:vertical;"
+            oninput="onFillInput({{ qi }}, this)"></textarea>
   {% else %}
   {% if subject != 'Tiếng Anh' and student_key != 'bao_meo' %}
   <div class="scratch-label">📝 Bài giải (không nộp):</div>

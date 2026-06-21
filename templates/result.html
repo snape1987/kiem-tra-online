@@ -33,7 +33,7 @@
 <h2>Chi tiết từng câu</h2>
 <ol class="results">
 {% for r in results %}
-<li class="{{ 'ok' if r.ok else 'wrong' }}">
+<li class="{% if r.ok is none %}essay{% elif r.ok %}ok{% else %}wrong{% endif %}">
   <div class="qtext">{{ r.q }}</div>
   {% if r.image %}
   <div class="q-figure">
@@ -41,10 +41,17 @@
          style="max-width:100%;border-radius:8px;border:1px solid #e0e0e0;margin:0.4rem 0;">
   </div>
   {% endif %}
-  <div>{{ student }} trả lời: <b>{{ r.your }}</b>
-    {% if r.ok %}✅{% else %}❌ Đáp án đúng: <b>{{ r.correct }}</b>{% endif %}</div>
+  <div>{{ student }} trả lời:
+    {% if r.ok is none %}
+    <div style="white-space:pre-wrap;background:#f8f8f8;padding:0.5rem;border-radius:6px;margin:0.3rem 0;">{{ r.your }}</div>
+    📝 <i>{{ r.correct }}</i>
+    {% else %}
+    <b>{{ r.your }}</b>
+    {% if r.ok %}✅{% else %}❌ Đáp án đúng: <b>{{ r.correct }}</b>{% endif %}
+    {% endif %}
+  </div>
   {% if r.topic %}<div class="topic">{{ r.topic }}</div>{% endif %}
-  {% if not r.ok and r.explanation %}
+  {% if r.ok == false and r.explanation %}
   <button class="btn-explain" onclick="toggleExplain(this)" aria-expanded="false">
     💡 Xem giải thích
   </button>
