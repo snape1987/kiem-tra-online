@@ -443,11 +443,20 @@ def submit():
 
     score = 0
     results = []
+    n_essay = 0
     norm = lambda s: s.lower().replace(" ", "")
     for i, q in enumerate(qs):
+        if q.get("type") == "essay":
+            n_essay += 1
+            user_ans = request.form.get(f"q_{i}", "").strip()
+            results.append({"q": q["q"], "your": user_ans or "(không trả lời)",
+                             "correct": "(bài viết tự chấm tay)", "ok": None,
+                             "topic": q.get("topic", "Writing"),
+                             "explanation": q.get("explanation", ""),
+                             "image": q.get("image", "")})
+            continue
         multi_answers = q.get("answers")
         if isinstance(multi_answers, list):
-            # Multi-answer: tính điểm theo số ô đúng / tổng ô
             labels = q.get("answer_labels", [])
             parts_correct = 0
             user_parts = []
@@ -478,7 +487,7 @@ def submit():
                          "explanation": q.get("explanation", ""),
                          "image": q.get("image", "")})
 
-    total = len(qs)
+    total = len(qs) - n_essay
     score_10 = round(score * 10 / total) if total else 0
     exam_no = session.get("exam_no", 1)
 
