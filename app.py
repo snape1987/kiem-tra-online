@@ -188,6 +188,7 @@ FOLDER_EXAM_COUNTS = {
     # Lớp 8
     "toan_8_hk2":         16,   # 6 PDF + 10 docx đề đơn
 }
+FOLDER_EXAM_COUNTS.update({k: len(v) for k, v in questions.FIXED_EXAM_META.items()})
 
 
 def get_theme(student_key):
@@ -230,6 +231,7 @@ def index():
         hsg_exam_dur_json=json.dumps(questions.HSG_EXAM_DURATIONS),
         hsg_anh_exam_nq_json=json.dumps(questions.HSG_ANH_EXAM_NQ),
         hsg_anh_exam_dur_json=json.dumps(questions.HSG_ANH_EXAM_DURATIONS),
+        fixed_exam_meta_json=json.dumps(questions.FIXED_EXAM_META),
     )
 
 
@@ -248,6 +250,10 @@ def start():
     elif folder == "de_hsg_anh_6":
         duration = questions.HSG_ANH_EXAM_DURATIONS.get(exam_no, 120)
         n_q = questions.HSG_ANH_EXAM_NQ.get(exam_no, 0)
+    elif folder in questions.FIXED_EXAM_META:
+        meta = questions.FIXED_EXAM_META[folder].get(exam_no, {})
+        duration = meta.get("dur", 90)
+        n_q = meta.get("nq", 0)
     else:
         duration = int(request.form.get("duration", 45))
         n_q = int(request.form.get("n_questions", DUR_TO_NQ.get(duration, 15)))

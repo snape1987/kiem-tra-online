@@ -1,6 +1,7 @@
 ﻿"""Pool câu hỏi theo môn / chế độ.
 Cấu trúc mở rộng: thêm môn mới = thêm vào STUDENT_SUBJECTS + viết pool/generator riêng.
 """
+import importlib
 import random
 
 # ─── Môn học hiện có theo từng bé ────────────────────────────────────────────
@@ -640,8 +641,8 @@ def folder_capacity(lop_key, folder_key):
     """Max questions achievable for this folder (used to filter duration options in UI)."""
     if lop_key == "lop_1" and folder_key == "de_hk2_toan_1":
         return 9999  # generator-based, unlimited
-    if folder_key in ("de_hsg_toan_6", "de_hsg_anh_6"):
-        return 9999  # UI hides dur-row for HSG; capacity unused
+    if folder_key in ("de_hsg_toan_6", "de_hsg_anh_6") or folder_key in FIXED_EXAM_FOLDERS:
+        return 9999  # UI hides dur-row for HSG/đề cố định; capacity unused
     pool = _FOLDER_POOLS.get((lop_key, folder_key), [])
     if not pool:
         return 0
@@ -1184,6 +1185,31 @@ def gen_olympic(n=10, seed=None, student_key="bao_meo", subject="Toán"):
 
 
 # ─── Cấu trúc nội dung — mirrors Noi Dung Ho/ ────────────────────────────────
+# ─── Đề cố định (mỗi đề = 1 module riêng, cùng tên folder_key) ──────────────
+# Module phải có: DURATION (phút), EXAMS = {so_de: [entries]}, SOURCES.
+# Module chưa tồn tại → folder tự ẩn khỏi CONTENT_TREE.
+_FIXED_EXAM_DEFS = [
+    # (lop_key, folder_key / module, display)
+    ("lop_7", "de_toan_7_giua_hk1", "Đề Toán 7 Giữa HK1"),
+    ("lop_7", "de_toan_7_hk1",      "Đề Toán 7 HK1"),
+    ("lop_7", "de_anh_7_giua_hk1",  "Đề Anh 7 Giữa HK1"),
+    ("lop_7", "de_anh_7_hk1",       "Đề Anh 7 HK1"),
+    ("lop_9", "de_toan_9_giua_hk1", "Đề Toán 9 Giữa HK1"),
+    ("lop_9", "de_toan_9_hk1",      "Đề Toán 9 HK1"),
+    ("lop_9", "de_anh_9_giua_hk1",  "Đề Anh 9 Giữa HK1"),
+    ("lop_9", "de_anh_9_hk1",       "Đề Anh 9 HK1"),
+]
+FIXED_EXAM_FOLDERS = {}   # folder_key -> module
+for _lop, _fk, _disp in _FIXED_EXAM_DEFS:
+    try:
+        FIXED_EXAM_FOLDERS[_fk] = importlib.import_module(_fk)
+    except ModuleNotFoundError:
+        continue
+FIXED_EXAM_META = {
+    fk: {no: {"nq": len(qs), "dur": mod.DURATION} for no, qs in mod.EXAMS.items()}
+    for fk, mod in FIXED_EXAM_FOLDERS.items()
+}
+
 CONTENT_TREE = [
     ("lop_1", "Lớp 1", [
         ("de_hk2_toan_1",    "Đề HK2 Toán 1"),
@@ -1203,7 +1229,12 @@ CONTENT_TREE = [
     ("lop_8", "Lớp 8", [
         ("toan_8_hk2", "Toán 8 HK2"),
     ]),
+    ("lop_9", "Lớp 9", []),
 ]
+for _lop, _fk, _disp in _FIXED_EXAM_DEFS:
+    if _fk in FIXED_EXAM_FOLDERS:
+        dict((lk, folders) for lk, _, folders in CONTENT_TREE)[_lop].append((_fk, _disp))
+CONTENT_TREE = [t for t in CONTENT_TREE if t[2]]
 
 # ─── Nhật Khôi — Lớp 7 (Ôn tập lại) ─────────────────────────────────────────
 NHAT_KHOI_TOAN_LOP7 = [
@@ -14027,6 +14058,15 @@ def gen_exam(lop_key, folder_key, n=15, seed=None, exam_no=1):
     """Sinh n câu cho lop_key + folder_key."""
     if seed is not None:
         random.seed(seed)
+
+    # Đề cố định lớp 7/9: giữ nguyên thứ tự câu trong đề gốc
+    mod = FIXED_EXAM_FOLDERS.get(folder_key)
+    if mod is not None:
+        pool = mod.EXAMS.get(exam_no or 1, [])
+        if not pool:
+            name = folder_display(lop_key, folder_key)
+            return _placeholder(1, "", name, f"{name} — Đề {exam_no or 1}")
+        return list(pool)
 
     # HSG Toán 6: mỗi đề_no = toàn bộ câu của 1 PDF (không random subset)
     if folder_key == "de_hsg_toan_6":
