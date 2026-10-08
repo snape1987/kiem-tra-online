@@ -160,8 +160,7 @@ function buildFolderTabs(folders) {
 }
 
 function updateDurTabs(folderKey) {
-  if (folderKey === 'de_hsg_toan_6' || folderKey === 'de_hsg_anh_6' || folderKey === 'de_hsg_toan_1' || folderKey === 'toan_violympic_1') {
-  if (folderKey === 'de_hsg_toan_6' || folderKey === 'de_hsg_anh_6' || FIXED_EXAM_META[folderKey]) {
+  if (folderKey === 'de_hsg_toan_6' || folderKey === 'de_hsg_anh_6' || folderKey === 'de_hsg_toan_1' || folderKey === 'toan_violympic_1' || FIXED_EXAM_META[folderKey]) {
     durRow.classList.add('hidden');
     return;
   }
