@@ -3655,17 +3655,23 @@ _FIXED_EXAM_DEFS = [
     ("lop_7", "de_toan_7_hk1",      "Đề Toán 7 HK1"),
     ("lop_7", "de_anh_7_giua_hk1",  "Đề Anh 7 Giữa HK1"),
     ("lop_7", "de_anh_7_hk1",       "Đề Anh 7 HK1"),
+    ("lop_8", "de_toan_8_giua_hk1", "Đề Toán 8 Giữa HK1"),
+    ("lop_8", "de_toan_8_hk1",      "Đề Toán 8 HK1"),
     ("lop_9", "de_toan_9_giua_hk1", "Đề Toán 9 Giữa HK1"),
     ("lop_9", "de_toan_9_hk1",      "Đề Toán 9 HK1"),
+    ("lop_8", "de_anh_8_giua_hk1",  "Đề Anh 8 Giữa HK1"),
+    ("lop_8", "de_anh_8_hk1",       "Đề Anh 8 HK1"),
     ("lop_9", "de_anh_9_giua_hk1",  "Đề Anh 9 Giữa HK1"),
     ("lop_9", "de_anh_9_hk1",       "Đề Anh 9 HK1"),
 ]
 FIXED_EXAM_FOLDERS = {}   # folder_key -> module
 for _lop, _fk, _disp in _FIXED_EXAM_DEFS:
     try:
-        FIXED_EXAM_FOLDERS[_fk] = importlib.import_module(_fk)
+        _m = importlib.import_module(_fk)
     except ModuleNotFoundError:
         continue
+    if _m.EXAMS:
+        FIXED_EXAM_FOLDERS[_fk] = _m
 FIXED_EXAM_META = {
     fk: {no: {"nq": len(qs), "dur": getattr(mod, "DURATIONS", {}).get(no, mod.DURATION)}
          for no, qs in mod.EXAMS.items()}
