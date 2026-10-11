@@ -3667,7 +3667,8 @@ for _lop, _fk, _disp in _FIXED_EXAM_DEFS:
     except ModuleNotFoundError:
         continue
 FIXED_EXAM_META = {
-    fk: {no: {"nq": len(qs), "dur": mod.DURATION} for no, qs in mod.EXAMS.items()}
+    fk: {no: {"nq": len(qs), "dur": getattr(mod, "DURATIONS", {}).get(no, mod.DURATION)}
+         for no, qs in mod.EXAMS.items()}
     for fk, mod in FIXED_EXAM_FOLDERS.items()
 }
 
