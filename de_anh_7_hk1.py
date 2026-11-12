@@ -1,22 +1,18 @@
 # -*- coding: utf-8 -*-
-"""Đề Tiếng Anh 7 cuối HK1 (Global Success) — nguồn Google Drive (Loigiaihay.com).
+"""Đề Tiếng Anh 7 cuối HK1 (Global Success).
 
-Ghi chú:
-- Chép nguyên văn từ 5 file PDF đề 1–5; đáp án lấy từ bảng "HƯỚNG DẪN GIẢI" trong file.
-- BỎ QUA toàn bộ phần LISTENING (không có file audio): đề 1 câu 17–24, đề 2 câu 1–10,
-  đề 3 câu 1–8, đề 4 câu 1–5, đề 5 câu 1–5. Số thứ tự câu giữ nguyên như đề gốc.
-- PDF mất phần gạch chân: với câu phát âm, phần gạch chân (theo hướng dẫn giải) được
-  đánh dấu trong ngoặc đơn, vd "wash(ed)"; với câu có từ gạch chân khác, ghi "(underlined: ...)".
-- Đề 1 câu 4–5: đề gốc ghi "underlined part pronounced differently" nhưng hướng dẫn giải chấm
-  theo trọng âm từ — giữ nguyên văn, topic "Stress", giải thích ghi rõ.
-- Câu tự luận (viết lại câu, trả lời câu hỏi đọc hiểu, sắp xếp từ thành câu) dùng type "fill",
-  đáp án là nguyên văn trong bảng đáp án; đề 2 và đề 3 bảng đáp án chỉ cho PHẦN điền thêm nên
-  đáp án là phần đó (câu hỏi có ghi chú "chỉ điền phần còn thiếu").
-- Không có câu nào cần hình ảnh. Thời gian làm bài không ghi trong đề gốc.
-- CẬP NHẬT 12/11/2026: đề 1–5 chép lại đầy đủ từ chính 5 file PDF đó (kèm lời giải chi tiết, câu viết tự do = ô gõ 3 dòng);
-  thêm đề 11–15 từ "Đề số 6–10" cùng bộ Loigiaihay (Global Success). Phần LISTENING vẫn bỏ (chưa có audio).
+- Đề 1–5 và 11–15: nguồn Google Drive (Loigiaihay.com, "Đề thi học kì 1 – đề số 1–10"); đề 1–5 chép lại đầy đủ
+  ngày 12/11/2026 (đề 11–15 = "Đề số 6–10"), kèm lời giải tiếng Việt chi tiết. Đề 6–10: nguồn 2048.vn (giữ nguyên).
+- BỎ QUA toàn bộ phần LISTENING (chưa có file audio), giữ nguyên số thứ tự câu của đề gốc:
+  đề 1 câu 17–24, đề 2 câu 1–10, đề 3 câu 1–8, đề 4 câu 1–5, đề 5 câu 1–5, đề 11 câu 23–32,
+  đề 12 câu 36–40, đề 13 câu 36–40, đề 14 câu 31–40, đề 15 câu 31–40.
+- PDF mất phần gạch chân: câu phát âm / tìm lỗi được đánh dấu phần gạch chân trong ngoặc đơn, vd "wash(ed)".
+- Đề 1 câu 4–5: đề gốc ghi "underlined part" nhưng đáp án chấm theo trọng âm — giữ nguyên văn, topic "Stress".
+- Câu viết tự do (viết lại câu, viết câu từ gợi ý) = essay, ô gõ 3 dòng, đáp án mẫu trong lời giải.
+  Điền từ ngắn (word form, cloze) = fill có alt_answers. T/F/NI và nối câu hỏi–câu trả lời = trắc nghiệm.
+- Hình thật (cắt từ PDF) ở static/anh_7_hk1_figures/: đề 11 câu 15 (poster), câu 16 (biển báo).
+- Thời gian làm bài không ghi trong đề gốc: mặc định 60 phút.
 """
-
 DURATION = 60   # phút (đề gốc không ghi; mặc định 60)
 DURATIONS = {1: 60, 2: 60, 3: 60, 4: 60, 5: 60, 6: 60, 7: 60, 8: 60, 9: 60, 10: 60, 11: 60, 12: 60, 13: 60, 14: 60, 15: 60}   # phút riêng từng đề (nếu khác DURATION)
 
@@ -1274,7 +1270,7 @@ _DE_4 = [
      "q": "10. A. u(s)ually B. compo(s)er C. lei(s)ure D. ver(s)ion",
      "options": ["A. usually", "B. composer", "C. leisure", "D. version"],
      "answer": "B. composer",
-     "explanation": "Phần gạch chân (chữ s): usually /ˈjuːʒuəli/, leisure /ˈleʒə(r)/, version /ˈvɜːrʒn/ (Anh–Mỹ) đọc là /ʒ/; composer /kəmˈpəʊzə(r)/ đọc là /z/. Chọn B. Lưu ý: version còn có cách đọc Anh–Anh /ˈvɜːʃn/; theo đáp án của đề vẫn chọn B.",
+     "explanation": "Phần gạch chân (chữ s): usually /ˈjuːʒuəli/, leisure /ˈleʒə(r)/, version /ˈvɜːʒn/ (giọng Mỹ) đọc là /ʒ/; composer /kəmˈpəʊzə(r)/ đọc là /z/. Chọn B. (Theo giọng Anh, version đọc /ˈvɜːʃn/.)",
     },
     {
      "type": "choice",
@@ -1296,7 +1292,7 @@ _DE_4 = [
      "q": "12. Vietnamese has some kinds of traditional _______ such as “Cheo” or “Cai luong”.",
      "options": ["A. music", "B. opera", "C. play", "D. instrument"],
      "answer": "A. music",
-     "explanation": "Chèo, Cải lương là các loại hình nhạc/nghệ thuật truyền thống; theo đáp án của đề chọn “traditional music” (âm nhạc truyền thống). opera: nhạc kịch; play: vở kịch; instrument: nhạc cụ. Lưu ý: “traditional opera” cũng là cách nói gặp trong thực tế nhưng đáp án đề là A.",
+     "explanation": "Chèo, Cải lương là các loại hình âm nhạc truyền thống nên dùng “traditional music”. opera: nhạc kịch (phương Tây); play: vở kịch; instrument: nhạc cụ.",
     },
     {
      "type": "choice",
@@ -1351,7 +1347,7 @@ _DE_4 = [
      "q": "17. He can teach me to cook some popular dishes. He has ________ free time today.",
      "options": ["A. any", "B. a lot of", "C. many", "D. some"],
      "answer": "B. a lot of",
-     "explanation": "“free time” là danh từ không đếm được nên không dùng many. any thường dùng trong câu phủ định/nghi vấn. Theo nghĩa (anh ấy có thể dạy tôi nấu ăn vì rảnh) chọn “a lot of” (nhiều). Lưu ý: “some free time” cũng đúng ngữ pháp nhưng đáp án đề là B.",
+     "explanation": "“free time” là danh từ không đếm được nên không dùng many. any thường dùng trong câu phủ định/nghi vấn. Theo nghĩa (anh ấy có thể dạy tôi nấu ăn vì rảnh nhiều) chọn “a lot of” (nhiều).",
     },
     {
      "type": "choice",
@@ -1446,6 +1442,7 @@ _DE_4 = [
      "passage_text": None,
      "q": "26. Sports and activities like riding a bike and running use (26) __________of calories.",
      "answer": "a lot",
+     "alt_answers": ["a lot of"],
      "explanation": "Ngay sau chỗ trống là “of calories” nên điền “a lot” để tạo cụm a lot of + N (rất nhiều calo).",
     },
     {
@@ -1495,7 +1492,7 @@ _DE_4 = [
      "essay_lines": 3,
      "essay_word_min": None,
      "essay_word_max": None,
-     "explanation": "Đáp án mẫu: No, they can’t. (Không.) Bài đọc nói chỉ nên chọn một hoặc hai dự án MỘT NĂM (“a year”), không phải một tháng. Lưu ý: đáp án gốc ghi “No, they can’t.”; trả lời “No, I can’t.” hoặc “No, we can’t.” cũng chấp nhận được.",
+     "explanation": "Đáp án mẫu: No, they can’t. (Không.) Bài đọc nói chỉ nên chọn một hoặc hai dự án MỘT NĂM (“a year”), không phải một tháng. Trả lời “No, I can’t.” hoặc “No, we can’t.” cũng được.",
     },
     {
      "type": "essay",
@@ -1627,6 +1624,7 @@ _DE_4 = [
      "passage_text": None,
      "q": "37. (Sửa lỗi) Viết lại từ/cụm từ đúng thay cho chỗ sai trong câu 37: Although this motorbike is more expensive as that one, many people prefer to buy it.",
      "answer": "than",
+     "alt_answers": ["more expensive than", "than that one"],
      "explanation": "Sửa lỗi: as → than (so sánh hơn: more expensive than that one). Câu đúng: Although this motorbike is more expensive than that one, many people prefer to buy it.",
     },
     {
@@ -1637,6 +1635,7 @@ _DE_4 = [
      "passage_text": None,
      "q": "38. (Sửa lỗi) Viết lại từ/cụm từ đúng thay cho chỗ sai trong câu 38: Mai asked me: \"How are you going to school every day?\"",
      "answer": "do you go",
+     "alt_answers": ["How do you go", "how do you go to school"],
      "explanation": "Sửa lỗi: are you going → do you go (hiện tại đơn vì có every day). Câu đúng: Mai asked me: \"How do you go to school every day?\"",
     },
     {
@@ -1647,6 +1646,7 @@ _DE_4 = [
      "passage_text": None,
      "q": "39. (Sửa lỗi) Viết lại từ/cụm từ đúng thay cho chỗ sai trong câu 39: The English summer course will start at June 2nd and finish in August.",
      "answer": "on",
+     "alt_answers": ["on June 2nd"],
      "explanation": "Sửa lỗi: at → on (on + ngày tháng). Câu đúng: The English summer course will start on June 2nd and finish in August.",
     },
     {
@@ -1657,6 +1657,7 @@ _DE_4 = [
      "passage_text": None,
      "q": "40. (Sửa lỗi) Viết lại từ/cụm từ đúng thay cho chỗ sai trong câu 40: There was a lot of people trying to enter the stadium to see the football match.",
      "answer": "were",
+     "alt_answers": ["There were", "were a lot of people"],
      "explanation": "Sửa lỗi: was → were (a lot of people là số nhiều). Câu đúng: There were a lot of people trying to enter the stadium to see the football match.",
     },
 ]
@@ -1822,6 +1823,7 @@ _DE_5 = [
      "passage_text": None,
      "q": "19. Having a pet helps children take on more_______. (RESPONSIBLE)",
      "answer": "responsibility",
+     "alt_answers": ["responsibilities"],
      "explanation": "Sau “more” (và “take on”) cần một danh từ: responsible (adj) → responsibility (n, trách nhiệm). (Nuôi thú cưng giúp trẻ có thêm tinh thần trách nhiệm.)",
     },
     {
@@ -1832,7 +1834,7 @@ _DE_5 = [
      "passage_text": None,
      "q": "20. _______vegetables are very good for your health. (COLOUR)",
      "answer": "Coloured",
-     "alt_answers": ["Colored"],
+     "alt_answers": ["Colored", "Colourful", "Colorful"],
      "explanation": "Trước danh từ “vegetables” cần tính từ: colour (n, v) → coloured (adj, có màu). Đứng đầu câu nên viết hoa: Coloured. (Rau củ có màu rất tốt cho sức khỏe.)",
     },
     {
@@ -3792,7 +3794,7 @@ _DE_11 = [
      "type": "choice",
      "topic": "Reading",
      "section_start": "V. READING",
-     "section_instruction": "Read the following passage. For each question from 33 to 37, write T if the statement is TRUE, F if the statement is FALSE and NI if there is NO INFORMATION on it.",
+     "section_instruction": "Read the following passage. For each question from 33 to 37, choose A if the statement is TRUE, B if it is FALSE and C if there is NO INFORMATION on it.",
      "passage_text": "Vietnamese Bánh Mì is popular and easy to find everywhere in Vietnam. You can buy it from vendors in the street and it’s really cheap. It’s normally a takeaway and wrapped in recycled paper. The bread is a short baguette which is crunchy outside, soft and airy inside. People fill bánh mì with a variety of ingredients, such as coriander, fish sauce, pickled carrots, cucumber slices, chili peppers, pork, ham, pâté and mayonnaise. It is also possible to buy vegetarian bánh mì. Sometimes, you can eat it with fish, eggs or even ice cream. Vietnamese people enjoy bánh mì at any time of the day.\nA Falafel sandwich is one of the best Middle Eastern vegan meals. There are so many wonderful flavors in this sandwich. First, the chef prepares falafel balls. They are made of chickpeas and are deep-fried for a few minutes until they turn golden brown and crispy. Or at home, you can bake them in a hot oven. That way is healthier, but fried balls taste better. Then, the chef stuff falafel balls into a warm pita. He also adds vegetables like cucumber, tomatoes, and onions, and creamy tahini sauce. You can enjoy it as a quick and easy weekday meal or late-night snack.",
      "q": "33. Bánh mì is a typical cheap street food in Vietnam.",
      "answer": "A. True",
@@ -4637,7 +4639,7 @@ _DE_13 = [
      "type": "choice",
      "topic": "Reading",
      "section_start": "IV. Reading",
-     "section_instruction": "Read the following passage. For each of the questions, write T if the statement is TRUE, F if the statement is FALSE and NI if there is NO INFORMATION on it.",
+     "section_instruction": "Read the following passage. For each of the questions, choose A if the statement is TRUE, B if it is FALSE and C if there is NO INFORMATION on it.",
      "passage_text": "Girl Scouts of the USA is the largest organization for girls in the world. Juliette \"Daisy\" Gordon Low organized the first group of Girl Scouts on March 12th, 1912. She wanted to give girls the opportunity to get out of the house and help their community. Girl Scouts of the USA started with 18 members. Today, there are about 2.5 million girl and adult members worldwide. The girls work on a variety of projects. Simple projects may involve sewing, or collecting toys for kids who live in shelters. Other community services for older girls includes volunteering at a soup kitchen, planting trees, doing car washes or cleaning up litter in their community. Girl Scouts is famous for raising money by selling delicious Girl Scout cookies. The girls bake cookies at home with their mums volunteering as an advisor. The organization believes that selling cookies helps Girl Scouts practice life skills like teamwork and money management. When they complete goals, they earn badges for their work which they wear on their sashes.",
      "q": "21. There were 18 girls joining the first Girl Scouts group.",
      "answer": "A. True",
