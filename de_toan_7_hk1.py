@@ -643,7 +643,7 @@ _DE_6 = [
      "image": "toan_7_hk1_figures/de6_cau6.png",
      "options": ["A. Góc EBD", "B. Góc ABE", "C. Góc ABC", "D. Góc EBC"],
      "answer": "B. Góc ABE",
-     "explanation": "Trên hình, hai đường thẳng AD và CE cắt nhau tại B. Góc CBD có hai cạnh là tia BC và tia BD. Tia đối của tia BC là tia BE; tia đối của tia BD là tia BA. Hai góc đối đỉnh có các cạnh là các tia đối nhau, nên góc đối đỉnh với góc CBD là góc EBA (hay góc ABE). Các phương án khác: EBD, ABC là các góc kề bù với góc CBD; EBC là góc kề bù với ABE. Đáp án B.",
+     "explanation": "Trên hình, hai đường thẳng AD và CE cắt nhau tại B. Góc CBD có hai cạnh là tia BC và tia BD. Tia đối của tia BC là tia BE; tia đối của tia BD là tia BA. Hai góc đối đỉnh có các cạnh là các tia đối nhau, nên góc đối đỉnh với góc CBD là góc EBA (hay góc ABE). Các phương án khác: EBD, ABC là các góc kề bù với góc CBD; EBC là góc bẹt (E, B, C thẳng hàng) nên không phải góc đối đỉnh. Đáp án B.",
     },
     {
      "type": "choice",
@@ -3504,7 +3504,7 @@ _DE_16 = [
      "essay_word_min": None,
      "essay_word_max": None,
      "answer": "(Bài làm tự chấm tay)",
-     "explanation": "Đáp án: x = −7,5.\nLời giải: x/3,6 = (−5)/2,4 ⇒ x = (−5 · 3,6)/2,4 = −18/2,4 = −7,5. Vậy x = −7,5.\n(Ghi chú: trong PDF, tử số vế phải bị khung 'Trang 1/2' che; khôi phục là −5 theo lớp text của PDF và hướng dẫn chấm.)",
+     "explanation": "Đáp án: x = −7,5.\nLời giải: x/3,6 = (−5)/2,4 ⇒ x = (−5 · 3,6)/2,4 = −18/2,4 = −7,5. Vậy x = −7,5.",
     },
     {
      "type": "essay",
