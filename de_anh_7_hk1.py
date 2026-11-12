@@ -594,7 +594,7 @@ _DE_2 = [
      "passage_text": None,
      "q": "27. Watch out! You ___________ (put) too much salt into the soup.",
      "answer": "are putting",
-     "alt_answers": ["'re putting", "’re putting"],
+     "alt_answers": ["'re putting", "’re putting", "have put", "'ve put", "’ve put"],
      "explanation": "Dấu hiệu “Watch out!” cho thấy hành động đang xảy ra ngay lúc nói → thì hiện tại tiếp diễn: are putting.",
     },
     {
@@ -615,6 +615,7 @@ _DE_2 = [
      "passage_text": None,
      "q": "29. This weekend, we ___________ (visit) my dream high school. I can’t wait!",
      "answer": "are visiting",
+     "alt_answers": ["'re visiting", "’re visiting", "are going to visit", "'re going to visit", "’re going to visit"],
      "explanation": "Hiện tại tiếp diễn diễn tả kế hoạch đã sắp xếp trong tương lai (This weekend): are visiting.",
     },
     {
@@ -1281,7 +1282,7 @@ _DE_4 = [
      "q": "11. People in the countryside have less stress, _______ they usually live longer.",
      "options": ["A. so", "B. and", "C. but", "D. or"],
      "answer": "A. so",
-     "explanation": "Vế sau là kết quả của vế trước (ít căng thẳng nên sống lâu hơn) nên dùng liên từ chỉ kết quả “so” (vì vậy). and: và; but: nhưng; or: hoặc đều không hợp nghĩa.",
+     "explanation": "Vế sau là kết quả của vế trước (ít căng thẳng nên sống lâu hơn) nên dùng liên từ chỉ kết quả “so” (vì vậy). and: và (không diễn đạt rõ quan hệ kết quả); but: nhưng; or: hoặc đều không hợp nghĩa.",
     },
     {
      "type": "choice",
@@ -1292,7 +1293,8 @@ _DE_4 = [
      "q": "12. Vietnamese has some kinds of traditional _______ such as “Cheo” or “Cai luong”.",
      "options": ["A. music", "B. opera", "C. play", "D. instrument"],
      "answer": "A. music",
-     "explanation": "Chèo, Cải lương là các loại hình âm nhạc truyền thống nên dùng “traditional music”. opera: nhạc kịch (phương Tây); play: vở kịch; instrument: nhạc cụ.",
+     "alt_answers": ["B. opera"],
+     "explanation": "Chèo, Cải lương là các loại hình âm nhạc truyền thống nên đáp án chuẩn là “traditional music”. “traditional opera” (nghệ thuật sân khấu hát truyền thống) cũng là cách gọi chấp nhận được nên cũng được tính đúng. play: vở kịch; instrument: nhạc cụ.",
     },
     {
      "type": "choice",
@@ -1347,7 +1349,8 @@ _DE_4 = [
      "q": "17. He can teach me to cook some popular dishes. He has ________ free time today.",
      "options": ["A. any", "B. a lot of", "C. many", "D. some"],
      "answer": "B. a lot of",
-     "explanation": "“free time” là danh từ không đếm được nên không dùng many. any thường dùng trong câu phủ định/nghi vấn. Theo nghĩa (anh ấy có thể dạy tôi nấu ăn vì rảnh nhiều) chọn “a lot of” (nhiều).",
+     "alt_answers": ["D. some"],
+     "explanation": "“free time” là danh từ không đếm được nên không dùng many. any thường dùng trong câu phủ định/nghi vấn. Theo nghĩa (anh ấy có thể dạy tôi nấu ăn vì rảnh nhiều) chọn “a lot of” (nhiều). “some” cũng đúng ngữ pháp (some free time) nên cũng được tính đúng.",
     },
     {
      "type": "choice",
@@ -3777,7 +3780,7 @@ _DE_11 = [
      "passage_text": None,
      "q": "21. I took part in a park _____ yesterday. The park looked beautiful after we finished. (CLEAN)",
      "answer": "clean-up",
-     "alt_answers": ["cleanup", "clean up"],
+     "alt_answers": ["cleanup", "clean up", "park cleaning", "cleaning"],
      "explanation": "Cần danh từ ghép: park clean-up = buổi dọn dẹp công viên (take part in a clean-up). Từ cần điền là clean-up.",
     },
     {
@@ -4782,7 +4785,7 @@ _DE_13 = [
      "essay_word_min": None,
      "essay_word_max": None,
      "answer": "(Bài làm tự chấm tay)",
-     "explanation": "Đáp án mẫu: There are a few eggs in the fridge. (don’t have many + danh từ số nhiều = there are a few + danh từ số nhiều; “eggs” đếm được nên dùng “a few”.)",
+     "explanation": "Đáp án mẫu: There are few eggs in the fridge. (“don’t have many” = “there are few” — ít, gần như không đủ; “few” + danh từ đếm được số nhiều.) Cũng chấp nhận: There are only a few eggs in the fridge.",
     },
     {
      "type": "essay",
@@ -5293,7 +5296,7 @@ _DE_15 = [
      "type": "choice",
      "topic": "Cloze",
      "section_start": "II. READING (Cloze)",
-     "section_instruction": "Read the text and fill in each gap with on word from the box:",
+     "section_instruction": "Read the text and choose the correct option (A, B, C or D) to fill in each gap:",
      "passage_text": "Warm Clothes is a famous (11) _____ group in Viet Nam. Its members are both parents and their children. Last year, they (12) _____ many activities to help their community. The group collected clothes and sent them (13) _____ poor people in rural areas. The parents taught their children to make things from bamboo and bottles. They then sold these to buy books, and donate them to village children. They also (14) _____ to the villages and tutored small kids there. They really brought love to those (15) _____ villages.",
      "q": "11. Warm Clothes is a famous (11) _____ group in Viet Nam.",
      "options": ["A. school", "B. volunteer", "C. volunteering", "D. voluntary"],
@@ -5403,7 +5406,7 @@ _DE_15 = [
      "type": "choice",
      "topic": "Error",
      "section_start": "III. WRITING (Error identification)",
-     "section_instruction": "I. Circle A, B, C or D which is not correct in standard English.",
+     "section_instruction": "Circle A, B, C or D which is not correct in standard English.",
      "passage_text": None,
      "q": "21. We help the elderly in a village last summer. (underlined: We / help / in / last summer)",
      "options": ["A. We", "B. help", "C. in", "D. last summer"],

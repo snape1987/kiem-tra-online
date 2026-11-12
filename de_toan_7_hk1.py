@@ -931,7 +931,7 @@ _DE_7 = [
      "q": "Câu 9. Hình ảnh nào sau đây có tia phân giác?",
      "options": ["A. Hình c.", "B. Hình a.", "C. Hình d.", "D. Hình b."],
      "answer": "A. Hình c.",
-     "explanation": "Tia phân giác của một góc là tia nằm giữa hai cạnh của góc và tạo với hai cạnh đó hai góc bằng nhau. Hình c: tia Cy nằm giữa hai tia Cx và Cz, ∠xCy = ∠yCz (hai góc được đánh dấu cung bằng nhau) nên Cy là tia phân giác của ∠xCz. Hình a: hai góc ∠xMy và ∠zNt có hai đỉnh khác nhau (M và N), không có tia nào chia một góc. Hình b: hai đường thẳng cắt nhau tại O, hai góc được đánh dấu là hai góc đối đỉnh, không phải tia phân giác. Hình d: tia Dy chia góc bẹt xDz thành hai góc ∠xDy ≠ ∠yDz (nhìn hình: tù và nhọn, không đánh dấu bằng nhau) nên Dy không phải tia phân giác. Đáp án: A (Hình c).",
+     "explanation": "Tia phân giác của một góc là tia nằm giữa hai cạnh của góc và tạo với hai cạnh đó hai góc bằng nhau. Hình c: tia Cy nằm giữa hai tia Cx và Cz và (theo hình vẽ) chia góc xCz thành hai góc bằng nhau ∠xCy = ∠yCz nên Cy là tia phân giác của ∠xCz. Hình a: hai góc ∠xMy và ∠zNt có hai đỉnh khác nhau (M và N), không có tia nào chia một góc. Hình b: hai đường thẳng cắt nhau tại O, hai góc được đánh dấu là hai góc đối đỉnh, không phải tia phân giác. Hình d: tia Dy chia góc bẹt xDz thành hai góc ∠xDy ≠ ∠yDz (nhìn hình: tù và nhọn, không đánh dấu bằng nhau) nên Dy không phải tia phân giác. Đáp án: A (Hình c).",
     },
     {
      "type": "choice",
@@ -1683,7 +1683,7 @@ _DE_9 = [
      "essay_word_min": None,
      "essay_word_max": None,
      "answer": "(Bài làm tự chấm tay)",
-     "explanation": "ĐÁP ÁN: ΔDBF = ΔDEC (c-g-c).\nLời giải:\nTừ ΔABD = ΔAED (câu a) suy ra ∠ABD = ∠AED (hai góc tương ứng) và DB = DE (câu b).\nVì F nằm trên tia AB (B nằm giữa A và F) nên ∠DBF + ∠ABD = 180° (hai góc kề bù); vì E nằm giữa A và C nên ∠DEC + ∠AED = 180° (hai góc kề bù). Mà ∠ABD = ∠AED nên ∠DBF = ∠DEC.\nXét ΔDBF và ΔDEC có:\n• ∠DBF = ∠DEC (chứng minh trên);\n• DB = DE (chứng minh ở câu b);\n• ∠BDF = ∠EDC (hai góc đối đỉnh; F, D, E thẳng hàng và B, D, C thẳng hàng).\nSuy ra ΔDBF = ΔDEC (c-g-c).",
+     "explanation": "ĐÁP ÁN: ΔDBF = ΔDEC (g-c-g).\nLời giải:\nTừ ΔABD = ΔAED (câu a) suy ra ∠ABD = ∠AED (hai góc tương ứng) và DB = DE (câu b).\nVì F nằm trên tia AB (B nằm giữa A và F) nên ∠DBF + ∠ABD = 180° (hai góc kề bù); vì E nằm giữa A và C nên ∠DEC + ∠AED = 180° (hai góc kề bù). Mà ∠ABD = ∠AED nên ∠DBF = ∠DEC.\nXét ΔDBF và ΔDEC có:\n• ∠DBF = ∠DEC (chứng minh trên);\n• DB = DE (chứng minh ở câu b);\n• ∠BDF = ∠EDC (hai góc đối đỉnh; F, D, E thẳng hàng và B, D, C thẳng hàng).\nSuy ra ΔDBF = ΔDEC (g-c-g).",
     },
     {
      "type": "essay",
@@ -3116,7 +3116,7 @@ _DE_14 = [
      "section_instruction": None,
      "passage_text": None,
      "image": "toan_7_hk1_figures/de14_b4.png",
-     "q": "Bài 4: (1 điểm) Cho hình vẽ (x, O, z thẳng hàng; tia Oy nằm trên đường thẳng xz), biết ∠yOz = 100°. Khi đó, số đo của ∠xOy là bao nhiêu?",
+     "q": "Bài 4: (1 điểm) Cho hình vẽ (x, O, z thẳng hàng; tia Oy nằm phía trên đường thẳng xz), biết ∠yOz = 100°. Khi đó, số đo của ∠xOy là bao nhiêu?",
      "essay_lines": 3,
      "essay_word_min": None,
      "essay_word_max": None,
