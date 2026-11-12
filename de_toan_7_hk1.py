@@ -1683,7 +1683,7 @@ _DE_9 = [
      "essay_word_min": None,
      "essay_word_max": None,
      "answer": "(Bài làm tự chấm tay)",
-     "explanation": "ĐÁP ÁN: ΔDBF = ΔDEC (c-g-c).\nLời giải:\nTừ ΔABD = ΔAED (câu a) suy ra ∠ABD = ∠AED (hai góc tương ứng) và DB = DE (câu b).\nVì F nằm trên tia AB (B nằm giữa A và F) nên ∠DBF + ∠ABD = 180° (hai góc kề bù); vì E nằm giữa A và C nên ∠DEC + ∠AED = 180° (hai góc kề bù). Mà ∠ABD = ∠AED nên ∠DBF = ∠DEC.\nXét ΔDBF và ΔDEC có:\n• ∠DBF = ∠DEC (chứng minh trên);\n• DB = DE (chứng minh ở câu b);\n• ∠BDF = ∠EDC (hai góc đối đỉnh; F, D, E thẳng hàng và B, D, C thẳng hàng).\nSuy ra ΔDBF = ΔDEC (c-g-c).",
+     "explanation": "ĐÁP ÁN: ΔDBF = ΔDEC (g-c-g).\nLời giải:\nTừ ΔABD = ΔAED (câu a) suy ra ∠ABD = ∠AED (hai góc tương ứng) và DB = DE (câu b).\nVì F nằm trên tia AB (B nằm giữa A và F) nên ∠DBF + ∠ABD = 180° (hai góc kề bù); vì E nằm giữa A và C nên ∠DEC + ∠AED = 180° (hai góc kề bù). Mà ∠ABD = ∠AED nên ∠DBF = ∠DEC.\nXét ΔDBF và ΔDEC có:\n• ∠DBF = ∠DEC (chứng minh trên);\n• DB = DE (chứng minh ở câu b);\n• ∠BDF = ∠EDC (hai góc đối đỉnh; F, D, E thẳng hàng và B, D, C thẳng hàng).\nSuy ra ΔDBF = ΔDEC (g-c-g).",
     },
     {
      "type": "essay",
@@ -3116,7 +3116,7 @@ _DE_14 = [
      "section_instruction": None,
      "passage_text": None,
      "image": "toan_7_hk1_figures/de14_b4.png",
-     "q": "Bài 4: (1 điểm) Cho hình vẽ (x, O, z thẳng hàng; tia Oy nằm trên đường thẳng xz), biết ∠yOz = 100°. Khi đó, số đo của ∠xOy là bao nhiêu?",
+     "q": "Bài 4: (1 điểm) Cho hình vẽ (x, O, z thẳng hàng; tia Oy nằm phía trên đường thẳng xz), biết ∠yOz = 100°. Khi đó, số đo của ∠xOy là bao nhiêu?",
      "essay_lines": 3,
      "essay_word_min": None,
      "essay_word_max": None,
