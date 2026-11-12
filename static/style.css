@@ -239,6 +239,7 @@ input[type=text]:focus, select:focus { border-color: var(--primary); outline: no
 .question .qnum { color: var(--primary); font-weight: bold; margin-bottom: 6px; font-size: 1.05em; }
 .question .qnum .topic { color: #aaa; font-weight: normal; font-size: .82em; }
 .question .qtext { font-size: 1.15em; margin-bottom: 14px; line-height: 1.5; }
+.qtext { white-space: pre-line; }   /* giữ xuống dòng trong đề bài (câu a/b/c/d, hệ phương trình, hội thoại…) */
 
 .choices { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
 .choice {

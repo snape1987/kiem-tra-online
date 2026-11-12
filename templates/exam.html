@@ -112,7 +112,7 @@ function openAllAudio(urls){
   </div>
   {% elif q.type == 'essay' %}
   <div class="essay-hint" style="font-size:0.92em;color:#666;margin:0.4rem 0;">
-    📝 Viết bài luận{% if q.essay_word_min and q.essay_word_max %} khoảng {{ q.essay_word_min }}–{{ q.essay_word_max }} từ{% elif q.essay_word_max %} tối đa {{ q.essay_word_max }} từ{% elif q.essay_word_min %} ít nhất {{ q.essay_word_min }} từ{% endif %} — bài viết không tự động chấm điểm.
+    📝 {% if subject != 'Tiếng Anh' %}Gõ bài làm / đáp án vào ô bên dưới{% else %}Viết bài luận{% endif %}{% if q.essay_word_min and q.essay_word_max %} khoảng {{ q.essay_word_min }}–{{ q.essay_word_max }} từ{% elif q.essay_word_max %} tối đa {{ q.essay_word_max }} từ{% elif q.essay_word_min %} ít nhất {{ q.essay_word_min }} từ{% endif %} — bài viết không tự động chấm điểm.
   </div>
   <textarea class="essay-area" name="q_{{ qi }}" data-idx="{{ qi }}"
             rows="{{ q.essay_lines or 16 }}"
