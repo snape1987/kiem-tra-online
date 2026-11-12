@@ -2638,7 +2638,7 @@ _DE_17 = [
 # Đề gốc: 20 câu trắc nghiệm (5,0 điểm, mỗi câu 0,25) + 4 câu tự luận (5,0 điểm: Câu 21 = 2,0 điểm gồm 1a, 1b, 2a, 2b; Câu 22 = 1,0; Câu 23 = 1,5 gồm a, b; Câu 24 = 0,5). Thời gian 90 phút (không kể thời gian giao đề). Không có phần Đúng/Sai hay trả lời ngắn.
 # Đã tự giải lại cả 20 câu trắc nghiệm: toàn bộ khớp bảng đáp án gốc (1D 2C 3C 4D 5D 6B 7B 8B 9A 10A 11C 12A 13A 14C 15B 16B 17A 18D 19B 20B).
 # Lỗi in ấn của đề gốc: Câu 6 có 4 phương án gán nhãn A, B, C, B (phương án cuối bị in nhầm thành 'B'). Trong module đã sửa thành D (x = −1/2; x = 3). Đáp án đúng vẫn là B (x = 1/2; x = −3), khớp đáp án gốc.
-# Lỗi hướng dẫn giải gốc (Câu 21.2b): đề yêu cầu chứng minh −2a + 1 < −2b + 3, nhưng hướng dẫn giải gốc lại chứng minh −2a + 2025 < −2b + 2026 (lấy từ một phiên bản đề khác). Trong module đã viết lời giải đúng theo đề (−2a + 1 < −2b + 1 < −2b + 3) và ghi LƯU Ý trong explanation.
+# Lỗi hướng dẫn giải gốc (Câu 21.2b): đề yêu cầu chứng minh −2a + 1 < −2b + 3, nhưng hướng dẫn giải gốc lại chứng minh −2a + 2025 < −2b + 2026. Trong module đã viết lời giải đúng theo đề (−2a + 1 < −2b + 1 < −2b + 3) và ghi LƯU Ý trong explanation.
 # Hình ảnh cắt từ trang đề: de18_q9.png (Câu 9: tam giác ABC vuông tại A), de18_q16.png (Câu 16: chiếc thang dựa tường), de18_q24.png (Câu 24: tháp và người quan sát). Câu 23 (tam giác ABC, đường cao AH, M, N) đề gốc KHÔNG có hình trong trang đề (chỉ có hình trong hướng dẫn giải) nên không gắn ảnh; lời văn đã mô tả đủ dữ kiện.
 # Câu 17 (cân bằng phương trình hóa học xCu₂O + O₂ → yCuO) giữ nguyên theo đề; đáp án (2; 4).
 # Câu 24: đáp số gốc ≈ 16 m; tính chính xác 10·tan10° + 10·tan55° ≈ 1,763 + 14,281 ≈ 16,04 m (làm tròn 16 m), khớp đáp án gốc.
@@ -2916,7 +2916,7 @@ _DE_18 = [
      "essay_word_min": None,
      "essay_word_max": None,
      "answer": "(Bài làm tự chấm tay)",
-     "explanation": "ĐÁP ÁN: chứng minh như dưới đây.\nLỜI GIẢI: Vì −3a < −3b nên chia cả hai vế cho −3 < 0 (đổi chiều bất đẳng thức) được a > b. Nhân hai vế của a > b với −2 < 0 (đổi chiều) được −2a < −2b. Cộng 1 vào hai vế: −2a + 1 < −2b + 1. Vì 1 < 3 nên −2b + 1 < −2b + 3. Từ đó −2a + 1 < −2b + 1 < −2b + 3, vậy −2a + 1 < −2b + 3 (đpcm).\nLƯU Ý: hướng dẫn giải trong file gốc ở ý này chứng minh −2a + 2025 < −2b + 2026 (khác với đề là −2a + 1 < −2b + 3, do lấy từ phiên bản đề khác); lập luận giống nhau (a > b ⇒ −2a < −2b rồi cộng hằng số), ở đây đã viết lại đúng theo đề.",
+     "explanation": "ĐÁP ÁN: chứng minh như dưới đây.\nLỜI GIẢI: Vì −3a < −3b nên chia cả hai vế cho −3 < 0 (đổi chiều bất đẳng thức) được a > b. Nhân hai vế của a > b với −2 < 0 (đổi chiều) được −2a < −2b. Cộng 1 vào hai vế: −2a + 1 < −2b + 1. Vì 1 < 3 nên −2b + 1 < −2b + 3. Từ đó −2a + 1 < −2b + 1 < −2b + 3, vậy −2a + 1 < −2b + 3 (đpcm).\nLƯU Ý: hướng dẫn giải trong file gốc ở ý này chứng minh −2a + 2025 < −2b + 2026 (khác với đề là −2a + 1 < −2b + 3); lập luận giống nhau (a > b ⇒ −2a < −2b rồi cộng hằng số), ở đây đã viết lại đúng theo đề.",
     },
     {
      "type": "essay",
@@ -3084,6 +3084,7 @@ _DE_19 = [
      "q": "Câu 9 Nghiệm của phương trình (x − 1)(x − 2) = 0 là:",
      "options": ["A. x = 1 và x = 2", "B. x = 1", "C. x = 2", "D. x = 1 hoặc x = 2"],
      "answer": "A. x = 1 và x = 2",
+     "alt_answers": ["D. x = 1 hoặc x = 2"],
      "explanation": "(x − 1)(x − 2) = 0 ⇔ x − 1 = 0 hoặc x − 2 = 0 ⇔ x = 1 hoặc x = 2. Vậy phương trình có hai nghiệm x = 1 và x = 2; B và C chỉ nêu một nghiệm nên thiếu. Đáp án theo đề gốc: A. LƯU Ý: phương án D ('x = 1 hoặc x = 2') là cách phát biểu chặt chẽ hơn về mặt logic và cũng đúng; đề gốc chọn A theo cách nói 'phương trình có hai nghiệm x = 1 và x = 2'.",
     },
     {
