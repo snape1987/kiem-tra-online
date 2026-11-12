@@ -931,7 +931,7 @@ _DE_7 = [
      "q": "Câu 9. Hình ảnh nào sau đây có tia phân giác?",
      "options": ["A. Hình c.", "B. Hình a.", "C. Hình d.", "D. Hình b."],
      "answer": "A. Hình c.",
-     "explanation": "Tia phân giác của một góc là tia nằm giữa hai cạnh của góc và tạo với hai cạnh đó hai góc bằng nhau. Hình c: tia Cy nằm giữa hai tia Cx và Cz, ∠xCy = ∠yCz (hai góc được đánh dấu cung bằng nhau) nên Cy là tia phân giác của ∠xCz. Hình a: hai góc ∠xMy và ∠zNt có hai đỉnh khác nhau (M và N), không có tia nào chia một góc. Hình b: hai đường thẳng cắt nhau tại O, hai góc được đánh dấu là hai góc đối đỉnh, không phải tia phân giác. Hình d: tia Dy chia góc bẹt xDz thành hai góc ∠xDy ≠ ∠yDz (nhìn hình: tù và nhọn, không đánh dấu bằng nhau) nên Dy không phải tia phân giác. Đáp án: A (Hình c).",
+     "explanation": "Tia phân giác của một góc là tia nằm giữa hai cạnh của góc và tạo với hai cạnh đó hai góc bằng nhau. Hình c: tia Cy nằm giữa hai tia Cx và Cz và (theo hình vẽ) chia góc xCz thành hai góc bằng nhau ∠xCy = ∠yCz nên Cy là tia phân giác của ∠xCz. Hình a: hai góc ∠xMy và ∠zNt có hai đỉnh khác nhau (M và N), không có tia nào chia một góc. Hình b: hai đường thẳng cắt nhau tại O, hai góc được đánh dấu là hai góc đối đỉnh, không phải tia phân giác. Hình d: tia Dy chia góc bẹt xDz thành hai góc ∠xDy ≠ ∠yDz (nhìn hình: tù và nhọn, không đánh dấu bằng nhau) nên Dy không phải tia phân giác. Đáp án: A (Hình c).",
     },
     {
      "type": "choice",
