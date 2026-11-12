@@ -3776,7 +3776,7 @@ _DE_22 = [
      "q": "Câu 9. Đẳng thức nào sau đây không đúng?",
      "options": ["A. tan 45° = cot 45°", "B. cos 30° = sin 60°", "C. sin 37° = cos 53°", "D. cot 50° = sin 40°"],
      "answer": "D. cot 50° = sin 40°",
-     "explanation": "Hai góc phụ nhau (tổng 90°) thì sin góc này bằng cos góc kia, tan góc này bằng cot góc kia. A: tan45° = cot45° = 1 (đúng). B: 30° + 60° = 90° nên cos30° = sin60° = √3/2 (đúng). C: 37° + 53° = 90° nên sin37° = cos53° (đúng). D: cot50° = tan40° (vì 50° + 40° = 90°), không phải sin40° (tan40° ≈ 1,19 còn sin40° ≈ 0,64), nên D sai. Chọn D.",
+     "explanation": "Hai góc phụ nhau (tổng 90°) thì sin góc này bằng cos góc kia, tan góc này bằng cot góc kia. A: tan45° = cot45° = 1 (đúng). B: 30° + 60° = 90° nên cos30° = sin60° = √3/2 (đúng). C: 37° + 53° = 90° nên sin37° = cos53° (đúng). D: cot50° = tan40° (vì 50° + 40° = 90°), không phải sin40° (tan40° ≈ 0,84 còn sin40° ≈ 0,64), nên D sai. Chọn D.",
     },
     {
      "type": "choice",
