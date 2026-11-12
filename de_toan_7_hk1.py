@@ -820,7 +820,7 @@ _DE_6 = [
 # Cấu trúc PDF (14 trang): tr.1–7 là Ma trận và Bản đặc tả (không chép); tr.8–10 là ĐỀ CHÍNH THỨC (chỉ 1 đề, không có mã đề thứ hai); tr.11–14 là Hướng dẫn chấm (tr.14 chỉ là dòng quảng cáo). Chép đúng 1 đề duy nhất.
 # Cấu trúc đề: A. Trắc nghiệm 5 điểm = Phần I 12 câu nhiều lựa chọn (Câu 1–12), Phần II 1 câu Đúng/Sai (Câu 13 a–d, tách 4 entry), Phần III 2 câu trả lời ngắn (Câu 14, 15); B. Tự luận 5 điểm = Bài 1 (a, b), Bài 2 (a, b), Bài 3 (a, b, c, d), Bài 4. Tổng 27 entry: 16 choice, 2 fill, 9 essay.
 # HÌNH (đã cắt ảnh thật từ trang đề): Câu 4–5 (biểu đồ quạt môn thể thao) = de7_c4_c5.png; Câu 9 (4 hình a, b, c, d) = de7_c9.png; Câu 10 (4 hình A, B, C, D, đáp án là hình) = de7_c10.png; Câu 11 (hình e ∥ f, 60°, 75°) = de7_c11.png; Câu 13a–d (biểu đồ quạt loại quả) = de7_c13.png; Câu 14 (tam giác ABC có tia CD) = de7_c14.png.
-# Đề KHÔNG in hình cho Bài 3 (Bài 3a yêu cầu học sinh tự vẽ hình) và Bài 2b (học sinh tự vẽ biểu đồ đoạn thẳng). Hình mẫu có trong HDC (tr.12): de7_bai3.png (hình △ABC, H, K, I, E, F) được đính kèm vào Bài 3b, 3c, 3d làm hình tham khảo; KHÔNG đính vào Bài 3a và Bài 2b (vì đó chính là đáp án phải tự vẽ); phần explanation của hai câu này mô tả hình/biểu đồ chi tiết. Ảnh biểu đồ đoạn thẳng mẫu cũng đã được cắt sẵn: static/toan_7_hk1_figures/de7_bai2b_bieudo.png (không gắn vào câu nào; nếu muốn có thể gắn vào explanation/hiển thị sau khi nộp).
+# Đề KHÔNG in hình cho Bài 3 (Bài 3a yêu cầu học sinh tự vẽ hình) và Bài 2b (học sinh tự vẽ biểu đồ đoạn thẳng). Hình mẫu có trong HDC (tr.12): de7_bai3.png (hình △ABC, H, K, I, E, F) được đính kèm vào Bài 3b, 3c, 3d làm hình tham khảo; KHÔNG đính vào Bài 3a và Bài 2b (vì đó chính là đáp án phải tự vẽ); phần explanation của hai câu này mô tả hình/biểu đồ chi tiết.
 # Câu 3 (đề in 'Cho |x| = 16 thì giá trị của x là - NB'): đã bỏ chữ 'NB' (ghi chú mức độ của ma trận, lẫn vào đề).
 # Câu 14: đề không viết chữ nhưng hình có hai cung đánh dấu bằng nhau tại C nên CD là tia phân giác của góc ACB (D ∈ AB); x = ∠ACD, y = ∠BDC. Đáp án 25° và 115° khớp.
 # Câu 13: nhãn của phần 'Cam' không in trên biểu đồ; 28% suy ra từ 100% − 35% − 20% − 17% (cũng khớp với HDC: ý a đúng).
@@ -1025,7 +1025,7 @@ _DE_7 = [
      "image": "toan_7_hk1_figures/de7_c14.png",
      "q": "Câu 14. Cho hình vẽ bên (△ABC vuông tại A, ∠B = 40°, CD là tia phân giác của ∠ACB với D ∈ AB; x = ∠ACD, y = ∠BDC), tính x, y.\nNhập theo dạng x=...;y=... (số đo theo độ, không ghi đơn vị), ví dụ x=10;y=20.",
      "answer": "x=25;y=115",
-     "alt_answers": ["25;115", "x=25°;y=115°", "x = 25°; y = 115°", "x=25; y=115", "x = 25; y = 115", "x=25,y=115", "x = 25, y = 115"],
+     "alt_answers": ["25;115", "x=25°;y=115°", "x = 25°; y = 115°", "x=25; y=115", "x = 25; y = 115", "x=25,y=115", "x = 25, y = 115", "x=25°,y=115°", "x = 25°, y = 115°", "x=25;y=115°", "x=25°;y=115", "25,115", "25 ; 115"],
      "explanation": "△ABC vuông tại A nên ∠B + ∠ACB = 90°, suy ra ∠ACB = 90° − 40° = 50°. CD là tia phân giác của ∠ACB (hai cung đánh dấu bằng nhau) nên x = ∠ACD = ∠DCB = 50° : 2 = 25°. Xét △BDC: ∠BDC = 180° − ∠B − ∠DCB = 180° − 40° − 25° = 115°, vậy y = 115°. (Cách khác: y là góc ngoài của △ADC nên y = ∠A + ∠ACD = 90° + 25° = 115°.) Đáp án: x = 25°; y = 115°.",
     },
     {
@@ -1089,7 +1089,7 @@ _DE_7 = [
      "essay_word_min": None,
      "essay_word_max": None,
      "answer": "(Bài làm tự chấm tay)",
-     "explanation": "ĐÁP ÁN: Bảng thống kê:\nCân nặng (kg): 39 | 41 | 42 | 45\nSố học sinh: 3 | 6 | 12 | 9\n(Đếm từng giá trị trong 3 hàng: 39 kg xuất hiện 1 + 2 + 0 = 3 lần (hàng 1: 1, hàng 2: 2); 41 kg: 2 + 2 + 2 = 6 lần; 42 kg: 4 + 4 + 4 = 12 lần; 45 kg: 3 + 2 + 4 = 9 lần. Kiểm tra: 3 + 6 + 12 + 9 = 30 học sinh ✓.) Thang điểm HDC: bảng 0,25.\nBiểu đồ đoạn thẳng \"Cân nặng của 30 học sinh lớp 7A\": trục ngang là cân nặng (kg) với các mốc 39, 41, 42, 45; trục dọc là số học sinh (các vạch 3, 6, 9, 12). Chấm các điểm (39; 3), (41; 6), (42; 12), (45; 9) rồi nối các điểm liên tiếp bằng các đoạn thẳng (3 → 6 → 12 → 9), ghi số liệu 3, 6, 12, 9 cạnh các điểm. Thang điểm HDC: biểu đồ 0,75. (Biểu đồ mẫu: ảnh de7_bai2b_bieudo.png.)",
+     "explanation": "ĐÁP ÁN: Bảng thống kê:\nCân nặng (kg): 39 | 41 | 42 | 45\nSố học sinh: 3 | 6 | 12 | 9\n(Đếm từng giá trị trong 3 hàng: 39 kg xuất hiện 1 + 2 + 0 = 3 lần (hàng 1: 1, hàng 2: 2); 41 kg: 2 + 2 + 2 = 6 lần; 42 kg: 4 + 4 + 4 = 12 lần; 45 kg: 3 + 2 + 4 = 9 lần. Kiểm tra: 3 + 6 + 12 + 9 = 30 học sinh ✓.) Thang điểm HDC: bảng 0,25.\nBiểu đồ đoạn thẳng \"Cân nặng của 30 học sinh lớp 7A\": trục ngang là cân nặng (kg) với các mốc 39, 41, 42, 45; trục dọc là số học sinh (các vạch 3, 6, 9, 12). Chấm các điểm (39; 3), (41; 6), (42; 12), (45; 9) rồi nối các điểm liên tiếp bằng các đoạn thẳng (3 → 6 → 12 → 9), ghi số liệu 3, 6, 12, 9 cạnh các điểm. Thang điểm HDC: biểu đồ 0,75.",
     },
     {
      "type": "essay",
