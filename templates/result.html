@@ -52,9 +52,9 @@
     {% endif %}
   </div>
   {% if r.topic %}<div class="topic">{{ r.topic }}</div>{% endif %}
-  {% if r.ok == false and r.explanation %}
+  {% if (r.ok == false or r.ok is none) and r.explanation %}
   <button class="btn-explain" onclick="toggleExplain(this)" aria-expanded="false">
-    💡 Xem giải thích
+    {% if r.ok is none %}💡 Xem đáp án &amp; lời giải{% else %}💡 Xem giải thích{% endif %}
   </button>
   <div class="explain-box hidden">{{ r.explanation }}</div>
   {% endif %}

@@ -408,7 +408,8 @@ def exam():
         audio_files = []
         audio_dl_files = []
         audio_label = ""
-        subject = "Tiếng Anh" if "tieng_anh" in folder or "anh" in folder else "Toán"
+        subject = ("KHTN" if "khtn" in folder
+                   else "Tiếng Anh" if "tieng_anh" in folder or "anh" in folder else "Toán")
     return render_template(
         "exam.html",
         questions=qs,

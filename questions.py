@@ -3659,6 +3659,7 @@ _FIXED_EXAM_DEFS = [
     ("lop_8", "de_toan_8_hk1",      "Đề Toán 8 HK1"),
     ("lop_9", "de_toan_9_giua_hk1", "Đề Toán 9 Giữa HK1"),
     ("lop_9", "de_toan_9_hk1",      "Đề Toán 9 HK1"),
+    ("lop_9", "de_khtn_9_hk1",      "Đề KHTN 9 HK1"),
     ("lop_8", "de_anh_8_giua_hk1",  "Đề Anh 8 Giữa HK1"),
     ("lop_8", "de_anh_8_hk1",       "Đề Anh 8 HK1"),
     ("lop_9", "de_anh_9_giua_hk1",  "Đề Anh 9 Giữa HK1"),
