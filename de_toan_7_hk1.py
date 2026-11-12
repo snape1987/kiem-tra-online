@@ -41,7 +41,7 @@ SOURCES = {
     12: 'Trường THCS Nguyễn Bình Khiêm (UBND phường Phúc Lợi, Hà Nội), đề kiểm tra cuối học kì I năm học 2025–2026, Đề 701 (nguồn Drive: nguyen-binh-khiem-ha-noi.pdf)',
     13: 'Trường THCS Huỳnh Thúc Kháng (UBND xã Tam Anh, Đà Nẵng), đề kiểm tra cuối học kì I năm học 2025–2026, mã đề 01 (nguồn Drive: huynh-thuc-khang-da-nang.pdf)',
     14: 'Trường THCS Phương Đông (xã Trà Liên), đề kiểm tra cuối học kì I năm học 2025–2026 (nguồn Drive: phuong-dong-da-nang.pdf)',
-    15: 'Trường THCS Hưng Vương (UBND phường Phú Thủy, Lâm Đồng), đề kiểm tra cuối học kì I năm học 2025–2026 (nguồn Drive: hung-vuong-lam-dong.pdf)',
+    15: 'Trường THCS Hùng Vương (UBND phường Phú Thủy, Lâm Đồng), đề kiểm tra cuối học kì I năm học 2025–2026 (nguồn Drive: hung-vuong-lam-dong.pdf)',
     16: 'Trường THCS Ái Mộ (phường Bồ Đề, Hà Nội), đề kiểm tra cuối học kì I năm học 2025–2026 (nguồn Drive: ai-mo-ha-noi.pdf)',
     17: 'Trường THCS Tương Bình Hiệp (TP.HCM), đề kiểm tra cuối học kì I năm học 2025–2026 (nguồn Drive: tuong-binh-hiep-tp-hcm.pdf)',
     18: 'Trường THCS Lý Thánh Tông (UBND phường Chánh Hưng, TP.HCM), đề kiểm tra cuối học kì I năm học 2025–2026 (nguồn Drive: ly-thanh-tong-tp-hcm.pdf)',
@@ -1758,7 +1758,7 @@ _DE_10 = [
      "q": "Câu 3. Làm tròn số 2,587 đến hàng phần trăm là:",
      "options": ["A. 2,59", "B. 2,5", "C. 2,58", "D. 2,6"],
      "answer": "A. 2,59",
-     "explanation": "Hàng phần trăm là chữ số 8 (2,58|7). Chữ số liền sau (hàng phần nghìn) là 7 ≥ 5 nên làm tròn lên: 2,58 → 2,59. Đáp án A (2,5 là làm tròn đến hàng phần mười: sai; 2,6 cũng là làm tròn hàng phần mười).",
+     "explanation": "Hàng phần trăm là chữ số 8 (2,58|7). Chữ số liền sau (hàng phần nghìn) là 7 ≥ 5 nên làm tròn lên: 2,58 → 2,59. Đáp án A. (Làm tròn đến hàng phần mười sẽ được 2,6, còn 2,5 và 2,58 chỉ là bỏ bớt chữ số chứ không phải làm tròn đến hàng phần trăm.)",
     },
     {
      "type": "choice",
@@ -2090,7 +2090,7 @@ _DE_11 = [
      "q": "Câu 8. Quan sát hình vẽ bên.\nTừ hình vẽ, ta thấy tia OA là phân giác của góc BOA.\n(Chọn Đúng hoặc Sai.)",
      "options": ["A. Đúng", "B. Sai"],
      "answer": "B. Sai",
-     "explanation": "Tia phân giác của một góc là tia nằm trong góc đó và tạo với hai cạnh hai góc bằng nhau. Tia OA là một CẠNH của góc BOA nên không thể là tia phân giác của chính góc BOA. Hình vẽ cũng không có dấu hiệu hai góc bằng nhau nào (phần tô xám là góc AOC). Khẳng định SAI. (Lưu ý: đề không có đáp án; nếu đề định viết 'góc BOC' thì hình vẽ vẫn không ghi dấu hai góc bằng nhau nên vẫn không kết luận được OA là phân giác.)",
+     "explanation": "Tia phân giác của một góc là tia nằm trong góc đó và tạo với hai cạnh hai góc bằng nhau. Tia OA là một CẠNH của góc BOA nên không thể là tia phân giác của chính góc BOA. Khẳng định SAI. (Lưu ý: phần tô xám trên hình là góc BOC. Nếu đề định viết 'góc BOC' thì trên hình tia OA được vẽ gần như nằm chính giữa góc BOC, khi đó khẳng định sẽ là Đúng; còn theo đúng chữ 'góc BOA' thì là Sai.)",
     },
     {
      "type": "essay",
@@ -2103,7 +2103,7 @@ _DE_11 = [
      "essay_word_min": None,
      "essay_word_max": None,
      "answer": "(Bài làm tự chấm tay)",
-     "explanation": "ĐÁP ÁN: số vô tỉ là √7; √7 ≈ 2,6457... làm tròn với độ chính xác 0,5 (làm tròn đến hàng đơn vị) được √7 ≈ 3.\n\nLỜI GIẢI:\n- −12,(3) và 0,12(31) là số thập phân vô hạn TUẦN HOÀN (chu kì 3 và 31) nên là số hữu tỉ.\n- 2/5 = 0,4; −2 là số nguyên; −√36 = −6 là số nguyên ⇒ đều là số hữu tỉ.\n- √7: vì 7 không là bình phương của số hữu tỉ nào (2² = 4 < 7 < 9 = 3²) nên √7 là số thập phân vô hạn không tuần hoàn, tức là số vô tỉ.\n(Số 1,256789... : đề chỉ viết sáu chữ số rồi '...'; nếu hiểu là số thập phân vô hạn không tuần hoàn thì cũng là số vô tỉ và ≈ 1; đáp án chính của bài là √7 vì đề hỏi 'số vô tỉ' ở dạng số ít.)\n- Làm tròn: √7 = 2,64575... Theo quy ước SGK, độ chính xác 0,5 nghĩa là làm tròn đến hàng đơn vị: chữ số hàng phần mười là 6 ≥ 5 nên làm tròn lên: √7 ≈ 3. (Nếu hiểu là làm tròn đến bội gần nhất của 0,5 thì √7 ≈ 2,5.)\nVậy số vô tỉ là √7 và √7 ≈ 3.",
+     "explanation": "ĐÁP ÁN: các số vô tỉ là √7 và 1,256789... (số thập phân vô hạn không tuần hoàn); làm tròn với độ chính xác 0,5 (làm tròn đến hàng đơn vị): √7 ≈ 3 và 1,256789... ≈ 1.\n\nLỜI GIẢI:\n- −12,(3) và 0,12(31) là số thập phân vô hạn TUẦN HOÀN (chu kì 3 và 31) nên là số hữu tỉ.\n- 2/5 = 0,4; −2 là số nguyên; −√36 = −6 là số nguyên ⇒ đều là số hữu tỉ.\n- √7: vì 7 không là bình phương của số hữu tỉ nào (2² = 4 < 7 < 9 = 3²) nên √7 là số thập phân vô hạn không tuần hoàn, tức là số vô tỉ.\n- 1,256789...: là số thập phân vô hạn không tuần hoàn nên cũng là số vô tỉ.\n- Làm tròn: √7 = 2,64575... Theo quy ước SGK, độ chính xác 0,5 nghĩa là làm tròn đến hàng đơn vị: chữ số hàng phần mười là 6 ≥ 5 nên làm tròn lên: √7 ≈ 3. 1,256789... có chữ số hàng phần mười là 2 < 5 nên làm tròn xuống: 1,256789... ≈ 1.\nVậy các số vô tỉ là √7 (≈ 3) và 1,256789... (≈ 1).",
     },
     {
      "type": "essay",
@@ -3153,7 +3153,7 @@ _DE_14 = [
     },
 ]
 
-# ── Đề 15: Trường THCS Hưng Vương (UBND phường Phú Thủy, Lâm Đồng), đề kiểm tra cuối học kì I năm học 2025–2026 (nguồn Drive: hung-vuong-lam-dong.pdf) ──
+# ── Đề 15: Trường THCS Hùng Vương (UBND phường Phú Thủy, Lâm Đồng), đề kiểm tra cuối học kì I năm học 2025–2026 (nguồn Drive: hung-vuong-lam-dong.pdf) ──
 # Ghi chú khi chép (thêm 12/11/2026, đủ câu + hình thật, tự luận = essay 3 dòng):
 # File PDF gồm 2 trang scan, chỉ chứa ĐỀ 2, phần II. TỰ LUẬN (7,0 điểm) gồm Bài 1–Bài 6 (Môn Toán lớp 7, thời gian 75 phút, không kể giao đề). Phần I (trắc nghiệm) KHÔNG có trong file nên không có trong module này. Không có mã đề nào khác trong file.
 # Đề KHÔNG có đáp án/hướng dẫn chấm: toàn bộ lời giải do tự giải (đã tính lại 2 lần và kiểm tra bằng Python: giá trị biểu thức 2b = 1/3; 48 × 2,54 = 121,92; 900000 × 0,8 = 720000; V = 120000 cm³ = 0,12 m³; 6 : 0,12 = 50).
@@ -3176,7 +3176,7 @@ _DE_15 = [
      "essay_word_min": None,
      "essay_word_max": None,
      "answer": "(Bài làm tự chấm tay)",
-     "explanation": "Đáp án: |14| = 14; |−8,(5)| = 8,(5) (= 77/9); |√(22/15)| = √(22/15).\nLời giải (đề không có đáp án, tự giải):\n• |14| = 14 vì 14 > 0 (giá trị tuyệt đối của số dương là chính nó).\n• |−8,(5)| = 8,(5) vì −8,(5) < 0 nên giá trị tuyệt đối là số đối của nó. Ghi chú: 8,(5) = 8,5555… = 8 + 5/9 = 77/9.\n• √(22/15) là căn bậc hai số học của 22/15 > 0 nên √(22/15) > 0, do đó |√(22/15)| = √(22/15) (≈ 1,211).",
+     "explanation": "Đáp án: |14| = 14; |−8,(5)| = 8,(5) (= 77/9); |√(22/15)| = √(22/15).\nLời giải:\n• |14| = 14 vì 14 > 0 (giá trị tuyệt đối của số dương là chính nó).\n• |−8,(5)| = 8,(5) vì −8,(5) < 0 nên giá trị tuyệt đối là số đối của nó. Ghi chú: 8,(5) = 8,5555… = 8 + 5/9 = 77/9.\n• √(22/15) là căn bậc hai số học của 22/15 > 0 nên √(22/15) > 0, do đó |√(22/15)| = √(22/15) (≈ 1,211).",
     },
     {
      "type": "essay",
@@ -3283,7 +3283,7 @@ _DE_15 = [
      "essay_word_min": None,
      "essay_word_max": None,
      "answer": "(Bài làm tự chấm tay)",
-     "explanation": "Đáp án: V = 120000 cm³ = 0,12 m³.\nLời giải: Thùng xe là lăng trụ đứng có đáy là tam giác với cạnh đáy 60 cm và chiều cao tương ứng 50 cm; chiều cao lăng trụ là 80 cm.\nDiện tích đáy: S = (1/2) · 60 · 50 = 1500 (cm²).\nThể tích: V = S · h = 1500 · 80 = 120000 (cm³) = 0,12 (m³) (vì 1 m³ = 1000000 cm³).\n(Lưu ý cách đọc hình: xem NOTES; kết quả 0,12 m³ cho số chuyến ở câu b nguyên đẹp.)",
+     "explanation": "Đáp án: V = 120000 cm³ = 0,12 m³.\nLời giải: Thùng xe là lăng trụ đứng có đáy là tam giác với cạnh đáy 60 cm và chiều cao tương ứng 50 cm; chiều cao lăng trụ là 80 cm.\nDiện tích đáy: S = (1/2) · 60 · 50 = 1500 (cm²).\nThể tích: V = S · h = 1500 · 80 = 120000 (cm³) = 0,12 (m³) (vì 1 m³ = 1000000 cm³).",
     },
     {
      "type": "essay",
@@ -3324,7 +3324,7 @@ _DE_15 = [
      "essay_word_min": None,
      "essay_word_max": None,
      "answer": "(Bài làm tự chấm tay)",
-     "explanation": "Đáp án (cách vẽ biểu đồ đoạn thẳng):\n1) Vẽ hai trục vuông góc: trục ngang ghi các lần kiểm tra (Lần 1, Lần 2, Lần 3, Lần 4), trục đứng ghi số học sinh (chia vạch, ví dụ mỗi vạch 2 học sinh, từ 0 đến 12). Ghi tên biểu đồ: \"Số học sinh đạt điểm tốt trong bốn đợt kiểm tra môn Toán của lớp 7C\".\n2) Xác định các điểm: A(Lần 1; 7), B(Lần 2; 9), C(Lần 3; 8), D(Lần 4; 12).\n3) Nối lần lượt các điểm A, B, C, D bằng các đoạn thẳng (A–B đi lên, B–C đi xuống, C–D đi lên mạnh), ghi số liệu 7, 9, 8, 12 cạnh các điểm.\nĐề không có đáp án; đây là cách vẽ chuẩn theo số liệu của bảng.",
+     "explanation": "Đáp án (cách vẽ biểu đồ đoạn thẳng):\n1) Vẽ hai trục vuông góc: trục ngang ghi các lần kiểm tra (Lần 1, Lần 2, Lần 3, Lần 4), trục đứng ghi số học sinh (chia vạch, ví dụ mỗi vạch 2 học sinh, từ 0 đến 12). Ghi tên biểu đồ: \"Số học sinh đạt điểm tốt trong bốn đợt kiểm tra môn Toán của lớp 7C\".\n2) Xác định các điểm: A(Lần 1; 7), B(Lần 2; 9), C(Lần 3; 8), D(Lần 4; 12).\n3) Nối lần lượt các điểm A, B, C, D bằng các đoạn thẳng (A–B đi lên, B–C đi xuống, C–D đi lên mạnh), ghi số liệu 7, 9, 8, 12 cạnh các điểm.\nĐây là cách vẽ chuẩn theo số liệu của bảng.",
     },
 ]
 
