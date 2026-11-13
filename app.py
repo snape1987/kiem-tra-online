@@ -477,7 +477,8 @@ def submit():
     score = 0
     results = []
     n_essay = 0
-    norm = lambda s: s.lower().replace(" ", "")
+    # bỏ dấu cách, không phân biệt hoa/thường; dấu phẩy thập phân ≡ dấu chấm (2,5 = 2.5)
+    norm = lambda s: s.lower().replace(" ", "").replace(",", ".")
     for i, q in enumerate(qs):
         if q.get("type") == "essay":
             n_essay += 1
@@ -511,7 +512,7 @@ def submit():
             user_ans = request.form.get(f"q_{i}", "").strip()
             correct = str(q.get("answer", "")).strip()
             ok = norm(user_ans) == norm(correct) or any(
-                norm(user_ans) == norm(alt) for alt in q.get("alt_answers", [])
+                norm(user_ans) == norm(alt) for alt in (q.get("alt_answers") or [])
             )
             if ok:
                 score += 1
