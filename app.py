@@ -477,7 +477,8 @@ def submit():
     score = 0
     results = []
     n_essay = 0
-    norm = lambda s: s.lower().replace(" ", "")
+    # bỏ dấu cách, không phân biệt hoa/thường; dấu phẩy thập phân ≡ dấu chấm (2,5 = 2.5)
+    norm = lambda s: s.lower().replace(" ", "").replace(",", ".")
     for i, q in enumerate(qs):
         if q.get("type") == "essay":
             n_essay += 1
