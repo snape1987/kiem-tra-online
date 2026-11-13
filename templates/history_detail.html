@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Chi tiết bài làm — {{ a.score }}/10{% endblock %}
+{% block title %}Chi tiết bài làm — {{ a.score|diem }}/10{% endblock %}
 {% block content %}
 
 <div class="result-hero" style="padding:1.2rem 1rem">
   <h1>📄 {{ a.mode | modename }} — Đề {{ a.exam_no or 1 }}</h1>
-  <div class="big-score">{{ a.score }}<span>/10</span></div>
+  <div class="big-score">{{ a.score|diem }}<span>/10</span></div>
   <div class="raw">
     {{ a.student }} ·
     {% if results %}{{ n_correct }}/{{ a.total }} câu đúng · {% endif %}

@@ -36,7 +36,7 @@
       <td>{{ a.student }}</td>
       <td>{{ a.mode | modename }}</td>
       <td>Đề {{ a.exam_no or 1 }}</td>
-      <td><b>{{ sc }}</b>/10</td>
+      <td><b>{{ sc|diem }}</b>/10</td>
       <td>{{ a.total }} câu</td>
       <td>{{ a.duration }} phút</td>
       <td>{{ a.time_used // 60 }}p {{ '%02d'|format(a.time_used % 60) }}s</td>

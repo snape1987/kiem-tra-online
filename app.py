@@ -62,7 +62,7 @@ def init_db():
             student_key TEXT NOT NULL DEFAULT 'bao_meo',
             mode TEXT NOT NULL,
             duration INTEGER NOT NULL,
-            score INTEGER NOT NULL,
+            score REAL NOT NULL,
             total INTEGER NOT NULL,
             time_used INTEGER NOT NULL,
             created_at TEXT NOT NULL
@@ -74,7 +74,7 @@ def init_db():
             student_key TEXT NOT NULL,
             folder TEXT NOT NULL,
             exam_no INTEGER NOT NULL,
-            score INTEGER,
+            score REAL,
             completed_at TEXT NOT NULL
         )
     """)
@@ -94,6 +94,15 @@ def init_db():
             conn.commit()
         except Exception:
             conn.rollback()  # cột đã tồn tại → bỏ qua
+    # Migration: điểm lẻ 0,1 → cột score phải là số thực (Postgres cũ đang INTEGER).
+    # SQLite không ép kiểu cột nên không cần đổi.
+    if USE_PG:
+        for tbl in ("attempts", "exam_progress"):
+            try:
+                conn.execute(f"ALTER TABLE {tbl} ALTER COLUMN score TYPE DOUBLE PRECISION")
+                conn.commit()
+            except Exception:
+                conn.rollback()
     conn.commit()
     conn.close()
 
@@ -284,6 +293,22 @@ FOLDER_EXAM_COUNTS = {
     "tieng_anh_8_hk2":     5,   # 55 câu mới
 }
 FOLDER_EXAM_COUNTS.update({k: len(v) for k, v in questions.FIXED_EXAM_META.items()})
+
+
+def round1(x):
+    """Làm tròn half-up tới 0,1 (7,25 -> 7,3; tránh làm tròn kiểu banker's / lỗi float)."""
+    from decimal import Decimal, ROUND_HALF_UP
+    return float(Decimal(str(x)).quantize(Decimal("0.1"), rounding=ROUND_HALF_UP))
+
+
+@app.template_filter("diem")
+def diem_filter(v):
+    """Hiển thị điểm: 7 -> '7', 7.5 -> '7,5' (dấu phẩy kiểu Việt)."""
+    try:
+        f = round1(v)
+    except Exception:
+        return v
+    return str(int(f)) if f == int(f) else str(f).replace(".", ",")
 
 
 def get_theme(student_key):
@@ -495,7 +520,7 @@ def submit():
                          "image": q.get("image", "")})
 
     total = len(qs) - n_essay
-    score_10 = round(score * 10 / total) if total else 0
+    score_10 = round1(score * 10 / total) if total else 0
     exam_no = session.get("exam_no", 1)
 
     conn = get_db()
