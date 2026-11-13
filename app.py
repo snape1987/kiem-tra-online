@@ -193,7 +193,7 @@ STUDENT_THEMES = {
         "primary": "#ff7eb6", "bg": "#fff8fb",
         "css": "theme-pink", "icon_dir": "bao_meo",
         "icon_dirs": ["bao_meo"],
-        "grades": "Lớp 1D",
+        "grades": "Lớp 2",
         "has_audio": False,
     },
     "minh_khanh": {
@@ -201,7 +201,7 @@ STUDENT_THEMES = {
         "primary": "#c084fc", "bg": "#fdf4ff",
         "css": "theme-purple", "icon_dir": "minh_khanh",
         "icon_dirs": ["minh_khanh", "minh_khanh_harry", "minh_khanh_cinamoroll"],
-        "grades": "Lớp 6A3",
+        "grades": "Lớp 7",
         "has_audio": True,
     },
     "nhat_khoi": {
@@ -209,7 +209,7 @@ STUDENT_THEMES = {
         "primary": "#38bdf8", "bg": "#f0f9ff",
         "css": "theme-blue", "icon_dir": "nhat_khoi",
         "icon_dirs": ["nhat_khoi", "nhat_khoi_harry"],
-        "grades": "Lớp 8A1",
+        "grades": "Lớp 9",
         "has_audio": False,
     },
     "tip_nicolas": {
