@@ -3651,6 +3651,8 @@ _TIENG_ANH_8_HK2 = [
 # Module chưa tồn tại → folder tự ẩn khỏi CONTENT_TREE.
 _FIXED_EXAM_DEFS = [
     # (lop_key, folder_key / module, display)
+    ("lop_2", "de_toan_2_hk1",      "Đề Toán 2 HK1"),
+    ("lop_2", "de_tieng_viet_2_hk1", "Đề Tiếng Việt 2 HK1"),
     ("lop_7", "de_toan_7_giua_hk1", "Đề Toán 7 Giữa HK1"),
     ("lop_7", "de_toan_7_hk1",      "Đề Toán 7 HK1"),
     ("lop_7", "de_anh_7_giua_hk1",  "Đề Anh 7 Giữa HK1"),
