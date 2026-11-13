@@ -511,7 +511,7 @@ def submit():
             user_ans = request.form.get(f"q_{i}", "").strip()
             correct = str(q.get("answer", "")).strip()
             ok = norm(user_ans) == norm(correct) or any(
-                norm(user_ans) == norm(alt) for alt in q.get("alt_answers", [])
+                norm(user_ans) == norm(alt) for alt in (q.get("alt_answers") or [])
             )
             if ok:
                 score += 1
