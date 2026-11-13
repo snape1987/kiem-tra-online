@@ -26,9 +26,9 @@ def get_subjects(student_key):
 
 
 _STUDENT_NAMES = {
-    "bao_meo":    "Bảo Mèo (Lớp 1D)",
-    "minh_khanh": "Minh Khanh (Lớp 6A3)",
-    "nhat_khoi":  "Nhật Khôi (Lớp 8A1)",
+    "bao_meo":    "Bảo Mèo (Lớp 2)",
+    "minh_khanh": "Minh Khanh (Lớp 7)",
+    "nhat_khoi":  "Nhật Khôi (Lớp 9)",
 }
 
 def _placeholder(n, student_key, subject, mode_name):
