@@ -27,4 +27,4 @@ Bạn: Bảo Mèo (lớp 2), Minh Khanh (lớp 7), Nhật Khôi (lớp 9).
 - Cuối file: danh sách câu lỗi đề + việc cần xác nhận.
 
 ### Đã làm
-- [x] Nhật Khôi (giả định, cần xác nhận) — Anh 9, Unit 7 Practice Test, câu 1–12: `checks/nhat_khoi/2026-11-17_anh9_unit7_practice_test_q1-12.md`
+- [x] Nhật Khôi (đã xác nhận; khoanh đỏ = bé chọn) — Anh 9, Unit 7 Practice Test, câu 1–12: `checks/nhat_khoi/2026-11-17_anh9_unit7_practice_test_q1-12.md`
