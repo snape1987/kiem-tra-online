@@ -137,3 +137,35 @@ Vòng khoanh Q13 và Q17–Q25 màu xanh, Q14–Q16 màu đỏ. Cả hai màu đ
 ## Việc cần xác nhận thêm
 - Q26: chụp lại phần phương án để chấm.
 - Q14: sách key "the" (owner xác nhận) nhưng mình thấy "a" tự nhiên hơn; có thể hỏi giáo viên.
+
+---
+
+# Bổ sung 2026-11-17: câu 26–40 (ảnh trang 15–17)
+
+Bé đúng 15/15. Q37–Q40 bé viết đáp án lên dòng trống (B, A, D, C).
+
+| Câu | Đáp án đúng | Bé chọn | KQ | Lý do | Tin cậy |
+|---|---|---|---|---|---|
+| 26 | B. Scientists' exploration … reveals… | B | ✓ | Giữ đúng ý: khám phá hang cho thấy có hoạt động của con người hơn 30.000 năm trước. A sai nghĩa ("occupied"), C sai chủ ngữ (humans không "explore"), D thêm "ancient scientists" vô lý. | cao |
+| 27 | B. Do you have your passport with you now? | B | ✓ | "have" chỉ sự sở hữu là động từ trạng thái nên không chia tiếp diễn: loại A. C không phải câu hỏi, D sai nghĩa ("Can you have a passport"). | cao |
+| 28 | C. From the hilltop, we can get a better view of our village | C | ✓ | Dùng đủ các gợi ý get / view / our village. D cho "village" làm chủ ngữ của "get a view" thì vô lý. Chỉ lệch nhẹ: gợi ý "good", đáp án "better". | vừa-cao |
+| 29 | B. The IT course covers hardware, software, networking and security | B | ✓ | Biển ghi "Covers hardware, software, networking, and security". A sai ngày (1st Nov, không phải October). C sai (for beginners). D sai (Get certificate). | cao |
+| 30 | A. You can't park your car here because this area is for fire trucks | A | ✓ | NO PARKING + FIRE LANE = cấm đỗ vì là làn dành cho xe cứu hỏa. B ngược nghĩa, C và D sai nghĩa. | cao |
+| 31 | C. 1.29 million km2 | C | ✓ | Bài viết: "covering a total area of 1.29 million km2", đúng con số, không "over" hay "nearly". | cao |
+| 32 | A. Nomadic people | A | ✓ | "…as well as meet the nomadic people whose ways of life remain untouched…" | cao |
+| 33 | B. Its alarming expansion | B | ✓ | "still growing at an alarming rate, causing the loss of valuable grassland". A là điểm hấp dẫn của du lịch, D ngược (chính phủ trồng rừng). | cao |
+| 34 | B. every year | B | ✓ | annual = hằng năm = every year. | cao |
+| 35 | B. Tourists should drive their Jeep cars across the Desert | B | ✓ | Bài viết khuyên đi "in Jeep cars with local drivers", tức đi xe có tài xế địa phương, không tự lái xe của mình. A, C, D đều có trong bài. | cao |
+| 36 | C. modern | C | ✓ | ancient (cổ xưa) trái nghĩa modern. A, B, D đều gần nghĩa "cũ". | cao |
+| 37 | B. The dams use water … to produce electricity | B (viết tay) | ✓ | Câu sau "They also create reservoirs" cần câu trước nói đập làm gì: sản xuất điện. | cao |
+| 38 | A. Sometimes water is held back to prevent floods | A (viết tay) | ✓ | Đối ứng với "At other times, water is released…" ("Sometimes … At other times"). | cao |
+| 39 | D. dams and reservoirs have altered the river's ecosystem | D (viết tay) | ✓ | "By changing the natural flow of water, dams … have altered…" cùng chủ ngữ; câu sau "They have affected the depth…". | cao |
+| 40 | C. which needs much effort … to save them from extinction | C (viết tay) | ✓ | Câu cuối của đoạn: "…are now endangered, which needs much effort…" là mệnh đề quan hệ nối tiếp, duy nhất khớp dấu phẩy. | cao |
+
+## Tổng kết Q1–40
+- ✓ 27, ✗ 10, ⚠ 2 (Q10, Q17), — 1 (Q12).
+- Điểm tham khảo (thang 10, 0,25/câu; thang thật chưa biết): 6,75 nếu tính 27 câu đúng, 7,25 nếu tính cả 2 câu lỗi đề.
+- Mạnh: đọc hiểu, điền đoạn văn (Q26–40 đúng hết).
+- Yếu: ngữ âm/trọng âm (0/4), mạo từ, giới từ, so sánh nhất, đại từ quan hệ, collocation.
+- Q12: không thấy dấu chọn; có nét gạch đỏ ở lề trái, cần hỏi lại.
+- Q28: đáp án C lệch nhẹ gợi ý "good" so với "better", nhưng là phương án hợp lý duy nhất.
