@@ -1,13 +1,14 @@
 # Check: Anh 9 — Unit 7 Practice Test (Victory Experimental Schools), câu 1–12
 
 Ngày check: 2026-11-17
-Bạn: Nhật Khôi (lớp 9) — GIẢ ĐỊNH theo lớp, chưa xác nhận.
+Bạn: Nhật Khôi (lớp 9) — owner xác nhận ngày 2026-11-17.
 Nguồn: ảnh chụp trang sách, nghiêng, mép phải bị che. Không có từ điển để tra tự động; đáp án dựa trên kiến thức của mình.
 
 ## Cách đọc dấu đỏ trên ảnh
-- Giả thiết làm việc (tin cậy VỪA): khoanh tròn = đáp án bé chọn; ✓ hoặc gạch chân/ghi tay = đáp án đúng do người chấm đánh dấu.
-- Dấu hiệu ủng hộ: Q6 có gạch đỏ + ghi tay cạnh "suggest" (đọc là "+Ving", tin cậy THẤP) trong khi bé khoanh C. Q10 có ✓ ở A, khoanh C.
-- Dấu hiệu chống: Q1–Q4 đều khoanh sai theo giả thiết trên, khá bất thường. Q5 có 2 vòng (A và B). Cần xác nhận với người chấm.
+- ĐÃ XÁC NHẬN bởi owner: khoanh đỏ = đáp án Nhật Khôi chọn.
+- Chưa xác nhận: ✓, gạch chân đỏ và chữ ghi tay là của ai, nghĩa gì (có vẻ là người chấm đánh dấu đáp án đúng, tin cậy VỪA). Không dùng các dấu này để tính điểm.
+- Q6 có gạch đỏ + ghi tay cạnh "suggest" (đọc là "+Ving", tin cậy THẤP); Q10 có ✓ ở A. Cả hai khớp với đáp án mình giải.
+- Q5 có 2 vòng (A và B): chưa rõ bé chốt đáp án nào.
 
 ## Bảng tổng hợp
 
@@ -84,14 +85,56 @@ Nguồn: ảnh chụp trang sách, nghiêng, mép phải bị che. Không có t�
 - A "Certainly. You can't." mâu thuẫn. B "Never. I forget." sai. C "Yes. Why don't you?" sai ngữ cảnh (đó là câu đề nghị).
 - Không thấy dấu của bé ở câu này trên ảnh.
 
-## So sánh nếu "khoanh = bé chọn"
-- Đúng: Q5 (A), Q7, Q9, Q11 — 4 câu.
+## So sánh với đáp án bé chọn (khoanh đỏ)
+- Đúng: Q5 (A, nhưng có 2 vòng — cần xác nhận), Q7, Q9, Q11 — 4 câu.
 - Sai: Q1 (B), Q2 (C), Q3 (A), Q4 (A), Q6 (C), Q8 (B), Q10 (C, nhưng câu lỗi đề) — 7 câu.
 - Chưa thấy làm: Q12.
 - Điểm mạnh yếu: ngữ âm/trọng âm (Q1–Q4) sai hết, cần ôn trọng âm từ 3 âm tiết và quy tắc phát âm g, i.
 
 ## Việc cần xác nhận
-- Bài này của bạn nào (đang giả định Nhật Khôi).
-- Dấu khoanh/✓ là của ai, ý nghĩa gì.
+- Q5: bé chốt A hay B (đang có 2 vòng).
+- Dấu ✓ và ghi tay là của ai, ý nghĩa gì.
 - Chữ gạch chân thật sự ở Q1, Q2.
 - Hỏi giáo viên: Q10 (2 đáp án đúng), Q5/Q11/Q8 (lỗi in).
+
+---
+
+# Bổ sung 2026-11-17: ảnh rõ hơn và câu 13–25
+
+## Cập nhật câu 1–12
+- Q1: ảnh phóng to xác nhận gạch chân ở chữ "i" của destination, risk, majestic. Đáp án A. paradise, tin cậy CAO.
+- Q2: vẫn chưa thấy rõ gạch chân ở "geological", giữ tin cậy VỪA.
+
+## Câu 13–25 (ảnh trang 15). Q26 chưa chấm: ảnh cắt mất phương án.
+Vòng khoanh Q13 và Q17–Q25 màu xanh, Q14–Q16 màu đỏ. Coi cả hai là bé chọn (màu xanh chưa xác nhận).
+
+| Câu | Đáp án đúng | Bé chọn | KQ | Lý do | Tin cậy |
+|---|---|---|---|---|---|
+| 13 | B. in | A. at | ✗ | located in + quốc gia | cao |
+| 14 | A. a | B. an | ✗ | "lion" phụ âm /l/ nên dùng a; có gạch đỏ dưới C. the, cần đối chiếu đáp án sách | vừa |
+| 15 | A. visit | A | ✓ | step back in time to + V | cao |
+| 16 | C. greatest | B. great | ✗ | one of the world's + so sánh nhất | cao |
+| 17 | c-a-b-d | B (c-a-b-d) | ⚠ | First → Next → Then → Additionally; B và D in giống hệt | vừa |
+| 18 | A | A | ✓ | câu kết mời đăng ký + lời chúc; B, D viết "200$" | vừa |
+| 19 | B. destination | B | ✓ | travel destination | cao |
+| 20 | A. various | A | ✓ | in various shapes and sizes | cao |
+| 21 | B. includes | B | ✓ | which includes; consists cần "of" | vừa-cao |
+| 22 | C. which | A. them | ✗ | most of which; "them" gây comma splice | cao |
+| 23 | A. formation | A | ✓ | years of formation | cao |
+| 24 | D. under | D | ✓ | under the impact of | cao |
+| 25 | D | D | ✓ | giữ đủ ý, "ready for harvest" ở C sai | cao |
+
+## Tổng Q1–25
+- ✓ 12 (Q5, 7, 9, 11, 15, 18, 19, 20, 21, 23, 24, 25)
+- ✗ 10 (Q1, 2, 3, 4, 6, 8, 13, 14, 16, 22)
+- ⚠ 2 (Q10, Q17: lỗi đề)
+- — 1 (Q12 chưa làm)
+
+## Lỗi đề mới
+- Q17: phương án B và D giống hệt (c-a-b-d).
+- Q18: "200$" nên viết $200; D kết thúc bằng dấu "/" thừa.
+
+## Việc cần xác nhận thêm
+- Vòng khoanh xanh có phải bé chọn không.
+- Q14: gạch đỏ dưới C. the có phải đáp án sách không.
+- Q26: chụp lại phần phương án.
