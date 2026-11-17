@@ -106,12 +106,12 @@ Nguồn: ảnh chụp trang sách, nghiêng, mép phải bị che. Không có t�
 - Q2: vẫn chưa thấy rõ gạch chân ở "geological", giữ tin cậy VỪA.
 
 ## Câu 13–25 (ảnh trang 15). Q26 chưa chấm: ảnh cắt mất phương án.
-Vòng khoanh Q13 và Q17–Q25 màu xanh, Q14–Q16 màu đỏ. Coi cả hai là bé chọn (màu xanh chưa xác nhận).
+Vòng khoanh Q13 và Q17–Q25 màu xanh, Q14–Q16 màu đỏ. Cả hai màu đều là bé chọn (owner xác nhận).
 
 | Câu | Đáp án đúng | Bé chọn | KQ | Lý do | Tin cậy |
 |---|---|---|---|---|---|
 | 13 | B. in | A. at | ✗ | located in + quốc gia | cao |
-| 14 | A. a | B. an | ✗ | "lion" phụ âm /l/ nên dùng a; có gạch đỏ dưới C. the, cần đối chiếu đáp án sách | vừa |
+| 14 | C. the (đáp án sách) | B. an | ✗ | sách key "the"; "an" sai vì "lion" phụ âm /l/. Mình thấy "a" tự nhiên hơn, "the" chấp nhận được nếu hiểu là loài sư tử nói chung | cao |
 | 15 | A. visit | A | ✓ | step back in time to + V | cao |
 | 16 | C. greatest | B. great | ✗ | one of the world's + so sánh nhất | cao |
 | 17 | c-a-b-d | B (c-a-b-d) | ⚠ | First → Next → Then → Additionally; B và D in giống hệt | vừa |
@@ -135,6 +135,5 @@ Vòng khoanh Q13 và Q17–Q25 màu xanh, Q14–Q16 màu đỏ. Coi cả hai là
 - Q18: "200$" nên viết $200; D kết thúc bằng dấu "/" thừa.
 
 ## Việc cần xác nhận thêm
-- Vòng khoanh xanh có phải bé chọn không.
-- Q14: gạch đỏ dưới C. the có phải đáp án sách không.
-- Q26: chụp lại phần phương án.
+- Q26: chụp lại phần phương án để chấm.
+- Q14: sách key "the" (owner xác nhận) nhưng mình thấy "a" tự nhiên hơn; có thể hỏi giáo viên.
